@@ -3,27 +3,21 @@
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
-export default () => {
-    // Create reference to store the DOM element containing the animation
+export default ({ className }: { className?: string }) => {
     const el = useRef(null);
 
     useEffect(() => {
         const typed = new Typed(el.current, {
-            strings: ['<i>First</i> sentence.', '&amp; a second sentence.'],
+            strings: ["System.out.print(\"有些梦虽然遥不可及，但并不是不可能实现!\");",
+                "print(\" 互联网从不缺乏天才, 而努力才是最终的入场券!\")",
+                "console.log(\"再渺小的星光，也有属于他的光芒!\")"],
             typeSpeed: 100,
             backSpeed: 30,
             loop: true
         });
 
-        return () => {
-            // Destroy Typed instance during cleanup to stop animation
-            typed.destroy();
-        };
+        return () => typed.destroy();
     }, []);
 
-    return (
-        <div className="App">
-            <span ref={el} />
-        </div>
-    );
+    return <span ref={el} className={className} />
 }

@@ -1,20 +1,19 @@
-import Typed from '../Typed'
+import { ReactNode } from 'react'
 import './index.scss'
 
 const sty = {
     backgroundImage: "url(https://bu.dusays.com/2024/04/24/6628990012b51.jpg)",
 }
 
-export default () => {
+export default ({ children }: { children: ReactNode }) => {
     return (
         <>
             <div className="SwiperComponent relative h-[500px] bg-cover bg-center" style={sty}>
+                <div>{children}</div>
             </div>
 
-            <Typed></Typed>
-
             {/* 波浪效果 */}
-            {/* <div className="ripple">
+            <div className="ripple">
                 <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
                     viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
                     <defs>
@@ -28,7 +27,7 @@ export default () => {
                         <use xlinkHref="#gentle-wave" x="48" y="7" fill="#fff"></use>
                     </g>
                 </svg>
-            </div> */}
+            </div>
         </>
     )
 }
