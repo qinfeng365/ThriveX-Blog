@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import './index.scss';
 
-const StarrySky = () => {
+const StarrySky: React.FC = () => {
     useEffect(() => {
         /*星星的密集程度，数字越大越多*/
         const stars = 800;
@@ -14,10 +14,10 @@ const StarrySky = () => {
         for (let i = 0; i < stars; i++) {
             const star = document.createElement('div');
             star.classList.add('star_starrySky');
-            starsContainer.appendChild(star);
+            starsContainer?.appendChild(star);
         }
 
-        const starElements = document.querySelectorAll('.star_starrySky');
+        const starElements = document.querySelectorAll<HTMLElement>('.star_starrySky');
         starElements.forEach((starElement) => {
             const s = 0.2 + Math.random() * 1;
             const curR = r + Math.random() * 300;
