@@ -19,63 +19,133 @@
             transition: background $move;
         }
 
-        // 二级导航
-        .two {
-            display: none;
-            overflow: hidden;
-            position: absolute;
-            top: 50px;
-            width: 100%;
-            border-radius: $round;
-            background-color: #f9f9f9;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08);
+        .w {
+            width: $w;
+            height: 60px;
+            margin: 0 auto;
 
-            .two_item {
-                .two_item_nav {
+            // 一级导航
+            .one {
+                display: flex;
+                align-items: center;
+                height: 60px;
+
+                // 导航列表
+                .one_item {
                     position: relative;
-                    display: inline-block;
-                    width: 100%;
-                    padding: 10px;
-                    padding-left: 10px;
-                    font-size: 15px;
-                    box-sizing: border-box;
-                    color: #666;
-                    transition: all $move;
 
-                    // 鼠标经过的小横线
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 10px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        width: 0;
-                        height: 3px;
-                        background-color: $color;
-                        transition: width $move;
+                    img {
+                        height: 40px;
+                        padding-right: 20px;
+                        transition: all $move;
                     }
-                }
 
-                // 鼠标经过二级导航的效果
-                &:hover .two_item_nav {
-                    color: $color !important;
-                    background-color: #f2f2f2;
-                    padding-left: 30px;
+                    &:hover img {
+                        transition: transform $move;
+                        transform: scale(0.9);
+                    }
 
-                    &:hover::after {
-                        width: 10px;
+                    &:hover .one_item_nav {
+                        color: $color !important;
+                    }
+
+                    // 导航
+                    .one_item_nav {
+                        display: flex;
+                        align-items: center;
+                        padding: 20px;
+                        font-size: 15px;
+                        transition: color $move;
+
+                        // 文字模式
+                        b {
+                            font-size: 20px;
+                            padding-right: 40px;
+                        }
+                    }
+
+                    // 二级导航
+                    .two {
+                        display: none;
+                        overflow: hidden;
+                        position: absolute;
+                        top: 50px;
+                        width: 100%;
+                        border-radius: $round;
+                        background-color: #f9f9f9;
+                        box-shadow: 0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08);
+
+                        .two_item {
+                            .two_item_nav {
+                                position: relative;
+                                display: inline-block;
+                                width: 100%;
+                                padding: 10px;
+                                padding-left: 10px;
+                                font-size: 15px;
+                                box-sizing: border-box;
+                                color: #666;
+                                transition: all $move;
+
+                                // 鼠标经过的小横线
+                                &::after {
+                                    content: "";
+                                    position: absolute;
+                                    left: 10px;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    width: 0;
+                                    height: 3px;
+                                    background-color: $color;
+                                    transition: width $move;
+                                }
+                            }
+
+                            // 鼠标经过二级导航的效果
+                            &:hover .two_item_nav {
+                                color: $color !important;
+                                background-color: #f2f2f2;
+                                padding-left: 30px;
+
+                                &:hover::after {
+                                    width: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    // 鼠标经过哪个，就让哪个二级导航显示
+                    &:hover .two {
+                        display: block;
                     }
                 }
             }
-        }
 
-        // 鼠标经过哪个，就让哪个二级导航显示
-        &:hover .two {
-            display: block;
+            .top {
+                display: none;
+                justify-content: center;
+                align-items: center;
+                height: 60px;
+
+                img {
+                    height: 50px;
+                    transition: all $move;
+                }
+
+                &:hover img {
+                    transition: transform $move;
+                    transform: scale(0.9);
+                }
+
+                &:hover .one_item_nav {
+                    color: $color !important;
+                }
+            }
         }
     }
 
-    .bg {
+    // 渐变
+    .gradient {
         border-bottom: 1px solid #eee;
         background-color: rgba(255, 255, 255, 0.9);
         transition: all $move;
