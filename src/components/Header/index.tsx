@@ -1,24 +1,23 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import Request from '@/utils/request';
+import Show from '@/components/Show'
 
 import lightLogo from '@/assets/image/light_logo.png';
 import darkLogo from '@/assets/image/dark_logo.png';
 
-import "./index.scss"
 import { IoIosArrowDown } from 'react-icons/io';
 import { Cate } from '@/types/app/cate';
-
-import Show from '@/components/Show'
+import "./index.scss"
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [cateList, setCateList] = useState<Cate[]>([])
 
     const getCateList = async () => {
-        const res = await fetch("http://localhost:9999/api/cate/all")
-        const { data } = await res.json()
+        const { data } = await Request("/cate/all")
         console.log(data);
         setCateList(data)
     }
