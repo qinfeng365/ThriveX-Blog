@@ -10,13 +10,15 @@ import "./index.scss"
 import { IoIosArrowDown } from 'react-icons/io';
 import { Cate } from '@/types/app/cate';
 
+import Show from '@/components/Show'
+
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [cateList, setCateList] = useState<Cate[]>([])
 
     const getCateList = async () => {
         const res = await fetch("http://localhost:9999/api/cate/all")
-        const {data} = await res.json()
+        const { data } = await res.json()
         console.log(data);
         setCateList(data)
     }
@@ -59,12 +61,12 @@ const Header = () => {
                             <li key={one.id} className="one_item">
                                 <Link href={one.url} className={`one_item_nav ${isScrolled ? 'text-[#333]' : 'text-white'}`}>
                                     {one.icon} {one.name}
-                                    {one.children.length > 0 && (
+                                    <Show is={!!one.children.length} children={(
                                         <IoIosArrowDown className="ml-2" />
-                                    )}
+                                    )} />
                                 </Link>
 
-                                {one.children.length > 0 && (
+                                <Show is={!!one.children.length} children={(
                                     <ul className="two">
                                         {one.children.map(two => (
                                             <li key={two.id} className="two_item">
@@ -74,7 +76,7 @@ const Header = () => {
                                             </li>
                                         ))}
                                     </ul>
-                                )}
+                                )} />
                             </li>
                         ))}
                     </ul>
