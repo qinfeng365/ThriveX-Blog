@@ -1,4 +1,5 @@
 import Author from "./Author"
+import HotArticle from "./HotArticle"
 import RandomArticle from "./RandomArticle"
 
 export default () => {
@@ -6,6 +7,7 @@ export default () => {
     <>
       <div className="right">
         <Author></Author>
+        <HotArticle></HotArticle>
         <RandomArticle></RandomArticle>
       </div>
     </>

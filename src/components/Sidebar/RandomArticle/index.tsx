@@ -13,7 +13,7 @@ const RandomArticle = async () => {
         <div className='RandomArticleComponent'>
             <div className="randomArticle">
                 <div className="title">
-                    <Image src={article} alt='随机文章图标'></Image>
+                    <Image src={article} alt='随机文章'></Image>
                     <span> 随机文章</span>
                 </div>
 
