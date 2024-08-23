@@ -1,0 +1,104 @@
+@import "@/styles/var.scss";
+
+.AuthorComponent {
+    .author {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        background: url("../../../assets/image/avatar_bg.jpg") no-repeat;
+        background-size: 100% 35%;
+        background-color: #fff;
+        width: 100%;
+        height: 350px;
+        margin-bottom: 20px;
+        @include container;
+
+        // 作者头像
+        .avatar {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(100, 100, 100, 0.15);
+
+            &:hover img {
+                transform: scale(1.2);
+            }
+
+            img {
+                width: 90%;
+                height: 90%;
+                border-radius: 50%;
+                transition: transform $move;
+            }
+        }
+
+        // 作者介绍
+        .info {
+            h3 {
+                margin: 15px;
+                color: #333;
+                text-align: center;
+                transition: color $move;
+            }
+
+            p {
+                width: 90%;
+                margin: 0 auto;
+                color: #686868;
+                transition: color $move;
+            }
+        }
+
+        // 社交账号
+        .socializing {
+            width: 100%;
+            padding-top: 30px;
+
+            .title {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: $underBorderColor;
+                transition: background-color $move;
+
+                &::after {
+                    content: "社交账号";
+                    position: absolute;
+                    top: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 110px;
+                    color: #666;
+                    background-color: #fff;
+                    text-align: center;
+                    font-size: 14px;
+                    transition: all $move;
+                }
+            }
+
+            .list {
+                display: flex;
+                justify-content: space-evenly;
+                width: 70%;
+                padding-top: 25px;
+                margin: 0 auto;
+
+                a {
+                    img {
+                        width: 23px;
+                        height: 23px;
+                    }
+                }
+            }
+        }
+    }
+}

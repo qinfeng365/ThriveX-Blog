@@ -1,6 +1,6 @@
 const url = "http://localhost:9999/api"
 
-export default async (api: string) => {
+export default async <T>(api: string) => {
     const res = await fetch(`${url}${api}`)
-    return res.json()
+    return res.json() as Promise<Response<T>>;
 }

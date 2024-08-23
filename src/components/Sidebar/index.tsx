@@ -1,8 +1,10 @@
+import Author from "./Author"
+
 export default () => {
   return (
     <>
-      <div>
-        <h1>Hello World!</h1>
+      <div className="right">
+        <Author></Author>
       </div>
     </>
   )
