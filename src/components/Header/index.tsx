@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import Request from '@/utils/request';
 import Show from '@/components/Show'
 
 import lightLogo from '@/assets/image/light_logo.png';
@@ -10,6 +9,7 @@ import darkLogo from '@/assets/image/dark_logo.png';
 
 import { IoIosArrowDown } from 'react-icons/io';
 import { Cate } from '@/types/app/cate';
+import { getCateListAPI } from '@/api/cate';
 import "./index.scss"
 
 const Header = () => {
@@ -17,8 +17,7 @@ const Header = () => {
     const [cateList, setCateList] = useState<Cate[]>([])
 
     const getCateList = async () => {
-        const { data } = await Request("/cate/all")
-        console.log(data);
+        const { data } = await getCateListAPI()
         setCateList(data)
     }
 
@@ -58,7 +57,7 @@ const Header = () => {
 
                         {cateList.map(one => (
                             <li key={one.id} className="one_item">
-                                <Link href={one.url} className={`one_item_nav ${isScrolled ? 'text-[#333]' : 'text-white'}`}>
+                                <Link href={`/cate/${one.id}?name=${one.name}`} className={`one_item_nav ${isScrolled ? 'text-[#333]' : 'text-white'}`}>
                                     {one.icon} {one.name}
                                     <Show is={!!one.children.length} children={(
                                         <IoIosArrowDown className="ml-2" />
@@ -69,7 +68,7 @@ const Header = () => {
                                     <ul className="two">
                                         {one.children.map(two => (
                                             <li key={two.id} className="two_item">
-                                                <Link href={two.url} className="two_item_nav">
+                                                <Link href={`/cate/${two.id}?name=${two.name}`} className="two_item_nav">
                                                     {two.name}
                                                 </Link>
                                             </li>

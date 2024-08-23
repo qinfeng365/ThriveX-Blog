@@ -18,7 +18,7 @@ const Classics = ({ data }: ClassicsProps) => {
     return (
         <div className='ClassicsComponent'>
             <div className="classics">
-                {data?.result.map((item, index) => (
+                {data?.result?.map((item, index) => (
                     <div className="item" key={item.id}>
                         {index % 2 === 0 && (
                             <div

@@ -3,6 +3,7 @@ import { getCommentListAPI } from '@/api/comment';
 import dayjs from 'dayjs';
 import './index.scss';
 import Comment from '@/assets/svg/other/comments.svg'
+import Link from 'next/link';
 
 const NewComments = async () => {
     const { data: { result } } = await getCommentListAPI()
@@ -16,13 +17,13 @@ const NewComments = async () => {
 
                 <div className="list">
                     {result.map((item) => (
-                        <a href="javascript:;" className="item" key={item.id}>
+                        <Link href="/" className="item" key={item.id}>
                             <img src={item.avatar} className="avatar" alt="avatar" />
                             <div className="content">
                                 <div className="info">{item.content}</div>
                                 <div className="time">{dayjs(+item.createTime!).format('YYYY-MM-DD HH:mm')}</div>
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>
