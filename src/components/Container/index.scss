@@ -1,12 +1,16 @@
+@import "@/styles/var.scss";
+
 .ContainerComponent {
     .main {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        width: 1200px;
         padding: 20px;
         margin: 0 auto;
 
         .left {
+            width: 73%;
             margin: 0 auto;
             transition: width $move;
         }

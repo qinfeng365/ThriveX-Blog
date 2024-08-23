@@ -6,7 +6,9 @@ export default async () => {
 
   return (
     <>
-      <Classics data={data}></Classics>
+      <div className="left w-[73%]">
+        <Classics data={data}></Classics>
+      </div>
     </>
   )
 }

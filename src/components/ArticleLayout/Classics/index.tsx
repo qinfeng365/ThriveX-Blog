@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { randomImage } from '@/utils';
-// import Empty from '@/components/Empty';
 // import Pagination from '@/components/Pagination';
 import { Article } from '@/types/app/article';
 import "./index.scss"
@@ -10,21 +8,19 @@ import "./index.scss"
 import { RiFireLine } from "react-icons/ri";
 import { IoTimeOutline } from "react-icons/io5";
 import { GoTag } from "react-icons/go";
+import Empty from '@/components/Empty';
+import Show from '@/components/Show';
 
 interface ClassicsProps {
     data: Paginate<Article[]>;
 }
 
-const Classics: React.FC<ClassicsProps> = ({ data }) => {
+const Classics = ({ data }: ClassicsProps) => {
     // const [paginate, setPaginate] = useState<Page>({ page: data.page, size: data.size });
 
     // useEffect(() => {
     //     if (data) onGet({ page: paginate.page, size: paginate.size });
     // }, [paginate, data, onGet]);
-
-    if (!data) {
-        return null;
-    }
 
     return (
         <div className='ClassicsComponent'>
@@ -79,7 +75,7 @@ const Classics: React.FC<ClassicsProps> = ({ data }) => {
                     </div>
                 ))}
 
-                {/* {!data.total && <Empty info="暂无文章" />} */}
+                <Show is={!data.total} children={<Empty info="暂无文章" />}></Show>
 
                 {/* {data.total >= 5 && (
                 <Pagination
