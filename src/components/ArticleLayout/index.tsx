@@ -1,8 +1,8 @@
 import Classics from "./Classics"
-import Request from '@/utils/request'
+import { getArticleListAPI } from '@/api/article'
 
 export default async () => {
-  const { data } = await Request("/article")
+  const { data } = await getArticleListAPI()
 
   return (
     <>

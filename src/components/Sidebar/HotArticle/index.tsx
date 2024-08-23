@@ -1,30 +1,30 @@
+import Link from 'next/link';
 import Image from 'next/image';
-import { randomImage } from '@/utils';
-import { getRandomArticleList } from '@/api/article';
+import { getRecommendedArticleListAPI } from '@/api/article'
+import { IoIosArrowForward } from "react-icons/io";
 import fire from '@/assets/svg/other/fire.svg'
 import "./index.scss"
 
-const HotArticle = async () => {
-    const { data } = await getRandomArticleList()
+const RandomArticle = async () => {
+    // 获取热门文章
+    const { data } = await getRecommendedArticleListAPI();
 
     return (
-        <div className='HotArticleComponent'>
-            <div className="HotArticle">
-                <h3 className="title">
-                    <Image src={fire} alt="热门推荐" /> 热门推荐
-                </h3>
+        <div className='RandomArticleComponent'>
+            <div className="randomArticle">
+                <div className="title">
+                    <Image src={fire} alt='热门文章'></Image>
+                    <span> 热门文章</span>
+                </div>
 
+                {/* 文章列表 */}
                 <div className="list">
-                    {data.map((item, index) => (
-                        <div
-                            key={index}
-                            className="item"
-                            style={{ backgroundImage: `url(${item.cover || randomImage()})` }}
-                        >
-                            <a href="javascript:void(0);">
-                                <h4>{item.title}</h4>
-                            </a>
-                            <span>{index + 1}</span>
+                    {data.map((item) => (
+                        <div className="item" key={item.id}>
+                            <Link href={`/article/${item.id}`}>
+                                <IoIosArrowForward />
+                                {item.title}
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -33,4 +33,4 @@ const HotArticle = async () => {
     );
 };
 
-export default HotArticle;
+export default RandomArticle;

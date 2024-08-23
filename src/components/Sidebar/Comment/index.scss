@@ -1,0 +1,90 @@
+@import "@/styles/var.scss";
+
+.CommentComponent {
+    .newComments {
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #fff;
+        @include container;
+
+        // 文章模块标题
+        @include titleRight;
+
+        .title {
+            img {
+                width: 33px;
+                height: 23px;
+            }
+        }
+
+        .list {
+            margin-top: 10px;
+
+            .item {
+                display: flex;
+                align-items: center;
+                padding: 10px 0;
+                border-bottom: 1px solid $underBorderColor;
+                transition: border-bottom $move;
+
+                // 最后一个评论取消下边框
+                &:last-of-type {
+                    border-bottom: none;
+                }
+
+                // 评论者头像
+                .avatar {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    transition: all $move;
+                }
+
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    // 评论信息
+                    .info {
+                        width: 190px;
+                        font-size: 15px;
+                        color: $textColor;
+                        transition: color $move;
+
+                        // 文本溢出省略
+                        display: -webkit-box !important;
+                        overflow: hidden;
+                        word-break: break-all;
+                        text-overflow: ellipsis;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 3;
+                    }
+
+                    // 评论时间
+                    .time {
+                        padding-top: 10px;
+                        font-size: 13px;
+                        color: #666;
+                        transition: color $move;
+                    }
+                }
+
+                // 鼠标经过评论列表样式
+                &:hover {
+
+                    // 颜色高亮
+                    .info {
+                        color: $color;
+                    }
+
+                    // 头像缩放
+                    .avatar {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+    }
+}

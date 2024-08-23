@@ -1,30 +1,32 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { getRandomArticleList } from '@/api/article'
+import { randomImage } from '@/utils';
+import { getRandomArticleListAPI } from '@/api/article';
 import article from '@/assets/svg/other/article.svg'
-import { IoIosArrowForward } from "react-icons/io";
 import "./index.scss"
+import Link from 'next/link';
 
-const RandomArticle = async () => {
-    // 获取随机文章
-    const { data } = await getRandomArticleList();
+const HotArticle = async () => {
+    const { data } = await getRandomArticleListAPI()
 
     return (
-        <div className='RandomArticleComponent'>
-            <div className="randomArticle">
-                <div className="title">
-                    <Image src={article} alt='随机文章'></Image>
-                    <span> 随机文章</span>
-                </div>
+        <div className='HotArticleComponent'>
+            <div className="HotArticle">
+                <h3 className="title">
+                    <Image src={article} alt="随机推荐" /> 随机推荐
+                </h3>
 
-                {/* 文章列表 */}
                 <div className="list">
-                    {data.map((item) => (
-                        <div className="item" key={item.id}>
-                            <Link href={`/article/${item.id}`}>
-                                <IoIosArrowForward />
-                                {item.title}
+                    {data.map((item, index) => (
+                        <div
+                            key={index}
+                            className="item"
+                            style={{ backgroundImage: `url(${item.cover || randomImage()})` }}
+                        >
+                            <Link href="/">
+                                <h4>{item.title}</h4>
                             </Link>
+                            
+                            <span>{index + 1}</span>
                         </div>
                     ))}
                 </div>
@@ -33,4 +35,4 @@ const RandomArticle = async () => {
     );
 };
 
-export default RandomArticle;
+export default HotArticle;

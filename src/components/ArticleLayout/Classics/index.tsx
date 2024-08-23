@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { randomImage } from '@/utils';
-// import Pagination from '@/components/Pagination';
 import { Article } from '@/types/app/article';
 import "./index.scss"
 
@@ -16,12 +15,6 @@ interface ClassicsProps {
 }
 
 const Classics = ({ data }: ClassicsProps) => {
-    // const [paginate, setPaginate] = useState<Page>({ page: data.page, size: data.size });
-
-    // useEffect(() => {
-    //     if (data) onGet({ page: paginate.page, size: paginate.size });
-    // }, [paginate, data, onGet]);
-
     return (
         <div className='ClassicsComponent'>
             <div className="classics">
