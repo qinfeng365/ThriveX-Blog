@@ -3,53 +3,16 @@
 .ContentMdComponent {
     display: flex;
     justify-content: center;
-    position: relative;
-    right: -5%;
     padding-top: 50px;
-
-    .content {
-        width: 50%;
-    }
 
     .nav {
         overflow: scroll;
-        width: 250px;
-        height: 500px;
+        width: 50%;
+        max-height: 500px;
         padding-left: 20px;
+        margin-left: 5%;
         border-left: 1px solid #eee;
         position: sticky;
         top: 90px;
-        transform: translateX(40%);
-
-        // 目录样式
-        // .markdown-navigation {
-        //     .title-anchor {
-        //         background-color: transparent;
-        //     }
-
-        //     .title-level1,
-        //     .title-level2 {
-        //         &.active {
-        //             position: relative;
-        //             font-weight: 700;
-        //             padding-left: 30px;
-        //             color: #007fff;
-        //             transition: all $move;
-        //             background-color: transparent;
-
-        //             &::before {
-        //                 content: "";
-        //                 position: absolute;
-        //                 top: 50%;
-        //                 left: 15px;
-        //                 transform: translateY(-50%);
-        //                 width: 4px;
-        //                 height: 20px;
-        //                 border-radius: 20px;
-        //                 background-color: #007fff;
-        //             }
-        //         }
-        //     }
-        // }
     }
 }
