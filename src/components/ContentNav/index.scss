@@ -15,6 +15,9 @@ html {
 
 .ContentNavComponent {
     .nav_item {
+        padding-left: 10px;
+        transition: padding-left 0.7s;
+
         &::before {
             content: "";
             left: -10px;

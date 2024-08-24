@@ -5,6 +5,7 @@ import ContentMd from "@/components/ContentMd";
 import Tag from "../components/Tag";
 import Copyright from "../components/Copyright";
 import UpAndDown from "../components/UpAndDown";
+import Comment from "../components/Comment";
 
 interface Props {
     params: { id: number };
@@ -30,6 +31,7 @@ export default async ({ params }: Props) => {
 
                         <Copyright />
                         <UpAndDown id={id} prev={{ id: 1, title: "大前端" }} next={{ id: 1, title: "大前端" }}/>
+                        <Comment></Comment>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,110 @@
+@import "@/styles/var.scss";
+
+.CommentComponent {
+
+    // 封装表单样式
+    @mixin form {
+        border: 1px solid #eee;
+        border-radius: 5px;
+        box-sizing: border-box;
+        outline: none;
+
+        &:focus {
+            border: 2px solid $color;
+            box-shadow: 0 10px 20px 1px rgb(83, 157, 253, .1);
+        }
+    }
+
+    .comment {
+        // 评论标题
+        .title {
+            &::after {
+                content: "一针见血 🎉";
+                position: absolute;
+                top: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 180px;
+                background-color: #fff;
+                text-align: center;
+                font-size: 24px;
+                transition: all $move;
+            }
+        }
+
+        // 表单
+        .form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        // 表情框
+        .emote {
+            position: absolute;
+            width: 500px;
+            height: 220px;
+            border-radius: 5px;
+            border: 1px solid #f0f0f0;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: saturate(180%) blur(10px);
+
+            // 表情列表
+            .list {
+                overflow: auto;
+                display: flex;
+                flex-wrap: wrap;
+                height: 80%;
+
+                .item {
+                    border-radius: $round;
+                    transition: background-color $move;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        padding: 10px;
+                        cursor: pointer;
+                    }
+
+                    &:hover {
+                        background-color: #f0f6fd;
+                    }
+                }
+
+                &:last-of-type {
+                    border: none !important;
+                }
+            }
+
+            // 表情包分组
+            .tab {
+                display: flex;
+                height: 20%;
+                background-color: #f7f9fe;
+
+                .item {
+                    transition: background-color $move;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        padding: 5px 15px;
+                        cursor: pointer;
+                    }
+                }
+
+                // 选中项
+                .active {
+                    background-color: #f1f3f8;
+                }
+            }
+        }
+
+        // 表单项
+        .ipt {
+            @include form;
+        }
+    }
+}
