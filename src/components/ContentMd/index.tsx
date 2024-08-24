@@ -1,13 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
-import MarkNav from "markdown-navbar";
 import ReactMarkdown from "react-markdown";
-
-import "markdown-navbar/dist/navbar.css";
 import "github-markdown-css"
 import "./index.scss";
-import directory from '@/assets/svg/other/directory.svg'
+import ContentNav from "../ContentNav";
 
 export default ({ data }: { data: string }) => {
     useEffect(() => {
@@ -39,11 +36,7 @@ export default ({ data }: { data: string }) => {
             </div>
 
             <div className="nav">
-                <div className="flex justify-center items-center">
-                    <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
-                </div>
-
-                <MarkNav source={data} />
+                <ContentNav />
             </div>
         </div>
     );
