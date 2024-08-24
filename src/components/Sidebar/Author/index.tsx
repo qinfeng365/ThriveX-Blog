@@ -12,9 +12,10 @@ import Gitee from '@/assets/svg/socializing/Gitee.svg'
 import Juejin from '@/assets/svg/socializing/Juejin.svg'
 import QQ from '@/assets/svg/socializing/QQ.svg'
 import Weixin from '@/assets/svg/socializing/Weixin.svg'
+import { getUserDataAPI } from '@/api/user';
 
 const Author = async () => {
-    const { data } = await Request<User>("/user/1")
+    const { data } = await getUserDataAPI()
     const { data: { social } } = await Request<Web>("/project/web")
     const socialList = JSON.parse(social)
 

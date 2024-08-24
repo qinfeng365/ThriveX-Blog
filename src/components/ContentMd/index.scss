@@ -2,15 +2,19 @@
 
 .ContentMdComponent {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding-top: 50px;
+
+    .content{
+        width: 70%;
+    }
 
     .nav {
         overflow: scroll;
-        width: 50%;
+        width: 25%;
         max-height: 500px;
         padding-left: 20px;
-        margin-left: 5%;
+        // margin-left: 5%;
         border-left: 1px solid #eee;
         position: sticky;
         top: 90px;
