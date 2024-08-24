@@ -51,8 +51,7 @@ const App: React.FC = () => {
     }, []);
 
     return (
-
-        <div>
+        <div className="ContentNavComponent">
             <div className="flex justify-center items-center">
                 <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
             </div>

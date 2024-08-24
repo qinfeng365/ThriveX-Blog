@@ -13,28 +13,30 @@ html {
     margin-top: -80px;
 }
 
-.nav_item {
-    &::before {
-        content: "";
-        left: -10px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 4px;
-        height: 20px;
-        border-radius: 20px;
-        background-color: #539dfd;
-        transition: all 0.7s;
+.ContentNavComponent {
+    .nav_item {
+        &::before {
+            content: "";
+            left: -10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            border-radius: 20px;
+            background-color: #539dfd;
+            transition: all 0.7s;
+        }
     }
-}
 
-.active {
-    color: #539dfd;
-    padding-left: 30px;
-    border-radius: 10px;
-    background-color: #f7faff;
+    .active {
+        color: #539dfd;
+        padding-left: 30px;
+        border-radius: 10px;
+        background-color: #f7faff;
 
-    &::before {
-        left: 15px;
+        &::before {
+            left: 15px;
+        }
     }
 }
