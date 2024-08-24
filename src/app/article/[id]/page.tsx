@@ -1,7 +1,7 @@
 import Starry from "@/components/Starry"
 import Swiper from "@/components/Swiper"
 import { getArticleDataAPI } from '@/api/article'
-import Vditor from "@/components/Vditor";
+import ContentMd from "@/components/ContentMd";
 
 interface Props {
     params: { id: number };
@@ -19,7 +19,7 @@ export default async ({ params }: Props) => {
                     <Starry />
                 </Swiper>
 
-                <Vditor data={data.content}></Vditor>
+                <ContentMd data={data.content}></ContentMd>
             </div>
         </>
     )

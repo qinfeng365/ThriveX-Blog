@@ -9,8 +9,6 @@ import "./index.scss";
 import directory from '@/assets/svg/other/directory.svg'
 
 export default ({ data }: { data: string }) => {
-    const [navVisible, setNavVisible] = useState(true);
-
     useEffect(() => {
         // 当组件挂载时，改变body背景颜色
         document.body.style.backgroundColor = '#fff';
@@ -22,12 +20,12 @@ export default ({ data }: { data: string }) => {
     }, []);
 
     return (
-        <div className="ContentComponent">
+        <div className="ContentMdComponent">
             <div className="content markdown-body">
                 <ReactMarkdown>{data}</ReactMarkdown>
             </div>
 
-            <div className={`nav ${navVisible ? "show" : "hide"}`}>
+            <div className="nav">
                 <div className="flex justify-center items-center">
                     <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
                 </div>
