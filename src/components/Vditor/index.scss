@@ -1,0 +1,52 @@
+@import "@/styles/var.scss";
+
+.ContentComponent {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: -5%;
+    padding-top: 50px;
+
+    .content {
+        width: 50%;
+    }
+
+    .nav {
+        overflow: hidden;
+        width: 250px;
+        height: 100%;
+        position: sticky;
+        top: 300px;
+        transform: translateX(50%);
+
+        // 目录样式
+        .markdown-navigation {
+            .title-anchor {
+                small {
+                    display: none;
+                }
+
+                &.active {
+                    position: relative;
+                    font-weight: 700;
+                    padding-left: 30px;
+                    color: #007fff;
+                    transition: all $move;
+                    background-color: transparent;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 15px;
+                        transform: translateY(-50%);
+                        width: 4px;
+                        height: 20px;
+                        border-radius: 20px;
+                        background-color: #007fff;
+                    }
+                }
+            }
+        }
+    }
+}
