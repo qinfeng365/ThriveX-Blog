@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "github-markdown-css"
 import "./index.scss";
-import ContentNav from "../ContentNav";
+import ContentNav from "./component/ContentNav";
 
 export default ({ data }: { data: string }) => {
     useEffect(() => {

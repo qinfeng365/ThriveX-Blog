@@ -31,7 +31,7 @@ export default async ({ params }: Props) => {
 
                         <Copyright />
                         <UpAndDown id={id} prev={{ id: 1, title: "大前端" }} next={{ id: 1, title: "大前端" }}/>
-                        <Comment></Comment>
+                        <Comment id={id}></Comment>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,75 @@
+@import "@/styles/var.scss";
+
+/* 添加平滑滚动效果 */
+html {
+    scroll-behavior: smooth;
+}
+
+:target::before {
+    content: "";
+    display: block;
+    height: 80px;
+    /* 调整这个高度来设置偏移量 */
+    margin-top: -80px;
+}
+
+.ContentNavComponent {
+    .navs {
+        color: #4d4d4d;
+        font-size: 13px;
+
+        .nav_item {
+            padding-left: 10px;
+            margin-bottom: 5px;
+            transition: all 0.7s;
+
+            &::before {
+                content: "";
+                left: -10px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 4px;
+                height: 15px;
+                border-radius: 20px;
+                background-color: #539dfd;
+                transition: all 0.7s;
+            }
+        }
+
+        .active {
+            color: #539dfd;
+            padding-left: 30px;
+            border-radius: 10px;
+            background-color: #f7faff;
+
+            &::before {
+                left: 15px;
+            }
+        }
+
+        .h2 {
+            padding-left: 25px;
+
+            &.active {
+                padding-left: 35px;
+
+                &::before {
+                    left: 20px;
+                }
+            }
+        }
+
+        .h3 {
+            padding-left: 45px;
+
+            &.active {
+                padding-left: 55px;
+
+                &::before {
+                    left: 40px;
+                }
+            }
+        }
+    }
+}

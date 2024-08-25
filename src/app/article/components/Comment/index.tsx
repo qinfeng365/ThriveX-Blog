@@ -1,11 +1,16 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-// import { addCommentDataAPI } from '@/api/Comment';
+import { useForm } from 'react-hook-form';
+import { Comment } from '@/types/app/comment'
+import { addCommentDataAPI } from '@/api/comment';
 import "./index.scss"
 
-const CommentForm = () => {
+interface Props {
+    id: number
+}
+
+const CommentForm = ({ id }: Props) => {
     const [isEmote, setIsEmote] = useState(false);
     const [placeholder, setPlaceholder] = useState("来发一针见血的评论吧~");
     const [cid, setCid] = useState(0);
@@ -17,14 +22,9 @@ const CommentForm = () => {
             name: "",
             email: "",
             url: "",
-            avatar: '',
-            rid: 0,
+            avatar: ''
         }
     });
-
-    useEffect(() => {
-        console.log(errors);
-    }, [errors])
 
     useEffect(() => {
         const info = JSON.parse(localStorage.getItem("data") || '{}');
@@ -39,9 +39,13 @@ const CommentForm = () => {
     //     setPlaceholder(`回复评论给：${data.name}`);
     // };
 
-    const onSubmit = async () => {
-        alert("🎉发布评论成功, 请等待审核!");
-        setPlaceholder("来发一针见血的评论吧~");
+    const onSubmit = async (data: Comment) => {
+        const { code, message } = await addCommentDataAPI(id, { ...data, createTime: Date.now() + "" })
+        console.log(code);
+        if (code !== 200) return alert("发布评论失败：" + message);
+
+        alert("🎉 发布评论成功, 请等待审核!");
+        // setPlaceholder("来发一针见血的评论吧~");
     };
 
     // const saveLocally = (formData) => {
