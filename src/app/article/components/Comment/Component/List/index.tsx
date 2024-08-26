@@ -4,6 +4,7 @@ import { Comment } from '@/types/app/comment'
 import Show from '@/components/Show';
 import dayjs from 'dayjs';
 import "./index.scss"
+import RandomAvatar from '@/components/RandomAvatar';
 
 interface Props {
     id: number,
@@ -50,7 +51,12 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                     {list?.map(one => (
                         <li className="item" key={one.id}>
                             <div className="comment_user_one">
-                                <img src={one.avatar} alt="" className="avatar" />
+                                {
+                                    one.avatar
+                                        ? <img src={one.avatar} alt="" className="avatar" />
+                                        : <RandomAvatar className="avatar" />
+                                }
+
                                 <div className="comment_user_one_info">
                                     {one.url ? (
                                         <a href={one.url} className="name active" target="_blank" rel="noopener noreferrer">
