@@ -4,10 +4,10 @@ import Request from '@/utils/request'
 
 // 获取分类列表
 export const getCateListAPI = async () => {
-    return await Request<Cate[]>("/cate/all")
+    return await Request<Cate[]>("GET", "/cate/all")
 }
 
 // 获取指定分类中的所有文章
 export const getCateArticleListAPI = async (id: number) => {
-    return await Request<Paginate<Article[]>>(`/article/cate/${id}`)
+    return await Request<Paginate<Article[]>>("GET", `/article/cate/${id}`)
 }

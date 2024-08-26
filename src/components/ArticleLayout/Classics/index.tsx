@@ -68,14 +68,7 @@ const Classics = ({ data }: ClassicsProps) => {
                     </div>
                 ))}
 
-                <Show is={!data.total} children={<Empty info="暂无文章" />}></Show>
-
-                {/* {data.total >= 5 && (
-                <Pagination
-                    paginate={paginate}
-                    onChange={(newPaginate) => setPaginate(newPaginate)}
-                />
-            )} */}
+                <Show is={!data?.total} children={<Empty info="暂无文章" />}></Show>
             </div>
         </div>
     );

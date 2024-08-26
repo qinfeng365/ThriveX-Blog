@@ -2,29 +2,27 @@
 
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Comment } from '@/types/app/comment'
 import { addCommentDataAPI } from '@/api/comment';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss"
 
 interface Props {
     id: number
 }
 
-const CommentForm = ({ id }: Props) => {
-    const [isEmote, setIsEmote] = useState(false);
-    const [placeholder, setPlaceholder] = useState("来发一针见血的评论吧~");
-    const [cid, setCid] = useState(0);
-    const [isPublish, setIsPublish] = useState(false);
+interface CommentForm {
+    content: string,
+    name: string,
+    email: string,
+    url: string,
+    avatar: string
+}
 
-    const { register, control, formState: { errors }, handleSubmit, reset, setValue } = useForm({
-        defaultValues: {
-            content: "",
-            name: "",
-            email: "",
-            url: "",
-            avatar: ''
-        }
-    });
+const CommentForm = ({ id }: Props) => {
+    const [placeholder, setPlaceholder] = useState("来发一针见血的评论吧~");
+
+    const { register, control, formState: { errors }, handleSubmit, reset, setValue } = useForm<CommentForm>({});
 
     useEffect(() => {
         const info = JSON.parse(localStorage.getItem("data") || '{}');
@@ -39,12 +37,11 @@ const CommentForm = ({ id }: Props) => {
     //     setPlaceholder(`回复评论给：${data.name}`);
     // };
 
-    const onSubmit = async (data: Comment) => {
-        const { code, message } = await addCommentDataAPI(id, { ...data, createTime: Date.now() + "" })
-        console.log(code);
+    const onSubmit = async (data: CommentForm) => {
+        const { code, message } = await addCommentDataAPI(id, { ...data, createTime: Date.now().toString() })
         if (code !== 200) return alert("发布评论失败：" + message);
 
-        alert("🎉 发布评论成功, 请等待审核!");
+        toast("🎉 发布评论成功, 请等待审核!")
         // setPlaceholder("来发一针见血的评论吧~");
     };
 
@@ -89,6 +86,8 @@ const CommentForm = ({ id }: Props) => {
 
                 {/* <List isPublish={isPublish} reply={reply} /> */}
             </div>
+
+            <ToastContainer />
         </div>
     );
 };

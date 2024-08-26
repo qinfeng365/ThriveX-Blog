@@ -16,7 +16,7 @@ import { getUserDataAPI } from '@/api/user';
 
 const Author = async () => {
     const { data } = await getUserDataAPI()
-    const { data: { social } } = await Request<Web>("/project/web")
+    const { data: { social } } = await Request<Web>("GET", "/project/web")
     const socialList = JSON.parse(social)
 
     // 图标列表
