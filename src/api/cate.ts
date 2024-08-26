@@ -9,5 +9,5 @@ export const getCateListAPI = async () => {
 
 // 获取指定分类中的所有文章
 export const getCateArticleListAPI = async (id: number) => {
-    return await Request<Article[]>(`/article/cate/${id}`)
+    return await Request<Paginate<Article[]>>(`/article/cate/${id}`)
 }

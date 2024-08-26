@@ -13,10 +13,6 @@ export default async ({ params, searchParams }: Props) => {
   const name = searchParams.name;
 
   const { data } = await getCateArticleListAPI(id)
-  const result = {
-    total: 999,
-    result: data
-  }
 
   return (
     <>
@@ -27,12 +23,12 @@ export default async ({ params, searchParams }: Props) => {
 
           {/* 分类信息 */}
           <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 w-[80%] text-center text-white text-[30px] custom_text_shadow">
-            <span>{name} ~ 共计{data.length}篇文章</span>
+            <span>{name} ~ 共计{data?.result?.length}篇文章</span>
           </div>
         </Swiper>
 
         <div className="w-6/12 mx-auto">
-          <Classics data={result} />
+          <Classics data={data} />
         </div>
       </div>
     </>
