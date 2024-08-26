@@ -8,5 +8,6 @@ export default async <T>(method: string, api: string, data?: any) => {
         },
         [method === "POST" ? "body" : ""]: data ? JSON.stringify(data) : JSON.stringify({})
     })
+    
     return res.json() as Promise<Response<T>>;
 }

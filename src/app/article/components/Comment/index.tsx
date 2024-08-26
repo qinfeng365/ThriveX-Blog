@@ -6,6 +6,7 @@ import { addCommentDataAPI } from '@/api/comment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss"
+import List from './Component/List';
 
 interface Props {
     id: number
@@ -42,7 +43,10 @@ const CommentForm = ({ id }: Props) => {
         if (code !== 200) return alert("发布评论失败：" + message);
 
         toast("🎉 发布评论成功, 请等待审核!")
-        // setPlaceholder("来发一针见血的评论吧~");
+
+        // 发布成功后初始化表单
+        reset({ content: "", name: "", email: "", url: "", avatar: "" })
+        setPlaceholder("来发一针见血的评论吧~");
     };
 
     // const saveLocally = (formData) => {
@@ -84,7 +88,7 @@ const CommentForm = ({ id }: Props) => {
                     <button className="w-full h-10 !mt-4 text-white rounded-md bg-primary text-center" onClick={handleSubmit(onSubmit)}>发表评论</button>
                 </form>
 
-                {/* <List isPublish={isPublish} reply={reply} /> */}
+                <List id={id}/>
             </div>
 
             <ToastContainer />

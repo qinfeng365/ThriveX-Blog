@@ -1,5 +1,3 @@
-"use client"
-
 import Classics from "./Classics"
 import { getArticleListAPI } from '@/api/article'
 

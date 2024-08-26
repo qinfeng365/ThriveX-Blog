@@ -1,0 +1,183 @@
+@import "@/styles/var.scss";
+
+.CommentComponent {
+    /* 评论内容 */
+    .list {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        .item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 105px;
+            padding: 10px;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s;
+
+            &:hover {
+                border-radius: $round;
+                background-color: #f3f8fe;
+            }
+
+            // 回复按钮布局
+            .reply {
+                position: absolute;
+                right: 70px;
+                padding: 10px 20px;
+                margin-left: 5px;
+                color: #666;
+                cursor: pointer;
+                transition: all $move;
+
+                &:hover {
+                    color: $color;
+                }
+            }
+
+            // 评论者头像
+            .avatar {
+                width: 35px;
+                height: 35px;
+                margin-right: 15px;
+                border-radius: 50%;
+            }
+
+            /* 评论者信息 */
+            .comment_user_one {
+                display: flex;
+                align-items: center;
+
+                /* 评论者信息 */
+                .comment_user_one_info {
+                    display: flex;
+                    flex-direction: column;
+
+                    /* 评论者昵称 */
+                    .name {
+                        color: #333;
+                        font-size: 16px;
+                        transition: color $move;
+                    }
+
+                    .active {
+                        color: $color;
+                    }
+
+                    /* 评论时间 */
+                    .time {
+                        color: #8599ab;
+                        margin-top: -7px;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            /* 评论的内容 */
+            .comment_main {
+                color: #666;
+                margin: 5px 0px 5px 50px;
+                font-size: 15px;
+                transition: all $move;
+                word-break: break-word;
+            }
+
+            /* 二级评论 */
+            .comment_user_two {
+                margin: 10px 0 0 50px;
+
+                .comment_user_two_info {
+                    display: flex;
+                    align-items: center;
+
+                    .avatar_two {
+                        width: 25px;
+                        height: 25px;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                    }
+
+                    .name {
+                        margin-right: 15px;
+                        font-size: 15px;
+                        color: #444;
+                        transition: color $move;
+                    }
+
+                    .time {
+                        color: #8599ab;
+                        font-size: 12px;
+                    }
+                }
+
+                .comment_main {
+                    margin: 5px 0px 5px 40px;
+
+                    a {
+                        color: #007bff;
+                    }
+                }
+            }
+
+            /* 三级评论 */
+            .comment_user_three {
+                margin: 10px 0 0 50px;
+
+                .comment_user_three_info {
+                    display: flex;
+                    align-items: center;
+
+                    .avatar_three {
+                        width: 25px;
+                        height: 25px;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                    }
+
+                    .name {
+                        margin-right: 15px;
+                        font-size: 15px;
+                        color: #444;
+                        transition: color $move;
+                    }
+
+                    .time {
+                        color: #8599ab;
+                        font-size: 12px;
+                    }
+                }
+
+                .comment_main {
+                    margin: 5px 0px 5px 40px;
+
+                    a {
+                        color: #007bff;
+                    }
+                }
+            }
+
+            /* 最后一个取消下边框 */
+            &:last-of-type {
+                border: none;
+            }
+        }
+    }
+
+    // 空状态
+    .void {
+        text-align: center;
+        margin: 50px 0 10px;
+
+        img {
+            width: 200px;
+            height: 150px;
+        }
+
+        p {
+            margin-top: 10px;
+            color: #333;
+        }
+    }
+}
