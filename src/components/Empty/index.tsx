@@ -1,7 +1,7 @@
 import empty from '@/assets/svg/other/empty.svg'
 import './index.scss';
 
-const EmptyState = ({ info }: { info: string }) => {
+const Empty = ({ info }: { info: string }) => {
     return (
         <div className='EmptyComponent'>
             <div className="empty">
@@ -12,4 +12,4 @@ const EmptyState = ({ info }: { info: string }) => {
     );
 };
 
-export default EmptyState;
+export default Empty;

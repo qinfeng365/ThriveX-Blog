@@ -1,8 +1,10 @@
 @import "@/styles/var.scss";
 
 .CommentComponent {
+
     /* 评论内容 */
     .list {
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         margin-top: 20px;
@@ -13,22 +15,26 @@
             flex-direction: column;
             justify-content: center;
             min-height: 105px;
-            padding: 10px;
+            padding: 20px 10px;
             border-bottom: 1px dashed #eee;
             transition: all 0.3s;
 
             &:hover {
                 border-radius: $round;
                 background-color: #f3f8fe;
+
+                .reply {
+                    right: 1%;
+                }
             }
 
             // 回复按钮布局
             .reply {
                 position: absolute;
-                right: 70px;
+                right: -10%;
                 padding: 10px 20px;
-                margin-left: 5px;
-                color: #666;
+                color: #999;
+                font-size: 25px;
                 cursor: pointer;
                 transition: all $move;
 
@@ -85,7 +91,7 @@
 
             /* 二级评论 */
             .comment_user_two {
-                margin: 10px 0 0 50px;
+                margin: 20px 0 0 50px;
 
                 .comment_user_two_info {
                     display: flex;
@@ -122,7 +128,7 @@
 
             /* 三级评论 */
             .comment_user_three {
-                margin: 10px 0 0 50px;
+                margin: 20px 0 0 50px;
 
                 .comment_user_three_info {
                     display: flex;

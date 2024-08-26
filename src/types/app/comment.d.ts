@@ -8,7 +8,8 @@ export interface Comment {
     articleId?: number,
     articleTitle?: number,
     commentId?: number,
-    auditStatus?: number
+    auditStatus?: number,
+    children: Comment[],
     createTime: string,
 }
 

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { getCommentListAPI } from '@/api/comment';
-import { Comment } from '@/types/app/comment'
+import { getArticleCommentListAPI } from '@/api/comment';
 import Show from '@/components/Show';
+import Empty from '@/components/Empty';
+import RandomAvatar from '@/components/RandomAvatar';
+import { Comment } from '@/types/app/comment'
+import { RiMessage3Line } from "react-icons/ri";
 import dayjs from 'dayjs';
 import "./index.scss"
-import RandomAvatar from '@/components/RandomAvatar';
 
 interface Props {
     id: number,
@@ -16,7 +18,7 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
     const [list, setList] = useState<Comment[]>([])
 
     const getCommentList = async () => {
-        const { data } = await getCommentListAPI(+id!);
+        const { data } = await getArticleCommentListAPI(+id!);
         setList(data.result)
     }
 
@@ -58,27 +60,28 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                                 }
 
                                 <div className="comment_user_one_info">
-                                    {one.url ? (
-                                        <a href={one.url} className="name active" target="_blank" rel="noopener noreferrer">
-                                            {one.name}
-                                        </a>
-                                    ) : (
-                                        <span className="name">{one.name}</span>
-                                    )}
+                                    {
+                                        one.url
+                                            ? <a href={one.url} className="name active" target="_blank" rel="noopener noreferrer">{one.name}</a>
+                                            : <span className="name">{one.name}</span>
+                                    }
                                     <span className="time">{dayjs(+one.createTime).format('YYYY-MM-DD HH:mm')}</span>
                                 </div>
 
                                 {/* <div className="reply" onClick={() => reply(one.id, one.name)}>回复</div> */}
-                                <div className="reply">回复</div>
+                                <div className="reply">
+                                    <RiMessage3Line />
+                                </div>
                             </div>
 
                             <div className="comment_main">{one.content}</div>
 
-                            {/* {one?.children?.length ? (
+                            {one?.children?.length ? (
                                 one.children.map(two => (
                                     <div className="comment_user_two" key={two.id}>
                                         <div className="comment_user_two_info">
                                             <img src={two.avatar} className="avatar_two" alt="" />
+
                                             {two.url ? (
                                                 <a href={two.url} className="name active" target="_blank" rel="noopener noreferrer">
                                                     {two.name}
@@ -86,8 +89,12 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                                             ) : (
                                                 <span className="name">{two.name}</span>
                                             )}
-                                            <span className="time">{moment(two.createtime).format('YYYY-MM-DD HH:mm')}</span>
-                                            <div className="reply" onClick={() => reply(two.id, two.name)}>回复</div>
+
+                                            <span className="time">{dayjs(+two.createTime).format('YYYY-MM-DD HH:mm')}</span>
+                                            {/* <div className="reply" onClick={() => reply(two.id, two.name)}>回复</div> */}
+                                            <div className="reply">
+                                                <RiMessage3Line />
+                                            </div>
                                         </div>
 
                                         <div className="comment_main">
@@ -99,6 +106,7 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                                             <div className="comment_user_three" key={three.id}>
                                                 <div className="comment_user_three_info">
                                                     <img src={three.avatar} className="avatar_three" alt="" />
+
                                                     {three.url ? (
                                                         <a href={three.url} className="name active" target="_blank" rel="noopener noreferrer">
                                                             {three.name}
@@ -106,9 +114,14 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                                                     ) : (
                                                         <span className="name">{three.name}</span>
                                                     )}
-                                                    <span className="time">{moment(three.createtime).format('YYYY-MM-DD HH:mm')}</span>
-                                                    <div className="reply" onClick={() => reply(two.id, three.name)}>回复</div>
+
+                                                    <span className="time">{dayjs(+three.createTime).format('YYYY-MM-DD HH:mm')}</span>
+                                                    {/* <div className="reply" onClick={() => reply(two.id, three.name)}>回复</div> */}
+                                                    <div className="reply">
+                                                        <RiMessage3Line />
+                                                    </div>
                                                 </div>
+
                                                 <div className="comment_main">
                                                     <a href="javascript:;">@{two.name}：</a>
                                                     <span>{three.content}</span>
@@ -117,16 +130,13 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                                         ))}
                                     </div>
                                 ))
-                            ) : null} */}
+                            ) : null}
                         </li>
                     ))}
                 </ul>
-            }></Show>
+            } />
 
-            {/* <div className="void">
-                <img src={require('@/assets/svg/other/empty.svg').default} alt="" />
-                <p>空空如也~</p>
-            </div> */}
+            <Show is={!list?.length} children={<Empty info='评论列表为空~'></Empty>} />
         </div >
     );
 };
