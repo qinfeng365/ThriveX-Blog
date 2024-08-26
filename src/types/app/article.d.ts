@@ -13,5 +13,7 @@ export interface Article {
     tagList: Tag[]
     view?: number
     count?: number,
+    prev: { id: number, title: string },
+    next: { id: number, title: string },
     createTime?: string,
 }

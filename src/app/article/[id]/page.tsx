@@ -30,7 +30,7 @@ export default async ({ params }: Props) => {
                         <Tag data={data.tagList} />
 
                         <Copyright />
-                        <UpAndDown id={id} prev={{ id: 1, title: "大前端" }} next={{ id: 1, title: "大前端" }}/>
+                        <UpAndDown id={id} prev={data.prev} next={data.next}/>
                         <Comment id={id}></Comment>
                     </div>
                 </div>
