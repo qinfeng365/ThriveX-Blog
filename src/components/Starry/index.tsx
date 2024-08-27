@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import './index.scss';
 
-const StarrySky: React.FC = () => {
+const StarrySky = () => {
     useEffect(() => {
         /*星星的密集程度，数字越大越多*/
         const stars = 800;
