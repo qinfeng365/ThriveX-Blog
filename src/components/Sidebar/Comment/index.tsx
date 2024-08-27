@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link';
 import { getCommentListAPI } from '@/api/comment';
+import Comment from '@/assets/svg/other/comments.svg'
+import RandomAvatar from '@/components/RandomAvatar';
 import dayjs from 'dayjs';
 import './index.scss';
-import Comment from '@/assets/svg/other/comments.svg'
-import Link from 'next/link';
 
 const NewComments = async () => {
     const { data: { result } } = await getCommentListAPI()
@@ -18,7 +19,12 @@ const NewComments = async () => {
                 <div className="list">
                     {result.map((item) => (
                         <Link href="/" className="item" key={item.id}>
-                            <img src={item.avatar} className="avatar" alt="avatar" />
+                            {
+                                item.avatar
+                                    ? <img src={item.avatar} className="avatar" alt="avatar" />
+                                    : <RandomAvatar className='avatar' />
+                            }
+                            
                             <div className="content">
                                 <div className="info">{item.content}</div>
                                 <div className="time">{dayjs(+item.createTime!).format('YYYY-MM-DD HH:mm')}</div>

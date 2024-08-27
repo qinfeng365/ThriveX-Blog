@@ -5,7 +5,9 @@ import Container from "@/components/Container";
 import ArticleLayout from "@/components/ArticleLayout";
 import Sidebar from "@/components/Sidebar";
 
-export default function Home() {
+export default async () => {
+  // await new Promise(resolve => setTimeout(resolve, 100000))
+
   return (
     <>
       <Swiper>

@@ -8,7 +8,7 @@
         height: 60px;
         backdrop-filter: blur(5px);
         transition: background-color $move;
-        z-index: 999;
+        z-index: 3;
 
         &::after {
             content: "";
