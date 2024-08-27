@@ -1,3 +1,5 @@
+import { NextUIProvider } from '@nextui-org/react';
+
 import Header from '@/components/Header'
 
 // 加载样式文件
@@ -22,7 +24,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={LXGWWenKai.className}>
         <Header />
-        {children}
+        
+        <NextUIProvider>
+          {children}
+        </NextUIProvider>
       </body>
     </html>
   );
