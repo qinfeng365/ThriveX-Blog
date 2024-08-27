@@ -40,10 +40,6 @@
                 border-radius: 30px;
                 background-color: $color;
                 transition: all $move;
-
-                &:hover {
-                    color: $color;
-                }
             }
 
             // 评论者头像

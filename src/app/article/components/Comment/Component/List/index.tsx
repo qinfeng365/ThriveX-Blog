@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { getArticleCommentListAPI } from '@/api/comment';
 import Show from '@/components/Show';
 import Empty from '@/components/Empty';
 import RandomAvatar from '@/components/RandomAvatar';
@@ -10,41 +8,16 @@ import "./index.scss"
 
 interface Props {
     id: number,
-    addCommit?: boolean;
-    replyCommit?: (data: { id: number; name: string }) => void;
+    list: Comment[],
+    reply: (id: number, name: string) => void
 }
 
-const CommentList = ({ id, addCommit, replyCommit }: Props) => {
-    const [list, setList] = useState<Comment[]>([])
-
-    const getCommentList = async () => {
-        const { data } = await getArticleCommentListAPI(+id!);
-        setList(data.result)
+const CommentList = ({ list, reply }: Props) => {
+    // 获取评论
+    const replyComment = (id: number, name: string) => {
+        console.log(id, name);
+        reply(id, name)
     }
-
-    useEffect(() => {
-        getCommentList()
-    }, [])
-
-    // useEffect(() => {
-    //     if (isPublish) {
-    //         getCommentData();
-    //     }
-    // }, [isPublish, getCommentData]);
-
-    // useEffect(() => {
-    //     setLoading(true);
-    //     // Simulate fetching data based on paging
-    //     setLoading(false);
-    // }, [paging]);
-
-    // const reply = (id: number, name: string) => {
-    //     const content = document.querySelector(".frame .ipt") as HTMLDivElement;
-    //     if (content) {
-    //         content.focus();
-    //     }
-    //     onReply({ id, name });
-    // };
 
     return (
         <div className='CommentComponent'>
@@ -69,7 +42,7 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                                 </div>
 
                                 {/* <div className="reply" onClick={() => reply(one.id, one.name)}>回复</div> */}
-                                <div className="reply">
+                                <div className="reply" onClick={() => replyComment(one.id!, one.name)}>
                                     <RiMessage3Line />
                                 </div>
                             </div>
@@ -91,8 +64,7 @@ const CommentList = ({ id, addCommit, replyCommit }: Props) => {
                                             )}
 
                                             <span className="time">{dayjs(+two.createTime).format('YYYY-MM-DD HH:mm')}</span>
-                                            {/* <div className="reply" onClick={() => reply(two.id, two.name)}>回复</div> */}
-                                            <div className="reply">
+                                            <div className="reply" onClick={() => replyComment(two.id!, two.name)}>
                                                 <RiMessage3Line />
                                             </div>
                                         </div>

@@ -9,7 +9,7 @@ export interface Comment {
     articleTitle?: number,
     commentId?: number,
     auditStatus?: number,
-    children: Comment[],
+    children?: Comment[],
     createTime: string,
 }
 

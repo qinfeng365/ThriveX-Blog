@@ -1,12 +1,13 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { addCommentDataAPI } from '@/api/comment';
+import { useState, useEffect, useRef } from 'react';
+import { set, useForm } from 'react-hook-form';
+import { addCommentDataAPI, getArticleCommentListAPI } from '@/api/comment';
+import { Comment } from '@/types/app/comment';
 import { ToastContainer, toast } from 'react-toastify';
+import List from './Component/List';
 import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss"
-import List from './Component/List';
 
 interface Props {
     id: number
@@ -21,7 +22,19 @@ interface CommentForm {
 }
 
 const CommentForm = ({ id }: Props) => {
+    const contentRef = useRef<HTMLTextAreaElement>(null);
+    const [commentId, setCommentId] = useState(id);
     const [placeholder, setPlaceholder] = useState("来发一针见血的评论吧~");
+
+    const [list, setList] = useState<Comment[]>([])
+    const getCommentList = async () => {
+        const { data } = await getArticleCommentListAPI(+id!);
+        setList(data.result)
+    }
+
+    useEffect(() => {
+        getCommentList()
+    }, [])
 
     const { register, control, formState: { errors }, handleSubmit, reset, setValue } = useForm<CommentForm>({});
 
@@ -39,15 +52,25 @@ const CommentForm = ({ id }: Props) => {
     // };
 
     const onSubmit = async (data: CommentForm) => {
-        const { code, message } = await addCommentDataAPI(id, { ...data, createTime: Date.now().toString() })
+        const { code, message } = await addCommentDataAPI(commentId, { ...data, createTime: Date.now().toString() })
         if (code !== 200) return alert("发布评论失败：" + message);
 
         toast("🎉 发布评论成功, 请等待审核!")
 
         // 发布成功后初始化表单
+        setCommentId(id)
         reset({ content: "", name: "", email: "", url: "", avatar: "" })
         setPlaceholder("来发一针见血的评论吧~");
+        getCommentList()
     };
+
+    // 回复评论
+    const replyComment = (id: number, name: string) => {
+        contentRef.current?.focus();
+        setCommentId(id);
+        setPlaceholder(`回复评论给：${name}`);
+        handleSubmit(onSubmit)
+    }
 
     // const saveLocally = (formData) => {
     //     const info = { name: formData.name, email: formData.email, avatar: formData.avatar, url: formData.url };
@@ -56,12 +79,13 @@ const CommentForm = ({ id }: Props) => {
 
     return (
         <div className='CommentComponent'>
+            <h1>{id} {commentId}</h1>
             <div className="comment mt-[70px]">
                 <div className="title relative top-0 left-0 w-full h-[1px] mb-10 bg-[#f7f7f7] transition-colors"></div>
 
                 <form className="form space-y-2">
                     <div className='w-full'>
-                        <textarea placeholder={placeholder} className="ipt w-full p-4 min-h-36" {...register("content", { required: "请输入内容" })} />
+                        <textarea placeholder={placeholder} className="ipt w-full p-4 min-h-36" ref={contentRef} {...register("content", { required: "请输入内容" })} />
                         <span className='text-red-400 text-sm pl-3'>{errors?.content?.message}</span>
                     </div>
 
@@ -88,7 +112,7 @@ const CommentForm = ({ id }: Props) => {
                     <button className="w-full h-10 !mt-4 text-white rounded-md bg-primary text-center" onClick={handleSubmit(onSubmit)}>发表评论</button>
                 </form>
 
-                <List id={id}/>
+                <List id={id} list={list} reply={replyComment} />
             </div>
 
             <ToastContainer />
