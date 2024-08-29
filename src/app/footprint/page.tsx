@@ -83,12 +83,10 @@ export default function MapContainer() {
                 size="4xl"
                 backdrop="opaque"
                 isDismissable={isDismissable}
-                onOpenChange={(open) => {
-                    if (isDismissable || !open) {
-                        onOpenChange();
-                    }
-                }}
                 isOpen={isOpen}
+                onOpenChange={(open) => {
+                    if (isDismissable || !open) onOpenChange();
+                }}
                 classNames={{
                     backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20"
                 }}
@@ -99,25 +97,8 @@ export default function MapContainer() {
                             <ModalHeader className="flex flex-col gap-1 text-center pb-2 text-white">{data?.title}</ModalHeader>
 
                             <ModalBody>
-                                <div className="flex">
-                                    <div className="w-6/12 mb-5 flex flex-col">
-                                        <PhotoProvider
-                                            onVisibleChange={(visible) => {
-                                                // 当图片预览模式打开时，不允许关闭 Modal
-                                                setIsDismissable(!visible);
-                                            }}
-                                        >
-                                            {
-                                                data?.images?.map((item, index) => (
-                                                    <PhotoView src={item} key={index}>
-                                                        <img src={item} alt="" className={`rounded-2xl object-fill ${index != 0 ? 'hidden' : ''}`} />
-                                                    </PhotoView>
-                                                ))
-                                            }
-                                        </PhotoProvider>
-                                    </div>
-
-                                    <div className="flex flex-col justify-between w-full ml-8 mb-8">
+                                <div className="flex flex-col">
+                                    <div className="flex flex-col justify-between w-full mb-8">
                                         <p className="overflow-scroll max-h-[210px] text-[#d6d6d6] px-[5px]">{data?.content}</p>
 
                                         <div className="text-sm text-end text-[#a5a5a5] pt-2">
@@ -125,8 +106,28 @@ export default function MapContainer() {
                                             <p>地址：{data?.address}</p>
                                         </div>
                                     </div>
-                                </div>
 
+                                    <div className={`overflow-scroll flex justify-center w-full ${data?.images?.length !== 1 ? 'max-h-96' : ''} mb-5`}>
+                                        <PhotoProvider
+                                            speed={() => 800}
+                                            easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
+                                            onVisibleChange={(visible) => {
+                                                // 当图片预览模式打开时，不允许关闭 Modal
+                                                setIsDismissable(!visible);
+                                            }}
+                                        >
+                                            <div className={`grid gap-4 ${data?.images?.length === 1 ? 'grid-cols-1' : ''} ${data?.images?.length === 2 ? 'grid-cols-2' : ''} ${data?.images?.length === 3 ? 'grid-cols-3' : ''} ${data?.images?.length! >= 4 ? 'grid-cols-4' : ''}`}>
+                                                {
+                                                    data?.images?.map((item, index) => (
+                                                        <PhotoView src={item} key={index}>
+                                                            <img src={item} alt="" className="rounded-2xl w-full" />
+                                                        </PhotoView>
+                                                    ))
+                                                }
+                                            </div>
+                                        </PhotoProvider>
+                                    </div>
+                                </div>
                             </ModalBody>
                         </>
                     )}
