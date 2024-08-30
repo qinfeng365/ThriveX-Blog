@@ -5,7 +5,7 @@ import AMapLoader from "@amap/amap-jsapi-loader";
 import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure } from "@nextui-org/react";
 import { getFootprintListAPI } from "@/api/footprint";
 import { Footprint } from "@/types/app/footprint";
-import { PhotoProvider, PhotoSlider, PhotoView } from 'react-photo-view';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import dayjs from 'dayjs'
 import "./page.scss";

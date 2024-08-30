@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { addCommentDataAPI, getArticleCommentListAPI } from '@/api/comment';
 import { Comment } from '@/types/app/comment';
 import { ToastContainer, toast } from 'react-toastify';
@@ -46,13 +46,8 @@ const CommentForm = ({ id }: Props) => {
         setValue('url', info.url || '');
     }, [setValue]);
 
-    // const reply = (data) => {
-    //     setCid(data.id);
-    //     setPlaceholder(`回复评论给：${data.name}`);
-    // };
-
     const onSubmit = async (data: CommentForm) => {
-        const { code, message } = await addCommentDataAPI(commentId, { ...data, createTime: Date.now().toString() })
+        const { code, message } = await addCommentDataAPI(id, { ...data, commentId: commentId === id ? 0 : commentId, createTime: Date.now().toString() })
         if (code !== 200) return alert("发布评论失败：" + message);
 
         toast("🎉 发布评论成功, 请等待审核!")
@@ -72,20 +67,23 @@ const CommentForm = ({ id }: Props) => {
         handleSubmit(onSubmit)
     }
 
-    // const saveLocally = (formData) => {
-    //     const info = { name: formData.name, email: formData.email, avatar: formData.avatar, url: formData.url };
-    //     localStorage.setItem("data", JSON.stringify(info));
-    // };
-
     return (
         <div className='CommentComponent'>
             <h1>{id} {commentId}</h1>
             <div className="comment mt-[70px]">
                 <div className="title relative top-0 left-0 w-full h-[1px] mb-10 bg-[#f7f7f7] transition-colors"></div>
 
-                <form className="form space-y-2">
+                <form className="form space-y-2" onSubmit={handleSubmit(onSubmit)}>
                     <div className='w-full'>
-                        <textarea placeholder={placeholder} className="ipt w-full p-4 min-h-36" ref={contentRef} {...register("content", { required: "请输入内容" })} />
+                        <textarea 
+                            placeholder={placeholder} 
+                            className="ipt w-full p-4 min-h-36" 
+                            {...register("content", { required: "请输入内容" })} 
+                            ref={(e) => {
+                                register("content").ref(e);
+                                (contentRef as any).current = e;
+                            }}
+                        />
                         <span className='text-red-400 text-sm pl-3'>{errors?.content?.message}</span>
                     </div>
 
@@ -109,7 +107,7 @@ const CommentForm = ({ id }: Props) => {
                         <span className='text-red-400 text-sm pl-3 mt-1'>{errors?.url?.message}</span>
                     </div>
 
-                    <button className="w-full h-10 !mt-4 text-white rounded-md bg-primary text-center" onClick={handleSubmit(onSubmit)}>发表评论</button>
+                    <button className="w-full h-10 !mt-4 text-white rounded-md bg-primary text-center" type="submit">发表评论</button>
                 </form>
 
                 <List id={id} list={list} reply={replyComment} />

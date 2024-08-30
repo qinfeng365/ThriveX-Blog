@@ -5,6 +5,7 @@ import { Comment } from '@/types/app/comment'
 import { RiMessage3Line } from "react-icons/ri";
 import dayjs from 'dayjs';
 import "./index.scss"
+import Link from 'next/link';
 
 interface Props {
     id: number,
@@ -41,7 +42,6 @@ const CommentList = ({ list, reply }: Props) => {
                                     <span className="time">{dayjs(+one.createTime).format('YYYY-MM-DD HH:mm')}</span>
                                 </div>
 
-                                {/* <div className="reply" onClick={() => reply(one.id, one.name)}>回复</div> */}
                                 <div className="reply" onClick={() => replyComment(one.id!, one.name)}>
                                     <RiMessage3Line />
                                 </div>
@@ -53,7 +53,11 @@ const CommentList = ({ list, reply }: Props) => {
                                 one.children.map(two => (
                                     <div className="comment_user_two" key={two.id}>
                                         <div className="comment_user_two_info">
-                                            <img src={two.avatar} className="avatar_two" alt="" />
+                                            {
+                                                two.avatar
+                                                    ? <img src={two.avatar} alt="" className="avatar" />
+                                                    : <RandomAvatar className="avatar" />
+                                            }
 
                                             {two.url ? (
                                                 <a href={two.url} className="name active" target="_blank" rel="noopener noreferrer">
@@ -70,14 +74,18 @@ const CommentList = ({ list, reply }: Props) => {
                                         </div>
 
                                         <div className="comment_main">
-                                            <a href="javascript:;">@{one.name}：</a>
+                                            <Link href="#">@{one.name}：</Link>
                                             <span>{two.content}</span>
                                         </div>
 
                                         {two.children?.map(three => (
                                             <div className="comment_user_three" key={three.id}>
                                                 <div className="comment_user_three_info">
-                                                    <img src={three.avatar} className="avatar_three" alt="" />
+                                                    {
+                                                        three.avatar
+                                                            ? <img src={three.avatar} alt="" className="avatar" />
+                                                            : <RandomAvatar className="avatar" />
+                                                    }
 
                                                     {three.url ? (
                                                         <a href={three.url} className="name active" target="_blank" rel="noopener noreferrer">
@@ -88,14 +96,14 @@ const CommentList = ({ list, reply }: Props) => {
                                                     )}
 
                                                     <span className="time">{dayjs(+three.createTime).format('YYYY-MM-DD HH:mm')}</span>
-                                                    {/* <div className="reply" onClick={() => reply(two.id, three.name)}>回复</div> */}
-                                                    <div className="reply">
+
+                                                    <div className="reply" onClick={() => replyComment(three.id!, three.name)}>
                                                         <RiMessage3Line />
                                                     </div>
                                                 </div>
 
                                                 <div className="comment_main">
-                                                    <a href="javascript:;">@{two.name}：</a>
+                                                    <Link href="#">@{two.name}：</Link>
                                                     <span>{three.content}</span>
                                                 </div>
                                             </div>
