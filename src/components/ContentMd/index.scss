@@ -4,18 +4,4 @@
     display: flex;
     justify-content: space-between;
     padding-top: 50px;
-
-    .content{
-        width: 75%;
-    }
-
-    .nav {
-        overflow: scroll;
-        width: 20%;
-        max-height: 500px;
-        padding-left: 10px;
-        border-left: 1px solid #eee;
-        position: sticky;
-        top: 90px;
-    }
 }

@@ -6,6 +6,7 @@ import Tag from "../components/Tag";
 import Copyright from "../components/Copyright";
 import UpAndDown from "../components/UpAndDown";
 import Comment from "../components/Comment";
+import ContentNav from "@/components/ContentMd/component/ContentNav";
 
 interface Props {
     params: { id: number };
@@ -23,10 +24,11 @@ export default async ({ params }: Props) => {
                     <Starry />
                 </Swiper>
 
-                <div className="w-[1200px] mx-auto relative -right-[6%]">
+                <div className="w-6/12 mx-auto relative">
                     <ContentMd data={data?.content}></ContentMd>
 
-                    <div className="w-[70%]">
+                    {/* <div className="w-[70%]"> */}
+                    <div className="w-full">
                         <Tag data={data?.tagList} />
 
                         <Copyright />
@@ -34,6 +36,8 @@ export default async ({ params }: Props) => {
                         <Comment id={id}></Comment>
                     </div>
                 </div>
+
+                <ContentNav />
             </div>
         </>
     )

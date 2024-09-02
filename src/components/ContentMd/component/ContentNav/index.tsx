@@ -1,5 +1,9 @@
+"use client"
+
 import { useEffect, useState } from "react";
 import directory from '@/assets/svg/other/directory.svg'
+import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
+
 import "./index.scss";
 
 interface NavItem {
@@ -11,7 +15,8 @@ interface NavItem {
 
 const OFFSET = 200; // 定义距离视口顶部多少像素时高亮导航项
 
-const App: React.FC = () => {
+const ContentNav = () => {
+    const [open, setOpen] = useState(false);
     const [navs, setNavs] = useState<NavItem[]>([]);
     const [active, setActive] = useState(0);
 
@@ -65,25 +70,39 @@ const App: React.FC = () => {
     }, []);
 
     return (
-        <div className="ContentNavComponent">
-            <div className="flex justify-center items-center">
-                <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
-            </div>
+        <>
+            {open
+                ? (
+                    <div className="fixed top-[60%] left-[15%] z-50 w-8 cursor-pointer" onClick={() => setOpen(false)}>
+                        <MdOutlineKeyboardDoubleArrowLeft className="w-full text-5xl text-primary" />
+                    </div>
+                )
+                : (
+                    <div className="fixed top-[60%] left-[2%] z-50 w-8 cursor-pointer" onClick={() => setOpen(true)}>
+                        <img src={directory.src} alt="" className="w-full text-5xl text-primary" />
+                    </div>
+                )
+            }
 
-            <div className="navs w-full mt-4">
-                {navs.map((item, index) => (
-                    <a
-                        key={index}
-                        href={`#${item.href}`}
-                        className={`nav_item overflow-hidden relative block p-1 hover:text-primary transition duration-700 ${active >= item.start && active < item.end! ? 'active' : ''} ${item.className}`}
-                    >
-                        {item.href}
-                    </a>
-                ))}
-            </div>
-        </div>
+            <div className={`ContentNavComponent overflow-hidden fixed top-0 z-50 h-screen bg-white border-r shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] ${open ? 'w-[13%] p-[20px_10px]' : 'w-0'} transition-width`}>
+                <div className="flex justify-center items-center">
+                    <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
+                </div>
 
+                <div className="navs w-full mt-4">
+                    {navs.map((item, index) => (
+                        <a
+                            key={index}
+                            href={`#${item.href}`}
+                            className={`nav_item overflow-hidden relative block p-1 hover:text-primary transition duration-700 ${active >= item.start && active < item.end! ? 'active' : ''} ${item.className}`}
+                        >
+                            {item.href}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </>
     );
 };
 
-export default App;
+export default ContentNav;

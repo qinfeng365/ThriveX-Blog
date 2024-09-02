@@ -35,9 +35,9 @@ export default ({ data }: { data: string }) => {
                 <ReactMarkdown>{data}</ReactMarkdown>
             </div>
 
-            <div className="nav">
+            {/* <div className="nav">
                 <ContentNav />
-            </div>
+            </div> */}
         </div>
     );
 };
