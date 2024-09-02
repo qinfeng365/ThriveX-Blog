@@ -10,7 +10,7 @@ const NewComments = async () => {
     const { data } = await getCommentListAPI()
     
     return (
-        <div className='CommentComponent'>
+        <div className='SidebarCommentComponent'>
             <div className="newComments">
                 <div className="title">
                     <Image src={Comment} alt="最新评论" /> 最新评论

@@ -69,10 +69,9 @@ const CommentForm = ({ id }: Props) => {
 
     return (
         <div className='CommentComponent'>
-            <h1>{id} {commentId}</h1>
             <div className="comment mt-[70px]">
                 <div className="title relative top-0 left-0 w-full h-[1px] mb-10 bg-[#f7f7f7] transition-colors"></div>
-
+{/*  */}
                 <form className="form space-y-2" onSubmit={handleSubmit(onSubmit)}>
                     <div className='w-full'>
                         <textarea 

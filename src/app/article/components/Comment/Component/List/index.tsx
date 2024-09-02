@@ -16,12 +16,11 @@ interface Props {
 const CommentList = ({ list, reply }: Props) => {
     // 获取评论
     const replyComment = (id: number, name: string) => {
-        console.log(id, name);
         reply(id, name)
     }
 
     return (
-        <div className='CommentComponent'>
+        <div className='CommentListComponent'>
             <Show is={!!list?.length} children={
                 <ul className="list">
                     {list?.map(one => (

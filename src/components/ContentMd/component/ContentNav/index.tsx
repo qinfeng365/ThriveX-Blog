@@ -13,7 +13,8 @@ interface NavItem {
     className: string;
 }
 
-const OFFSET = 200; // 定义距离视口顶部多少像素时高亮导航项
+// 定义距离视口顶部多少像素时高亮导航项
+const OFFSET = 100;
 
 const ContentNav = () => {
     const [open, setOpen] = useState(false);
@@ -73,12 +74,12 @@ const ContentNav = () => {
         <>
             {open
                 ? (
-                    <div className="fixed top-[60%] left-[15%] z-50 w-8 cursor-pointer" onClick={() => setOpen(false)}>
-                        <MdOutlineKeyboardDoubleArrowLeft className="w-full text-5xl text-primary" />
+                    <div className="fixed top-[80%] left-[15%] z-50 cursor-pointer flex justify-center items-center w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => setOpen(false)}>
+                        <MdOutlineKeyboardDoubleArrowLeft className="w-full text-4xl text-primary" />
                     </div>
                 )
                 : (
-                    <div className="fixed top-[60%] left-[2%] z-50 w-8 cursor-pointer" onClick={() => setOpen(true)}>
+                    <div className="fixed top-[80%] left-[2%] z-50 cursor-pointer w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => setOpen(true)}>
                         <img src={directory.src} alt="" className="w-full text-5xl text-primary" />
                     </div>
                 )

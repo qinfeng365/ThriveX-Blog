@@ -1,9 +1,9 @@
 @import "@/styles/var.scss";
 
 /* 添加平滑滚动效果 */
-html {
-    scroll-behavior: smooth;
-}
+// html {
+//     scroll-behavior: smooth;
+// }
 
 :target::before {
     content: "";

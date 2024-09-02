@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "github-markdown-css"
 import "./index.scss";
-import ContentNav from "./component/ContentNav";
 
 export default ({ data }: { data: string }) => {
     useEffect(() => {
@@ -34,10 +33,6 @@ export default ({ data }: { data: string }) => {
             <div className="content markdown-body">
                 <ReactMarkdown>{data}</ReactMarkdown>
             </div>
-
-            {/* <div className="nav">
-                <ContentNav />
-            </div> */}
         </div>
     );
 };
