@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Show from '@/components/Show';
 import Empty from '@/components/Empty';
 import RandomAvatar from '@/components/RandomAvatar';
@@ -5,7 +6,6 @@ import { Comment } from '@/types/app/comment'
 import { RiMessage3Line } from "react-icons/ri";
 import dayjs from 'dayjs';
 import "./index.scss"
-import Link from 'next/link';
 
 interface Props {
     id: number,

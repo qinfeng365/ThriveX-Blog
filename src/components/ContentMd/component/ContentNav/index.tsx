@@ -85,7 +85,7 @@ const ContentNav = () => {
                 )
             }
 
-            <div className={`ContentNavComponent overflow-hidden fixed top-0 z-50 h-screen bg-white border-r shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] ${open ? 'w-[13%] p-[20px_10px]' : 'w-0'} transition-width`}>
+            <div className={`ContentNavComponent overflow-hidden fixed top-0 z-50 h-screen bg-[rgba(255,255,255,0.9)] backdrop-blur-sm shadow-[16px_0px_15px_-3px_rgba(101,155,246,0.1)] ${open ? 'w-[13%] p-[20px_10px]' : 'w-0'} transition-width`}>
                 <div className="flex justify-center items-center">
                     <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
                 </div>

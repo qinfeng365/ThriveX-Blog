@@ -12,7 +12,7 @@ export interface Article {
     tagIds: string,
     tagList: Tag[]
     view?: number
-    count?: number,
+    comment?: number,
     prev: { id: number, title: string },
     next: { id: number, title: string },
     createTime?: string,
