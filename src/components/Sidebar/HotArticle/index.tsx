@@ -23,7 +23,7 @@ const RandomArticle = async () => {
                         <div className="item" key={item.id}>
                             <Link href={`/article/${item.id}`}>
                                 <IoIosArrowForward />
-                                {item.title}
+                                <span className='w-[80%]'>{item.title}</span>
                             </Link>
                         </div>
                     ))}

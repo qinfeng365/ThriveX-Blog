@@ -77,6 +77,12 @@ const Header = () => {
                                 )} />
                             </li>
                         ))}
+
+                        <li className="one_item">
+                            <Link href="/footprint" className={`one_item_nav ${isScrolled ? 'text-[#333]' : 'text-white'}`}>
+                                ⛳️ 足迹
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>

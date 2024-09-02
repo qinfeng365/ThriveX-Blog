@@ -13,7 +13,7 @@ const TagComponent = ({ data }: { data: Tag[] }) => {
 
                 {/* 标签列表 */}
                 <div className="list">
-                    {data.map((item, index) => (
+                    {data?.map((item, index) => (
                         <Link href="#" key={index}>{item.name}</Link>
                     ))}
                 </div>

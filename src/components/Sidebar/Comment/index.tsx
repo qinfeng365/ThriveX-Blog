@@ -7,8 +7,8 @@ import dayjs from 'dayjs';
 import './index.scss';
 
 const NewComments = async () => {
-    const { data: { result } } = await getCommentListAPI()
-
+    const { data } = await getCommentListAPI()
+    
     return (
         <div className='CommentComponent'>
             <div className="newComments">
@@ -17,7 +17,7 @@ const NewComments = async () => {
                 </div>
 
                 <div className="list">
-                    {result.map((item) => (
+                    {data?.result.map((item) => (
                         <Link href="/" className="item" key={item.id}>
                             {
                                 item.avatar
