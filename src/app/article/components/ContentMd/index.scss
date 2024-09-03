@@ -11,6 +11,9 @@
             // 图片模糊
             filter: blur(20px);
             transition: filter 0.7s;
+
+            border-radius: 10px;
+            cursor: pointer;
         }
     }
 }
