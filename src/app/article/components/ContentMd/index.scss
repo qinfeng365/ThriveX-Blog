@@ -3,17 +3,21 @@
 .ContentMdComponent {
     padding-top: 50px;
 
-    .markdown-body{
+    .markdown-body {
         // 继承父级字体
         font-family: inherit;
 
-        p img{
-            // 图片模糊
-            filter: blur(20px);
-            transition: filter 0.7s;
+        p {
+            line-height: 35px;
 
-            border-radius: 10px;
-            cursor: pointer;
+            img {
+                // 图片模糊
+                filter: blur(20px);
+                transition: filter 0.7s;
+
+                border-radius: 10px;
+                cursor: pointer;
+            }
         }
     }
 }
