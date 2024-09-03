@@ -60,13 +60,13 @@ export default async ({ params }: Props) => {
                 </Swiper>
 
                 <div className="w-6/12 mx-auto relative">
-                    <ContentMd data={data?.content}></ContentMd>
+                    <ContentMd data={data.content}></ContentMd>
 
                     <div className="w-full">
-                        <Tag data={data?.tagList} />
+                        <Tag data={data.tagList} />
 
                         <Copyright />
-                        <UpAndDown id={id} prev={data?.prev} next={data?.next} />
+                        <UpAndDown id={id} prev={data.prev} next={data.next} />
                         <Comment id={id} />
                     </div>
                 </div>

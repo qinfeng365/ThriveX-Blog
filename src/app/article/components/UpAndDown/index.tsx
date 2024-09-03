@@ -17,7 +17,6 @@ const btn = "group w-full py-4 mx-3 border hover:border-primary hover:bg-[#f8fbf
 const p = "group-hover:text-primary text-xl text-center transition-colors"
 
 const UpAndDown = ({ id, prev, next }: Props) => {
-
     return (
         <div className='UpAndDownComponent'>
             <div className="flex justify-between mt-8">
