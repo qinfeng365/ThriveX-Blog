@@ -8,6 +8,8 @@ import './index.scss';
 
 const NewComments = async () => {
     const { data } = await getCommentListAPI()
+    console.log(data);
+    
     
     return (
         <div className='SidebarCommentComponent'>
@@ -18,7 +20,7 @@ const NewComments = async () => {
 
                 <div className="list">
                     {data?.result.map((item) => (
-                        <Link href="/" className="item" key={item.id}>
+                        <Link href={`/article/${item.articleId}`} className="item" key={item.id}>
                             {
                                 item.avatar
                                     ? <img src={item.avatar} className="avatar" alt="avatar" />
