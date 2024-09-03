@@ -48,7 +48,9 @@ const ContentMdComponent = ({ data }: Props) => {
     const renderers = {
         img: ({ alt, src }: { alt?: string; src?: string }) => (
             <PhotoView src={src || ''}>
-                <img alt={alt} src={src} />
+                <div className="flex justify-center w-full my-4">
+                    <img alt={alt} src={src} className="w-6/12 object-cover"/>
+                </div>
             </PhotoView>
         ),
     };
