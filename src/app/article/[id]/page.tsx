@@ -1,16 +1,20 @@
+import { getArticleDataAPI } from '@/api/article'
+
 import Starry from "@/components/Starry"
 import Swiper from "@/components/Swiper"
-import { getArticleDataAPI } from '@/api/article'
-import ContentMd from "../components/ContentMd/index";
+
 import Tag from "../components/Tag";
 import Copyright from "../components/Copyright";
 import UpAndDown from "../components/UpAndDown";
 import Comment from "../components/Comment";
-import ContentNav from "@/app/article/components/ContentMd/component/ContentNav";
+import ContentMd from "../components/ContentMd";
+import ContentNav from "../components/ContentNav";
+
 import { IoMdPricetags } from "react-icons/io";
 import { FaHotjar } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
 import { LuTimer } from "react-icons/lu";
+
 import dayjs from 'dayjs';
 
 interface Props {

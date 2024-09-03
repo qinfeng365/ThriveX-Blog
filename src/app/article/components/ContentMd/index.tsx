@@ -7,6 +7,15 @@ import "./index.scss";
 
 export default ({ data }: { data: string }) => {
     useEffect(() => {
+        const images = document.querySelectorAll('img');
+        setTimeout(() => {
+            images.forEach((img) => {
+                img.style.filter = 'blur(0)';
+            });
+        }, 1000)
+    }, [])
+
+    useEffect(() => {
         // 当组件挂载时，改变body背景颜色
         document.body.style.backgroundColor = '#fff';
 
