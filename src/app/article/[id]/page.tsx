@@ -32,7 +32,7 @@ export default async ({ params }: Props) => {
                     {/* 星空背景组件 */}
                     <Starry />
 
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white custom_text_shadow">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] text-white custom_text_shadow">
                         <div className="text-4xl text-center mb-8">{data.title}</div>
 
                         <div className="flex space-x-8">
