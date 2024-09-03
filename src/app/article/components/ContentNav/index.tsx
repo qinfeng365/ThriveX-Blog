@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import directory from '@/assets/svg/other/directory.svg'
 
@@ -80,11 +79,10 @@ const ContentNav = () => {
                     </div>
                 )
                 : (
-                    <div className="fixed top-[80%] left-[2%] z-50 cursor-pointer w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => {
-                        navs?.length ? setOpen(true) : toast.warn("该文章中没有目录")
-                    }}>
+                    navs?.length &&
+                    <div className="fixed top-[80%] left-[2%] z-50 cursor-pointer w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => setOpen(true)}>
                         <img src={directory.src} alt="" className="w-full text-5xl text-primary" />
-                    </div>
+                    </div >
                 )
             }
 
@@ -105,8 +103,6 @@ const ContentNav = () => {
                     ))}
                 </div>
             </div>
-
-            <ToastContainer />
         </>
     );
 };
