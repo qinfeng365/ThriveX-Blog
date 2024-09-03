@@ -86,23 +86,23 @@ const CommentForm = ({ id }: Props) => {
                         <span className='text-red-400 text-sm pl-3'>{errors.content?.message}</span>
                     </div>
 
-                    <div className='flex flex-col'>
-                        <input type="text" className="ipt w-48 h-9 pl-4" placeholder="你的名称 *" {...register("name", { required: "请输入名称" })} />
+                    <div className='flex flex-col w-[32%]'>
+                        <input type="text" className="ipt w-full h-9 pl-4" placeholder="你的名称" {...register("name", { required: "请输入名称" })} />
                         <span className='text-red-400 text-sm pl-3 mt-1'>{errors.name?.message}</span>
                     </div>
 
-                    <div className='flex flex-col'>
-                        <input type="text" className="ipt w-64 h-9 pl-4" placeholder="你的邮箱（选填）*" {...register("email", { pattern: { value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message: "请输入正确的邮箱" } })} />
+                    <div className='flex flex-col w-[32%]'>
+                        <input type="text" className="ipt w-full h-9 pl-4" placeholder="你的邮箱（选填）" {...register("email", { pattern: { value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message: "请输入正确的邮箱" } })} />
                         <span className='text-red-400 text-sm pl-3 mt-1'>{errors.email?.message}</span>
                     </div>
 
-                    <div className='flex flex-col'>
-                        <input type="text" className="ipt w-80 h-9 pl-4" placeholder="头像（选填）*" {...register("avatar", { pattern: { value: /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/, message: "请输入正确的头像链接" } })} />
+                    <div className='flex flex-col w-[32%]'>
+                        <input type="text" className="ipt w-full h-9 pl-4" placeholder="头像（选填）" {...register("avatar", { pattern: { value: /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/, message: "请输入正确的头像链接" } })} />
                         <span className='text-red-400 text-sm pl-3 mt-1'>{errors.avatar?.message}</span>
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input type="text" className="ipt w-full h-9 pl-4" placeholder="你的站点（选填）*"  {...register("url", { pattern: { value: /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/, message: "请输入正确的网站链接" } })} />
+                        <input type="text" className="ipt w-full h-9 pl-4" placeholder="你的站点（选填）"  {...register("url", { pattern: { value: /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/, message: "请输入正确的网站链接" } })} />
                         <span className='text-red-400 text-sm pl-3 mt-1'>{errors.url?.message}</span>
                     </div>
 
