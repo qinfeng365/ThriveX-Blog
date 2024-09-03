@@ -1,12 +1,12 @@
 import Starry from "@/components/Starry"
 import Swiper from "@/components/Swiper"
 import { getArticleDataAPI } from '@/api/article'
-import ContentMd from "@/components/ContentMd";
+import ContentMd from "../components/ContentMd/index";
 import Tag from "../components/Tag";
 import Copyright from "../components/Copyright";
 import UpAndDown from "../components/UpAndDown";
 import Comment from "../components/Comment";
-import ContentNav from "@/components/ContentMd/component/ContentNav";
+import ContentNav from "@/app/article/components/ContentMd/component/ContentNav";
 import { IoMdPricetags } from "react-icons/io";
 import { FaHotjar } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
@@ -20,7 +20,6 @@ interface Props {
 export default async ({ params }: Props) => {
     const id = params.id
     const { data } = await getArticleDataAPI(id)
-    console.log(data);
 
     // 图标样式
     const iconSty = "flex justify-center items-center w-5 h-5 rounded-full text-xs mr-1"
@@ -33,14 +32,14 @@ export default async ({ params }: Props) => {
                     <Starry />
 
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] text-white custom_text_shadow">
-                        <div className="text-4xl text-center mb-8">{data.title}</div>
+                        <div className="text-4xl text-center mb-14">{data.title}</div>
 
                         <div className="flex space-x-8">
                             <div className="flex">
                                 <span className={`${iconSty} bg-[#A543E6]`}><IoMdPricetags /></span>
                                 <span>所属分类：{data.cateList[0]?.name}</span>
                             </div>
-                            
+
                             <div className="flex">
                                 <span className={`${iconSty} bg-[#EA3B24]`}><FaHotjar /></span>
                                 <span>阅读量：{data.view}</span>

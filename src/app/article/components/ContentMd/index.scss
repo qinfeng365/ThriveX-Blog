@@ -1,0 +1,10 @@
+@import "@/styles/var.scss";
+
+.ContentMdComponent {
+    padding-top: 50px;
+
+    .markdown-body{
+        // 继承父级字体
+        font-family: inherit;
+    }
+}
