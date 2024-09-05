@@ -1,20 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { Pagination } from "@nextui-org/react"
 
-export default () => {
-    const [count, setCount] = useState(0)
+export default ({ total, page, className }: { total: number, page: number, className?: string }) => {
+    const router = useRouter()
 
     return (
         <>
-            <div>
-                <button onClick={() => {
-                    setCount(count + 1)
-                }}>+1</button>
-
-                <button onClick={() => {
-                    setCount(count - 1)
-                }}>-1</button>
+            <div className={className}>
+                <Pagination
+                    showControls
+                    total={total}
+                    page={page}
+                    onChange={(page) => router.push(`?page=${page}`)}
+                    classNames={{ item: "shadow-none bg-transparent" }}
+                />
             </div>
         </>
     )

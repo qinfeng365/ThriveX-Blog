@@ -6,12 +6,11 @@ import ArticleLayout from "@/components/ArticleLayout";
 import Sidebar from "@/components/Sidebar";
 
 interface Props {
-  searchParams: { page: number; size: number };
+  searchParams: { page: number };
 };
 
 export default async ({ searchParams }: Props) => {
-  const page = Number(searchParams.page) || 1;
-  const size = Number(searchParams.size) || 5;
+  const page = +searchParams.page || 1;
 
   return (
     <>
@@ -24,7 +23,7 @@ export default async ({ searchParams }: Props) => {
 
       <Container>
         {/* 文章列表 */}
-        <ArticleLayout pagination={{ page, size }} />
+        <ArticleLayout page={page} />
         {/* 侧边栏 */}
         <Sidebar />
       </Container>
