@@ -7,8 +7,8 @@ export const getArticleDataAPI = async (id: number) => {
 }
 
 // 获取文章列表
-export const getArticleListAPI = async () => {
-    return await Request<Paginate<Article[]>>("POST", "/article/paging");
+export const getArticleListAPI = async (pagination: Page) => {
+    return await Request<Paginate<Article[]>>("POST", `/article/paging?page=${pagination.page}&size=${pagination.size}`);
 }
 
 // 获取随机文章列表

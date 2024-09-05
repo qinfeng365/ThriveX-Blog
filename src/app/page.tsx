@@ -5,7 +5,14 @@ import Container from "@/components/Container";
 import ArticleLayout from "@/components/ArticleLayout";
 import Sidebar from "@/components/Sidebar";
 
-export default async () => {
+interface Props {
+  searchParams: { page: number; size: number };
+};
+
+export default async ({ searchParams }: Props) => {
+  const page = Number(searchParams.page) || 1;
+  const size = Number(searchParams.size) || 5;
+
   return (
     <>
       <Swiper>
@@ -17,7 +24,7 @@ export default async () => {
 
       <Container>
         {/* 文章列表 */}
-        <ArticleLayout />
+        <ArticleLayout pagination={{ page, size }} />
         {/* 侧边栏 */}
         <Sidebar />
       </Container>

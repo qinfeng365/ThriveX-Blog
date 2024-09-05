@@ -8,8 +8,6 @@ import './index.scss';
 
 const NewComments = async () => {
     const { data } = await getCommentListAPI()
-    console.log(data);
-    
     
     return (
         <div className='SidebarCommentComponent'>
