@@ -1,21 +1,26 @@
 "use client"
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { Pagination } from "@nextui-org/react"
 
-export default ({ total, page, className }: { total: number, page: number, className?: string }) => {
+interface Props {
+    total: number,
+    page: number,
+    url?: string,
+    className?: string
+}
+
+export default ({ total, page, url, className }: Props) => {
     const router = useRouter()
-    // const searchParams = useSearchParams()
-    // const query = new URLSearchParams(searchParams).toString()
-    
+
     return (
         <>
             <div className={className}>
                 <Pagination
                     showControls
                     total={total}
-                    page={page}
-                    onChange={(page) => router.push(`?page=${page}`)}
+                    page={+page}
+                    onChange={(page) => router.push(url ? `${url}&page=${page}` : `?page=${page}`)}
                     classNames={{ item: "shadow-none bg-transparent" }}
                 />
             </div>

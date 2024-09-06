@@ -32,7 +32,7 @@ export default async ({ params, searchParams }: Props) => {
         <div className="w-6/12 mx-auto">
           <Classics data={data} />
 
-          <Pagination total={data.total} page={page} className="flex justify-center mt-5" />
+          <Pagination total={data.pages} page={page} url={`?name=${name}`} className="flex justify-center mt-5" />
         </div>
       </div>
     </>
