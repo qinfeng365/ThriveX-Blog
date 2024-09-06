@@ -10,7 +10,7 @@ interface Props {
 };
 
 export default async ({ searchParams }: Props) => {
-  const page = +searchParams.page || 1;
+  const page = searchParams.page || 1;
 
   return (
     <>

@@ -2,17 +2,19 @@ import { getCateArticleListAPI } from "@/api/cate";
 import Starry from "@/components/Starry"
 import Swiper from "@/components/Swiper"
 import Classics from "@/components/ArticleLayout/Classics";
+import Pagination from "@/components/Pagination";
 
 interface Props {
   params: { id: number };
-  searchParams: { name: string };
+  searchParams: { page: number; name: string };
 };
 
 export default async ({ params, searchParams }: Props) => {
   const id = params.id;
+  const page = searchParams.page || 1;
   const name = searchParams.name;
 
-  const { data } = await getCateArticleListAPI(id)
+  const { data } = await getCateArticleListAPI(id, page)
 
   return (
     <>
@@ -29,6 +31,8 @@ export default async ({ params, searchParams }: Props) => {
 
         <div className="w-6/12 mx-auto">
           <Classics data={data} />
+
+          <Pagination total={data.total} page={page} className="flex justify-center mt-5" />
         </div>
       </div>
     </>

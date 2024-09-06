@@ -3,7 +3,7 @@ import Classics from "./Classics"
 import { getArticleListAPI } from '@/api/article'
 
 export default async ({ page }: { page: number }) => {
-  const { data } = await getArticleListAPI({ page, size: 5 })
+  const { data } = await getArticleListAPI(page)
 
   return (
     <>
