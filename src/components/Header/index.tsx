@@ -43,7 +43,7 @@ const Header = () => {
 
     return (
         <div className='HeaderComponent'>
-            <div className={`header ${isScrolled ? 'gradient' : ''}`}>
+            <div className={`header ${isPathSty || isScrolled ? 'gradient' : ''}`}>
                 <div className="w !w-[1500px]">
                     <ul className="one">
                         <li className="one_item">

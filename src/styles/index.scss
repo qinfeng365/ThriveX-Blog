@@ -24,3 +24,29 @@ body {
 .custom_text_shadow {
     text-shadow: 0 0.1875rem 0.3125rem #1c1f21;
 }
+
+// 头像动画效果
+.avatar-animation {
+    animation: 5s linear infinite miniShape;
+}
+@keyframes miniShape {
+    0%,
+    100% {
+        border-radius: 42% 58% 70% 30%/45% 45% 55% 55%;
+        transform: translate3d(0, 0, 0) rotateZ(.01deg);
+    }
+
+    34% {
+        border-radius: 70% 30% 46% 54%/30% 29% 71% 70%;
+        transform: translate3d(0, 5px, 0) rotateZ(.01deg);
+    }
+
+    50% {
+        transform: translate3d(0, 0, 0) rotateZ(.01deg);
+    }
+
+    67% {
+        border-radius: 100% 60% 60% 100%/100% 100% 60% 60%;
+        transform: translate3d(0, -3px, 0) rotateZ(.01deg);
+    }
+}
