@@ -1,8 +1,11 @@
 import Image from "next/image";
 import avatar from '@/assets/image/avatar.jpg'
 import bg from '@/assets/image/bg.png'
+import dynamic from 'next/dynamic'
 import "./page.scss"
-import Technology from "./component/Technology";
+
+const Map = dynamic(() => import('./component/Map'))
+const Technology = dynamic(() => import('./component/Technology'))
 
 export default () => {
     const data = {
@@ -16,7 +19,7 @@ export default () => {
         <>
             <div className="MyPage bg-white pt-[80px] bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
                 {/* 个人介绍 */}
-                <div className="w-6/12 mx-auto">
+                <div className="w-7/12 mx-auto">
                     <div className="mt-16 transition-colors">
                         <div className="flex justify-between items-center">
                             <div className="w-6/12 text-[#353a40] transition-all duration-800">
@@ -32,11 +35,18 @@ export default () => {
                     </div>
                 </div>
 
-                {/* 技术栈 */}
-                <div className="flex flex-col">
-                    <div className="text-center text-xl mt-24 my-6">我的技术栈</div>
+                <div className="flex w-9/12 mt-14 mx-auto">
+                    {/* 位置 */}
+                    <div className="w-5/12 mr-20">
+                        <div className="text-center text-xl mb-6">我的家乡</div>
+                        <Map />
+                    </div>
 
-                    <img className="min-h-[240px]" src="https://skillicons.dev/icons?i=html,css,javascript,typescript,jquery,less,scss,tailwind,react,nextjs,remix,redux,vue,nuxt,pinia,electron,webpack,vite,npm,yarn,pnpm,md,git,github,java,spring,maven,python,flask,express,nodejs,nestjs,prisma,mysql,redis,vercel,docker,linux,vscode,idea,webstorm,pycharm,postman,ps" />
+                    {/* 技术栈 */}
+                    <div className="w-7/12 flex flex-col">
+                        <div className="text-center text-xl mb-6">我的技术栈</div>
+                        <Technology />
+                    </div>
                 </div>
             </div>
         </>
