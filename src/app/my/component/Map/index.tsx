@@ -38,7 +38,7 @@ export default function MapContainer() {
 
     return (
         <>
-            <div id="container" className="w-full h-full border rounded-3xl"></div>
+            <div id="container" className="w-full h-96 border rounded-3xl"></div>
         </>
     );
 }
