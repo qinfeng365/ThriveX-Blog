@@ -9,7 +9,7 @@ import tool from '@/assets/svg/technology/tool.svg'
 export default () => {
     return (
         <>
-            <div className="flex flex-col justify-center items-center h-full space-y-2">
+            <div className="flex flex-col items-center space-y-2">
                 <div><Image src={tool} alt="软件工具" /></div>
                 <div><Image src={qdBasics} alt="前端基础技术栈" /></div>
                 <div><Image src={qdAdvanced} alt="前端高级技术栈" /></div>
