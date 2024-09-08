@@ -12,6 +12,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
 import "./index.scss"
+import { Button } from '@nextui-org/react';
 
 const Header = () => {
     const patchName = usePathname();
@@ -40,6 +41,10 @@ const Header = () => {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const toTheme = () => {
+
+    }
 
     return (
         <div className='HeaderComponent'>
@@ -95,6 +100,8 @@ const Header = () => {
                                 👋 关于我
                             </Link>
                         </li>
+
+                        <Button onClick={toTheme}>切换主题</Button>
                     </ul>
                 </div>
             </div>
