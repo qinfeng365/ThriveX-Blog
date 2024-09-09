@@ -8,7 +8,7 @@ const sty = {
 export default ({ children }: { children: ReactNode }) => {
     return (
         <>
-            <div className="SwiperComponent relative h-[500px] bg-cover bg-center" style={sty}>
+            <div className="SwiperComponent overflow-hidden relative h-[500px] bg-cover bg-center after:content-[''] after:w-full after:h-[20%] after:absolute after:bottom-0 after:left-0 after:bg-[linear-gradient(to_top,#fff,transparent)] dark:after:bg-[linear-gradient(to_top,#2c333e,transparent)]" style={sty}>
                 <div>{children}</div>
             </div>
 
@@ -21,10 +21,10 @@ export default ({ children }: { children: ReactNode }) => {
                     </defs>
 
                     <g className="parallax">
-                        <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)"></use>
-                        <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)"></use>
-                        <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)"></use>
-                        <use xlinkHref="#gentle-wave" x="48" y="7" fill="#fff"></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="0" className='fill-[rgba(255,255,255,0.7)] dark:fill-[rgba(44,51,62,0.9)]'></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="3" className='fill-[rgba(255,255,255,0.5)] dark:fill-[rgba(44,51,62,0.9)]'></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="5" className='fill-[rgba(255,255,255,0.3)] dark:fill-[rgba(44,51,62,0.9)]'></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="7" className='fill-white dark:fill-[rgba(44,51,62,0.9)]'></use>
                     </g>
                 </svg>
             </div>

@@ -42,31 +42,43 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // 是否暗黑模式
+    const [isDark, setIsDark] = useState(false)
+    // 手动切换主题
     const toTheme = () => {
         const html = document.querySelector('html')
-        html?.classList.toggle('dark')
+        setIsDark(html?.classList.toggle('dark')!)
     }
+    // 判断当前主题
+    useEffect(() => {
+        const html = document.querySelector('html')
+        setIsDark(html?.className.includes("dark")!)
+    }, [])
 
     return (
         <div className='HeaderComponent'>
-            <div className={`header fixed top-0 w-full h-16 backdrop-blur-[5px] transition-colors z-50 after:content-[''] after:block after:w-full after:h-0 after:bg-[linear-gradient(#fff,transparent_70%)] after:transition-colors ${isPathSty || isScrolled ? 'bg-[rgba(255,255,255,0.9)] border-b transition-all after:!h-8 after:transition-height]' : ''}`}>
+            <div className={`header fixed top-0 w-full h-16 backdrop-blur-[5px] transition-colors z-50 after:content-[''] after:block after:w-full after:h-0 after:bg-[linear-gradient(#fff,transparent_70%)] dark:after:bg-[linear-gradient(#2b333e,transparent_70%)] after:transition-colors ${isPathSty || isScrolled ? 'bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(44,51,62,0.9)] border-b dark:border-[#2b333e] transition-all after:!h-8 after:transition-height]' : ''}`}>
                 <div className="h-16 w-[1500px] mx-auto">
                     <ul className="flex items-center h-16">
                         <li className="relative">
                             <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
-                                <img src={isPathSty || isScrolled ? lightLogo.src : darkLogo.src} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
+                                {
+                                    isDark
+                                        ? <img src={darkLogo.src} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
+                                        : <img src={isPathSty || isScrolled ? lightLogo.src : darkLogo.src} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
+                                }
                             </Link>
                         </li>
 
                         <li className="relative">
-                            <Link href="/" className={`flex items-center p-5 text-[15px] hover:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333]' : 'text-white'}`}>
+                            <Link href="/" className={`flex items-center p-5 text-[15px] hover:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}>
                                 💎 首页
                             </Link>
                         </li>
 
                         {cateList.map(one => (
                             <li key={one.id} className="group/one relative">
-                                <Link href={`/cate/${one.id}?name=${one.name}`} className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333]' : 'text-white'}`}>
+                                <Link href={`/cate/${one.id}?name=${one.name}`} className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}>
                                     {one.icon} {one.name}
                                     <Show is={!!one.children.length} children={(
                                         <IoIosArrowDown className="ml-2" />
@@ -77,7 +89,7 @@ const Header = () => {
                                     <ul className="hidden group-hover/one:block overflow-hidden absolute top-[50px] w-full rounded-md bg-[#f9f9f9]" style={{ boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08);' }}>
                                         {one.children.map(two => (
                                             <li key={two.id} className='group/two'>
-                                                <Link href={`/cate/${two.id}?name=${two.name}`} className="relative inline-block w-full p-[10px] pl-[10px] text-[15px] box-border text-[#666] hover:!text-primary transition-all after:content-[''] after:absolute after:left-[10px] after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-[3px] after:bg-primary after:transition-width group-hover/two:bg-[#f2f2f2] group-hover/two:pl-8 hover:after:w-[10px]">
+                                                <Link href={`/cate/${two.id}?name=${two.name}`} className="relative inline-block w-full p-[10px] pl-[10px] text-[15px] box-border text-[#666] dark:text-white hover:!text-primary transition-all after:content-[''] after:absolute after:left-[10px] after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-[3px] after:bg-primary after:transition-width group-hover/two:bg-[#f2f2f2] group-hover/two:pl-8 hover:after:w-[10px]">
                                                     {two.name}
                                                 </Link>
                                             </li>
@@ -88,13 +100,13 @@ const Header = () => {
                         ))}
 
                         <li className="relative">
-                            <Link href="/footprint" className={`flex items-center p-5 text-[15px] hover:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333]' : 'text-white'}`}>
+                            <Link href="/footprint" className={`flex items-center p-5 text-[15px] hover:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}>
                                 ⛳️ 足迹
                             </Link>
                         </li>
 
                         <li className="relative">
-                            <Link href="/my" className={`flex items-center p-5 text-[15px] hover:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333]' : 'text-white'}`}>
+                            <Link href="/my" className={`flex items-center p-5 text-[15px] hover:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}>
                                 👋 关于我
                             </Link>
                         </li>

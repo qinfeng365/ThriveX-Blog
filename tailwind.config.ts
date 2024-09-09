@@ -13,7 +13,7 @@ const config: Config = {
       colors: {
         primary: '#539dfd', // 添加自定义颜色
         'black-a': '#232931',
-        'black-b': '#2b333e'
+        'black-b': '#2c333e'
       },
       transitionDuration: {
         'DEFAULT': '300ms', // 添加默认过渡时间为0.3秒
