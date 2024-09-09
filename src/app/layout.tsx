@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${LXGWWenKai.className} dark`}>
+    <html lang="en" className='dark'>
+      <body className={`${LXGWWenKai.className} dark:!bg-black-a`}>
         <Header />
 
         <NextUIProvider>
