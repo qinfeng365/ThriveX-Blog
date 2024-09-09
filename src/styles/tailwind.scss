@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tw_container{
+    @apply border rounded-md transition-all hover:shadow-[0_2px_8px_rgba(186,186,186,0.15)]
+}

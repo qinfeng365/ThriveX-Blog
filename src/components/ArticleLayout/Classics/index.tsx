@@ -17,34 +17,37 @@ interface ClassicsProps {
 const Classics = ({ data }: ClassicsProps) => {
     return (
         <div className='ClassicsComponent'>
-            <div className="classics">
+            <div className="space-y-4">
                 {data?.result?.map((item, index) => (
-                    <div className="item" key={item.id}>
+                    <div className="relative overflow-hidden flex h-60 bg-[#333] dark:border-transparent tw_container" key={item.id}>
                         {index % 2 === 0 && (
                             <div
-                                className="cover"
-                                style={{ backgroundImage: `url(${item.cover || randomImage()})` }}
+                                className="relative w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125"
+                                style={{
+                                    clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0 100%)',
+                                    backgroundImage: `url(${item.cover || randomImage()})`,
+                                }}
                             />
                         )}
 
-                        <div className="info">
-                            <Link href={`/article/${item.id}`} className='link'>
-                                <h3>{item.title}</h3>
-                                <p>{item.description}</p>
+                        <div className="relative w-[65%] py-5 px-10 z-20">
+                            <Link href={`/article/${item.id}`} className='flex flex-col justify-between h-full'>
+                                <h3 className='relative w-full pt-[10px] pb-5 text-white text-2xl overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.title}</h3>
+                                <p className='text-[#cecece] text-[15px] leading-7 indent-8 line-clamp-3'>{item.description}</p>
 
-                                <div className={`fun ${index % 2 === 0 ? 'end' : 'start'}`}>
-                                    <div className='fun_item'>
-                                        <span><IoTimeOutline /></span>
+                                <div className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} pt-5 text-end`}>
+                                    <div className='flex items-center pl-8 text-xs text-white'>
+                                        <span className='pr-1'><IoTimeOutline className='p-1 mt-[-2px] mr-[3px] text-[23px] text-white rounded-full align-middle bg-[#539dfd]' /></span>
                                         <span>{dayjs(+item.createTime!).format('YYYY-MM-DD')}</span>
                                     </div>
 
-                                    <div className='fun_item'>
-                                        <span><RiFireLine /></span>
+                                    <div className='flex items-center pl-8 text-xs text-white'>
+                                        <span className='pr-1'><RiFireLine className='p-1 mt-[-2px] mr-[3px] text-[23px] text-white rounded-full align-middle bg-[#eb373a]' /></span>
                                         <span>{item.view}</span>
                                     </div>
 
-                                    <div className='fun_item'>
-                                        <span><GoTag /></span>
+                                    <div className='flex items-center pl-8 text-xs text-white'>
+                                        <span className='pr-1'><GoTag className='p-1 mt-[-2px] mr-[3px] text-[23px] text-white rounded-full align-middle bg-[#f5a630]' /></span>
                                         <span>{item.cateList[0]?.name}</span>
                                     </div>
                                 </div>
@@ -52,13 +55,16 @@ const Classics = ({ data }: ClassicsProps) => {
                         </div>
 
                         <div
-                            className="bg"
-                            style={{ backgroundImage: `url(${item.cover || randomImage()})` }}
+                            className="absolute w-full h-60 bg-cover bg-center"
+                            style={{
+                                filter: 'blur(2.5rem) brightness(0.6)',
+                                backgroundImage: `url(${item.cover || randomImage()})`
+                            }}
                         />
 
                         {index % 2 !== 0 && (
                             <div
-                                className="cover"
+                                className="relative w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125"
                                 style={{
                                     clipPath: 'polygon(10% 0, 100% 0, 100% 100%, 0 100%)',
                                     backgroundImage: `url(${item.cover || randomImage()})`,

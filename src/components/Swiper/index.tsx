@@ -21,10 +21,10 @@ export default ({ children }: { children: ReactNode }) => {
                     </defs>
 
                     <g className="parallax">
-                        <use xlinkHref="#gentle-wave" x="48" y="0" className='fill-[rgba(255,255,255,0.7)] dark:fill-[rgba(44,51,62,0.9)]'></use>
-                        <use xlinkHref="#gentle-wave" x="48" y="3" className='fill-[rgba(255,255,255,0.5)] dark:fill-[rgba(44,51,62,0.9)]'></use>
-                        <use xlinkHref="#gentle-wave" x="48" y="5" className='fill-[rgba(255,255,255,0.3)] dark:fill-[rgba(44,51,62,0.9)]'></use>
-                        <use xlinkHref="#gentle-wave" x="48" y="7" className='fill-white dark:fill-[rgba(44,51,62,0.9)]'></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="0" className='fill-[rgba(249,249,249,0.7)] dark:fill-[rgba(35,41,49,0.9)]'></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="3" className='fill-[rgba(249,249,249,0.5)] dark:fill-[rgba(35,41,49,0.9)]'></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="5" className='fill-[rgba(249,249,249,0.3)] dark:fill-[rgba(35,41,49,0.9)]'></use>
+                        <use xlinkHref="#gentle-wave" x="48" y="7" className='fill-[rgba(249,249,249)] dark:fill-[rgba(35,41,49,0.9)]'></use>
                     </g>
                 </svg>
             </div>

@@ -57,7 +57,7 @@ const Header = () => {
 
     return (
         <div className='HeaderComponent'>
-            <div className={`header fixed top-0 w-full h-16 backdrop-blur-[5px] transition-colors z-50 after:content-[''] after:block after:w-full after:h-0 after:bg-[linear-gradient(#fff,transparent_70%)] dark:after:bg-[linear-gradient(#2b333e,transparent_70%)] after:transition-colors ${isPathSty || isScrolled ? 'bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(44,51,62,0.9)] border-b dark:border-[#2b333e] transition-all after:!h-8 after:transition-height]' : ''}`}>
+            <div className={`header fixed top-0 w-full h-16 backdrop-blur-[5px] transition-colors z-50 after:content-[''] after:block after:w-full after:h-0 after:bg-[linear-gradient(#fff,transparent_70%)] dark:after:bg-[linear-gradient(#2b333e,transparent_70%)] after:transition-colors ${isPathSty || isScrolled ? 'bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(44,51,62,0.9)] border-b dark:border-[#2b333e] after:!h-8 after:transition-height]' : 'border-transparent'} transition-all`}>
                 <div className="h-16 w-[1500px] mx-auto">
                     <ul className="flex items-center h-16">
                         <li className="relative">
