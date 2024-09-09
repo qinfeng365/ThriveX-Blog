@@ -54,7 +54,7 @@ const Header = () => {
                     <ul className="flex items-center h-16">
                         <li className="relative">
                             <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
-                                <img src={isPathSty || isScrolled ? lightLogo.src : darkLogo.src} alt="Logo" className='h-10 pr-5 transition-all' />
+                                <img src={isPathSty || isScrolled ? lightLogo.src : darkLogo.src} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
                             </Link>
                         </li>
 
@@ -66,7 +66,7 @@ const Header = () => {
 
                         {cateList.map(one => (
                             <li key={one.id} className="group/one relative">
-                                <Link href={`/cate/${one.id}?name=${one.name}`} className={`flex items-center p-5 text-[15px] hover:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333]' : 'text-white'}`}>
+                                <Link href={`/cate/${one.id}?name=${one.name}`} className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333]' : 'text-white'}`}>
                                     {one.icon} {one.name}
                                     <Show is={!!one.children.length} children={(
                                         <IoIosArrowDown className="ml-2" />
