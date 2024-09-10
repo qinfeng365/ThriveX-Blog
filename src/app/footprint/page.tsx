@@ -1,7 +1,6 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from "react";
-import AMapLoader from "@amap/amap-jsapi-loader";
 import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure } from "@nextui-org/react";
 import { getFootprintListAPI } from "@/api/footprint";
 import { Footprint } from "@/types/app/footprint";
@@ -30,49 +29,52 @@ export default function MapContainer() {
     useEffect(() => {
         if (!list.length) return
 
-        // @ts-ignore
-        window._AMapSecurityConfig = {
-            securityJsCode: process.env.GAODE_SECURITYJS_CODE,
-        };
+        // 确保代码仅在客户端执行
+        import('@amap/amap-jsapi-loader').then(AMapLoader => {
+            // @ts-ignore
+            window._AMapSecurityConfig = {
+                securityJsCode: process.env.GAODE_SECURITYJS_CODE,
+            };
 
-        AMapLoader.load({
-            key: process.env.GAODE_KEY_CODE!, // 申请好的Web端开发者Key，首次调用 load 时必填
-            version: "2.0",
-            plugins: ["AMap.Scale", "AMap.Marker"],
-        })
-            .then((AMap) => {
-                map = new AMap.Map("container", {
-                    // 地图样式
-                    mapStyle: "amap://styles/grey",
-                    viewMode: "3D", // 是否为3D地图模式
-                    zoom: 4.8,
-                    center: [105.625368, 37.746599], // 初始化地图中心点位置
-                });
-
-                // 遍历 locations 数组，创建标记
-                list.forEach((data) => {
-                    const marker = new AMap.Marker({
-                        position: data.position.split(","), // 标记位置
-                        map: map, // 将标记添加到地图
-                    });
-
-                    // 点击标记时，设置选中的位置，并打开 Modal
-                    marker.on("click", () => {
-                        onOpen();
-                        setData(data);
-                    });
-                });
-
-                // 点击任意位置清空信息框内容并关闭
-                // map.on("click", () => {
-                //     setData(null);
-                // });
+            AMapLoader.load({
+                key: process.env.GAODE_KEY_CODE!, // 申请好的Web端开发者Key，首次调用 load 时必填
+                version: "2.0",
+                plugins: ["AMap.Scale", "AMap.Marker"],
             })
-            .catch((e) => {
-                console.log(e);
-            });
+                .then((AMap) => {
+                    map = new AMap.Map("container", {
+                        // 地图样式
+                        mapStyle: "amap://styles/grey",
+                        viewMode: "3D", // 是否为3D地图模式
+                        zoom: 4.8,
+                        center: [105.625368, 37.746599], // 初始化地图中心点位置
+                    });
 
-        return () => map?.destroy();
+                    // 遍历 locations 数组，创建标记
+                    list.forEach((data) => {
+                        const marker = new AMap.Marker({
+                            position: data.position.split(","), // 标记位置
+                            map: map, // 将标记添加到地图
+                        });
+
+                        // 点击标记时，设置选中的位置，并打开 Modal
+                        marker.on("click", () => {
+                            onOpen();
+                            setData(data);
+                        });
+                    });
+
+                    // 点击任意位置清空信息框内容并关闭
+                    // map.on("click", () => {
+                    //     setData(null);
+                    // });
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+
+            return () => map?.destroy();
+        });
     }, [list]);
 
     return (
