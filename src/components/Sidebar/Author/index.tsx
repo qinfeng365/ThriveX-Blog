@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Request from '@/utils/request';
 import avatarBg from '@/assets/image/avatar_bg.jpg';
 import { Social, Web } from '@/types/app/project';
-import { User } from '@/types/app/user';
 import './index.scss';
 
 import CSDN from '@/assets/svg/socializing/CSDN.svg'
@@ -36,26 +35,31 @@ const Author = async () => {
 
     return (
         <div className='AuthorComponent'>
-            <div className="author" style={{ backgroundImage: `url(${avatarBg})` }}>
+            <div className="author flex flex-col items-center pt-16 bg-no-repeat bg-white dark:bg-black-b w-full h-[350px] mb-5 tw_container" style={{
+                backgroundSize: `100% 35%`,
+                backgroundImage: `url(${avatarBg.src})`
+            }}>
                 {/* 作者头像 */}
-                <div className="avatar">
-                    <img src={data.avatar} alt="" />
+                <div className="avatar flex justify-center items-center w-[90px] h-[90px] rounded-full bg-white shadow-md overflow-hidden">
+                    <img src={data.avatar} alt="" className="w-[90%] h-[90%] rounded-full transition-transform hover:scale-110" />
                 </div>
 
                 {/* 作者介绍 */}
-                <div className="info">
-                    <h3>{data.name}</h3>
-                    <p>{data.info}</p>
+                <div className="info text-center mt-4">
+                    <h3 className="text-lg text-[#333] dark:text-white transition-colors">{data.name}</h3>
+                    <p className="w-[90%] mx-auto mt-2 text-sm text-[#686868] dark:text-[#cecece] transition-colors">{data.info}</p>
                 </div>
 
                 {/* 社交账号 */}
-                <div className="socializing">
-                    <div className="title"></div>
+                <div className="socializing w-full pt-8">
+                    <div className="title relative w-full h-[1px] bg-[#eee] dark:bg-black-a transition-colors">
+                        <span className="absolute top-[-10px] left-1/2 transform -translate-x-1/2 w-[110px] bg-white dark:bg-black-b text-center text-sm text-[#666] dark:text-[#979797] transition-colors">社交账号</span>
+                    </div>
 
-                    <div className="list">
+                    <div className="list flex justify-evenly w-[70%] mx-auto pt-6">
                         {socialList.map((item: Social) => (
                             <a href={item.url} target="_blank" rel="noopener noreferrer" key={item.name}>
-                                <Image src={getIcon(item.name)} alt={item.name} title={item.name} ></Image>
+                                <Image src={getIcon(item.name)} alt={item.name} title={item.name} className="w-[23px] h-[23px]" />
                             </a>
                         ))}
                     </div>

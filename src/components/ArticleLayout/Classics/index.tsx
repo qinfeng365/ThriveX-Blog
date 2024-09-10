@@ -19,7 +19,7 @@ const Classics = ({ data }: ClassicsProps) => {
         <div className='ClassicsComponent'>
             <div className="space-y-4">
                 {data?.result?.map((item, index) => (
-                    <div className="relative overflow-hidden flex h-60 bg-[#333] dark:border-transparent tw_container" key={item.id}>
+                    <div className="relative overflow-hidden flex h-60 bg-[#333] tw_container" key={item.id}>
                         {index % 2 === 0 && (
                             <div
                                 className="relative w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125"

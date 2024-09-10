@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.tw_container{
-    @apply border rounded-md transition-all hover:shadow-[0_2px_8px_rgba(186,186,186,0.15)]
+.tw_container {
+    @apply border dark:border-transparent rounded-md transition-all hover:shadow-[0_2px_8px_rgba(186, 186, 186, 0.15)]
+}
+
+.tw_title {
+    @apply flex justify-center items-center pb-4 border-b text-[17px] font-normal text-[#333] transition-all [&>img]:w-[30px] [&>img]:h-5
 }
