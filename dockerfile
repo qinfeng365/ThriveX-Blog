@@ -8,13 +8,13 @@ WORKDIR /thrive
 RUN npm config set registry https://registry.npmmirror.com
 
 # 复制package.json和package-lock.json
-COPY package*.json ./thrive
+COPY package*.json /thrive
 
 # 安装依赖
 RUN npm install
 
 # 复制所有文件到工作目录
-COPY . ./thrive
+COPY . /thrive
 
 # 构建Next.js应用
 RUN npm run build

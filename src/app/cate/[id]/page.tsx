@@ -38,3 +38,5 @@ export default async ({ params, searchParams }: Props) => {
     </>
   )
 }
+
+export const dynamic = "force-dynamic";

@@ -7,6 +7,8 @@ interface Props {
 }
 
 function NotFoundPage({ error }: Props) {
+    console.log(error,99999);
+    
     return (
         <html>
             <body className='bg-white'>
