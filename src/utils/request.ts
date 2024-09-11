@@ -1,4 +1,4 @@
-const url = "http://localhost:9999/api"
+const url = "http://localhost:9003/api"
 
 export default async <T>(method: string, api: string, data?: any) => {
     const res = await fetch(`${url}${api}`, {
