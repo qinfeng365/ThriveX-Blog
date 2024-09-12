@@ -9,3 +9,11 @@
 .tw_title {
     @apply flex justify-center items-center pb-4 border-b dark:border-black-a text-[17px] font-normal text-[#333] transition-all [&>img]:w-[30px] [&>img]:h-5
 }
+
+.tw_form {
+    @apply border rounded-md box-border dark:border-black-b dark:bg-black-b hover:!border-primary outline-none;
+
+    &:focus {
+        @apply border-2 border-primary shadow-[0_10px_20px_1px_rgb(83,157,253,.1)]
+    }
+}
