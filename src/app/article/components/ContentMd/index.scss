@@ -1,22 +1,25 @@
 @import "@/styles/var.scss";
 
 .ContentMdComponent {
-    padding-top: 50px;
-
+    // 自定义文章内容样式
     .markdown-body {
-        // 继承父级字体
-        font-family: inherit;
+        // 继承父级字体：font-family: inherit;
+        @apply font-[inherit] dark:bg-black-a dark:text-[#8c9ab1] transition-colors;
+
+        h1,h2,h3,h4,h5,h6 {
+            @apply dark:text-white dark:border-black-b transition-colors
+        }
+
+        a{
+            @apply text-primary
+        }
 
         p {
-            line-height: 35px;
+            @apply leading-9;
 
             img {
                 // 图片模糊
-                filter: blur(20px);
-                transition: filter 0.7s;
-
-                border-radius: 10px;
-                cursor: pointer;
+                @apply blur-[20px] rounded-xl cursor-pointer transition-all;
             }
         }
     }

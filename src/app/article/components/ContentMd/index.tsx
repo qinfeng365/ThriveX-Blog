@@ -56,9 +56,9 @@ const ContentMdComponent = ({ data }: Props) => {
     };
 
     return (
-        <div className="ContentMdComponent">
+        <div className="ContentMdComponent mt-12">
             <PhotoProvider>
-                <div className="content markdown-body">
+                <div className="markdown-body">
                     <ReactMarkdown components={renderers}>{data}</ReactMarkdown>
                 </div>
             </PhotoProvider>
