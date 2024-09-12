@@ -23,7 +23,7 @@ export default ({ data }: Props) => {
             <div className="flex justify-center items-center">
                 <div className="mr-40">
                     <div className="text-[40px] text-[#33a474] font-medium font-sans">提倡者</div>
-                    <div className="text-[#666]">INFJ</div>
+                    <div className="text-[#666] dark:text-[#8c9ab1]">INFJ</div>
                     <Image src={INFJ} alt="性格" width={200}></Image>
                     <Link href="https://www.16personalities.com/ch/infj-人格" className="block w-full mt-2 text-center text-[#666] text-xs hover:text-[#33a474]">了解一下</Link>
                 </div>
@@ -33,7 +33,7 @@ export default ({ data }: Props) => {
                         data.map(({ value, text1, text2, content, color }, index) => {
                             return (
                                 <div key={index} className="flex justify-center items-center">
-                                    <span className="min-w-20">{text1}</span>
+                                    <span className="min-w-20 dark:text-[#8c9ab1]">{text1}</span>
 
                                     <div className="relative w-full max-w-md">
                                         <Progress
@@ -44,12 +44,12 @@ export default ({ data }: Props) => {
                                             <span className={`flex items-center text-[${color}]`}>
                                                 {value}%
                                                 <Tooltip content={content}>
-                                                    <BiQuestionMark className="w-5 h-5 ml-2 rounded-full p-[2px] bg-[#eee] cursor-pointer" />
+                                                    <BiQuestionMark className="w-5 h-5 ml-2 rounded-full p-[2px] bg-[#eee] dark:bg-black-b cursor-pointer" />
                                                 </Tooltip>
                                             </span>
                                         </div>
                                     </div>
-                                    <span className="min-w-20 text-end">{text2}</span>
+                                    <span className="min-w-20 text-end dark:text-[#8c9ab1]">{text2}</span>
                                 </div>
                             );
                         })

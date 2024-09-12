@@ -3,7 +3,7 @@ import "./index.scss"
 export default () => {
     return (
         <>
-            <div className='LoadingComponent fixed w-full h-full z-50 bg-[rgb(255,255,255,0.5)] rounded-lg flex justify-center items-center'>
+            <div className='LoadingComponent fixed w-full h-full z-50 bg-[rgb(255,255,255,0.5)] dark:bg-[rgb(36,41,38,0.5)] rounded-lg flex justify-center items-center'>
                 <svg
                     className="container"
                     x="0px"

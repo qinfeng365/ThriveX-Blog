@@ -56,15 +56,15 @@ export default () => {
 
     return (
         <>
-            <div className="MyPage bg-white pt-[80px] bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
+            <div className="MyPage bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
                 {/* 个人介绍 */}
                 <div className="w-7/12 mx-auto">
                     <div className="mt-16 transition-colors">
                         <div className="flex justify-between items-center">
-                            <div className="w-6/12 text-[#353a40] transition-all duration-800">
+                            <div className="w-6/12 text-[#353a40] dark:text-[#fff] transition-all duration-800">
                                 <div className="text-4xl my-10 text-[#738bff]">I am <span className="name">{data.name}</span></div>
                                 <div className="text-4xl my-10">{data.profession}</div>
-                                <div className="text-[#666] font-heiti leading-8">{data.introduction}</div>
+                                <div className="text-[#666] dark:text-[#8c9ab1] font-heiti leading-8">{data.introduction}</div>
                             </div>
 
                             <div className="overflow-hidden w-[400px] h-[400px] rounded-full shadow-lg">
