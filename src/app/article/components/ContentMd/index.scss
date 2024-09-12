@@ -6,11 +6,16 @@
         // 继承父级字体：font-family: inherit;
         @apply font-[inherit] dark:bg-black-a dark:text-[#8c9ab1] transition-colors;
 
-        h1,h2,h3,h4,h5,h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             @apply dark:text-white dark:border-black-b transition-colors
         }
 
-        a{
+        a {
             @apply text-primary
         }
 

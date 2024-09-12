@@ -1,10 +1,5 @@
 @import "@/styles/var.scss";
 
-/* 添加平滑滚动效果 */
-// html {
-//     scroll-behavior: smooth;
-// }
-
 :target::before {
     content: "";
     display: block;
@@ -14,61 +9,30 @@
 }
 
 .ContentNavComponent {
-    .navs {
-        color: #4d4d4d;
-        font-size: 13px;
+    .nav_item ::before {
+        @apply content-[''] -left-2.5 absolute top-1/2 -translate-y-1/2 w-1 h-[15px] rounded-[20px] bg-primary transition-all duration-700;
+    }
 
-        .nav_item {
-            padding-left: 10px;
-            margin-bottom: 5px;
-            transition: all 0.7s;
+    .h2 {
+        padding-left: 35px;
 
-            &::before {
-                content: "";
-                left: -10px;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 4px;
-                height: 15px;
-                border-radius: 20px;
-                background-color: #539dfd;
-                transition: all 0.7s;
-            }
-        }
-
-        .active {
-            color: #539dfd;
-            padding-left: 30px;
-            border-radius: 10px;
-            background-color: #f7faff;
-
-            &::before {
-                left: 15px;
-            }
-        }
-
-        .h2 {
-            padding-left: 25px;
-
-            &.active {
-                padding-left: 35px;
-
-                &::before {
-                    left: 20px;
-                }
-            }
-        }
-
-        .h3 {
+        &.active {
             padding-left: 45px;
 
-            &.active {
-                padding-left: 55px;
+            &::before {
+                left: 30px;
+            }
+        }
+    }
 
-                &::before {
-                    left: 40px;
-                }
+    .h3 {
+        padding-left: 55px;
+
+        &.active {
+            padding-left: 65px;
+
+            &::before {
+                left: 50px;
             }
         }
     }

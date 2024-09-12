@@ -21,7 +21,7 @@ const ContentNav = () => {
     const [navs, setNavs] = useState<NavItem[]>([]);
     const [active, setActive] = useState(0);
 
-    useEffect(() => {
+    useEffect(() => {        
         // 获取当前容器中所有的标题
         const list = document.querySelectorAll(".content h1, .content h2, .content h3");
 
@@ -79,24 +79,24 @@ const ContentNav = () => {
                     </div>
                 )
                 : (
-                    navs?.length &&
+                    !!navs?.length &&
                     <div className="fixed top-[80%] left-[2%] z-50 cursor-pointer w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => setOpen(true)}>
                         <img src={directory.src} alt="" className="w-full text-5xl text-primary" />
                     </div >
                 )
             }
 
-            <div className={`ContentNavComponent overflow-hidden fixed top-0 z-50 h-screen bg-[rgba(255,255,255,0.9)] backdrop-blur-sm shadow-[16px_0px_15px_-3px_rgba(101,155,246,0.1)] ${open ? 'w-[13%] p-[20px_10px]' : 'w-0'} transition-width`}>
-                <div className="flex justify-center items-center">
+            <div className={`ContentNavComponent overflow-hidden fixed top-0 z-50 w-0 h-screen bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(30,36,46,0.9)] backdrop-blur-sm shadow-[16px_0px_15px_-3px_rgba(101,155,246,0.1)] ${open ? 'w-[13%] p-[20px_10px]' : 'w-0'} transition-width`}>
+                <div className="flex justify-center items-center mt-5">
                     <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
                 </div>
 
-                <div className="navs w-full mt-4">
+                <div className="text-[#4d4d4d] dark:text-[#8c9ab1] text-sm w-full mt-4">
                     {navs.map((item, index) => (
                         <a
                             key={index}
                             href={`#${item.href}`}
-                            className={`nav_item overflow-hidden relative block p-1 hover:text-primary transition duration-700 ${active >= item.start && active < item.end! ? 'active' : ''} ${item.className}`}
+                            className={`nav_item overflow-hidden relative block p-1 pl-5 mb-[5px] hover:text-primary transition-all duration-700 ${active >= item.start && active < item.end! ? 'text-primary pl-[30px] rounded-[10px] bg-[#f7faff] dark:bg-[#313d4e99] before:!left-4' : ''} ${item.className}`}
                         >
                             {item.href}
                         </a>
