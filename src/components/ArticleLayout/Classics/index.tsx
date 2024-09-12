@@ -32,7 +32,7 @@ const Classics = ({ data }: ClassicsProps) => {
 
                         <div className="relative w-[65%] py-5 px-10 z-20">
                             <Link href={`/article/${item.id}`} className='flex flex-col justify-between h-full'>
-                                <h3 className='relative w-full pt-[10px] pb-5 text-white text-2xl overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.title}</h3>
+                                <h3 className='relative w-full pt-2.5 pb-5 text-white text-2xl overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.title}</h3>
                                 <p className='text-[#cecece] text-[15px] leading-7 indent-8 line-clamp-3'>{item.description}</p>
 
                                 <div className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} pt-5 text-end`}>

@@ -89,7 +89,7 @@ const Header = () => {
                                     <ul className="hidden group-hover/one:block overflow-hidden absolute top-[50px] w-full rounded-md bg-[#f9f9f9]" style={{ boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08)' }}>
                                         {one.children.map(two => (
                                             <li key={two.id} className='group/two'>
-                                                <Link href={`/cate/${two.id}?name=${two.name}`} className="relative inline-block w-full p-[10px] pl-[10px] text-[15px] box-border text-[#666] dark:text-white hover:!text-primary transition-all after:content-[''] after:absolute after:left-[10px] after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-[3px] after:bg-primary after:transition-width group-hover/two:bg-[#f2f2f2] group-hover/two:pl-8 hover:after:w-[10px]">
+                                                <Link href={`/cate/${two.id}?name=${two.name}`} className="relative inline-block w-full p-2.5 pl-2.5 text-[15px] box-border text-[#666] dark:text-white hover:!text-primary transition-all after:content-[''] after:absolute after:left-2.5 after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-[3px] after:bg-primary after:transition-width group-hover/two:bg-[#f2f2f2] group-hover/two:pl-8 hover:after:w-2.5">
                                                     {two.name}
                                                 </Link>
                                             </li>

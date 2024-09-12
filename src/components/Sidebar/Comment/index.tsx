@@ -1,33 +1,36 @@
-import Image from 'next/image'
+import Image from 'next/image';
 import Link from 'next/link';
 import { getCommentListAPI } from '@/api/comment';
-import Comment from '@/assets/svg/other/comments.svg'
+import Comment from '@/assets/svg/other/comments.svg';
 import RandomAvatar from '@/components/RandomAvatar';
 import dayjs from 'dayjs';
 import './index.scss';
 
 const NewComments = async () => {
-    const { data } = await getCommentListAPI()
-    
+    const { data } = await getCommentListAPI();
+
     return (
         <div className='SidebarCommentComponent'>
-            <div className="newComments">
-                <div className="title">
-                    <Image src={Comment} alt="最新评论" /> 最新评论
+            <div className="flex flex-col tw_container bg-white dark:bg-black-b p-4 mb-5 tw_title">
+                <div className="tw_title w-full dark:text-white">
+                    <Image src={Comment} alt="最新评论" width={33} height={23} /> 最新评论
                 </div>
 
-                <div className="list">
+                <div className="mt-2.5">
                     {data?.result.map((item) => (
-                        <Link href={`/article/${item.articleId}`} className="item" key={item.id}>
-                            {
-                                item.avatar
-                                    ? <img src={item.avatar} className="avatar" alt="avatar" />
-                                    : <RandomAvatar className='avatar' />
+                        <Link href={`/article/${item.articleId}`} className="item flex items-center py-2.5 border-b dark:border-b-black-b transition-all last:border-b-0 hover:border-primary" key={item.id}>
+                            {item.avatar
+                                ? <img src={item.avatar} className="w-11 h-11 rounded-full mr-2.5 transition-all hover:scale-110" alt="avatar" />
+                                : <RandomAvatar className='w-11 h-11 rounded-full mr-2.5 transition-all hover:scale-110' />
                             }
-                            
-                            <div className="content">
-                                <div className="info">{item.content}</div>
-                                <div className="time">{dayjs(+item.createTime!).format('YYYY-MM-DD HH:mm')}</div>
+
+                            <div className="flex flex-col justify-center">
+                                <div className="w-48 text-sm text-gray-600 dark:text-[#8c9ab1] transition-all hover:text-primary overflow-hidden line-clamp-2">
+                                    {item.content}
+                                </div>
+                                <div className="pt-2.5 text-xs text-gray-400 transition-all">
+                                    {dayjs(+item.createTime!).format('YYYY-MM-DD HH:mm')}
+                                </div>
                             </div>
                         </Link>
                     ))}
