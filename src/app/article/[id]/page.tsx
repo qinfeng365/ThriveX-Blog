@@ -35,26 +35,26 @@ export default async ({ params }: Props) => {
                     {/* 星空背景组件 */}
                     <Starry />
 
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] text-white custom_text_shadow">
-                        <div className="text-4xl text-center mb-14">{data.title}</div>
+                    <div className="absolute w-[80%] sm:w-[70%] lg:w-[60%] xl:w-[50%] top-[55%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] text-white custom_text_shadow">
+                        <div className="text-xl mb-5 sm:text-2xl lg:text-3xl xl:text-4xl text-center sm:mb-7 md:mb-10">{data.title}</div>
 
-                        <div className="flex space-x-8">
-                            <div className="flex">
+                        <div className="flex flex-wrap justify-between text-xs sm:text-sm">
+                            <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#A543E6]`}><IoMdPricetags /></span>
                                 <span>所属分类：{data.cateList[0]?.name}</span>
                             </div>
 
-                            <div className="flex">
+                            <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#EA3B24]`}><FaHotjar /></span>
                                 <span>阅读量：{data.view}</span>
                             </div>
 
-                            <div className="flex">
+                            <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#4FA759]`}><AiOutlineComment /></span>
                                 <span>评论数量：{data.comment}</span>
                             </div>
 
-                            <div className="flex">
+                            <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#5A9CF8]`}><LuTimer /></span>
                                 <span>发布时间：{dayjs(+data.createTime!).format('YYYY-MM-DD HH:mm')}</span>
                             </div>

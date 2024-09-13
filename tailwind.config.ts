@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '400px',
+      },
       colors: {
         primary: '#539dfd', // 添加自定义颜色
         'black-a': '#232931',
