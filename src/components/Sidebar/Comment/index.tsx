@@ -18,14 +18,14 @@ const NewComments = async () => {
 
                 <div className="mt-2.5">
                     {data?.result.map((item) => (
-                        <Link href={`/article/${item.articleId}`} className="item flex items-center py-2.5 border-b dark:border-b-black-b transition-all last:border-b-0 hover:border-primary" key={item.id}>
+                        <Link href={`/article/${item.articleId}`} className="group flex items-center py-2.5 border-b dark:border-b-black-b transition-all last:border-b-0" key={item.id}>
                             {item.avatar
                                 ? <img src={item.avatar} className="w-11 h-11 rounded-full mr-2.5 transition-all hover:scale-110" alt="avatar" />
                                 : <RandomAvatar className='w-11 h-11 rounded-full mr-2.5 transition-all hover:scale-110' />
                             }
 
                             <div className="flex flex-col justify-center">
-                                <div className="w-48 text-sm text-gray-600 dark:text-[#8c9ab1] transition-all hover:text-primary overflow-hidden line-clamp-2">
+                                <div className="w-48 text-sm text-gray-600 dark:text-[#8c9ab1] transition-all group-hover:text-primary overflow-hidden line-clamp-2">
                                     {item.content}
                                 </div>
                                 <div className="pt-2.5 text-xs text-gray-400 transition-all">
