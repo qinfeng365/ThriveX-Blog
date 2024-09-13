@@ -18,7 +18,7 @@ export default async ({ searchParams }: Props) => {
         {/* 星空背景组件 */}
         <Starry />
         {/* 打字机组件 */}
-        <Typed className="absolute top-[45%] left-[50%] transform -translate-x-1/2 w-[80%] text-center text-white xs:text-xl sm:text-[30px] leading-7 md:leading-[50px] custom_text_shadow"></Typed>
+        <Typed className="absolute top-[45%] sm:top-[40%] left-[50%] transform -translate-x-1/2 w-[80%] text-center text-white xs:text-xl sm:text-[30px] leading-7 md:leading-[50px] custom_text_shadow"></Typed>
       </Swiper>
 
       <Container>

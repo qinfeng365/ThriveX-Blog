@@ -28,7 +28,7 @@ const StarrySky = () => {
 
     return (
         <div className='StarryComponent'>
-            <div className="box_starrySky">
+            <div className="overflow-hidden absolute w-full h-[180%] sm:h-[160%] md:h-[150%]">
                 {/*背景层，不要删除，否则没有作用*/}
                 <div className="stars_starrySky"></div>
             </div>
