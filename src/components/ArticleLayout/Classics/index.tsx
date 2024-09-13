@@ -22,7 +22,7 @@ const Classics = ({ data }: ClassicsProps) => {
                     <div className="relative overflow-hidden flex h-[170px] md:h-60 lg:h-52 xl:h-60 bg-black-b tw_container" key={item.id}>
                         {index % 2 === 0 && (
                             <div
-                                className="relative w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
+                                className="relative min-w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
                                 style={{
                                     clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0 100%)',
                                     backgroundImage: `url(${item.cover || randomImage()})`,
@@ -64,7 +64,7 @@ const Classics = ({ data }: ClassicsProps) => {
 
                         {index % 2 !== 0 && (
                             <div
-                                className="relative w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
+                                className="relative min-w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
                                 style={{
                                     clipPath: 'polygon(10% 0, 100% 0, 100% 100%, 0 100%)',
                                     backgroundImage: `url(${item.cover || randomImage()})`,

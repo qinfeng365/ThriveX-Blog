@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
@@ -8,10 +9,12 @@ import Show from '@/components/Show'
 import lightLogo from '@/assets/image/light_logo.png';
 import darkLogo from '@/assets/image/dark_logo.png';
 import { IoIosArrowDown } from 'react-icons/io';
+import { FaRegSun } from "react-icons/fa";
+import { BsFillMoonStarsFill } from "react-icons/bs";
 
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
-import { Button } from '@nextui-org/react';
+import { Switch } from '@nextui-org/react';
 
 import { useConfigStore } from '@/stores';
 
@@ -61,7 +64,7 @@ const Header = () => {
     return (
         <div className='HeaderComponent'>
             <div className={`header fixed top-0 w-full h-16 backdrop-blur-[5px] transition-colors z-50 after:content-[''] after:block after:w-full after:h-0 after:bg-[linear-gradient(#fff,transparent_70%)] dark:after:bg-[linear-gradient(#2b333e,transparent_70%)] after:transition-colors ${isPathSty || isScrolled ? 'bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(44,51,62,0.9)] border-b dark:border-[#2b333e] after:!h-8 after:transition-height]' : 'border-transparent'} transition-all`}>
-                <div className="h-16 w-[1500px] mx-auto">
+                <div className="flex justify-between h-16 w-[1500px] mx-auto">
                     <ul className="flex items-center h-16">
                         <li className="relative">
                             <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
@@ -95,9 +98,15 @@ const Header = () => {
                                 )} />
                             </li>
                         ))}
-
-                        <Button onClick={toTheme}>切换主题</Button>
                     </ul>
+
+                    <Switch
+                        size="lg"
+                        isSelected={isDark}
+                        onValueChange={toTheme}
+                        thumbIcon={({ isSelected }) => isSelected ? <BsFillMoonStarsFill className="text-gray-500" /> : <FaRegSun className="text-gray-500" />}
+                        className={`${isDark ? '[&>.bg-default-200]:!bg-[#4e5969]' : '[&>.bg-default-200]:!bg-[#e1e1e1]'}`}
+                    />
                 </div>
             </div>
         </div>
