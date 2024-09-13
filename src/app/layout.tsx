@@ -1,6 +1,7 @@
 import { NextUIProvider } from '@nextui-org/react';
 
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 // 加载样式文件
 import "@/styles/index.scss";
@@ -28,6 +29,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <NextUIProvider>
           {children}
         </NextUIProvider>
+
+        <Footer />
       </body>
     </html>
   );
