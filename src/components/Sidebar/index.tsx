@@ -6,7 +6,7 @@ import Comment from "./Comment"
 export default () => {
   return (
     <>
-      <div className="right">
+      <div className="hidden lg:block lg:w-[29%] xl:w-[24%] rounded-md transition-width sticky top-[70px]">
         {/* 作者介绍 */}
         <Author></Author>
         {/* 随机推荐 */}
