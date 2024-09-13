@@ -35,7 +35,7 @@ export default async ({ params }: Props) => {
                     {/* 星空背景组件 */}
                     <Starry />
 
-                    <div className="absolute w-[80%] sm:w-[70%] lg:w-[60%] xl:w-[50%] top-[55%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] text-white custom_text_shadow">
+                    <div className="absolute w-[80%] sm:w-[70%] lg:w-[60%] xl:w-[50%] top-[60%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] text-white custom_text_shadow">
                         <div className="text-xl mb-5 sm:text-2xl lg:text-3xl xl:text-4xl text-center sm:mb-7 md:mb-10">{data.title}</div>
 
                         <div className="flex flex-wrap justify-between text-xs sm:text-sm">
@@ -62,7 +62,7 @@ export default async ({ params }: Props) => {
                     </div>
                 </Swiper>
 
-                <div className="w-6/12 mx-auto relative">
+                <div className="w-[90%] xl:w-6/12 mx-auto relative">
                     <ContentMd data={data.content}></ContentMd>
 
                     <div className="w-full">
