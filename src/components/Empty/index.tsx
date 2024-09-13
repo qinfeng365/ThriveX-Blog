@@ -3,10 +3,10 @@ import './index.scss';
 
 const Empty = ({ info }: { info: string }) => {
     return (
-        <div className='EmptyComponent'>
-            <div className="empty">
+        <div className='EmptyComponent py-12'>
+            <div className="w-52 mx-auto mt-5">
                 <img src={empty.src} alt="空状态" />
-                <div className="info">{info}</div>
+                <div className="pt-5 text-center text-gray-700 dark:text-white">{info}</div>
             </div>
         </div>
     );
