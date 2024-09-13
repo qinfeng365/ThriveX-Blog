@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import "github-markdown-css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import { useConfigStore } from "@/stores";
 import "./index.scss";
 
 interface Props {
@@ -22,11 +23,10 @@ const ContentMdComponent = ({ data }: Props) => {
         }, 1000);
     }, []);
 
+    const { isDark } = useConfigStore()
     useEffect(() => {
         // 当组件挂载时，改变body背景颜色
         document.body.style.backgroundColor = '#fff';
-
-        const isDark = document.body.className.includes("dark")
         let color = isDark ? "36, 41, 48" : "255, 255, 255"
 
         // 更改波浪颜色
@@ -51,9 +51,9 @@ const ContentMdComponent = ({ data }: Props) => {
     const renderers = {
         img: ({ alt, src }: { alt?: string; src?: string }) => (
             <PhotoView src={src || ''}>
-                <div className="flex justify-center w-full my-4">
+                <span className="flex justify-center w-full my-4">
                     <img alt={alt} src={src} />
-                </div>
+                </span>
             </PhotoView>
         ),
     };

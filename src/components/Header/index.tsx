@@ -1,18 +1,21 @@
 "use client"
 
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import Show from '@/components/Show'
 
 import lightLogo from '@/assets/image/light_logo.png';
 import darkLogo from '@/assets/image/dark_logo.png';
-
 import { IoIosArrowDown } from 'react-icons/io';
+
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
-import "./index.scss"
 import { Button } from '@nextui-org/react';
+
+import { useConfigStore } from '@/stores';
+
+import "./index.scss"
 
 const Header = () => {
     const patchName = usePathname();
@@ -43,7 +46,7 @@ const Header = () => {
     }, []);
 
     // 是否暗黑模式
-    const [isDark, setIsDark] = useState(false)
+    const { isDark, setIsDark } = useConfigStore()
     // 手动切换主题
     const toTheme = () => {
         const html = document.querySelector('html')
@@ -51,9 +54,9 @@ const Header = () => {
     }
     // 判断当前主题
     useEffect(() => {
-        const html = document.querySelector('html')
-        setIsDark(html?.className.includes("dark")!)
-    }, [])
+        const html = document.querySelector('html');
+        html?.classList.toggle('dark', isDark);
+    }, [isDark])
 
     return (
         <div className='HeaderComponent'>
