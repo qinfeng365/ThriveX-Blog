@@ -59,7 +59,7 @@ const CommentList = ({ list, reply }: Props) => {
                                             }
 
                                             {two.url ? (
-                                                <a href={two.url} className="name active" target="_blank" rel="noopener noreferrer">
+                                                <a href={two.url} className="name active !text-primary" target="_blank" rel="noopener noreferrer">
                                                     {two.name}
                                                 </a>
                                             ) : (
@@ -87,7 +87,7 @@ const CommentList = ({ list, reply }: Props) => {
                                                     }
 
                                                     {three.url ? (
-                                                        <a href={three.url} className="name active" target="_blank" rel="noopener noreferrer">
+                                                        <a href={three.url} className="name active !text-primary" target="_blank" rel="noopener noreferrer">
                                                             {three.name}
                                                         </a>
                                                     ) : (
