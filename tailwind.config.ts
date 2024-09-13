@@ -28,9 +28,7 @@ const config: Config = {
     themes: {
       dark: {
         colors: {
-          background: "#232931", // 修改为你想要的背景颜色
-          foreground: "#ffffff", // 修改为你想要的文本颜色
-          // 你可以在这里添加其他颜色配置
+          background: "#232931",
         },
       },
     },

@@ -21,7 +21,7 @@ export default ({ total, page, url, className }: Props) => {
                     total={total}
                     page={+page}
                     onChange={(page) => router.push(url ? `${url}&page=${page}` : `?page=${page}`)}
-                    classNames={{ item: "shadow-none bg-transparent" }}
+                    classNames={{ item: "shadow-none bg-transparent dark:hover:!bg-black-b transition-colors", prev: "dark:bg-black-b transition-colors", next: "dark:bg-black-b transition-colors" }}
                 />
             </div>
         </>

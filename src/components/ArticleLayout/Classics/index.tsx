@@ -19,7 +19,7 @@ const Classics = ({ data }: ClassicsProps) => {
         <div className='ClassicsComponent'>
             <div className="space-y-4">
                 {data?.result?.map((item, index) => (
-                    <div className="relative overflow-hidden flex h-[170px] md:h-60 lg:h-52 xl:h-60 bg-black-b tw_container" key={item.id}>
+                    <div className="relative overflow-hidden flex h-[190px] md:h-60 lg:h-52 xl:h-60 bg-black-b tw_container" key={item.id}>
                         {index % 2 === 0 && (
                             <div
                                 className="relative min-w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
@@ -30,13 +30,13 @@ const Classics = ({ data }: ClassicsProps) => {
                             />
                         )}
 
-                        <div className="relative w-full sm:w-[65%] py-5 px-5 sm:px-10 z-20">
+                        <div className="relative w-full sm:w-[65%] py-5 px-5 sm:px-10 lg:px-5 xl:px-10 z-20">
                             <Link href={`/article/${item.id}`} className='flex flex-col justify-between h-full text-center sm:text-start'>
-                                <h3 className='relative w-full sm:pt-2.5 pb-2.5 sm:pb-5 text-white text-lg md:text-xl lg:text-[22px] xl:text-2xl overflow-hidden whitespace-nowrap overflow-ellipsis'>{item.title}</h3>
-                                <p className='text-[#cecece] text-sm sm:text-[15px] leading-7 sm:indent-8 line-clamp-2 sm:line-clamp-3'>{item.description}</p>
+                                <h3 className='relative w-full my-2.5 text-white text-lg md:text-xl lg:text-[22px] xl:text-2xl overflow-hidden line-clamp-1'>{item.title}</h3>
+                                <p className='text-[#cecece] text-sm sm:text-[15px] leading-7 sm:indent-8 line-clamp-2 xl:line-clamp-3'>{item.description}</p>
 
-                                <div className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} pt-5 text-end space-x-4 sm:space-x-8`}>
-                                    <div className='flex items-center sm:pl-8 text-xs text-white'>
+                                <div className={`flex ${index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'} justify-center pt-5 text-end space-x-4 sm:space-x-8`}>
+                                    <div className='flex items-center text-xs text-white'>
                                         <span className='pr-1'><IoTimeOutline className='p-1 mt-[-2px] mr-[3px] text-[23px] text-white rounded-full align-middle bg-[#539dfd]' /></span>
                                         <span>{dayjs(+item.createTime!).format('YYYY-MM-DD')}</span>
                                     </div>
