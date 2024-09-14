@@ -19,7 +19,7 @@ export default async ({ params, searchParams }: Props) => {
   return (
     <>
       <div>
-        <Swiper>
+        <Swiper isRipple={false}>
           {/* 星空背景组件 */}
           <Starry />
 
