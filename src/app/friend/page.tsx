@@ -4,6 +4,7 @@ import Swiper from "@/components/Swiper";
 import { getWebListAPI } from '@/api/web'
 import { Web } from "@/types/app/web";
 import Link from "next/link";
+import { Button } from "@nextui-org/react";
 
 export const metadata: Metadata = {
     title: "朋友圈",
@@ -29,17 +30,17 @@ export default async () => {
                 {/* 星空背景组件 */}
                 <Starry />
 
-                {/* 分类信息 */}
-                <div className="absolute top-[35%] left-[50%] transform -translate-x-1/2 w-[80%] text-center text-white text-[20px] xs:text-[25px] sm:text-[30px] custom_text_shadow">
-                    一个人的寂寞，一群人的狂欢
+                <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 flex flex-col items-center">
+                    <div className="text-white text-[20px] xs:text-[25px] sm:text-[30px] whitespace-nowrap custom_text_shadow">一个人的寂寞，一群人的狂欢！</div>
+                    <div className="mt-4 sm:mt-8"><Button color="primary" variant="shadow">申请加入</Button></div>
                 </div>
             </Swiper>
 
-            <div className="relative -top-36 w-[90%] xl:w-[1200px] p-10 pt-2 mx-auto bg-white dark:bg-black-b border dark:border-black-b rounded-2xl space-y-8 transition-colors">
+            <div className="relative -top-20 xs:-top-20 sm:-top-32 md:-top-36 w-[90%] xl:w-[1200px] p-10 pt-2 mx-auto bg-white dark:bg-black-b border dark:border-black-b rounded-2xl space-y-8 transition-colors">
                 {
                     Object.keys(list).map((type, index) => (
                         <div key={index}>
-                            <h3 className="w-2/6 mx-auto text-center text-xl p-4 dark:text-white transition-colors">{type}</h3>
+                            <h3 className="w-full text-center text-xl p-4 dark:text-white transition-colors">{type}</h3>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                                 {
