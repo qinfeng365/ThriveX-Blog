@@ -1,10 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { Input, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio, Select, SelectItem, Textarea } from "@nextui-org/react";
+import { Input, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Web, WebType } from "@/types/app/web";
-import { getWebTypeListAPI } from '@/api/web'
+import { addWebDataAPI, getWebTypeListAPI } from '@/api/web'
+import { Bounce, toast, ToastOptions } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -21,10 +23,29 @@ export default () => {
   }, [])
 
   const [defaultValues, setDefaultValues] = useState<Web>({} as Web)
-  const { register, handleSubmit, control, formState: { errors }, trigger } = useForm<Web>({ defaultValues });
-  const onSubmit: SubmitHandler<Web> = (data, event) => {
+  const { handleSubmit, control, formState: { errors }, trigger } = useForm<Web>({ defaultValues });
+  const onSubmit: SubmitHandler<Web> = async (data, event) => {
     event?.preventDefault();
-    console.log(data)
+    console.log({ ...data, createTime: new Date().getTime().toString() })
+    const { code, message } = await addWebDataAPI({ ...data, createTime: new Date().getTime().toString() })
+
+    const toastConfig: ToastOptions = {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    }
+
+    if (code !== 200) return toast.error(message, toastConfig);
+
+    toast.success('🎉 提交成功, 请等待审核!', toastConfig);
+    getWebTypeList()
+    onOpenChange()
   }
 
   // 表单样式

@@ -50,7 +50,7 @@ const CommentForm = ({ id }: Props) => {
         const { code, message } = await addCommentDataAPI(id, { ...data, commentId: commentId === id ? 0 : commentId, createTime: Date.now().toString() })
         if (code !== 200) return alert("发布评论失败：" + message);
 
-        toast("🎉 发布评论成功, 请等待审核!")
+        toast("🎉 提交成功, 请等待审核!")
 
         // 发布成功后初始化表单
         setCommentId(id)

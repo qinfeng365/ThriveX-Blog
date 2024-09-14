@@ -6,7 +6,7 @@ export default async <T>(method: string, api: string, data?: any) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        [method === "POST" ? "body" : ""]: data ? JSON.stringify(data) : JSON.stringify({})
+        [method === "POST" ? "body" : ""]: JSON.stringify(data ? data : {})
     })
     
     return res.json() as Promise<Response<T>>;

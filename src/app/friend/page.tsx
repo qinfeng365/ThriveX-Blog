@@ -7,6 +7,7 @@ import { Web } from "@/types/app/web";
 import Swiper from "@/components/Swiper";
 import Starry from "@/components/Starry";
 import ApplyForAdd from "./components/ApplyForAdd";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
     title: "朋友圈",
@@ -75,6 +76,8 @@ export default async () => {
                     ))
                 }
             </div>
+
+            <ToastContainer />
         </>
     )
 }

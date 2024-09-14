@@ -10,3 +10,8 @@ export const getWebTypeListAPI = async () => {
 export const getWebListAPI = async () => {
     return await Request<Web[]>("POST", `/link/list`);
 }
+
+// 新增网站
+export const addWebDataAPI = async (data: Web) => {
+    return await Request<Web>("POST", `/link`, data);
+}
