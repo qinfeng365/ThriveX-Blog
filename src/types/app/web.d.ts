@@ -1,6 +1,8 @@
 export interface WebType {
   id: number,
-  name: string
+  name: string,
+  order: number,
+  isAdmin: number
 }
 
 export interface Web {
@@ -12,6 +14,6 @@ export interface Web {
   url: string;
   rss: string;
   typeId: number;
-  typeName: string;
+  type: interface;
   createTime?: string;
 }
