@@ -1,10 +1,12 @@
+import Link from "next/link";
 import { Metadata } from "next";
-import Starry from "@/components/Starry";
-import Swiper from "@/components/Swiper";
+
 import { getWebListAPI } from '@/api/web'
 import { Web } from "@/types/app/web";
-import Link from "next/link";
-import { Button } from "@nextui-org/react";
+
+import Swiper from "@/components/Swiper";
+import Starry from "@/components/Starry";
+import ApplyForAdd from "./components/ApplyForAdd";
 
 export const metadata: Metadata = {
     title: "朋友圈",
@@ -32,7 +34,9 @@ export default async () => {
 
                 <div className="absolute top-[30%] left-[50%] transform -translate-x-1/2 flex flex-col items-center">
                     <div className="text-white text-[20px] xs:text-[25px] sm:text-[30px] whitespace-nowrap custom_text_shadow">一个人的寂寞，一群人的狂欢！</div>
-                    <div className="mt-4 sm:mt-8"><Button color="primary" variant="shadow">申请加入</Button></div>
+                    <div className="mt-4 sm:mt-8">
+                        <ApplyForAdd />
+                    </div>
                 </div>
             </Swiper>
 

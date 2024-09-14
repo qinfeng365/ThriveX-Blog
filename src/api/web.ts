@@ -1,5 +1,10 @@
 import Request from "@/utils/request";
-import { Web } from "@/types/app/web";
+import { Web, WebType } from "@/types/app/web";
+
+// 获取网站类型列表
+export const getWebTypeListAPI = async () => {
+    return await Request<WebType[]>("GET", `/link/type`);
+}
 
 // 获取网站列表
 export const getWebListAPI = async () => {

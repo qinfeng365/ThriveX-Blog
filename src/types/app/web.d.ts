@@ -1,4 +1,4 @@
-export interface LinkType {
+export interface WebType {
   id: number,
   name: string
 }
