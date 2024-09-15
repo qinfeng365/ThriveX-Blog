@@ -114,7 +114,7 @@ export default () => {
                 <Controller
                   name="image"
                   control={control}
-                  rules={{ required: '请输入图片地址' }}
+                  rules={{ required: '请输入图片地址', pattern: { value: /^https?:\/\//, message: "请输入正确的图片地址" } }}
                   render={({ field }) => (
                     <>
                       <Input
@@ -135,7 +135,7 @@ export default () => {
                 <Controller
                   name="url"
                   control={control}
-                  rules={{ required: '请输入网站地址' }}
+                  rules={{ required: '请输入网站地址', pattern: { value: /^https?:\/\//, message: "请输入正确的网站地址" } }}
                   render={({ field }) => (
                     <>
                       <Input
@@ -156,13 +156,13 @@ export default () => {
                 <Controller
                   name="email"
                   control={control}
-                  rules={{ required: '请输入邮箱' }}
+                  rules={{ pattern: { value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message: "请输入正确的邮箱" } }}
                   render={({ field }) => (
                     <>
                       <Input
                         {...field}
                         type="text"
-                        label="邮箱"
+                        label="邮箱（选填）"
                         variant="bordered"
                         placeholder="示例：liuyuyang1024@yeah.net"
                         isInvalid={!!errors.email?.message}
@@ -177,7 +177,7 @@ export default () => {
                 <Controller
                   name="rss"
                   control={control}
-                  rules={{ required: '请输入订阅地址' }}
+                  rules={{ pattern: { value: /^https?:\/\//, message: "请输入正确的订阅地址" } }}
                   render={({ field }) => (
                     <>
                       <Input
