@@ -26,7 +26,6 @@ export default () => {
   const { handleSubmit, control, formState: { errors }, trigger } = useForm<Web>({ defaultValues });
   const onSubmit: SubmitHandler<Web> = async (data, event) => {
     event?.preventDefault();
-    console.log({ ...data, createTime: new Date().getTime().toString() })
     const { code, message } = await addWebDataAPI({ ...data, createTime: new Date().getTime().toString() })
 
     const toastConfig: ToastOptions = {

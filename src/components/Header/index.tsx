@@ -10,8 +10,7 @@ import lightLogo from '@/assets/image/light_logo.png';
 import darkLogo from '@/assets/image/dark_logo.png';
 import { IoIosArrowDown } from 'react-icons/io';
 import { FaRegSun } from "react-icons/fa";
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { BsTextIndentLeft } from "react-icons/bs";
+import { BsFillMoonStarsFill, BsTextIndentLeft } from "react-icons/bs";
 
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
