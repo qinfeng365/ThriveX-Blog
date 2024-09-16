@@ -3,8 +3,8 @@ import Classics from "./Classics"
 import { getArticleListAPI } from '@/api/article'
 
 export default async ({ page }: { page: number }) => {
-  const { data } = await getArticleListAPI(page)
-
+  const { data } = await getArticleListAPI({ pagination: { page } })
+  
   return (
     <>
       <div className="w-full md:w-[90%] lg:w-[68%] xl:w-[73%] mx-auto transition-width">

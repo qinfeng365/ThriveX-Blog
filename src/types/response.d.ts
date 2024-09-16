@@ -31,7 +31,4 @@ interface QueryData {
     pattern?: "list" | "recursion",
     query?: FilterData,
     pagination?: Page,
-
-    // 文件相关
-    dir?: "all" | string
 }

@@ -13,6 +13,7 @@
     "@dicebear/collection": "^9.2.1",
     "@dicebear/core": "^9.2.1",
     "@nextui-org/react": "^2.4.6",
+    "ahooks": "^3.8.1",
     "dayjs": "^1.11.13",
     "github-markdown-css": "^5.6.1",
     "next": "^14.2.5",
