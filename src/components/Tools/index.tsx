@@ -19,7 +19,7 @@ export default () => {
                     : <img src={moon.src} alt="月亮" className={itemSty} onClick={() => setIsDark(true)} />
                 }
                 <img src={search.src} alt="搜索" className={itemSty} />
-                <img src={returnTop.src} alt="返回顶部" className={itemSty} />
+                <img src={returnTop.src} alt="返回顶部" className={itemSty} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
             </div>
         </>
     )
