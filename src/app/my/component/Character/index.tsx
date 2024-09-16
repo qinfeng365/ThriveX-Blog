@@ -20,15 +20,15 @@ export default ({ data }: Props) => {
 
     return (
         <>
-            <div className="flex justify-center items-center">
-                <div className="mr-40">
+            <div className="flex justify-between items-center">
+                <div>
                     <div className="text-[40px] text-[#33a474] font-medium font-sans">提倡者</div>
                     <div className="text-[#666] dark:text-[#8c9ab1]">INFJ</div>
                     <Image src={INFJ} alt="性格" width={200}></Image>
                     <Link href="https://www.16personalities.com/ch/infj-人格" className="block w-full mt-2 text-center text-[#666] text-xs hover:text-[#33a474]">了解一下</Link>
                 </div>
 
-                <div className="w-[550px] space-y-10">
+                <div className="w-[65%] space-y-10">
                     {
                         data.map(({ value, text1, text2, content, color }, index) => {
                             return (

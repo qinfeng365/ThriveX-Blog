@@ -3,6 +3,8 @@ import bg from '@/assets/image/bg.png'
 import avatar from '@/assets/image/avatar.jpg'
 import dynamic from 'next/dynamic'
 import "./page.scss"
+import { Checkbox } from "@nextui-org/react";
+import Goals from "./component/Goals";
 
 const Character = dynamic(() => import('./component/Character'))
 const Map = dynamic(() => import('./component/Map'))
@@ -51,6 +53,28 @@ export default () => {
                 content: "起伏不定型的人自我意识强，对压力敏感。他们在情绪上有一种紧迫感，往往以成功为导向，追求完美，渴望进步。",
                 color: "#f25e62"
             },
+        ],
+        goals: [
+            {
+                status: 3,
+                value: "1、学习 React 达到找工作水平"
+            },
+            {
+                status: 3,
+                value: "2、学习 Nextjs 达到找工作水平"
+            },
+            {
+                status: 3,
+                value: "3、入手 MacBook 生产力神器"
+            },
+            {
+                status: 1,
+                value: "4、完成 ThriveX 项目重构"
+            },
+            {
+                status: 1,
+                value: "5、刷100道面试题"
+            },
         ]
     }
 
@@ -74,13 +98,29 @@ export default () => {
                     </div>
                 </div>
 
-                <div className="character mt-14">
+                {/* <div className="character mt-14">
                     <div className="text-center text-xl mb-8">我的性格</div>
 
                     <Character data={data.character} />
+                </div> */}
+
+                <div className="flex w-9/12 m-28 mx-auto">
+                    {/* 性格 */}
+                    <div className="w-7/12 mr-20">
+                        <div className="text-center text-xl mb-8">我的性格</div>
+
+                        <Character data={data.character} />
+                    </div>
+
+                    {/* 目标墙 */}
+                    <div className="w-5/12 flex flex-col">
+                        <div className="text-center text-xl mb-2">2024年度目标</div>
+
+                        <Goals data={data.goals} />
+                    </div>
                 </div>
 
-                <div className="flex w-9/12 mt-14 mx-auto">
+                <div className="flex w-9/12 mt-28 mx-auto">
                     {/* 位置 */}
                     <div className="w-5/12 mr-20">
                         <div className="text-center text-xl mb-6">我的家乡</div>
