@@ -3,12 +3,12 @@ import bg from '@/assets/image/bg.png'
 import avatar from '@/assets/image/avatar.jpg'
 import dynamic from 'next/dynamic'
 import "./page.scss"
-import { Checkbox } from "@nextui-org/react";
-import Goals from "./component/Goals";
 
+const Goals = dynamic(() => import('./component/Goals'))
 const Character = dynamic(() => import('./component/Character'))
 const Map = dynamic(() => import('./component/Map'))
 const Technology = dynamic(() => import('./component/Technology'))
+const Project = dynamic(() => import('./component/Project'))
 const CurriculumVitae = dynamic(() => import('./component/CurriculumVitae'))
 
 export default () => {
@@ -98,24 +98,16 @@ export default () => {
                     </div>
                 </div>
 
-                {/* <div className="character mt-14">
-                    <div className="text-center text-xl mb-8">我的性格</div>
-
-                    <Character data={data.character} />
-                </div> */}
-
                 <div className="flex w-9/12 m-28 mx-auto">
                     {/* 性格 */}
                     <div className="w-7/12 mr-20">
                         <div className="text-center text-xl mb-8">我的性格</div>
-
                         <Character data={data.character} />
                     </div>
 
                     {/* 目标墙 */}
                     <div className="w-5/12 flex flex-col">
                         <div className="text-center text-xl mb-2">2024年度目标</div>
-
                         <Goals data={data.goals} />
                     </div>
                 </div>
@@ -132,6 +124,11 @@ export default () => {
                         <div className="text-center text-xl mb-6">我的技术栈</div>
                         <Technology />
                     </div>
+                </div>
+
+                <div className="character mt-28">
+                    <div className="text-center text-xl mb-8">我的开源项目</div>
+                    <Project />
                 </div>
 
                 <div className="mt-14">
