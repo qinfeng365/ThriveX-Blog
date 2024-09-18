@@ -13,7 +13,7 @@ export default ({ data }: Props) => {
         <>
             <div className="flex flex-col space-y-2">
                 {data.map((item, index) => (
-                    <div className="flex justify-between items-center">
+                    <div key={index} className="flex justify-between items-center">
                         <Checkbox key={index} defaultSelected={item.status === 3}>{item.value}</Checkbox>
 
                         {item.status === 1 && <span className="text-xs text-yellow-400">待完成</span>}

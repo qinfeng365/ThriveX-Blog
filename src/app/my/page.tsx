@@ -1,18 +1,19 @@
 import Image from "next/image";
+import dynamic from 'next/dynamic'
 import bg from '@/assets/image/bg.png'
 import avatar from '@/assets/image/avatar.jpg'
-import dynamic from 'next/dynamic'
+import { MyData } from '@/types/app/my'
 import "./page.scss"
 
 const Goals = dynamic(() => import('./component/Goals'))
 const Character = dynamic(() => import('./component/Character'))
 const Map = dynamic(() => import('./component/Map'))
 const Technology = dynamic(() => import('./component/Technology'))
-const Project = dynamic(() => import('./component/Project'))
+const Project = dynamic(() => import('./component/Project'), { ssr: false })
 const CurriculumVitae = dynamic(() => import('./component/CurriculumVitae'))
 
 export default () => {
-    const data = {
+    const data: MyData = {
         name: "Liu YuYang",
         avatar,
         profession: "一名Web全栈开发工程师",
@@ -75,13 +76,79 @@ export default () => {
                 status: 1,
                 value: "5、刷100道面试题"
             },
+        ],
+        project: [
+            {
+                name: "云上校园",
+                images: [
+                    "https://bu.dusays.com/2024/09/18/66ea606eb5aa1.png",
+                    "https://bu.dusays.com/2024/09/18/66ea605d89df7.png",
+                    "https://bu.dusays.com/2024/09/18/66ea605ca9f0d.jpg",
+                ],
+                description: "🎉 云上校园是一个现代化大学生社交平台，该项目的立意是为了打造一个完整的校园生态圈，使校园触手可及!",
+                front: {
+                    technology: "微信小程序、Vant、Echarts、Autojs",
+                    url: ""
+                },
+                control: {
+                    technology: "Vue2、Element UI、vue-element-admin",
+                    url: ""
+                },
+                backend: {
+                    technology: "Nodejs、Eggjs、Socket.io、MySQL",
+                    url: ""
+                },
+            },
+            {
+                name: "Thrive",
+                images: [
+                    "https://bu.dusays.com/2024/09/17/66e96cb4e8417.png",
+                    "https://bu.dusays.com/2024/09/17/66e96ca366600.png",
+                    "https://bu.dusays.com/2024/09/17/66e96ca781d49.png",
+                    "https://bu.dusays.com/2024/09/17/66e96c9e76c81.png"
+                ],
+                description: "🎉 Thrive 是一个简而不简单的现代化博客管理系统，专注于分享技术文章和知识，为技术爱好者和从业者提供一个分享、交流和学习的平台。用户可以在平台上发表自己的技术文章，或浏览其他用户分享的文章，并与他们进行讨论和互动。",
+                front: {
+                    technology: "Vue3、TypeScript、Pinia、Element-plus、Scss、Echarts 、highlight.js",
+                    url: "https://github.com/LiuYuYang01/Thrive_Blog"
+                },
+                control: {
+                    technology: "Vue3、TypeScript、Pinia、Element-plus、Scss",
+                    url: "https://github.com/LiuYuYang01/Thrive_Admin"
+                },
+                backend: {
+                    technology: "Python、Flask、SQLAlchemy、MySQL、Flask-JWT、Socket.io、Swagger",
+                    url: "https://github.com/LiuYuYang01/Thrive_Api_Py"
+                },
+            },
+            {
+                name: "ThriveX",
+                images: [
+                    "https://bu.dusays.com/2024/09/17/66e9704b2b809.png",
+                    "https://bu.dusays.com/2024/09/17/66e97036dddcb.png",
+                    "https://bu.dusays.com/2024/09/17/66e97035726ae.png",
+                    "https://bu.dusays.com/2024/09/17/66e97031cd456.png"
+                ],
+                description: "🎉 ThriveX 相比 Thrive 的核心区别是采用了 Nextjs 服务端渲染技术进行重构，对SEO方面有了显著的提高。并且还新增了很多额外的功能...",
+                front: {
+                    technology: "Nextjs、TypeScript、Zustand、TailwindCSS、Scss、Echarts",
+                    url: "https://github.com/LiuYuYang01/ThriveX-Blog"
+                },
+                control: {
+                    technology: "React、Antd、TypeScript、Zustand、TailwindCSS、Echarts",
+                    url: "https://github.com/LiuYuYang01/ThriveX-Admin"
+                },
+                backend: {
+                    technology: "Spring Boot、Mybatis Plus、MySQL、Redis、Qiniu、Socket.io、Swagger",
+                    url: "https://github.com/LiuYuYang01/ThriveX-Service"
+                },
+            },
         ]
     }
 
     return (
         <>
             <div className="MyPage bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
-                {/* 个人介绍 */}
                 <div className="w-7/12 mx-auto">
                     <div className="mt-16 transition-colors">
                         <div className="flex justify-between items-center">
@@ -99,13 +166,11 @@ export default () => {
                 </div>
 
                 <div className="flex w-9/12 m-28 mx-auto">
-                    {/* 性格 */}
                     <div className="w-7/12 mr-20">
                         <div className="text-center text-xl mb-8">我的性格</div>
                         <Character data={data.character} />
                     </div>
 
-                    {/* 目标墙 */}
                     <div className="w-5/12 flex flex-col">
                         <div className="text-center text-xl mb-2">2024年度目标</div>
                         <Goals data={data.goals} />
@@ -113,13 +178,11 @@ export default () => {
                 </div>
 
                 <div className="flex w-9/12 mt-28 mx-auto">
-                    {/* 位置 */}
                     <div className="w-5/12 mr-20">
                         <div className="text-center text-xl mb-6">我的家乡</div>
                         <Map />
                     </div>
 
-                    {/* 技术栈 */}
                     <div className="w-7/12 flex flex-col">
                         <div className="text-center text-xl mb-6">我的技术栈</div>
                         <Technology />
@@ -128,7 +191,7 @@ export default () => {
 
                 <div className="character mt-28">
                     <div className="text-center text-xl mb-8">我的开源项目</div>
-                    <Project />
+                    <Project data={data.project} />
                 </div>
 
                 <div className="mt-14">
