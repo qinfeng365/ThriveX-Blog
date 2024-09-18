@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import AMapLoader from "@amap/amap-jsapi-loader";
 
 export default function MapContainer() {
     let map: any;
@@ -41,7 +40,7 @@ export default function MapContainer() {
 
     return (
         <>
-            <div id="container" className="w-full h-full border rounded-3xl"></div>
+            <div id="container" className="w-full h-60 sm:h-80 border rounded-3xl"></div>
         </>
     );
 }

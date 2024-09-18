@@ -3,14 +3,15 @@ import dynamic from 'next/dynamic'
 import bg from '@/assets/image/bg.png'
 import avatar from '@/assets/image/avatar.jpg'
 import { MyData } from '@/types/app/my'
-import "./page.scss"
 
-const Goals = dynamic(() => import('./component/Goals'))
-const Character = dynamic(() => import('./component/Character'))
-const Map = dynamic(() => import('./component/Map'))
-const Technology = dynamic(() => import('./component/Technology'))
-const Project = dynamic(() => import('./component/Project'), { ssr: false })
-const CurriculumVitae = dynamic(() => import('./component/CurriculumVitae'))
+import Goals from './component/Goals'
+import Character from './component/Character'
+import Map from './component/Map'
+import Technology from './component/Technology'
+import Project from './component/Project'
+import CurriculumVitae from './component/CurriculumVitae'
+
+import "./page.scss"
 
 export default () => {
     const data: MyData = {
@@ -79,24 +80,25 @@ export default () => {
         ],
         project: [
             {
-                name: "云上校园",
+                name: "ThriveX",
                 images: [
-                    "https://bu.dusays.com/2024/09/18/66ea606eb5aa1.png",
-                    "https://bu.dusays.com/2024/09/18/66ea605d89df7.png",
-                    "https://bu.dusays.com/2024/09/18/66ea605ca9f0d.jpg",
+                    "https://bu.dusays.com/2024/09/17/66e9704b2b809.png",
+                    "https://bu.dusays.com/2024/09/17/66e97036dddcb.png",
+                    "https://bu.dusays.com/2024/09/17/66e97035726ae.png",
+                    "https://bu.dusays.com/2024/09/17/66e97031cd456.png"
                 ],
-                description: "🎉 云上校园是一个现代化大学生社交平台，该项目的立意是为了打造一个完整的校园生态圈，使校园触手可及!",
+                description: "🎉 ThriveX 相比 Thrive 的核心区别是采用了 Nextjs 服务端渲染技术进行重构，对SEO方面有了显著的提高。并且还新增了很多额外的功能...",
                 front: {
-                    technology: "微信小程序、Vant、Echarts、Autojs",
-                    url: ""
+                    technology: "Nextjs、TypeScript、Zustand、TailwindCSS、Scss、Echarts",
+                    url: "https://github.com/LiuYuYang01/ThriveX-Blog"
                 },
                 control: {
-                    technology: "Vue2、Element UI、vue-element-admin",
-                    url: ""
+                    technology: "React、Antd、TypeScript、Zustand、TailwindCSS、Echarts",
+                    url: "https://github.com/LiuYuYang01/ThriveX-Admin"
                 },
                 backend: {
-                    technology: "Nodejs、Eggjs、Socket.io、MySQL",
-                    url: ""
+                    technology: "Spring Boot、Mybatis Plus、MySQL、Redis、Qiniu、Socket.io、Swagger",
+                    url: "https://github.com/LiuYuYang01/ThriveX-Service"
                 },
             },
             {
@@ -122,25 +124,24 @@ export default () => {
                 },
             },
             {
-                name: "ThriveX",
+                name: "云上校园",
                 images: [
-                    "https://bu.dusays.com/2024/09/17/66e9704b2b809.png",
-                    "https://bu.dusays.com/2024/09/17/66e97036dddcb.png",
-                    "https://bu.dusays.com/2024/09/17/66e97035726ae.png",
-                    "https://bu.dusays.com/2024/09/17/66e97031cd456.png"
+                    "https://bu.dusays.com/2024/09/18/66ea606eb5aa1.png",
+                    "https://bu.dusays.com/2024/09/18/66ea605d89df7.png",
+                    "https://bu.dusays.com/2024/09/18/66ea605ca9f0d.jpg",
                 ],
-                description: "🎉 ThriveX 相比 Thrive 的核心区别是采用了 Nextjs 服务端渲染技术进行重构，对SEO方面有了显著的提高。并且还新增了很多额外的功能...",
+                description: "🎉 云上校园是一个现代化大学生社交平台，该项目的立意是为了打造一个完整的校园生态圈，使校园触手可及!",
                 front: {
-                    technology: "Nextjs、TypeScript、Zustand、TailwindCSS、Scss、Echarts",
-                    url: "https://github.com/LiuYuYang01/ThriveX-Blog"
+                    technology: "微信小程序、Vant、Echarts、Autojs",
+                    url: ""
                 },
                 control: {
-                    technology: "React、Antd、TypeScript、Zustand、TailwindCSS、Echarts",
-                    url: "https://github.com/LiuYuYang01/ThriveX-Admin"
+                    technology: "Vue2、Element UI、vue-element-admin",
+                    url: ""
                 },
                 backend: {
-                    technology: "Spring Boot、Mybatis Plus、MySQL、Redis、Qiniu、Socket.io、Swagger",
-                    url: "https://github.com/LiuYuYang01/ThriveX-Service"
+                    technology: "Nodejs、Eggjs、Socket.io、MySQL",
+                    url: ""
                 },
             },
         ]
@@ -165,26 +166,26 @@ export default () => {
                     </div>
                 </div>
 
-                <div className="flex w-9/12 m-28 mx-auto">
-                    <div className="w-7/12 mr-20">
+                <div className="flex flex-col md:flex-row w-9/12 m-28 mx-auto">
+                    <div className="w-full md:w-7/12 flex flex-col mr-0 md:mr-20">
                         <div className="text-center text-xl mb-8">我的性格</div>
                         <Character data={data.character} />
                     </div>
 
-                    <div className="w-5/12 flex flex-col">
-                        <div className="text-center text-xl mb-2">2024年度目标</div>
+                    <div className="w-full md:w-5/12 flex flex-col mt-28 md:mt-0">
+                        <div className="text-center text-xl mb-8">2024年度目标</div>
                         <Goals data={data.goals} />
                     </div>
                 </div>
 
-                <div className="flex w-9/12 mt-28 mx-auto">
-                    <div className="w-5/12 mr-20">
-                        <div className="text-center text-xl mb-6">我的家乡</div>
+                <div className="flex flex-col md:flex-row w-9/12 mt-28 mx-auto">
+                    <div className="w-full md:w-5/12 flex flex-col mr-0 md:mr-20">
+                        <div className="text-center text-xl mb-8">我的家乡</div>
                         <Map />
                     </div>
 
-                    <div className="w-7/12 flex flex-col">
-                        <div className="text-center text-xl mb-6">我的技术栈</div>
+                    <div className="w-full md:w-7/12 flex flex-col mt-28 md:mt-0">
+                        <div className="text-center text-xl mb-8">我的技术栈</div>
                         <Technology />
                     </div>
                 </div>

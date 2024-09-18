@@ -8,22 +8,22 @@ import "react-photo-view/dist/react-photo-view.css";
 export default ({ data }: { data: Project[] }) => {
     return (
         <>
-            <div className="w-3/6 mx-auto">
+            <div className="w-[80%] xl:w-[1200px] mx-auto">
                 <div className="flex w-full flex-col">
-                    <Tabs aria-label="Options" placement="top" classNames={{ wrapper: "flex flex-col", base: "justify-center" }}>
+                    <Tabs aria-label="Options" placement="top" classNames={{ tabList: "dark:bg-black-b", wrapper: "flex flex-col", base: "justify-center", tab: "[&>span]:dark:bg-[#3a4250]" }}>
                         {
                             data.map((item, index) => (
                                 <Tab key={index} title={item.name}>
                                     <Card>
-                                        <CardBody className="flex-row space-x-10 p-[20px_30px]">
-                                            <div className="sticky top-0 w-2/6">
+                                        <CardBody className="flex-col md:flex-row md:space-x-10 py-5 dark:bg-black-b transition-colors">
+                                            <div className="sticky top-0 w-full md:w-2/6 px-4">
                                                 <h3 className="text-[18px] mb-4">作品预览：</h3>
-                                                <div className="grid grid-cols-2 gap-2 p-2.5 border rounded-xl">
+                                                <div className="grid grid-cols-2 gap-2 p-2.5 border dark:border-[#444e5d] rounded-xl transition-colors">
                                                     <PhotoProvider>
                                                         {
                                                             item.images.map((img, index) => (
                                                                 <PhotoView key={index} src={img || ''}>
-                                                                    <img src={img} alt="作品图片" className="border hover:scale-[1.2] rounded-lg cursor-pointer transition-all" />
+                                                                    <img src={img} alt="作品图片" className="border dark:border-[#444e5d] dark hover:scale-[1.2] rounded-lg cursor-pointer transition-all" />
                                                                 </PhotoView>
                                                             ))
                                                         }
@@ -31,7 +31,7 @@ export default ({ data }: { data: Project[] }) => {
                                                 </div>
                                             </div>
 
-                                            <div className="overflow-auto w-4/6 h-60 pb-8 text-sm space-y-8">
+                                            <div className="overflow-auto w-full md:w-4/6 h-60 pl-4 pr-2.5 pb-8 mt-6 md:mt-0 text-sm space-y-8">
                                                 <div>
                                                     <h3 className="text-[18px] mb-4">作品详情：</h3>
                                                     <p className="text-gray-700 dark:text-[#8c9ab1]">{item.description}</p>
