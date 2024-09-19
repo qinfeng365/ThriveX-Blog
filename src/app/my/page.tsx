@@ -11,8 +11,6 @@ import Technology from './component/Technology'
 import Project from './component/Project'
 import CurriculumVitae from './component/CurriculumVitae'
 
-import "./page.scss"
-
 export default () => {
     const data: MyData = {
         name: "Liu YuYang",
@@ -149,7 +147,7 @@ export default () => {
 
     return (
         <>
-            <div className="MyPage bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
+            <div className="bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
                 <div className="w-7/12 mx-auto">
                     <div className="mt-16 transition-colors">
                         <div className="flex justify-between items-center">
@@ -166,7 +164,7 @@ export default () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row w-9/12 m-28 mx-auto">
+                <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-28 mx-auto">
                     <div className="w-full md:w-7/12 flex flex-col mr-0 md:mr-20">
                         <div className="text-center text-xl mb-8">我的性格</div>
                         <Character data={data.character} />
@@ -178,7 +176,7 @@ export default () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row w-9/12 mt-28 mx-auto">
+                <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-28 mx-auto">
                     <div className="w-full md:w-5/12 flex flex-col mr-0 md:mr-20">
                         <div className="text-center text-xl mb-8">我的家乡</div>
                         <Map />
