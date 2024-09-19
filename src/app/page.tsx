@@ -14,7 +14,7 @@ export default async ({ searchParams }: Props) => {
 
   return (
     <>
-      <Swiper>
+      <Swiper src="https://bu.dusays.com/2024/04/24/6628990012b51.jpg">
         {/* 星空背景组件 */}
         <Starry />
         {/* 打字机组件 */}
