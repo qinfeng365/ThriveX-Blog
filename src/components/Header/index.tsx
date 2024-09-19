@@ -1,6 +1,5 @@
 "use client"
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
@@ -18,7 +17,6 @@ import { Switch } from '@nextui-org/react';
 
 import { useConfigStore } from '@/stores';
 
-import "./index.scss"
 import SidebarNav from './component/SidebarNav';
 
 const Header = () => {
@@ -66,11 +64,11 @@ const Header = () => {
     const [isOpenSidebarNav, setIsOpenSidebarNav] = useState(false)
 
     return (
-        <div className='HeaderComponent'>
+        <>
             <div className={`header fixed top-0 w-full h-16 backdrop-blur-[5px] transition-colors z-50 after:content-[''] after:block after:w-full after:h-0 after:bg-[linear-gradient(#fff,transparent_70%)] dark:after:bg-[linear-gradient(#2b333e,transparent_70%)] after:transition-colors ${isPathSty || isScrolled ? 'bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(44,51,62,0.9)] border-b dark:border-[#2b333e] after:!h-8 after:transition-height]' : 'border-transparent'} transition-all`}>
                 <div className="relative flex justify-center lg:justify-start w-full lg:w-[1500px] h-16 mx-auto">
-                    <div className={`lg:hidden group absolute top-0 left-0 h-full py-2.5 px-5 pl-7 ${isPathSty || isScrolled ? 'hover:bg-[#e9edf4] dark:hover:bg-[#455162] rounded-lg' : ''} cursor-pointer transition-colors`} onClick={() => setIsOpenSidebarNav(true)}>
-                        <BsTextIndentLeft className={`group-hover:text-primary h-full text-[40px] ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'} transition-colors`} />
+                    <div className={`lg:hidden group absolute top-0 left-0 h-full py-2 px-3 pl-7 ${isPathSty || isScrolled ? 'hover:bg-[#e9edf4] dark:hover:bg-[#455162] rounded-lg' : ''} cursor-pointer transition-colors`} onClick={() => setIsOpenSidebarNav(true)}>
+                        <BsTextIndentLeft className={`group-hover:text-primary h-full text-[30px] ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'} transition-colors`} />
                     </div>
 
                     {/* logo */}
@@ -120,7 +118,7 @@ const Header = () => {
 
             {/* 侧边导航：移动端时候显示 */}
             <SidebarNav list={cateList} open={isOpenSidebarNav} onClose={() => setIsOpenSidebarNav(false)} />
-        </div>
+        </>
     );
 };
 
