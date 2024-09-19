@@ -22,7 +22,7 @@ import SidebarNav from './component/SidebarNav';
 const Header = () => {
     const patchName = usePathname();
     // 这些路径段不需要改变导航样式
-    const isPathSty = ['/my'].includes(patchName)
+    const isPathSty = ['/my', '/wall'].some(path => patchName.includes(path))
     // 是否改变导航样式
     const [isScrolled, setIsScrolled] = useState(false);
 
