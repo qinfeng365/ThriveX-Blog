@@ -148,35 +148,35 @@ export default () => {
     return (
         <>
             <div className="bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
-                <div className="w-7/12 mx-auto">
-                    <div className="mt-16 transition-colors">
-                        <div className="flex justify-between items-center">
-                            <div className="w-6/12 text-[#353a40] dark:text-[#fff] transition-all duration-800">
-                                <div className="text-4xl my-10 text-[#738bff]">I am <span className="name">{data.name}</span></div>
-                                <div className="text-4xl my-10">{data.profession}</div>
-                                <div className="text-[#666] dark:text-[#8c9ab1] font-heiti leading-8">{data.introduction}</div>
+                <div className="w-[90%] lg:w-[950px] mx-auto">
+                    <div className="mt-8 sm:mt-16 transition-colors">
+                        <div className="flex flex-col-reverse sm:flex-row justify-between items-center">
+                            <div className="w-full text-center sm:text-start sm:w-6/12 mt-6 sm:mt-0 text-[#353a40] dark:text-[#fff] transition-all duration-800">
+                                <div className="text-xl lg:text-4xl my-0 lg:my-5 text-[#738bff]">I am <span className="name">{data.name}</span></div>
+                                <div className="text-xl lg:text-4xl my-2 sm:my-4 lg:my-5">{data.profession}</div>
+                                <div className="text-sm text-[#666] dark:text-[#8c9ab1] leading-6 lg:leading-8">{data.introduction}</div>
                             </div>
 
-                            <div className="overflow-hidden w-[400px] h-[400px] rounded-full shadow-lg">
+                            <div className="overflow-hidden w-[40%] h-[40%] rounded-full shadow-lg">
                                 <Image src={data.avatar} alt={data.name} className="w-full h-full" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-28 mx-auto">
+                <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
                     <div className="w-full md:w-7/12 flex flex-col mr-0 md:mr-20">
                         <div className="text-center text-xl mb-8">我的性格</div>
                         <Character data={data.character} />
                     </div>
 
-                    <div className="w-full md:w-5/12 flex flex-col mt-28 md:mt-0">
+                    <div className="w-full md:w-5/12 flex flex-col mt-16 md:mt-0">
                         <div className="text-center text-xl mb-8">2024年度目标</div>
                         <Goals data={data.goals} />
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-28 mx-auto">
+                <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
                     <div className="w-full md:w-5/12 flex flex-col mr-0 md:mr-20">
                         <div className="text-center text-xl mb-8">我的家乡</div>
                         <Map />
@@ -188,12 +188,12 @@ export default () => {
                     </div>
                 </div>
 
-                <div className="character mt-28">
+                <div className="character mt-16">
                     <div className="text-center text-xl mb-8">我的开源项目</div>
                     <Project data={data.project} />
                 </div>
 
-                <div className="mt-14">
+                <div className="mt-16">
                     <CurriculumVitae />
                 </div>
             </div>
