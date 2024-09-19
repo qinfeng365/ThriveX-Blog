@@ -30,43 +30,48 @@ export default ({ data }: Props) => {
 
     return (
         <>
-            <div data-aos="fade-down" className="flex flex-col sm:flex-row justify-between items-center">
-                <div className="flex sm:block w-[40%]">
-                    <div className="text-[30px] sm:text-[40px] text-[#33a474] font-medium font-sans">提倡者</div>
-                    <div className="text-[#666] dark:text-[#8c9ab1] hidden sm:block">INFJ</div>
-                    <Image src={INFJ} alt="性格" width={200}></Image>
-                    <Link href="https://www.16personalities.com/ch/infj-人格" className="block w-full mt-2 text-center text-[#666] text-xs hover:text-[#33a474]">了解一下</Link>
-                </div>
+            <div data-aos="fade-down" className="w-full md:w-7/12 flex flex-col mr-0 md:mr-20">
+                <div className="text-center text-xl mb-8">我的性格</div>
 
-                <div className="w-full sm:w-[65%] mt-10 sm:mt-0 space-y-10">
-                    {
-                        data.map(({ value, text1, text2, content, color }, index) => {
-                            return (
-                                <div key={index} className="flex justify-center items-center">
-                                    <span className="min-w-[60px] dark:text-[#8c9ab1] text-xs sm:text-base">{text1}</span>
+                <div className="flex flex-col sm:flex-row justify-between items-center">
+                    <div className="flex sm:block w-[40%]">
+                        <div className="text-[30px] sm:text-[40px] text-[#33a474] font-medium font-sans">提倡者</div>
+                        <div className="text-[#666] dark:text-[#8c9ab1] hidden sm:block">INFJ</div>
+                        <Image src={INFJ} alt="性格" width={200}></Image>
+                        <Link href="https://www.16personalities.com/ch/infj-人格" className="block w-full mt-2 text-center text-[#666] text-xs hover:text-[#33a474]">了解一下</Link>
+                    </div>
 
-                                    <div className="relative w-full max-w-md">
-                                        <Progress
-                                            value={value}
-                                            className={`relative [&>div]:justify-center ${colors[index]}`}
-                                        />
-                                        <div className="absolute -top-[25px] -translate-x-1/2 left-0 h-full flex items-center justify-center" style={{ left: `${value}%` }}>
-                                            <span className={`flex items-center text-[${color}]`}>
-                                                {value}%
-                                                <Tooltip content={content}>
-                                                    <BiQuestionMark className="w-5 h-5 ml-2 rounded-full p-[2px] bg-[#eee] dark:bg-black-b cursor-pointer" />
-                                                </Tooltip>
-                                            </span>
+                    <div className="w-full sm:w-[65%] mt-10 sm:mt-0 space-y-10">
+                        {
+                            data.map(({ value, text1, text2, content, color }, index) => {
+                                return (
+                                    <div key={index} className="flex justify-center items-center">
+                                        <span className="min-w-[60px] dark:text-[#8c9ab1] text-xs sm:text-base">{text1}</span>
+
+                                        <div className="relative w-full max-w-md">
+                                            <Progress
+                                                value={value}
+                                                className={`relative [&>div]:justify-center ${colors[index]}`}
+                                            />
+                                            <div className="absolute -top-[25px] -translate-x-1/2 left-0 h-full flex items-center justify-center" style={{ left: `${value}%` }}>
+                                                <span className={`flex items-center text-[${color}]`}>
+                                                    {value}%
+                                                    <Tooltip content={content}>
+                                                        <BiQuestionMark className="w-5 h-5 ml-2 rounded-full p-[2px] bg-[#eee] dark:bg-black-b cursor-pointer" />
+                                                    </Tooltip>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <span className="text-end min-w-[60px] dark:text-[#8c9ab1] text-xs sm:text-base">{text2}</span>
-                                </div>
-                            );
-                        })
-                    }
+                                        <span className="text-end min-w-[60px] dark:text-[#8c9ab1] text-xs sm:text-base">{text2}</span>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
                 </div>
             </div>
+
         </>
     )
 }

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import bg from '@/assets/image/bg.png'
 import avatar from '@/assets/image/avatar.jpg'
 import { MyData } from '@/types/app/my'
@@ -9,13 +8,16 @@ import Map from './component/Map'
 import Technology from './component/Technology'
 import Project from './component/Project'
 import CurriculumVitae from './component/CurriculumVitae'
+import Info from "./component/Info";
 
 export default () => {
     const data: MyData = {
-        name: "Liu YuYang",
-        avatar,
-        profession: "一名Web全栈开发工程师",
-        introduction: "我从小就对计算机编程技术有着无穷的兴趣，所以我的梦想是做一名技术顶尖的 架构师，因此我一直在朝着这个方向去努力、去坚持 直到梦想成真！",
+        info: {
+            name: "Liu YuYang",
+            avatar,
+            profession: "一名Web全栈开发工程师",
+            introduction: "我从小就对计算机编程技术有着无穷的兴趣，所以我的梦想是做一名技术顶尖的 架构师，因此我一直在朝着这个方向去努力、去坚持 直到梦想成真！",
+        },
         character: [
             {
                 value: 54,
@@ -148,49 +150,20 @@ export default () => {
         <>
             <div className="bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg.src})` }}>
                 <div className="w-[90%] lg:w-[950px] mx-auto">
-                    <div className="mt-8 sm:mt-16 transition-colors">
-                        <div className="flex flex-col-reverse sm:flex-row justify-between items-center">
-                            <div className="w-full text-center sm:text-start sm:w-6/12 mt-6 sm:mt-0 text-[#353a40] dark:text-[#fff] transition-all duration-800">
-                                <div className="text-xl lg:text-4xl my-0 lg:my-5 text-[#738bff]">I am <span className="name">{data.name}</span></div>
-                                <div className="text-xl lg:text-4xl my-2 sm:my-4 lg:my-5">{data.profession}</div>
-                                <div className="text-sm text-[#666] dark:text-[#8c9ab1] leading-6 lg:leading-8">{data.introduction}</div>
-                            </div>
-
-                            <div className="overflow-hidden w-[40%] h-[40%] rounded-full shadow-lg">
-                                <Image src={data.avatar} alt={data.name} className="w-full h-full" />
-                            </div>
-                        </div>
-                    </div>
+                    <Info data={data.info} />
                 </div>
 
                 <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
-                    <div className="w-full md:w-7/12 flex flex-col mr-0 md:mr-20">
-                        <div className="text-center text-xl mb-8">我的性格</div>
-                        <Character data={data.character} />
-                    </div>
-
-                    <div className="w-full md:w-5/12 flex flex-col mt-16 md:mt-0">
-                        <div className="text-center text-xl mb-8">2024年度目标</div>
-                        <Goals data={data.goals} />
-                    </div>
+                    <Character data={data.character} />
+                    <Goals data={data.goals} />
                 </div>
 
                 <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
-                    <div className="w-full md:w-5/12 flex flex-col mr-0 md:mr-20">
-                        <div className="text-center text-xl mb-8">我的家乡</div>
-                        <Map />
-                    </div>
-
-                    <div className="w-full md:w-7/12 flex flex-col mt-28 md:mt-0">
-                        <div className="text-center text-xl mb-8">我的技术栈</div>
-                        <Technology />
-                    </div>
+                    <Map />
+                    <Technology />
                 </div>
 
-                <div className="character mt-16">
-                    <div className="text-center text-xl mb-8">我的开源项目</div>
-                    <Project data={data.project} />
-                </div>
+                <Project data={data.project} />
 
                 <div className="mt-16">
                     <CurriculumVitae />

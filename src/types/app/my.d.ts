@@ -1,3 +1,10 @@
+export interface Info {
+    name: string;
+    avatar: StaticImageData;
+    profession: string;
+    introduction: string;
+}
+
 export interface Character {
     value: number;
     text1: string;
@@ -30,11 +37,8 @@ export interface Project {
 }
 
 export interface MyData {
-    name: string;
-    avatar: StaticImageData;
-    profession: string;
-    introduction: string;
-    character: Character[];
-    goals: Goal[];
-    project: Project[];
+    info: Info,
+    character: Character[],
+    goals: Goal[],
+    project: Project[]
 }

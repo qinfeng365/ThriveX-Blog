@@ -45,7 +45,11 @@ export default function MapContainer() {
 
     return (
         <>
-            <div data-aos="zoom-in" id="container" className="w-full h-60 sm:h-80 border rounded-3xl"></div>
+            <div data-aos="zoom-in" className="w-full md:w-5/12 flex flex-col mr-0 md:mr-20">
+                <div className="text-center text-xl mb-8">我的家乡</div>
+                
+                <div id="container" className="w-full h-60 sm:h-80 border rounded-3xl"></div>
+            </div>
         </>
     );
 }

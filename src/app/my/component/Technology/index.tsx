@@ -17,15 +17,19 @@ export default () => {
     useEffect(() => {
         AOS.init()
     }, [])
-    
+
     return (
         <>
-            <div data-aos="zoom-in" className="flex flex-col items-center space-y-2">
-                <div><Image src={tool} alt="软件工具" /></div>
-                <div><Image src={qdBasics} alt="前端基础技术栈" /></div>
-                <div><Image src={qdAdvanced} alt="前端高级技术栈" /></div>
-                <div><Image src={qdTool} alt="前端工具" /></div>
-                <div><Image src={rearEnd} alt="后端技术栈" /></div>
+            <div data-aos="zoom-in" className="w-full md:w-7/12 flex flex-col mt-28 md:mt-0">
+                <div className="text-center text-xl mb-8">我的技术栈</div>
+
+                <div className="flex flex-col items-center space-y-2">
+                    <div><Image src={tool} alt="软件工具" /></div>
+                    <div><Image src={qdBasics} alt="前端基础技术栈" /></div>
+                    <div><Image src={qdAdvanced} alt="前端高级技术栈" /></div>
+                    <div><Image src={qdTool} alt="前端工具" /></div>
+                    <div><Image src={rearEnd} alt="后端技术栈" /></div>
+                </div>
             </div>
         </>
     )
