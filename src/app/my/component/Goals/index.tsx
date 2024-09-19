@@ -1,17 +1,26 @@
+"use client"
+
+import { useEffect } from "react";
 import { Checkbox } from "@nextui-org/react"
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 interface Props {
     data: {
         status: number,
         value: string
     }[]
-}{
-
 }
+
 export default ({ data }: Props) => {
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
         <>
-            <div className="flex flex-col space-y-2">
+            <div data-aos="zoom-in" className="flex flex-col space-y-2">
                 {data.map((item, index) => (
                     <div key={index} className="flex flex-wrap justify-between items-center">
                         <Checkbox key={index} defaultSelected={item.status === 3}>{item.value}</Checkbox>

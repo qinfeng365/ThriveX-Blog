@@ -1,14 +1,22 @@
 "use client"
 
+import { useEffect } from "react";
 import { Project } from "@/types/app/my"
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react"
 import { PhotoProvider, PhotoView } from "react-photo-view"
 import "react-photo-view/dist/react-photo-view.css";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default ({ data }: { data: Project[] }) => {
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
         <>
-            <div className="w-[80%] xl:w-[1200px] mx-auto">
+            <div data-aos="zoom-in" className="w-[80%] xl:w-[1200px] mx-auto">
                 <div className="flex w-full flex-col">
                     <Tabs aria-label="Options" placement="top" classNames={{ tabList: "dark:bg-black-b", wrapper: "flex flex-col", base: "justify-center", tab: "[&>span]:dark:bg-[#3a4250]" }}>
                         {

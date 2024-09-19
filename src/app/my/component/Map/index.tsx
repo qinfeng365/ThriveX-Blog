@@ -2,10 +2,15 @@
 
 import { useEffect } from "react";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default function MapContainer() {
     let map: any;
 
     useEffect(() => {
+        AOS.init()
+
         // 确保代码仅在客户端执行
         import('@amap/amap-jsapi-loader').then(AMapLoader => {
             // @ts-ignore
@@ -40,7 +45,7 @@ export default function MapContainer() {
 
     return (
         <>
-            <div id="container" className="w-full h-60 sm:h-80 border rounded-3xl"></div>
+            <div data-aos="zoom-in" id="container" className="w-full h-60 sm:h-80 border rounded-3xl"></div>
         </>
     );
 }

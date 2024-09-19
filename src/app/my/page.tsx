@@ -1,5 +1,4 @@
 import Image from "next/image";
-import dynamic from 'next/dynamic'
 import bg from '@/assets/image/bg.png'
 import avatar from '@/assets/image/avatar.jpg'
 import { MyData } from '@/types/app/my'
