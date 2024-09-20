@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { MdOutlineAdd } from "react-icons/md";
 import dayjs from 'dayjs';
-import Pagination from '@/components/Pagination';
+// import Pagination from '@/components/Pagination';
 
 interface Props {
     params: { cate: string };
