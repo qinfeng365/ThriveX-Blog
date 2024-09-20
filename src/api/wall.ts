@@ -1,5 +1,5 @@
 import Request from "@/utils/request";
-import { Wall } from "@/types/app/wall";
+import { Wall, Cate } from "@/types/app/wall";
 
 // 新增留言
 export const addWallDataAPI = async (data: Wall) => {
@@ -11,7 +11,12 @@ export const getWallListAPI = async () => {
     return await Request<Paginate<Wall[]>>("POST", `/wall/paging`);
 }
 
+// 获取留言分类列表
+export const getCateListAPI = async () => {
+    return await Request<Cate[]>("GET", `/wall/cate`);
+}
+
 // 获取当前分类中所有留言
-export const getArticleWallListAPI = async (cateId: number) => {
-    return await Request<Paginate<Wall[]>>("GET", `/wall/cate/${cateId}`);
+export const getCateWallListAPI = async (cateId: number) => {
+    return await Request<Paginate<Wall[]>>("POST", `/wall/cate/${cateId}`);
 }
