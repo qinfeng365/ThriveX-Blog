@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import { MdOutlineAdd } from "react-icons/md";
 import Pagination from '@/components/Pagination';
-import { getCateListAPI, getCateWallListAPI, addWallDataAPI } from "@/api/wall";
-import dayjs from 'dayjs';
 import AddWallInfo from '../components/AddWallInfo';
+import { getCateListAPI, getCateWallListAPI } from "@/api/wall";
+import dayjs from 'dayjs';
 
 interface Props {
     params: { cate: string };
@@ -13,7 +12,7 @@ interface Props {
 export default async ({ params, searchParams }: Props) => {
     const cate = params.cate
     const page = searchParams.page || 1;
-
+    
     const active = "!text-primary !border-primary"
 
     // 提前把颜色写好，否则会导致样式丢失

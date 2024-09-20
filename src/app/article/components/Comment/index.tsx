@@ -109,7 +109,7 @@ const CommentForm = ({ articleId }: Props) => {
                     <button className="w-full h-10 !mt-4 text-white rounded-md bg-primary text-center" type="submit">发表评论</button>
                 </form>
 
-                <List id={id} list={list} reply={replyComment} />
+                <List id={articleId} list={list} reply={replyComment} />
             </div>
 
             <ToastContainer />
