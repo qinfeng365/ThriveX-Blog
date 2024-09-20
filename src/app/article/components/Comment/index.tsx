@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss"
 
 interface Props {
-    id: number
+    articleId: number
 }
 
 interface CommentForm {
@@ -21,14 +21,14 @@ interface CommentForm {
     avatar: string
 }
 
-const CommentForm = ({ id }: Props) => {
+const CommentForm = ({ articleId }: Props) => {
     const contentRef = useRef<HTMLTextAreaElement>(null);
-    const [commentId, setCommentId] = useState(id);
+    const [commentId, setCommentId] = useState(articleId);
     const [placeholder, setPlaceholder] = useState("来发一针见血的评论吧~");
 
     const [list, setList] = useState<Comment[]>([])
     const getCommentList = async () => {
-        const { data } = await getArticleCommentListAPI(+id!);
+        const { data } = await getArticleCommentListAPI(+articleId!);
         setList(data.result)
     }
 
@@ -47,13 +47,13 @@ const CommentForm = ({ id }: Props) => {
     }, [setValue]);
 
     const onSubmit = async (data: CommentForm) => {
-        const { code, message } = await addCommentDataAPI(id, { ...data, commentId: commentId === id ? 0 : commentId, createTime: Date.now().toString() })
+        const { code, message } = await addCommentDataAPI({ ...data, articleId, commentId: commentId === articleId ? 0 : commentId, createTime: Date.now().toString() })
         if (code !== 200) return alert("发布评论失败：" + message);
 
         toast("🎉 提交成功, 请等待审核!")
 
         // 发布成功后初始化表单
-        setCommentId(id)
+        setCommentId(articleId)
         reset({ content: "", name: "", email: "", url: "", avatar: "" })
         setPlaceholder("来发一针见血的评论吧~");
         getCommentList()
@@ -74,10 +74,10 @@ const CommentForm = ({ id }: Props) => {
 
                 <form className="flex flex-wrap justify-between mt-4 space-y-2 text-xs xs:text-sm" onSubmit={handleSubmit(onSubmit)}>
                     <div className='w-full'>
-                        <textarea 
-                            {...register("content", { required: "请输入内容" })} 
-                            placeholder={placeholder} 
-                            className="tw_form w-full p-4 min-h-36" 
+                        <textarea
+                            {...register("content", { required: "请输入内容" })}
+                            placeholder={placeholder}
+                            className="tw_form w-full p-4 min-h-36"
                             ref={(e) => {
                                 register("content").ref(e);
                                 (contentRef as any).current = e;

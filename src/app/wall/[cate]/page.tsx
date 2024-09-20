@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MdOutlineAdd } from "react-icons/md";
 import dayjs from 'dayjs';
+import Pagination from '@/components/Pagination';
 
 interface Props {
     params: { cate: string };
@@ -106,6 +107,8 @@ export default ({ params }: Props) => {
                     ))
                 }
             </div>
+
+            {/* <Pagination total={data.pages} page={page} className="flex justify-center mt-5" /> */}
 
             <div className='fixed bottom-[5%] right-[5%] flex justify-center items-center w-[70px] h-[70px] rounded-full bg-black-b cursor-pointer z-50'>
                 <MdOutlineAdd className='text-white text-5xl' />

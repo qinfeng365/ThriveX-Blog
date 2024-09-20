@@ -70,7 +70,7 @@ export default async ({ params }: Props) => {
 
                         <Copyright />
                         <UpAndDown id={id} prev={data.prev} next={data.next} />
-                        <Comment id={id} />
+                        <Comment articleId={id} />
                     </div>
                 </div>
 
