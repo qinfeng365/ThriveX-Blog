@@ -8,17 +8,35 @@ import { addWebDataAPI, getWebTypeListAPI } from '@/api/web'
 import { Bounce, toast, ToastOptions } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+const toastConfig: ToastOptions = {
+  position: "top-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "colored",
+  transition: Bounce,
+}
+
 export default () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const [typeList, setTypeList] = useState<WebType[]>([])
-
   // 获取网站类型列表
+  const [typeList, setTypeList] = useState<WebType[]>([])
   const getWebTypeList = async () => {
     const { data } = await getWebTypeListAPI()
     setTypeList(data)
   }
   useEffect(() => {
+    // 页面加载后检查是否有需要显示的消息
+    const message = localStorage.getItem('toastMessage');
+    if (message) {
+      toast.success(message, toastConfig);
+      localStorage.removeItem('toastMessage'); // 显示后删除消息
+    }
+
     getWebTypeList()
   }, [])
 
@@ -26,24 +44,12 @@ export default () => {
   const { handleSubmit, control, formState: { errors }, trigger } = useForm<Web>({ defaultValues });
   const onSubmit: SubmitHandler<Web> = async (data, event) => {
     event?.preventDefault();
-    const { code, message } = await addWebDataAPI({ ...data, createTime: new Date().getTime().toString() })
-
-    const toastConfig: ToastOptions = {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      transition: Bounce,
-    }
+    const { code, message } = await addWebDataAPI({ ...data, createTime: Date.now().toString() })
 
     if (code !== 200) return toast.error(message, toastConfig);
 
-    toast.success('🎉 提交成功, 请等待审核!', toastConfig);
-    getWebTypeList()
+    localStorage.setItem('toastMessage', '🎉 提交成功, 请等待审核!');
+    window.location.reload();
     onOpenChange()
   }
 

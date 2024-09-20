@@ -17,6 +17,6 @@ export const getCateListAPI = async () => {
 }
 
 // 获取当前分类中所有留言
-export const getCateWallListAPI = async (cateId: number) => {
-    return await Request<Paginate<Wall[]>>("POST", `/wall/cate/${cateId}`);
+export const getCateWallListAPI = async (cateId: number, page: number, size = 8) => {
+    return await Request<Paginate<Wall[]>>("POST", `/wall/cate/${cateId}?page=${page}&size=${size}`);
 }
