@@ -1,12 +1,17 @@
-"use client";
+"use client"
 
 import React, { useEffect } from "react";
-import ReactMarkdown from "react-markdown";
-import "github-markdown-css";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
 import { useConfigStore } from "@/stores";
 import "./index.scss";
+
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+
+import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
+import 'highlight.js/styles/github.css';
+// import 'highlight.js/styles/atom-one-dark.css';
+import "github-markdown-css";
 
 interface Props {
     data: string;
@@ -25,18 +30,15 @@ const ContentMdComponent = ({ data }: Props) => {
 
     const { isDark } = useConfigStore()
     useEffect(() => {
-        // 当组件挂载时，改变body背景颜色
         document.body.style.backgroundColor = '#fff';
         let color = isDark ? "36, 41, 48" : "255, 255, 255"
 
-        // 更改波浪颜色
         const waves = document.querySelectorAll<SVGUseElement>(".waves use");
         waves[0].style.fill = `rgba(${color}, 0.7)`;
         waves[1].style.fill = `rgba(${color}, 0.5)`;
         waves[2].style.fill = `rgba(${color}, 0.3)`;
         waves[3].style.fill = `rgba(${color})`;
 
-        // 当组件卸载时，恢复body背景颜色
         return () => {
             document.body.style.backgroundColor = '#f9f9f9';
 
@@ -47,7 +49,6 @@ const ContentMdComponent = ({ data }: Props) => {
         };
     }, []);
 
-    // 自定义指定标签
     const renderers = {
         img: ({ alt, src }: { alt?: string; src?: string }) => (
             <PhotoView src={src || ''}>
@@ -62,7 +63,12 @@ const ContentMdComponent = ({ data }: Props) => {
         <div className="ContentMdComponent mt-12">
             <PhotoProvider>
                 <div className="content markdown-body">
-                    <ReactMarkdown components={renderers}>{data}</ReactMarkdown>
+                    <ReactMarkdown
+                        components={renderers}
+                        rehypePlugins={[rehypeHighlight]}
+                    >
+                        {data}
+                    </ReactMarkdown>
                 </div>
             </PhotoProvider>
         </div>
