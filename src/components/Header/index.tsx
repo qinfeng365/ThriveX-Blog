@@ -5,8 +5,6 @@ import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import Show from '@/components/Show'
 
-import lightLogo from '@/assets/image/light_logo.png';
-import darkLogo from '@/assets/image/dark_logo.png';
 import { IoIosArrowDown } from 'react-icons/io';
 import { FaRegSun } from "react-icons/fa";
 import { BsFillMoonStarsFill, BsTextIndentLeft } from "react-icons/bs";
@@ -18,8 +16,18 @@ import { Switch } from '@nextui-org/react';
 import { useConfigStore } from '@/stores';
 
 import SidebarNav from './component/SidebarNav';
+import { getWebDataAPI } from '@/api/project';
 
 const Header = () => {
+    const [logo, setLogo] = useState({
+        light: "",
+        dark: ""
+    })
+    const getLogoData = async () => {
+        const { data: { lightLogo, darkLogo } } = await getWebDataAPI();
+        setLogo({ light: lightLogo, dark: darkLogo })
+    }
+
     const patchName = usePathname();
     // 这些路径段不需要改变导航样式
     const isPathSty = ['/my', '/wall'].some(path => patchName.includes(path))
@@ -34,6 +42,7 @@ const Header = () => {
     }
 
     useEffect(() => {
+        getLogoData()
         getCateList()
 
         window.scrollTo(0, 0);
@@ -75,8 +84,8 @@ const Header = () => {
                     <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
                         {
                             isDark
-                                ? <img src={darkLogo.src} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
-                                : <img src={isPathSty || isScrolled ? lightLogo.src : darkLogo.src} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
+                                ? <img src={logo.dark} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
+                                : <img src={isPathSty || isScrolled ? logo.light : logo.dark} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
                         }
                     </Link>
 
