@@ -39,14 +39,14 @@
                 border-radius: $round;
 
                 .reply {
-                    right: 1%;
+                    right: 2%;
                 }
             }
 
             // 回复按钮布局
             .reply {
                 position: absolute;
-                right: -11%;
+                right: -15%;
                 padding: 5px 10px;
                 font-size: 20px;
                 cursor: pointer;
