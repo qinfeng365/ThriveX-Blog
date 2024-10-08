@@ -31,7 +31,7 @@ export default async ({ params, searchParams }: Props) => {
                     <p className="text-sm text-gray-600 my-10">有什么想对我说的，来吧</p>
                 </div>
 
-                <ul className="flex justify-center text-sm">
+                <ul className="flex flex-col md:flex-row justify-center text-sm space-y-1 md:space-y-0">
                     {
                         cateList.map(item => (
                             <li key={item.id} className={`py-2 px-4 mx-1 dark:text-[#8c9ab1] border-2 border-transparent rounded-full hover:!text-primary hover:border-primary ${item.mark === cate ? active : ''} transition-colors`}>
@@ -41,7 +41,7 @@ export default async ({ params, searchParams }: Props) => {
                     }
                 </ul>
 
-                <div className='w-[1200px] mx-auto mt-12 grid grid-cols-4 gap-4'>
+                <div className='w-[90%] xl:w-[1200px] mx-auto mt-12 grid grid-cols-1 gap-1 xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-4 lg:gap-4'>
                     {
                         tallList.result.map(item => (
                             <div key={item.id} className={`overflow-auto relative flex flex-col py-2 px-4 bg-[${item.color}] rounded-lg top-0 hover:-top-2 transition-all`}>
