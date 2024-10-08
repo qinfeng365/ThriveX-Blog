@@ -59,7 +59,7 @@ export default async () => {
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                                 {
                                     data[type].list.map((item: Web) => (
-                                        <Link key={item.id} href={item.url} className="group">
+                                        <Link key={item.id} href={item.url} target="_blank" className="group">
                                             <div key={item.id} className="flex items-center p-3 border group-hover:border-2 dark:border-[#3d4653] group-hover:!border-primary group-hover:shadow-[0_10px_20px_1px_rgb(83,157,253,.1)] rounded-md transition-colors">
                                                 <img src={item.image} alt={item.title} className="w-14 h-14 mr-4 rounded-full" />
 
