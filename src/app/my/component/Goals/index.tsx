@@ -24,7 +24,7 @@ export default ({ data }: Props) => {
                 <div className="text-center text-xl mb-8">2024年度目标</div>
 
                 <div className="flex flex-col space-y-2">
-                    {data.map((item, index) => (
+                    {data?.map((item, index) => (
                         <div key={index} className="flex flex-wrap justify-between items-center">
                             <Checkbox key={index} defaultSelected={item.status === 3}>{item.value}</Checkbox>
 

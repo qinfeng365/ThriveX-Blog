@@ -16,7 +16,7 @@ const HotArticle = async () => {
                 </h3>
 
                 <div className="w-full pt-2.5 mt-2 min-h-[120px] space-y-4">
-                    {data.map((item, index) => (
+                    {data?.map((item, index) => (
                         <div
                             key={index}
                             className="item relative h-32 bg-no-repeat bg-center rounded-md transition-all after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-12 after:transition-opacity after:rounded-md after:bg-[linear-gradient(transparent,#000)]"

@@ -41,13 +41,13 @@ const Author = async () => {
             }}>
                 {/* 作者头像 */}
                 <div className="avatar flex justify-center items-center w-[90px] h-[90px] rounded-full bg-white shadow-md overflow-hidden">
-                    <img src={data.avatar} alt="" className="w-[90%] h-[90%] rounded-full transition-transform hover:scale-110" />
+                    <img src={data?.avatar} alt="" className="w-[90%] h-[90%] rounded-full transition-transform hover:scale-110" />
                 </div>
 
                 {/* 作者介绍 */}
                 <div className="info text-center mt-4">
-                    <h3 className="text-lg text-[#333] dark:text-white transition-colors">{data.name}</h3>
-                    <p className="w-[90%] mx-auto mt-2 text-sm text-[#686868] dark:text-[#cecece] transition-colors">{data.info}</p>
+                    <h3 className="text-lg text-[#333] dark:text-white transition-colors">{data?.name}</h3>
+                    <p className="w-[90%] mx-auto mt-2 text-sm text-[#686868] dark:text-[#cecece] transition-colors">{data?.info}</p>
                 </div>
 
                 {/* 社交账号 */}

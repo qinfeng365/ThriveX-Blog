@@ -36,40 +36,40 @@ export default async ({ params }: Props) => {
                     <Starry />
 
                     <div className="absolute w-[80%] sm:w-[70%] lg:w-[60%] xl:w-[50%] top-[60%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%] text-white custom_text_shadow">
-                        <div className="text-xl mb-5 sm:text-2xl lg:text-3xl xl:text-4xl text-center sm:mb-7 md:mb-10">{data.title}</div>
+                        <div className="text-xl mb-5 sm:text-2xl lg:text-3xl xl:text-4xl text-center sm:mb-7 md:mb-10">{data?.title}</div>
 
                         <div className="flex flex-wrap justify-between text-xs sm:text-sm">
                             <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#A543E6]`}><IoMdPricetags /></span>
-                                <span>所属分类：{data.cateList[0]?.name}</span>
+                                <span>所属分类：{data?.cateList[0]?.name}</span>
                             </div>
 
                             <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#EA3B24]`}><FaHotjar /></span>
-                                <span>阅读量：{data.view}</span>
+                                <span>阅读量：{data?.view}</span>
                             </div>
 
                             <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#4FA759]`}><AiOutlineComment /></span>
-                                <span>评论数量：{data.comment}</span>
+                                <span>评论数量：{data?.comment}</span>
                             </div>
 
                             <div className="flex mb-2">
                                 <span className={`${iconSty} bg-[#5A9CF8]`}><LuTimer /></span>
-                                <span>发布时间：{dayjs(+data.createTime!).format('YYYY-MM-DD HH:mm')}</span>
+                                <span>发布时间：{dayjs(+data?.createTime!).format('YYYY-MM-DD HH:mm')}</span>
                             </div>
                         </div>
                     </div>
                 </Swiper>
 
                 <div className="w-[90%] xl:w-6/12 mx-auto relative">
-                    <ContentMd data={data.content}></ContentMd>
+                    <ContentMd data={data?.content}></ContentMd>
 
                     <div className="w-full">
-                        <Tag data={data.tagList} />
+                        <Tag data={data?.tagList} />
 
                         <Copyright />
-                        <UpAndDown id={id} prev={data.prev} next={data.next} />
+                        <UpAndDown id={id} prev={data?.prev} next={data?.next} />
                         <Comment articleId={id} />
                     </div>
                 </div>

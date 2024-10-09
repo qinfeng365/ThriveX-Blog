@@ -10,7 +10,7 @@ export default async ({ page }: { page: number }) => {
       <div className="w-full md:w-[90%] lg:w-[68%] xl:w-[73%] mx-auto transition-width">
         <Classics data={data}></Classics>
 
-        <Pagination total={data.pages} page={page} className="flex justify-center mt-5" />
+        <Pagination total={data?.pages} page={page} className="flex justify-center mt-5" />
       </div>
     </>
   )

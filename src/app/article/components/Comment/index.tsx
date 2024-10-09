@@ -29,7 +29,7 @@ const CommentForm = ({ articleId }: Props) => {
     const [list, setList] = useState<Comment[]>([])
     const getCommentList = async () => {
         const { data } = await getArticleCommentListAPI(+articleId!);
-        setList(data.result)
+        setList(data?.result)
     }
 
     useEffect(() => {

@@ -24,10 +24,10 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang="en">
-      <title>{`${data.title} - ${data.subhead}`}</title>
-      <meta name="description" content={data.description} />
-      <meta name="keywords" content={data.keyword} />
-      <link rel="icon" href={data.favicon} />
+      <title>{`${data?.title} - ${data?.subhead}`}</title>
+      <meta name="description" content={data?.description} />
+      <meta name="keywords" content={data?.keyword} />
+      <link rel="icon" href={data?.favicon} />
 
       <body className={`${LXGWWenKai.className} dark:!bg-black-a transition-colors`}>
         {/* 进度条组件 */}

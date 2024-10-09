@@ -25,14 +25,14 @@ export default async ({ params, searchParams }: Props) => {
 
           {/* 分类信息 */}
           <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 w-[80%] text-center text-white text-[20px] xs:text-[25px] sm:text-[30px] custom_text_shadow">
-            <span>{name} ~ 共计{data.total}篇文章</span>
+            <span>{name} ~ 共计{data?.total}篇文章</span>
           </div>
         </Swiper>
 
         <div className="md:w-full lg:w-[900px] lg:mx-auto px-4 lg:p-0 mt-10">
           <Classics data={data} />
 
-          <Pagination total={data.pages} page={page} url={`?name=${name}&page=${page}`} className="flex justify-center mt-5" />
+          <Pagination total={data?.pages} page={page} url={`?name=${name}&page=${page}`} className="flex justify-center mt-5" />
         </div>
       </div>
     </>

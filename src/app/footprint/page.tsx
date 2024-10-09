@@ -53,7 +53,7 @@ export default function MapContainer() {
                     // 遍历 locations 数组，创建标记
                     list.forEach((data) => {
                         const marker = new AMap.Marker({
-                            position: data.position.split(","), // 标记位置
+                            position: data?.position.split(","), // 标记位置
                             map: map, // 将标记添加到地图
                         });
 
@@ -96,20 +96,20 @@ export default function MapContainer() {
                 <ModalContent className="bg-[rgba(36,40,45,0.9)]">
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1 text-center pb-2 text-white">{data.title}</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1 text-center pb-2 text-white">{data?.title}</ModalHeader>
 
                             <ModalBody>
                                 <div className="flex flex-col">
                                     <div className="flex flex-col justify-between w-full mb-8">
-                                        <p className="overflow-auto max-h-[210px] text-[#d6d6d6] px-[5px]">{data.content}</p>
+                                        <p className="overflow-auto max-h-[210px] text-[#d6d6d6] px-[5px]">{data?.content}</p>
 
                                         <div className="text-sm text-end text-[#a5a5a5] pt-2">
-                                            <p>时间：{dayjs(+data.createTime).format('YYYY-MM-DD HH:mm')}</p>
-                                            <p>地址：{data.address}</p>
+                                            <p>时间：{dayjs(+data?.createTime).format('YYYY-MM-DD HH:mm')}</p>
+                                            <p>地址：{data?.address}</p>
                                         </div>
                                     </div>
 
-                                    <div className={`overflow-auto flex justify-center w-full ${data.images.length !== 1 ? 'max-h-96' : ''} mb-5`}>
+                                    <div className={`overflow-auto flex justify-center w-full ${data?.images.length !== 1 ? 'max-h-96' : ''} mb-5`}>
                                         <PhotoProvider
                                             speed={() => 800}
                                             easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
@@ -118,9 +118,9 @@ export default function MapContainer() {
                                                 setIsDismissable(!visible);
                                             }}
                                         >
-                                            <div className={`grid gap-4 ${data.images.length === 1 ? 'grid-cols-1 w-6/12' : ''} ${data.images.length === 2 ? 'grid-cols-2' : ''} ${data.images.length === 3 ? 'grid-cols-3' : ''} ${data.images.length! >= 4 ? 'grid-cols-4' : ''}`}>
+                                            <div className={`grid gap-4 ${data?.images.length === 1 ? 'grid-cols-1 w-6/12' : ''} ${data?.images.length === 2 ? 'grid-cols-2' : ''} ${data?.images.length === 3 ? 'grid-cols-3' : ''} ${data?.images.length! >= 4 ? 'grid-cols-4' : ''}`}>
                                                 {
-                                                    data.images.map((item, index) => (
+                                                    data?.images.map((item, index) => (
                                                         <PhotoView src={item} key={index}>
                                                             <img src={item} alt="" className="rounded-2xl w-full cursor-pointer" />
                                                         </PhotoView>

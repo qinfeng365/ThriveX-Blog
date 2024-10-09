@@ -43,7 +43,7 @@ export default ({ data }: Props) => {
 
                     <div className="w-full sm:w-[65%] mt-10 sm:mt-0 space-y-10">
                         {
-                            data.map(({ value, text1, text2, content, color }, index) => {
+                            data?.map(({ value, text1, text2, content, color }, index) => {
                                 return (
                                     <div key={index} className="flex justify-center items-center">
                                         <span className="min-w-[60px] dark:text-[#8c9ab1] text-xs sm:text-base">{text1}</span>

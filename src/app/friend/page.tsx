@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default async () => {
     const { data: linkList } = await getWebListAPI()
     const { data: typeList } = await getWebTypeListAPI()
+    
     let data: { [string: string]: { order: number, list: Web[] } } = {}
 
     // 给每个数据进行分组处理
