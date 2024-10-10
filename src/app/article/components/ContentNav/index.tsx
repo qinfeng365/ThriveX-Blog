@@ -25,7 +25,7 @@ const ContentNav = () => {
         // 获取当前容器中所有的标题
         const list = document.querySelectorAll(".content h1, .content h2, .content h3");
 
-        list.forEach((nav) => {
+        list?.forEach((nav) => {
             nav.setAttribute("id", nav.textContent!)
 
             switch (nav.tagName) {
@@ -42,13 +42,13 @@ const ContentNav = () => {
         });
 
         // 给每个标题设置一个视口顶部的距离
-        const titles = Array.from(list).map(t => {
+        const titles = Array.from(list)?.map(t => {
             const top = t.getBoundingClientRect().top + window.scrollY;
             return { href: t.textContent!, top, className: t.className };
         });
 
         // 设置起始距离和结束距离
-        const titlesList: NavItem[] = titles.map((title, index) => ({
+        const titlesList: NavItem[] = titles?.map((title, index) => ({
             href: title.href,
             start: title.top,
             end: index < titles.length - 1 ? titles[index + 1].top : Infinity,
@@ -92,7 +92,7 @@ const ContentNav = () => {
                 </div>
 
                 <div className="text-[#4d4d4d] dark:text-[#8c9ab1] text-sm w-full mt-4">
-                    {navs.map((item, index) => (
+                    {navs?.map((item, index) => (
                         <a
                             key={index}
                             href={`#${item.href}`}

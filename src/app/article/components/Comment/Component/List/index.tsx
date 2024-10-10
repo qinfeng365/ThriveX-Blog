@@ -49,7 +49,7 @@ const CommentList = ({ list, reply }: Props) => {
                             <div className="comment_main">{one.content}</div>
 
                             {one?.children?.length ? (
-                                one.children.map(two => (
+                                one.children?.map(two => (
                                     <div className="comment_user_two" key={two.id}>
                                         <div className="comment_user_two_info">
                                             {

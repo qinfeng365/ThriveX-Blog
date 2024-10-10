@@ -51,7 +51,7 @@ export default function MapContainer() {
                     });
 
                     // 遍历 locations 数组，创建标记
-                    list.forEach((data) => {
+                    list?.forEach((data) => {
                         const marker = new AMap.Marker({
                             position: data?.position.split(","), // 标记位置
                             map: map, // 将标记添加到地图
@@ -120,7 +120,7 @@ export default function MapContainer() {
                                         >
                                             <div className={`grid gap-4 ${data?.images.length === 1 ? 'grid-cols-1 w-6/12' : ''} ${data?.images.length === 2 ? 'grid-cols-2' : ''} ${data?.images.length === 3 ? 'grid-cols-3' : ''} ${data?.images.length! >= 4 ? 'grid-cols-4' : ''}`}>
                                                 {
-                                                    data?.images.map((item, index) => (
+                                                    data?.images?.map((item, index) => (
                                                         <PhotoView src={item} key={index}>
                                                             <img src={item} alt="" className="rounded-2xl w-full cursor-pointer" />
                                                         </PhotoView>

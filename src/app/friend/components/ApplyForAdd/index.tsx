@@ -217,7 +217,7 @@ export default () => {
                           trigger: "hover:!border-primary data-[focus=true]:!border-primary data-[open=true]:!border-primary rounded-md"
                         }}
                       >
-                        {typeList.map(item => <SelectItem key={item.id}>{item.name}</SelectItem>)}
+                        {typeList?.map(item => <SelectItem key={item.id}>{item.name}</SelectItem>)}
                       </Select>
                     </>
                   )}

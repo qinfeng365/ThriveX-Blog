@@ -18,7 +18,7 @@ const StarrySky = () => {
         }
 
         const starElements = document.querySelectorAll<HTMLElement>('.star_starrySky');
-        starElements.forEach((starElement) => {
+        starElements?.forEach((starElement) => {
             const s = 0.2 + Math.random() * 1;
             const curR = r + Math.random() * 300;
             starElement.style.transformOrigin = `0 0 ${curR}px`;

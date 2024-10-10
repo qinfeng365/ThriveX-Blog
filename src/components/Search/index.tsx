@@ -69,7 +69,7 @@ export default ({ disclosure }: Props) => {
 
                                         <div className="mt-4">
                                             {data?.result ? (
-                                                data?.result.map(item => (
+                                                data?.result?.map(item => (
                                                     <Link
                                                         key={item.id}
                                                         href={`/article/${item.id}`}

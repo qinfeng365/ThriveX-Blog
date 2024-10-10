@@ -21,7 +21,7 @@ export default async () => {
     let data: { [string: string]: { order: number, list: Web[] } } = {}
 
     // 给每个数据进行分组处理
-    linkList.forEach(item => {
+    linkList?.forEach(item => {
         if (data[item.type.name]) {
             data[item.type.name].list.push(item)
         } else {
@@ -53,13 +53,13 @@ export default async () => {
 
             <div className="relative -top-20 xs:-top-20 sm:-top-32 md:-top-36 w-[90%] xl:w-[1200px] p-10 pt-2 mx-auto bg-white dark:bg-black-b border dark:border-black-b rounded-2xl space-y-8 transition-colors">
                 {
-                    Object.keys(data).map((type, index) => (
+                    Object.keys(data)?.map((type, index) => (
                         <div key={index}>
                             <h3 className="w-full text-center text-xl p-4 dark:text-white transition-colors">{type}</h3>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                                 {
-                                    data[type].list.map((item: Web) => (
+                                    data[type].list?.map((item: Web) => (
                                         <Link key={item.id} href={item.url} target="_blank" className="group">
                                             <div key={item.id} className="flex items-center p-3 border group-hover:border-2 dark:border-[#3d4653] group-hover:!border-primary group-hover:shadow-[0_10px_20px_1px_rgb(83,157,253,.1)] rounded-md transition-colors">
                                                 <img src={item.image} alt={item.title} className="w-14 h-14 mr-4 rounded-full" />

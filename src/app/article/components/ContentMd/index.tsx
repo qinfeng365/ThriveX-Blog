@@ -22,7 +22,7 @@ const ContentMdComponent = ({ data }: Props) => {
         const images = document.querySelectorAll<HTMLImageElement>('img');
 
         setTimeout(() => {
-            images.forEach((img) => {
+            images?.forEach((img) => {
                 img.style.filter = 'blur(0)';
             });
         }, 1000);
