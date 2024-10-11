@@ -9,9 +9,11 @@ import "react-photo-view/dist/react-photo-view.css";
 
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-import 'highlight.js/styles/github.css';
+// import 'highlight.js/styles/github.css';
 // import 'highlight.js/styles/atom-one-dark.css';
-import "github-markdown-css";
+import 'highlight.js/styles/vs2015.css';
+// import 'highlight.js/styles/github-dark-dimmed.css';
+// import "github-markdown-css";
 
 interface Props {
     data: string;

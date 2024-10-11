@@ -1,10 +1,19 @@
 @import "@/styles/var.scss";
 
 .ContentMdComponent {
+
     // 自定义文章内容样式
     .markdown-body {
         // 继承父级字体：font-family: inherit;
-        @apply font-[inherit] dark:bg-black-a dark:text-[#8c9ab1] transition-colors;
+        @apply font-[inherit] dark:bg-transparent dark:text-[#8c9ab1] !transition-colors;
+
+        pre {
+            margin: 15px 0;
+
+            code.hljs {
+                border-radius: 1%;
+            }
+        }
 
         h1,
         h2,
