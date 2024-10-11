@@ -47,7 +47,7 @@ const ContentMdComponent = ({ data }: Props) => {
             waves[2].style.fill = "rgba(249, 249, 249, 0.3)";
             waves[3].style.fill = "rgba(249, 249, 249)";
         };
-    }, []);
+    }, [isDark]);
 
     const renderers = {
         img: ({ alt, src }: { alt?: string; src?: string }) => (
