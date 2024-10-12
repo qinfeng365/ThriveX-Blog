@@ -66,6 +66,10 @@
             @apply bg-primary dark:bg-[#334052] text-white rounded-md py-1 px-2 text-sm transition-colors;
         }
 
+        li{
+            @apply my-2.5;
+        }
+
         a {
             @apply text-primary
         }
