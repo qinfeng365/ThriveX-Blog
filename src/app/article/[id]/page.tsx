@@ -1,4 +1,4 @@
-import { getArticleDataAPI } from '@/api/article'
+import { getArticleDataAPI, recordViewAPI } from '@/api/article'
 
 import Starry from "@/components/Starry"
 import Swiper from "@/components/Swiper"
@@ -24,6 +24,9 @@ interface Props {
 export default async ({ params }: Props) => {
     const id = params.id
     const { data } = await getArticleDataAPI(id)
+
+    // 记录文章访问量
+    await recordViewAPI(id)
 
     // 图标样式
     const iconSty = "flex justify-center items-center w-5 h-5 rounded-full text-xs mr-1"

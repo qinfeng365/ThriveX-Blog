@@ -1,5 +1,5 @@
-// const url = "http://localhost:9999/api"
-const url = "http://api.liuyuyang.net/api"
+const url = "http://localhost:9003/api"
+// const url = "http://api.liuyuyang.net/api"
 
 export default async <T>(method: string, api: string, data?: any, caching = true) => {
     const res = await fetch(`${url}${api}`, {

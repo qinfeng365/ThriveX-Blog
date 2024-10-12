@@ -20,3 +20,8 @@ export const getRandomArticleListAPI = async () => {
 export const getRecommendedArticleListAPI = async () => {
     return await Request<Article[]>("GET", "/article/hot");
 }
+
+// 递增浏览量
+export const recordViewAPI = async (id: number) => {
+    return await Request<void>("GET", `/article/view/${id}`);
+}
