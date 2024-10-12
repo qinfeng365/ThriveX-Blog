@@ -11,7 +11,7 @@
             margin: 15px 0;
 
             code.hljs {
-                border-radius: 1%;
+                border-radius: 10px;
             }
         }
 
@@ -21,7 +21,48 @@
         h4,
         h5,
         h6 {
-            @apply dark:text-white dark:border-black-b transition-colors
+            @apply dark:text-white dark:border-black-b transition-colors;
+        }
+
+        h1 {
+            @apply text-2xl my-4 pb-3 border-b;
+
+            &::before {
+                content: "✨️";
+                @apply pr-3;
+            }
+        }
+
+        h2 {
+            @apply relative text-lg my-4 pl-5;
+
+            &::before {
+                content: "";
+                @apply absolute left-0 top-[50%] -translate-y-1/2 w-2 h-full bg-primary;
+            }
+        }
+
+        h3 {
+            @apply relative text-lg my-3 pl-5;
+
+            &::before {
+                content: "#";
+                @apply absolute left-0 top-[50%] -translate-y-1/2 text-primary;
+            }
+        }
+
+        h4,
+        h5,
+        h6 {
+            @apply relative text-lg my-3;
+        }
+
+        hr {
+            @apply my-5 border dark:border-[#4e5969] transition-colors;
+        }
+
+        p code {
+            @apply bg-primary dark:bg-[#334052] text-white rounded-md py-1 px-2 text-sm transition-colors;
         }
 
         a {
@@ -29,12 +70,16 @@
         }
 
         p {
-            @apply leading-9;
+            @apply leading-9 mb-2;
 
             img {
                 // 图片模糊
                 @apply blur-[20px] rounded-xl cursor-pointer transition-all;
             }
+        }
+
+        strong {
+            @apply font-sans;
         }
     }
 }
