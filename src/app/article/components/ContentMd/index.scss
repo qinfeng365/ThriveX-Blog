@@ -61,7 +61,8 @@
             @apply my-5 border dark:border-[#4e5969] transition-colors;
         }
 
-        p code {
+        p code,
+        ul code {
             @apply bg-primary dark:bg-[#334052] text-white rounded-md py-1 px-2 text-sm transition-colors;
         }
 
@@ -79,7 +80,25 @@
         }
 
         strong {
+            @apply font-sans text-[15px];
+        }
+
+        tr,
+        th,
+        td {
+            @apply border p-[10px_20px];
+        }
+
+        th{
             @apply font-sans;
+        }
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            position: relative;
+            cursor: not-allowed;
         }
     }
 }

@@ -63,7 +63,7 @@ export default async ({ params }: Props) => {
                 </Swiper>
 
                 <div className="w-[90%] xl:w-6/12 mx-auto mt-12 relative">
-                    <h1 className='text-3xl text-center mb-5'>{data.title}</h1>
+                    {/* <h1 className='text-3xl text-center mb-5'>{data.title}</h1> */}
                     <ContentMd data={data?.content}></ContentMd>
 
                     <div className="w-full">

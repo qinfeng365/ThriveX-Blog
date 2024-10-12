@@ -2,11 +2,11 @@
 
 import React, { useEffect } from "react";
 import { useConfigStore } from "@/stores";
-import "./index.scss";
 
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
+import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 // import 'highlight.js/styles/github.css';
@@ -14,6 +14,7 @@ import rehypeHighlight from "rehype-highlight";
 import 'highlight.js/styles/vs2015.css';
 // import 'highlight.js/styles/github-dark-dimmed.css';
 // import "github-markdown-css";
+import "./index.scss";
 
 interface Props {
     data: string;
@@ -68,6 +69,7 @@ const ContentMdComponent = ({ data }: Props) => {
                     <ReactMarkdown
                         components={renderers}
                         rehypePlugins={[rehypeHighlight]}
+                        remarkPlugins={[remarkGfm]}
                     >
                         {data}
                     </ReactMarkdown>
