@@ -50,7 +50,7 @@ const CommentList = ({ list, reply }: Props) => {
 
                             {one?.children?.length ? (
                                 one.children?.map(two => (
-                                    <div className="comment_user_two" key={two.id}>
+                                    <div className="comment_user_two !ml-5 sm:!ml-12" key={two.id}>
                                         <div className="comment_user_two_info">
                                             {
                                                 two.avatar
@@ -78,7 +78,7 @@ const CommentList = ({ list, reply }: Props) => {
                                         </div>
 
                                         {two.children?.map(three => (
-                                            <div className="comment_user_three" key={three.id}>
+                                            <div className="comment_user_three !ml-5 sm:!ml-12" key={three.id}>
                                                 <div className="comment_user_three_info">
                                                     {
                                                         three.avatar

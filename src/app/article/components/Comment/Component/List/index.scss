@@ -60,7 +60,7 @@
             .avatar {
                 width: 35px;
                 height: 35px;
-                margin-right: 15px;
+                margin-right: 10px;
                 border-radius: 50%;
             }
 
@@ -90,7 +90,7 @@
 
             /* 评论的内容 */
             .comment_main {
-                margin: 5px 0px 5px 50px;
+                margin: 10px 0 10px 0px;
                 font-size: 15px;
                 transition: all $move;
                 word-break: break-word;
@@ -124,7 +124,7 @@
                 }
 
                 .comment_main {
-                    margin: 5px 0px 5px 40px;
+                    margin: 10px 0 10px 0px;
 
                     a {
                         color: #007bff;
@@ -160,7 +160,7 @@
                 }
 
                 .comment_main {
-                    margin: 5px 0px 5px 40px;
+                    margin: 10px 0 10px 0px;
 
                     a {
                         color: #007bff;
