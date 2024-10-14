@@ -38,8 +38,9 @@ const CommentForm = ({ articleId }: Props) => {
 
     const { register, control, formState: { errors }, handleSubmit, reset, setValue } = useForm<CommentForm>({});
 
+    // 如果之前评论过，就从本地取数据，不需要再重新填写
     useEffect(() => {
-        const info = JSON.parse(localStorage.getItem("data") || '{}');
+        const info = JSON.parse(localStorage.getItem("comment_data") || '{}');
         setValue('name', info.name || '');
         setValue('email', info.email || '');
         setValue('avatar', info.avatar || '');
@@ -47,6 +48,13 @@ const CommentForm = ({ articleId }: Props) => {
     }, [setValue]);
 
     const onSubmit = async (data: CommentForm) => {
+        // 判断是不是QQ邮箱，如果是就把QQ截取出来，然后用QQ当做头像
+        const email_index = data.email.lastIndexOf("@qq.com")
+        if (email_index !== -1) {
+            const qq = data.email.substring(0, email_index)
+            data.avatar = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
+        };
+
         const { code, message } = await addCommentDataAPI({ ...data, articleId, commentId: commentId === articleId ? 0 : commentId, createTime: Date.now().toString() })
         if (code !== 200) return alert("发布评论失败：" + message);
 
@@ -54,9 +62,12 @@ const CommentForm = ({ articleId }: Props) => {
 
         // 发布成功后初始化表单
         setCommentId(articleId)
-        reset({ content: "", name: "", email: "", url: "", avatar: "" })
+        setValue('content', "");
         setPlaceholder("来发一针见血的评论吧~");
         getCommentList()
+
+        // 提交成功后把评论的数据持久化到本地
+        localStorage.setItem("comment_data", JSON.stringify(data))
     };
 
     // 回复评论
