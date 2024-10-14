@@ -79,6 +79,9 @@ export default function MapContainer() {
 
     return (
         <>
+            <title>人生轨迹</title>
+            <meta name="description" content="人生轨迹" />
+
             <div id="container"></div>
 
             <Modal

@@ -12,7 +12,7 @@ interface Props {
 export default async ({ params, searchParams }: Props) => {
     const cate = params.cate
     const page = searchParams.page || 1;
-    
+
     const active = "!text-primary !border-primary"
 
     // 提前把颜色写好，否则会导致样式丢失
@@ -25,6 +25,9 @@ export default async ({ params, searchParams }: Props) => {
 
     return (
         <>
+            <title>留言墙</title>
+            <meta name="description" content="留言墙" />
+
             <div className='bg-white dark:bg-black-a py-16 border-b dark:border-[#4e5969] transition-colors'>
                 <div className="flex flex-col items-center">
                     <h2 className="text-5xl pt-24">留言墙</h2>

@@ -18,6 +18,9 @@ export default async ({ params, searchParams }: Props) => {
 
   return (
     <>
+      <title>{`${name} - 分类`}</title>
+      <meta name="description" content={name} />
+
       <div>
         <Swiper isRipple={false}>
           {/* 星空背景组件 */}

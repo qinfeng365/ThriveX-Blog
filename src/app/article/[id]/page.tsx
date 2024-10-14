@@ -33,6 +33,9 @@ export default async ({ params }: Props) => {
 
     return (
         <>
+            <title>{data.title}</title>
+            <meta name="description" content={data.description} />
+
             <div className="ArticlePage">
                 <Swiper>
                     {/* 星空背景组件 */}
