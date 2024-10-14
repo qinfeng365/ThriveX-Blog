@@ -9,7 +9,7 @@ const nextConfig = {
     },
     // 配置图片来源
     images: {
-        domains: ['blog.liuyuyang.net'],
+        domains: ['res.liuyuyang.net'],
     },
 };
 

@@ -27,7 +27,8 @@ export default () => {
   const [typeList, setTypeList] = useState<WebType[]>([])
   const getWebTypeList = async () => {
     const { data } = await getWebTypeListAPI()
-    setTypeList(data)
+
+    setTypeList(data.filter(item => !item.isAdmin))
   }
   useEffect(() => {
     // 页面加载后检查是否有需要显示的消息
