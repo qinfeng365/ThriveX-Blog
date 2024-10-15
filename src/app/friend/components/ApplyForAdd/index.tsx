@@ -76,6 +76,12 @@ export default () => {
               <ModalHeader className="flex flex-col gap-1">申请友链</ModalHeader>
 
               <ModalBody>
+                <div className="mx-auto mb-4 p-3 space-y-2 border-l-[3px] border-primary bg-[#ecf7fe] rounded-md text-sm text-black-b">
+                  <p>1、网站无任何违法乱纪的内容</p>
+                  <p>2、网站文章不少于10篇（防止一时兴起）</p>
+                  <p>3、网站原创内容占 80% (婉拒资源分享、资讯新闻、论坛社区之类的站点)</p>
+                </div>
+
                 <Controller
                   name="title"
                   control={control}
