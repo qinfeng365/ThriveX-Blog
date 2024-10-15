@@ -55,7 +55,9 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
         const email_index = data.email.lastIndexOf("@qq.com")
         if (email_index !== -1) {
             const qq = data.email.substring(0, email_index)
-            data.avatar = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
+
+            // 判断是否是纯数字的QQ
+            if (!isNaN(+qq)) data.avatar = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
         };
 
         const { code, message } = await addCommentDataAPI({ ...data, articleId, commentId: commentId === articleId ? 0 : commentId, createTime: Date.now().toString() })
