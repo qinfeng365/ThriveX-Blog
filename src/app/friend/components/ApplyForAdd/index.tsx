@@ -134,7 +134,7 @@ export default () => {
                         type="text"
                         label="图片地址"
                         variant="bordered"
-                        placeholder="示例：https://blog.liuyuyang.net/avatar.jpg"
+                        placeholder="示例：https://liuyuyang.net/avatar.jpg"
                         isInvalid={!!errors.image?.message}
                         errorMessage={errors.image?.message}
                         onBlur={() => trigger('image')}
@@ -155,7 +155,7 @@ export default () => {
                         type="text"
                         label="网站地址"
                         variant="bordered"
-                        placeholder="示例：https://blog.liuyuyang.net/"
+                        placeholder="示例：https://liuyuyang.net/"
                         isInvalid={!!errors.url?.message}
                         errorMessage={errors.url?.message}
                         onBlur={() => trigger('url')}
@@ -197,7 +197,7 @@ export default () => {
                         type="text"
                         label="订阅地址（选填）"
                         variant="bordered"
-                        placeholder="示例：https://blog.liuyuyang.net/index.php/feed/"
+                        placeholder="示例：https://liuyuyang.net/index.php/feed/"
                         isInvalid={!!errors.rss?.message}
                         errorMessage={errors.rss?.message}
                         onBlur={() => trigger('rss')}

@@ -3,14 +3,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { addCommentDataAPI, getArticleCommentListAPI } from '@/api/comment';
+import { sendCommentEmailAPI } from '@/api/email';
 import { Comment } from '@/types/app/comment';
 import { ToastContainer, toast } from 'react-toastify';
 import List from './Component/List';
 import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss"
+import dayjs from 'dayjs';
 
 interface Props {
-    articleId: number
+    articleId: number,
+    articleTitle: string
 }
 
 interface CommentForm {
@@ -21,7 +24,7 @@ interface CommentForm {
     avatar: string
 }
 
-const CommentForm = ({ articleId }: Props) => {
+const CommentForm = ({ articleId, articleTitle }: Props) => {
     const contentRef = useRef<HTMLTextAreaElement>(null);
     const [commentId, setCommentId] = useState(articleId);
     const [placeholder, setPlaceholder] = useState("来发一针见血的评论吧~");
@@ -68,6 +71,16 @@ const CommentForm = ({ articleId }: Props) => {
 
         // 提交成功后把评论的数据持久化到本地
         localStorage.setItem("comment_data", JSON.stringify(data))
+
+        // 发送邮件通知
+        await sendCommentEmailAPI({
+            content: data.content,
+            reviewers: data.name,
+            subject: articleTitle,
+            title: articleTitle,
+            url: location.href,
+            time: dayjs(Date.now()).format('YYYY年MM月DD日 HH:mm')
+        })
     };
 
     // 回复评论
