@@ -10,12 +10,14 @@ import Starry from "@/components/Starry";
 import ApplyForAdd from "./components/ApplyForAdd";
 
 import { ToastContainer } from "react-toastify";
+import { getUserDataAPI } from "@/api/user";
 
 export const metadata: Metadata = {
     title: "朋友圈"
 };
 
 export default async () => {
+    const { data: user } = await getUserDataAPI()
     const { data: web } = await getWebDataAPI();
     const { data: linkList } = await getWebListAPI()
     const { data: typeList } = await getWebTypeListAPI()
@@ -60,7 +62,7 @@ export default async () => {
                     <div className="mx-auto p-3 space-y-2 border-l-[3px] border-primary bg-[#ecf7fe] rounded-md text-sm text-black-b">
                         <p>站点名称：{web.title}</p>
                         <p>站点介绍：{web.description}</p>
-                        <p>站点图标：{web.favicon}</p>
+                        <p>站点图标：{user.avatar}</p>
                         <p>站点地址：{web.url}</p>
                     </div>
                 </div>
