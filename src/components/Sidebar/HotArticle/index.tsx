@@ -18,7 +18,7 @@ const RandomArticle = async () => {
                 </div>
 
                 {/* 文章列表 */}
-                <div>
+                <div className='w-full'>
                     {data?.map((item) => (
                         <div key={item.id}>
                             <Link href={`/article/${item.id}`} className='w-full flex items-center py-2 text-gray-600 dark:text-[#8c9ab1] text-sm transition-all hover:!text-primary hover:pl-2'>
