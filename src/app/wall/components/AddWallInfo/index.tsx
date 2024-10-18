@@ -120,6 +120,26 @@ export default () => {
                 />
 
                 <Controller
+                  name="email"
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <Input
+                        {...field}
+                        type="text"
+                        label="你的邮箱（选填）"
+                        variant="bordered"
+                        placeholder="示例：3311118881@qq.com"
+                        isInvalid={!!errors.email?.message}
+                        errorMessage={errors.email?.message}
+                        onBlur={() => trigger('email')}
+                        classNames={{ inputWrapper }}
+                      />
+                    </>
+                  )}
+                />
+
+                <Controller
                   name="cateId"
                   control={control}
                   rules={{ required: '请选择留言分类' }}

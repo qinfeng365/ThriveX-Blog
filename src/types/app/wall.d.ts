@@ -12,6 +12,7 @@ export interface Wall {
     cate: Cate;
     color: string;
     content: string;
+    email: string;
     auditStatus: number;
     createTime: string;
 }
