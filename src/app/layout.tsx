@@ -7,13 +7,6 @@ import Footer from '@/components/Footer'
 import "@/styles/index.scss";
 import "@/styles/tailwind.scss";
 
-// 使用本地字体
-// import localFont from 'next/font/local'
-// const LXGWWenKai = localFont({
-//   src: '../assets/font/LXGWWenKai.ttf',
-//   display: 'swap',
-// })
-
 import { getWebDataAPI } from '@/api/project'
 
 import Tools from '@/components/Tools';
@@ -29,8 +22,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <meta name="description" content={data?.description} />
         <meta name="keywords" content={data?.keyword} />
         <link rel="icon" href={data?.favicon} />
+
+        {/* 字体 */}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
 
+        {/* 百度统计 */}
         <script dangerouslySetInnerHTML={{
           __html: `
             var _hmt = _hmt || [];
@@ -44,7 +40,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         }} />
       </head>
 
-      {/* <body className={`${LXGWWenKai.className} dark:!bg-black-a transition-colors`}> */}
       <body className={`dark:!bg-black-a transition-colors`}>
         {/* 进度条组件 */}
         <NProgress />
