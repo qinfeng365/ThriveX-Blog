@@ -80,26 +80,6 @@ export default () => {
 
               <ModalBody>
                 <Controller
-                  name="name"
-                  control={control}
-                  render={({ field }) => (
-                    <>
-                      <Input
-                        {...field}
-                        type="text"
-                        label="你的名称（选填）"
-                        variant="bordered"
-                        placeholder="示例：宇阳"
-                        isInvalid={!!errors.name?.message}
-                        errorMessage={errors.name?.message}
-                        onBlur={() => trigger('name')}
-                        classNames={{ inputWrapper }}
-                      />
-                    </>
-                  )}
-                />
-
-                <Controller
                   name="content"
                   control={control}
                   rules={{ required: '请输入留言内容' }}
@@ -113,6 +93,26 @@ export default () => {
                         isInvalid={!!errors.content?.message}
                         errorMessage={errors.content?.message}
                         onBlur={() => trigger('content')}
+                        classNames={{ inputWrapper }}
+                      />
+                    </>
+                  )}
+                />
+
+                <Controller
+                  name="name"
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <Input
+                        {...field}
+                        type="text"
+                        label="你的名称（选填）"
+                        variant="bordered"
+                        placeholder="示例：宇阳"
+                        isInvalid={!!errors.name?.message}
+                        errorMessage={errors.name?.message}
+                        onBlur={() => trigger('name')}
                         classNames={{ inputWrapper }}
                       />
                     </>

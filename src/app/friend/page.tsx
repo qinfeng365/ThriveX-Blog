@@ -64,6 +64,7 @@ export default async () => {
                         <p>站点介绍：{web.description}</p>
                         <p>站点图标：{user.avatar}</p>
                         <p>站点地址：{web.url}</p>
+                        <p>Rss地址：{web.url + '/api/rss'}</p>
                     </div>
                 </div>
 
