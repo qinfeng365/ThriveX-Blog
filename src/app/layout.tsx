@@ -8,11 +8,11 @@ import "@/styles/index.scss";
 import "@/styles/tailwind.scss";
 
 // 使用本地字体
-import localFont from 'next/font/local'
-const LXGWWenKai = localFont({
-  src: '../assets/font/LXGWWenKai.ttf',
-  display: 'swap',
-})
+// import localFont from 'next/font/local'
+// const LXGWWenKai = localFont({
+//   src: '../assets/font/LXGWWenKai.ttf',
+//   display: 'swap',
+// })
 
 import { getWebDataAPI } from '@/api/project'
 
@@ -24,10 +24,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang="en">
-      <title>{`${data?.title} - ${data?.subhead}`}</title>
-      <meta name="description" content={data?.description} />
-      <meta name="keywords" content={data?.keyword} />
-      <link rel="icon" href={data?.favicon} />
+      <head>
+        <title>{`${data?.title} - ${data?.subhead}`}</title>
+        <meta name="description" content={data?.description} />
+        <meta name="keywords" content={data?.keyword} />
+        <link rel="icon" href={data?.favicon} />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
+      </head>
 
       {/* <script dangerouslySetInnerHTML={{
         __html: `
@@ -41,7 +44,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           `
       }} /> */}
 
-      <body className={`${LXGWWenKai.className} dark:!bg-black-a transition-colors`}>
+      {/* <body className={`${LXGWWenKai.className} dark:!bg-black-a transition-colors`}> */}
+      <body className={`dark:!bg-black-a transition-colors`}>
         {/* 进度条组件 */}
         <NProgress />
         {/* 顶部导航组件 */}
