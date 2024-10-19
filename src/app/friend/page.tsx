@@ -60,11 +60,11 @@ export default async () => {
                     <h3 className="w-full text-center text-xl p-4 dark:text-white transition-colors">本站信息</h3>
 
                     <div className="mx-auto p-3 space-y-2 border-l-[3px] border-primary bg-[#ecf7fe] rounded-md text-sm text-black-b">
-                        <p>站点名称：{web.title}</p>
-                        <p>站点介绍：{web.description}</p>
-                        <p>站点图标：{user.avatar}</p>
-                        <p>站点地址：{web.url}</p>
-                        <p>Rss地址：{web.url + '/api/rss'}</p>
+                        <p>站点名称：<span className="hover:text-primary cursor-pointer">{web.title}</span></p>
+                        <p>站点介绍：<span className="hover:text-primary cursor-pointer">{web.description}</span></p>
+                        <p>站点图标：<span className="hover:text-primary cursor-pointer">{user.avatar}</span></p>
+                        <p>站点地址：<span className="hover:text-primary cursor-pointer">{web.url}</span></p>
+                        <p>Rss地址：<span className="hover:text-primary cursor-pointer">{web.url + '/api/rss'}</span></p>
                     </div>
                 </div>
 

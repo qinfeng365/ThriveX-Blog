@@ -53,7 +53,7 @@ export default async ({ params, searchParams }: Props) => {
                                     <span>{item.cate.name}</span>
                                 </div>
 
-                                <div className='overflow-auto h-32 text-sm my-4 text-gray-700 dark:text-[#cecece]'>{item.content}</div>
+                                <div className='hide_sliding overflow-auto h-32 text-sm my-4 text-gray-700 dark:text-[#cecece]'>{item.content}</div>
 
                                 <div className='text-end text-[#5b5b5b] dark:text-[#A0A0A0]'>{item.name ? item.name : "匿名"}</div>
                             </div>
