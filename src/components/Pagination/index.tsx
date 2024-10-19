@@ -7,11 +7,11 @@ interface Props {
     total: number,
     page: number,
     size?: number,
-    url?: string,
+    path?: string,
     className?: string
 }
 
-export default ({ total, page, size = 5, url, className }: Props) => {
+export default ({ total, page, size = 5, path, className }: Props) => {
     const router = useRouter()
 
     return (
@@ -21,7 +21,7 @@ export default ({ total, page, size = 5, url, className }: Props) => {
                     showControls
                     total={total}
                     page={+page}
-                    onChange={(page) => router.push(url ? url : `?page=${page}`)}
+                    onChange={(page) => router.push(path ? `${path}&page=${page}` : `?page=${page}`)}
                     classNames={{ item: "shadow-none bg-transparent dark:hover:!bg-black-b transition-colors", prev: "dark:bg-black-b transition-colors", next: "dark:bg-black-b transition-colors" }}
                 />
             </div>
