@@ -1,6 +1,6 @@
 import bg from '@/assets/image/bg.png'
 import avatar from '@/assets/image/avatar.jpg'
-import {MyData} from '@/types/app/my'
+import { MyData } from '@/types/app/my'
 
 import Goals from './component/Goals'
 import Character from './component/Character'
@@ -147,32 +147,32 @@ export default () => {
   }
 
   return (
-      <>
-        <title>关于我</title>
-        <meta name="description" content="关于我"/>
+    <>
+      <title>关于我</title>
+      <meta name="description" content="关于我" />
 
-        <div className="bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed"
-             style={{backgroundImage: `url(${bg.src})`}}>
-          <div className="w-[90%] lg:w-[950px] mx-auto">
-            <Info data={data?.info}/>
-          </div>
-
-          <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
-            <Character data={data?.character}/>
-            <Goals data={data?.goals}/>
-          </div>
-
-          <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
-            <Map/>
-            <Technology/>
-          </div>
-
-          <Project data={data?.project}/>
-
-          <div className="mt-16">
-            <CurriculumVitae/>
-          </div>
+      <div className="bg-white dark:bg-black-a pt-20 bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: `url(${bg.src})` }}>
+        <div className="w-[90%] lg:w-[950px] mx-auto">
+          <Info data={data?.info} />
         </div>
-      </>
+
+        <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
+          <Character data={data?.character} />
+          <Goals data={data?.goals} />
+        </div>
+
+        <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
+          <Map />
+          <Technology />
+        </div>
+
+        <Project data={data?.project} />
+
+        <div className="mt-16">
+          <CurriculumVitae />
+        </div>
+      </div>
+    </>
   )
 }

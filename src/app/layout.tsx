@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <meta name="keywords" content={data?.keyword} />
       <link rel="icon" href={data?.favicon} />
 
-      <script dangerouslySetInnerHTML={{
+      {/* <script dangerouslySetInnerHTML={{
         __html: `
             var _hmt = _hmt || [];
             (function() {
@@ -39,7 +39,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
               s.parentNode.insertBefore(hm, s);
             })();
           `
-      }} />
+      }} /> */}
 
       <body className={`${LXGWWenKai.className} dark:!bg-black-a transition-colors`}>
         {/* 进度条组件 */}
