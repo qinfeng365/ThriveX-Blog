@@ -45,12 +45,6 @@ export default ({ list, open, onClose }: Props) => {
                 )} />
               </li>
             ))}
-
-            <li className="group/one relative hover:bg-[#e0e6ec] dark:hover:bg-[#495362] rounded-md transition-colors">
-              <Link href={`https://github.com/LiuYuYang01/ThriveX-Blog`} target='_blank' className={`flex justify-between items-center p-3 px-5 text-[15px] group-hover/one:!text-primary transition-colors text-[#333] dark:text-white whitespace-nowrap`}>
-                🔥 GitHub 开源地址
-              </Link>
-            </li>
           </ul>
         </div>
 

@@ -112,10 +112,6 @@ const Header = () => {
                                 )} />
                             </li>
                         ))}
-
-                        <Link href={`https://github.com/LiuYuYang01/ThriveX-Blog`} target='_blank' className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}>
-                            🔥 GitHub 开源地址
-                        </Link>
                     </ul>
 
                     {/* 主题切换开关 */}

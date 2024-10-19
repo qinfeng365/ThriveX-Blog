@@ -43,6 +43,7 @@ export async function GET() {
     });
 
     const xml = feed.rss2();
+
     return new NextResponse(xml, {
         headers: {
             'Content-Type': 'application/xml',
