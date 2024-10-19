@@ -30,10 +30,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <meta name="keywords" content={data?.keyword} />
         <link rel="icon" href={data?.favicon} />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
-      </head>
 
-      {/* <script dangerouslySetInnerHTML={{
-        __html: `
+        <script dangerouslySetInnerHTML={{
+          __html: `
             var _hmt = _hmt || [];
             (function() {
               var hm = document.createElement("script");
@@ -42,7 +41,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
               s.parentNode.insertBefore(hm, s);
             })();
           `
-      }} /> */}
+        }} />
+      </head>
 
       {/* <body className={`${LXGWWenKai.className} dark:!bg-black-a transition-colors`}> */}
       <body className={`dark:!bg-black-a transition-colors`}>
