@@ -18,7 +18,7 @@ const NewComments = async () => {
 
                 <div className="mt-2.5">
                     {data?.result?.map((item) => (
-                        <Link href={`/article/${item.articleId}`} className="group flex items-center py-2.5 border-b dark:border-b-black-b transition-all last:border-b-0" key={item.id}>
+                        <Link href={`/article/${item.articleId}`} target='_blank' className="group flex items-center py-2.5 border-b dark:border-b-black-b transition-all last:border-b-0" key={item.id}>
                             {item.avatar
                                 ? <img src={item.avatar} className="w-11 h-11 rounded-full mr-2.5 transition-all hover:scale-110" alt="avatar" />
                                 : <RandomAvatar className='w-11 h-11 rounded-full mr-2.5 transition-all hover:scale-110' />

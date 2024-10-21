@@ -20,9 +20,9 @@ const HotArticle = async () => {
                         <div
                             key={index}
                             className="item relative h-32 bg-no-repeat bg-center rounded-md transition-all after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-12 after:transition-opacity after:rounded-md after:bg-[linear-gradient(transparent,#000)]"
-                            style={{ backgroundImage: `url(${item.cover || randomImage()})`}}
+                            style={{ backgroundImage: `url(${item.cover || randomImage()})` }}
                         >
-                            <Link href="/" className='inline-block w-full h-full'>
+                            <Link href={`/article/${item.id}`} target='_blank' className='inline-block w-full h-full'>
                                 <h4 className=' absolute bottom-2.5 w-[95%] px-2.5 text-white text-[15px] font-normal line-clamp-1 z-10'>{item.title}</h4>
                             </Link>
 
