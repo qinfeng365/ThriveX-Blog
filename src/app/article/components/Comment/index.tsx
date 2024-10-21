@@ -75,17 +75,6 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
 
         // 提交成功后把评论的数据持久化到本地
         localStorage.setItem("comment_data", JSON.stringify(data))
-
-        // 发送邮件通知
-        await sendCommentEmailAPI({
-            content: data.content,
-            reviewers: data.name,
-            subject: articleTitle,
-            title: articleTitle,
-            url: location.href,
-            time: dayjs(Date.now()).format('YYYY年MM月DD日 HH:mm'),
-            to: commentId !== articleId ? data.email : undefined
-        })
     };
 
     // 回复评论
