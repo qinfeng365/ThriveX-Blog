@@ -16,4 +16,4 @@ export default async <T>(method: string, api: string, data?: any, caching = true
     })
 
     return res.json() as Promise<ResponseData<T>>;
-}
+} 
