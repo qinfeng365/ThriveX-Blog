@@ -74,7 +74,7 @@ const ContentNav = () => {
         <>
             {open
                 ? (
-                    <div className="fixed top-[80%] left-[19%] z-50 cursor-pointer flex justify-center items-center w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => setOpen(false)}>
+                    <div className="fixed bottom-5 right-5 sm:top-[80%] sm:left-[320px] z-50 cursor-pointer flex justify-center items-center w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => setOpen(false)}>
                         <MdOutlineKeyboardDoubleArrowLeft className="w-full text-4xl text-primary" />
                     </div>
                 )
@@ -86,7 +86,7 @@ const ContentNav = () => {
                 )
             }
 
-            <div className={`ContentNavComponent overflow-hidden fixed top-0 z-50 w-0 h-screen bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(30,36,46,0.9)] backdrop-blur-sm shadow-[16px_0px_15px_-3px_rgba(101,155,246,0.1)] ${open ? 'w-[17%] p-[20px_10px]' : 'w-0'} transition-width`}>
+            <div className={`ContentNavComponent overflow-hidden fixed top-0 z-40 max-w-0 h-screen bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(30,36,46,0.9)] backdrop-blur-sm shadow-[16px_0px_15px_-3px_rgba(101,155,246,0.1)] ${open ? 'max-w-[300px] p-[20px_10px]' : 'max-w-0'} transition-[max-width]`}>
                 <div className="flex justify-center items-center mt-5">
                     <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
                 </div>
@@ -96,7 +96,7 @@ const ContentNav = () => {
                         <a
                             key={index}
                             href={`#${item.href}`}
-                            className={`nav_item overflow-hidden relative block p-1 pl-5 mb-[5px] hover:text-primary transition-all duration-700 ${active >= item.start && active < item.end! ? 'text-primary pl-[30px] rounded-[10px] bg-[#f7faff] dark:bg-[#313d4e99] before:!left-4' : ''} ${item.className}`}
+                            className={`nav_item overflow-hidden relative block p-1 pl-5 mb-[5px] hover:text-primary transition-all duration-700 ${active >= item.start && active < item.end! ? 'text-primary pl-[30px] rounded-[10px] text-[15px] dark:bg-[#313d4e99] before:!left-4' : ''} ${item.className}`}
                         >
                             {item.href}
                         </a>
