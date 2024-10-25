@@ -33,6 +33,21 @@ body {
     animation: 5s linear infinite miniShape;
 }
 
+// 文本标记样式
+.textMarkSty {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 50%;
+        height: 10px;
+        background-color: #539dfd80;
+    }
+}
+
 @keyframes miniShape {
 
     0%,
