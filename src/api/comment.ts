@@ -8,6 +8,11 @@ export const addCommentDataAPI = async (data: Comment) => {
 
 // 获取评论列表
 export const getCommentListAPI = async () => {
+    return await Request<Comment[]>("POST", `/comment/list`);
+}
+
+// 分页获取评论数据
+export const getCommentPagingAPI = async () => {
     return await Request<Paginate<Comment[]>>("POST", `/comment/paging`);
 }
 

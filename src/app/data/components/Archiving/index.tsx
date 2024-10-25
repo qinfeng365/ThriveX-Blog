@@ -1,14 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react"
 
-import { getArticleListAPI } from '@/api/article'
 import { Article } from "@/types/app/article"
 
-import Swiper from "@/components/Swiper";
-import Starry from "@/components/Starry";
 import { Accordion, AccordionItem, Spinner } from "@nextui-org/react";
 
-import archiving from '@/assets/svg/other/archiving.svg'
+import archiving from './svg/archiving.svg'
 import { AiOutlineEye } from "react-icons/ai";
 import dayjs from "dayjs";
 
@@ -35,16 +33,13 @@ const Title = ({ data }: { data: YearData }) => {
     )
 }
 
-export default () => {
-    const [list, setList] = useState<YearData[]>([])
+export default ({ list }: { list: Article[] }) => {
+    const [result, setResult] = useState<YearData[]>([])
     const getArticleList = async () => {
-        const { data } = await getArticleListAPI()
-        const result = groupByYearAndMonth(data);
+        const result = groupByYearAndMonth(list);
         // 从早到晚排序
         result.sort((a, b) => b.year - a.year)
-        console.log(result, 999);
-
-        setList(result)
+        setResult(result)
     }
 
     // 将文章进行分组
@@ -77,14 +72,14 @@ export default () => {
 
     useEffect(() => {
         getArticleList()
-    }, [])
+    }, [list])
 
     return (
         <>
-            <h3 className="flex items-center text-2xl mb-3"><img src={archiving.src} alt="归档" className="w-9 mr-3" /> 文章归纳</h3>
+            <h3 className="flex items-center text-2xl mb-3"><Image src={archiving.src} alt="归档" width={36} height={36} className="mr-3" /> 文章归纳</h3>
 
             {
-                !!list.length
+                !!result.length
                     ? (
                         <Accordion
                             className="[&>hr]:bg-[#eee] !px-0"
@@ -126,11 +121,11 @@ export default () => {
                             }}
                         >
                             {
-                                list.map((item, index) => (
+                                result.map((item, index) => (
                                     <AccordionItem key={index} aria-label={item.year + '年'} title={<Title data={item} />}>
                                         {
-                                            Object.keys(item.month).map(month => (
-                                                <div className="ml-3">
+                                            Object.keys(item.month).map((month, index) => (
+                                                <div key={index} className="ml-3">
                                                     <div className="relative border-l border-gray-300">
                                                         <div className="mb-8 ml-4">
                                                             <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-1.5 border border-white"></div>
@@ -142,8 +137,8 @@ export default () => {
                                                                 </div>
 
                                                                 {
-                                                                    item.month[+month].list.map((article: Article) => (
-                                                                        <div className="group flex justify-between py-2">
+                                                                    item.month[+month].list.map((article: Article, index) => (
+                                                                        <div key={index} className="group flex justify-between py-2">
                                                                             <Link href={`/article/${article.id}`} target="_blank" className="group-hover:text-primary transition-colors">{dayjs(+article.createTime!).format('MM-DD')} {article.title}</Link>
                                                                             <span className="flex items-center min-w-24 text-sm text-white group-hover:text-gray-400 transition-colors"><AiOutlineEye className="mr-1" />{article.view}</span>
                                                                         </div>

@@ -2,9 +2,21 @@
 
 import Swiper from "@/components/Swiper";
 import Starry from "@/components/Starry";
+import Statis from './components/Statis'
 import Archiving from './components/Archiving'
+import { useEffect, useState } from "react";
+import { Article } from "@/types/app/article";
+import { getArticleListAPI } from "@/api/article";
 
 export default () => {
+    const [articleList, setArticleList] = useState<Article[]>([])
+    const getArticleList = async () => {
+        const { data } = await getArticleListAPI()
+        setArticleList(data)
+    }
+    useEffect(() => {
+        getArticleList()
+    }, [])
 
     return (
         <>
@@ -21,7 +33,8 @@ export default () => {
             </Swiper>
 
             <div className="w-[1200px] mt-10 mx-auto bg-white p-10 rounded-xl border">
-                <Archiving />
+                <Statis aTotal={articleList.length}/>
+                <Archiving list={articleList}/>
             </div>
         </>
     )
