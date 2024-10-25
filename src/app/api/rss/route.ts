@@ -1,14 +1,14 @@
 import { Feed } from 'feed';
 import { NextResponse } from 'next/server';
 
-import { getArticleListAPI } from '@/api/article'
+import { getArticlePagingAPI } from '@/api/article'
 import { getWebDataAPI } from '@/api/project'
 import { getUserDataAPI } from '@/api/user'
 
 export async function GET() {
     const { data: web } = await getWebDataAPI()
     const { data: user } = await getUserDataAPI()
-    const { data: article } = await getArticleListAPI({ pagination: { page: 1, size: 8 } })
+    const { data: article } = await getArticlePagingAPI({ pagination: { page: 1, size: 8 } })
     const list = article?.result || []
 
     const feed = new Feed({

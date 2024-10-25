@@ -7,7 +7,12 @@ export const getArticleDataAPI = async (id: number) => {
 }
 
 // 获取文章列表
-export const getArticleListAPI = async (data: QueryData) => {
+export const getArticleListAPI = async () => {
+    return await Request<Article[]>("POST", `/article/list`);
+}
+
+// 分页获取文章数据
+export const getArticlePagingAPI = async (data: QueryData) => {
     return await Request<Paginate<Article[]>>("POST", `/article/paging?page=${data.pagination?.page}&&size=8`, data.query);
 }
 

@@ -1,9 +1,9 @@
 import Pagination from "../Pagination"
 import Classics from "./Classics"
-import { getArticleListAPI } from '@/api/article'
+import { getArticlePagingAPI } from '@/api/article'
 
 export default async ({ page }: { page: number }) => {
-  const { data } = await getArticleListAPI({ pagination: { page } })
+  const { data } = await getArticlePagingAPI({ pagination: { page } })
   
   return (
     <>

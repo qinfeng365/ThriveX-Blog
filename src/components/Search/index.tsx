@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, UseDisclosureProps, Input } from "@nextui-org/react"
-import { getArticleListAPI } from '@/api/article'
+import { getArticlePagingAPI } from '@/api/article'
 import { Article } from "@/types/app/article"
 import Empty from "../Empty"
 import { useDebounceFn } from 'ahooks'
@@ -25,7 +25,7 @@ export default ({ disclosure }: Props) => {
             return
         }
 
-        const { data } = await getArticleListAPI({
+        const { data } = await getArticlePagingAPI({
             query: { key },
             pagination: { page: 1 }
         })
