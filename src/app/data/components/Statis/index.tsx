@@ -18,6 +18,7 @@ import { getCommentListAPI } from "@/api/comment";
 import { getWebListAPI } from "@/api/web";
 
 import CateStatis from "./components/CateStatis";
+import TagStatis from "./components/TagStatus";
 
 interface Props {
     aTotal: number
@@ -86,17 +87,10 @@ export default ({ aTotal }: Props) => {
                     </div>
                 </div>
 
-                <div className="my-10">
+                <div className="flex justify-between my-10">
                     <CateStatis />
+                    <TagStatis />
                 </div>
-
-                {
-                    !linkList.length
-                        ? (
-                            <div></div>
-                        )
-                        : <div className="flex justify-center w-full my-10"><Spinner /></div >
-                }
             </div>
         </>
     )

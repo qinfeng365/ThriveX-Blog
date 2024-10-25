@@ -1,5 +1,3 @@
-"use client"
-
 import * as echarts from 'echarts/core';
 import { TooltipComponent, LegendComponent } from 'echarts/components';
 import { PieChart } from 'echarts/charts';
@@ -28,10 +26,7 @@ export default () => {
                     trigger: 'item'
                 },
                 legend: {
-                    top: 'auto', // 取消顶部定位
-                    bottom: '0%', // 设置底部定位
-                    left: 'center',
-                    itemGap: 20, // 图例项之间的间距
+                    show: false
                 },
                 series: [
                     {
