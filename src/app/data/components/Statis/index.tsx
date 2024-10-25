@@ -12,9 +12,12 @@ import friend from './svg/friend.svg'
 import { Cate } from "@/types/app/cate";
 import { Comment } from "@/types/app/comment";
 import { Web } from "@/types/app/web";
+
 import { getCateListAPI } from "@/api/cate";
 import { getCommentListAPI } from "@/api/comment";
 import { getWebListAPI } from "@/api/web";
+
+import CateStatis from "./components/CateStatis";
 
 interface Props {
     aTotal: number
@@ -44,7 +47,7 @@ export default ({ aTotal }: Props) => {
         <>
             <h3 className="flex items-center text-2xl mb-3"><Image src={statis.src} alt="统计" width={36} height={36} className="mr-3" /> 数据统计</h3>
 
-            <div className="mb-10">
+            <div className="mb-10 mt-5">
                 <div className="grid grid-cols-4 gap-4">
                     <div className="flex justify-between items-center px-5 h-24 border-2 border-[#0EA5E9] rounded-lg bg-[#F0F9FF]">
                         <Image src={article} alt="文章" />
@@ -81,6 +84,10 @@ export default ({ aTotal }: Props) => {
                             <p className="text-[#EC160F]">友联总计</p>
                         </div>
                     </div>
+                </div>
+
+                <div className="my-10">
+                    <CateStatis />
                 </div>
 
                 {
