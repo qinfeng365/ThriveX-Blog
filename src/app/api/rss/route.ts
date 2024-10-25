@@ -38,7 +38,7 @@ export async function GET() {
             description: item.description,
             content: item.content,
             copyright: 'ThriveX 现代化博客管理系统',
-            date: new Date()
+            date: new Date(+item.createTime!)
         });
     });
 
