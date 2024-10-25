@@ -12,7 +12,7 @@ import { Accordion, AccordionItem } from "@nextui-org/react";
 
 import archiving from '@/assets/svg/other/archiving.svg'
 import { AiOutlineEye } from "react-icons/ai";
-
+import dayjs from "dayjs";
 
 interface MonthData {
     total: number;
@@ -156,8 +156,8 @@ export default () => {
                                                         {
                                                             item.month[month].list.map((article: Article) => (
                                                                 <div className="group flex justify-between py-2">
-                                                                    <Link href={`/article/${article.id}`} target="_blank" className="group-hover:text-primary transition-colors">{article.title}</Link>
-                                                                    <span className="flex items-center min-w-24 text-sm text-white group-hover:text-gray-400 transition-colors"><AiOutlineEye className="mr-1"/>{article.view}</span>
+                                                                    <Link href={`/article/${article.id}`} target="_blank" className="group-hover:text-primary transition-colors">{dayjs(+article.createTime!).format('MM-DD')} {article.title}</Link>
+                                                                    <span className="flex items-center min-w-24 text-sm text-white group-hover:text-gray-400 transition-colors"><AiOutlineEye className="mr-1" />{article.view}</span>
                                                                 </div>
                                                             ))
                                                         }
