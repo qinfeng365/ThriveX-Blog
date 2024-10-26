@@ -23,7 +23,7 @@ export default () => {
             <title>数据统计</title>
             <meta name="description" content="数据统计" />
 
-            <Swiper isRipple={false}>
+            <Swiper isRipple={false} src="https://bu.dusays.com/2023/11/10/654e2da1d80f8.jpg">
                 {/* 星空背景组件 */}
                 <Starry />
 

@@ -1,7 +1,9 @@
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { getTagListAPI } from '@/api/Tag'
 import { Tag } from '@/types/app/tag'
 import { getRandom } from '@/utils'
+import tag from './svg/tag.svg'
 
 export default () => {
     const [list, setList] = useState<Tag[]>([])
@@ -39,13 +41,17 @@ export default () => {
 
     return (
         <>
-            <div className='overflow-auto h-[270px] pr-1 grid grid-cols-6 gap-2 hide_sliding'>
-                {
-                    list.map(item => {
-                        const { color, backgroundColor } = colors[getRandom(0, colors.length - 1)]
-                        return <span className='flex justify-center items-center px-4 h-8 text-xs rounded-md line-clamp-1' style={{ color, backgroundColor }}>{item.name}</span>
-                    })
-                }
+            <div className='flex flex-col items-center'>
+                <h3 className="flex items-center text-xl mb-5"><Image src={tag.src} alt="标签墙" width={25} height={25} className="mr-3" /> 标签墙</h3>
+
+                <div className='overflow-auto h-[270px] pr-1 grid grid-cols-6 gap-2 hide_sliding'>
+                    {
+                        list.map(item => {
+                            const { color, backgroundColor } = colors[getRandom(0, colors.length - 1)]
+                            return <span className='flex justify-center items-center px-4 h-8 text-xs rounded-md whitespace-nowrap line-clamp-1' style={{ color, backgroundColor }}>{item.name}</span>
+                        })
+                    }
+                </div>
             </div>
         </>
     )

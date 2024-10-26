@@ -8,3 +8,8 @@ export interface Cate {
     type: string,
     children: Cate[]
 }
+
+export interface CateArticleCount {
+    name: string,
+    count: number
+}

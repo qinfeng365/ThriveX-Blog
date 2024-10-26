@@ -87,7 +87,7 @@ export default ({ aTotal }: Props) => {
                     </div>
                 </div>
 
-                <div className="flex justify-between my-10">
+                <div className="flex justify-between my-14">
                     <CateStatis />
                     <TagStatis />
                 </div>

@@ -1,9 +1,13 @@
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import { getCateArticleCountAPI } from '@/api/cate';
+import cate from './svg/cate.svg';
+
 import * as echarts from 'echarts/core';
 import { TooltipComponent, LegendComponent } from 'echarts/components';
 import { PieChart } from 'echarts/charts';
 import { LabelLayout } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
-import { useEffect, useRef } from 'react';
 
 echarts.use([
     TooltipComponent,
@@ -13,9 +17,18 @@ echarts.use([
     LabelLayout
 ]);
 
-
 export default () => {
     const chartRef = useRef<HTMLDivElement | null>(null);
+    const [list, setList] = useState<{ value: number, name: string }[]>([])
+
+    const getCateArticleCount = async () => {
+        const { data } = await getCateArticleCountAPI();
+        setList(data.map(({ count, name }) => ({ value: count, name })))
+    }
+
+    useEffect(() => {
+        getCateArticleCount()
+    }, [])
 
     useEffect(() => {
         if (chartRef.current) {
@@ -30,7 +43,7 @@ export default () => {
                 },
                 series: [
                     {
-                        name: 'Access From',
+                        name: '数量统计',
                         type: 'pie',
                         radius: ['5%', '70%'],
                         avoidLabelOverlap: false,
@@ -50,13 +63,7 @@ export default () => {
                         labelLine: {
                             show: false
                         },
-                        data: [
-                            { value: 1048, name: 'Search Engine' },
-                            { value: 735, name: 'Direct' },
-                            { value: 580, name: 'Email' },
-                            { value: 484, name: 'Union Ads' },
-                            { value: 300, name: 'Video Ads' }
-                        ]
+                        data: list
                     }
                 ]
             };
@@ -67,9 +74,13 @@ export default () => {
                 myChart.dispose();
             };
         }
-    }, []);
+    }, [list]);
 
     return (
-        <div ref={chartRef} className='w-[500px] h-[300px]'></div>
+        <div className='flex flex-col items-center'>
+            <h3 className="flex items-center text-xl mb-5"><Image src={cate.src} alt="分类一览" width={25} height={25} className="mr-3" /> 分类一览</h3>
+
+            <div ref={chartRef} className='w-[500px] h-[300px]'></div>
+        </div>
     );
 }
