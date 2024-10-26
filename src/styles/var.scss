@@ -1,12 +1,6 @@
 // 版心
 $w: 1200px;
 
-%flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 // 色彩
 $color: var(--color, #539dfd); // 主色调
 $assistColor: var(--assistColor, #539dfd60); // 辅助色调
