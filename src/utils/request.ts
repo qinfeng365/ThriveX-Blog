@@ -1,5 +1,5 @@
-const url = "http://localhost:9003/api"
-// const url = "https://api.liuyuyang.net/api"
+// const url = "http://localhost:9003/api"
+const url = "https://api.liuyuyang.net/api"
 
 export default async <T>(method: string, api: string, data?: any, caching = true) => {
     const res = await fetch(`${url}${api}`, {
@@ -17,42 +17,3 @@ export default async <T>(method: string, api: string, data?: any, caching = true
 
     return res.json() as Promise<ResponseData<T>>;
 }
-
-// [
-//     {
-//         year: 2024,
-//         total: 3, // 结果是每个月份的total
-//         month: [
-//             {
-//                 1: {
-//                     total: 2, // 文章的数量
-//                     list: [文章数据1, 文章数据2]
-//                 },
-//                 2: {
-//                     total: 1,
-//                     list: [文章数据1]
-//                 },
-//             }
-//         ]
-//     },
-//     {
-//         year: 2023,
-//         total: 2, // 结果是每个月份的total
-//         month: [
-//             {
-//                 1: {
-//                     total: 1, // 文章的数量
-//                     list: [文章数据1]
-//                 },
-//                 2: {
-//                     total: 0,
-//                     list: []
-//                 },
-//                 3: {
-//                     total: 1,
-//                     list: [文章数据1]
-//                 }
-//             }
-//         ]
-//     }
-// ]
