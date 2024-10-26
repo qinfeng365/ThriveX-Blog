@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getCommentListAPI } from '@/api/comment';
+import { getCommentPagingAPI } from '@/api/comment';
 import Comment from '@/assets/svg/other/comments.svg';
 import RandomAvatar from '@/components/RandomAvatar';
 import dayjs from 'dayjs';
 import './index.scss';
 
 const NewComments = async () => {
-    const { data } = await getCommentListAPI();
+    const { data } = await getCommentPagingAPI();
 
     return (
         <div className='SidebarCommentComponent'>
