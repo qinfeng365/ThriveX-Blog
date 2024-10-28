@@ -92,7 +92,11 @@ const Header = () => {
                     <ul className="hidden lg:flex items-center h-16">
                         {cateList?.map(one => (
                             <li key={one.id} className="group/one relative">
-                                <Link href={`${one.type === 'cate' ? `/cate/${one.id}?name=${one.name}` : one.url}`} className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}>
+                                <Link
+                                    href={`${one.type === 'cate' ? `/cate/${one.id}?name=${one.name}` : one.url}`}
+                                    target={one.url.startsWith("http") ? '_blank' : '_self'}
+                                    className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}
+                                >
                                     {one.icon} {one.name}
                                     <Show is={!!one.children.length} children={(
                                         <IoIosArrowDown className="ml-2" />
