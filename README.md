@@ -1,18 +1,6 @@
 # 🎉 ThriveX 现代化博客管理系统
 
-🔥 **首先最重要的事情放第一**
-
-开源不易，麻烦占用 `10` 秒钟的时间帮忙点个免费的 `Star`，再此万分感谢！
-
-
-
-**下面开始进入主题↓↓↓**
-
-
-
 🌈 **项目介绍：** Thrive 是一个简而不简单的现代化博客管理系统，专注于分享技术文章和知识，为技术爱好者和从业者提供一个分享、交流和学习的平台。用户可以在平台上发表自己的技术文章，或浏览其他用户分享的文章，并与他们进行讨论和互动。
-
-
 
 🗂️ **项目预览：** [https://liuyuyang.net/](https://liuyuyang.net/)
 
@@ -28,54 +16,92 @@
 
 ❤️ **项目初衷：**
 
-一直对网站开发领域很感兴趣，从小就希望有一个属于自己的网站，因此踏上了 `Web` 全栈开发的旅途，立志有朝一日也能开发一款属于自己的网站。如今历时1年有余，一个人从0到1独立完成前端、控制端、后端、数据库。也算是完成了从小的一个心愿吧
+一直对网站开发领域很感兴趣，从小就希望有一个属于自己的网站，因此踏上了 `Web` 全栈开发的旅途，立志有朝一日也能开发一款属于自己的网站。如今历时 `2` 年有余，一个人从 `0` 到 `1` 独立完成整个项目的全栈开发，也算是完成了从小的一个心愿
 
 
 
-## 🔥 项目演示
+# 🔥 项目演示
 
-### 前端
+## 前端
 
-只演示部分，具体查看：https://liuyuyang.net
-
+这里只演示部分前端界面，具体大家可以自行查看 **->** [https://liuyuyang.net](https://liuyuyang.net)
 ![首页](https://bu.dusays.com/2024/10/28/671f7a44631d7.png)
 ![足迹](https://bu.dusays.com/2024/09/17/66e97036dddcb.png)
 
 
 
-### 控制端
+## 控制端
 
 ![数据分析](https://bu.dusays.com/2024/09/17/66e97035726ae.png)
-
 ![文件系统](https://bu.dusays.com/2024/09/17/66e97031cd456.png)
 
 
 
-## 🌈 项目运行
+# 🌈 项目运行
+
+最近比较忙，过段时间写一篇详细的项目部署教程，这里先简单教大家在本地跑起来
 
 **前端 or 控制端**
 
-环境：Nodejs18及以上
+环境：Nodejs18 及以上
 
 ```
 npm i
 npm run dev
 ```
 
-后台账号：admin   密码：123456
+后台账号：`admin`   密码：`123456`
+
+
+
+在控制端项目根目录下创建 `.env` 文件，添加如下配置
+
+```bash
+# 百度统计相关配置
+VITE_BAIDU_TONGJI_KEY=
+VITE_BAIDU_TONGJI_SECRET_KEY=
+VITE_BAIDU_TONGJI_SITE_ID=
+VITE_BAIDU_TONGJI_ACCESS_TOKEN=
+VITE_BAIDU_TONGJI_REFRESH_TOKEN=
+
+# 星火AI相关配置
+VITE_AI_APIPassword=
+VITE_AI_MODEL=
+```
+
+百度接口申请地址：[https://tongji.baidu.com/api/manual/Chapter2/openapi.html](https://tongji.baidu.com/api/manual/Chapter2/openapi.html)
+星火大模型接口申请地址：[https://www.xfyun.cn/](https://www.xfyun.cn/)
+
 
 
 **后端**
 
-Java8
+环境：Java8 + MySQL8
 
-直接安装maven依赖，配置相关的秘钥，最后运行
+安装 `maven` 依赖，配置 `application-dev.yml` 相关的信息
+
+```yml
+lyy:
+  email:
+    host: smtp.qq.com
+    port: 465
+    username: 你的邮箱账号
+    password: 你的邮箱授权码
+
+  oss:
+    accessKey: 七牛云的accessKey
+    secretKey: 七牛云的secretKey
+    bucket: thrive
+```
+
+导入后端根目录的 `ThriveX.sql` 数据库文件，最后运行项目即可
 
 
 
-## 🏷️ 开源地址
 
-### 最新版（Nextjs + Spring Boot）
+# 🏷️ 开源地址
+
+## 最新版（Nextjs + Spring Boot）
 
 前端：[LiuYuYang01/ThriveX-Blog (github.com)](https://github.com/LiuYuYang01/ThriveX-Blog)
 
@@ -85,7 +111,7 @@ Java8
 
 
 
-### 旧版（Vue3 + Python Flask）
+## 旧版（Vue3 + Python Flask）
 
 前端：[LiuYuYang01/Thrive_Blog (github.com)](https://github.com/LiuYuYang01/Thrive_Blog)
 
@@ -97,14 +123,13 @@ Java8
 
 
 
-## 项目部署
-
-等有时间单独教大家如何部署
-
 # 开源协议
+
 该项目仅针对个人或公司使用
 如果对该项目进行二次开发，请遵守开源协议：**AGPL-3.0 license** 终将项目进行开源，禁止任何商业行为
 国内做开源真的不容易，弘扬开源精神，从你我做起！
+
+
 
 # 关于项目
 这个项目是我一个人从设计 -> 产品 -> 前端 -> 控制端 -> 后端以及数据库从 `0` 到 `1` 创造的，所以精力有限在刚开始可能会有很多隐藏的 `BUG`，希望大家能够及时在 `GitHub` 向我反馈，这样我也好加以改正，不断改善，成为最佳！
