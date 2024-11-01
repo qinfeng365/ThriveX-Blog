@@ -20,9 +20,9 @@
 
 
 
-# 🔥 项目演示
+## 项目演示
 
-## 前端
+### 前端
 
 这里只演示部分前端界面，具体大家可以自行查看 **->** [https://liuyuyang.net](https://liuyuyang.net)
 ![首页](https://bu.dusays.com/2024/10/28/671f7a44631d7.png)
@@ -30,14 +30,14 @@
 
 
 
-## 控制端
+### 控制端
 
 ![数据分析](https://bu.dusays.com/2024/09/17/66e97035726ae.png)
 ![文件系统](https://bu.dusays.com/2024/09/17/66e97031cd456.png)
 
 
 
-# 🌈 项目运行
+## 项目运行
 
 最近比较忙，过段时间写一篇详细的项目部署教程，这里先简单教大家在本地跑起来
 
@@ -98,10 +98,41 @@ lyy:
 
 
 
+## 项目结构
 
-# 🏷️ 开源地址
+```
+├── public // 存放公共资源
+├── src // 核心源码
+│   ├── api // 所有API接口
+│   ├── app
+│   │   ├── error.tsx // 自定义错误页
+│   │   ├── favicon.ico // 项目图标
+│   │   ├── layout.tsx // 网站布局
+│   │   ├── loading.tsx // 自定义加载页
+│   │   ├── not-found.tsx // 自定义404页
+│   │   ├── page.tsx // 首页
+│   ├── assets // 存放项目所有资源
+│   │   ├── font
+│   │   ├── image
+│   │   └── svg
+│   ├── components // 公共组件
+│   ├── stores // 数据全局共享
+│   ├── styles // 全局样式
+│   ├── types // 全局类型
+│   └── utils // 通用方法
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── tailwind.config.ts
+└── tsconfig.json
+```
 
-## 最新版（Nextjs + Spring Boot）
+
+
+
+## 开源地址
+
+### 最新版（Nextjs + Spring Boot）
 
 前端：[LiuYuYang01/ThriveX-Blog (github.com)](https://github.com/LiuYuYang01/ThriveX-Blog)
 
@@ -111,7 +142,7 @@ lyy:
 
 
 
-## 旧版（Vue3 + Python Flask）
+### 旧版（Vue3 + Python Flask）
 
 前端：[LiuYuYang01/Thrive_Blog (github.com)](https://github.com/LiuYuYang01/Thrive_Blog)
 
@@ -123,7 +154,7 @@ lyy:
 
 
 
-# 开源协议
+## 开源协议
 
 该项目仅针对个人或公司使用
 如果对该项目进行二次开发，请遵守开源协议：**AGPL-3.0 license** 终将项目进行开源，禁止任何商业行为
@@ -131,7 +162,7 @@ lyy:
 
 
 
-# 关于项目
+## 关于项目
 这个项目是我一个人从设计 -> 产品 -> 前端 -> 控制端 -> 后端以及数据库从 `0` 到 `1` 创造的，所以精力有限在刚开始可能会有很多隐藏的 `BUG`，希望大家能够及时在 `GitHub` 向我反馈，这样我也好加以改正，不断改善，成为最佳！
 
 当然我更希望大家能够提交 `PR` 成为 `ThriveX` 的贡献者，大家一起参与进来，构建一个强大的博客管理系统！

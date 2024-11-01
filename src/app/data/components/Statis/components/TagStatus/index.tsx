@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { getTagListAPI } from '@/api/Tag'
+import { getTagListAPI } from '@/api/tag'
 import { Tag } from '@/types/app/tag'
 import { getRandom } from '@/utils'
 import tag from './svg/tag.svg'
