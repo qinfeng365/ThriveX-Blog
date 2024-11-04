@@ -142,7 +142,7 @@ lyy:
 
 控制端：[LiuYuYang01/ThriveX-Admin (github.com)](https://github.com/LiuYuYang01/ThriveX-Admin)
 
-后端：[LiuYuYang01/ThriveX-Server (github.com)](https://github.com/LiuYuYang01/ThriveX-Server)
+后端：[LiuYuYang01/ThriveX-Service (github.com)](https://github.com/LiuYuYang01/ThriveX-Service)
 
 
 
