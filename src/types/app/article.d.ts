@@ -8,7 +8,7 @@ export interface Config {
     articleId?: number,
     top: number,
     status: Status,
-    password:string
+    password: string
 }
 
 export interface Article {
@@ -23,6 +23,7 @@ export interface Article {
     tagList: Tag[]
     view?: number
     comment?: number,
+    config: Config,
     prev: { id: number, title: string },
     next: { id: number, title: string },
     createTime?: string,

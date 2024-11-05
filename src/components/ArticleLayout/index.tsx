@@ -4,6 +4,7 @@ import { getArticlePagingAPI } from '@/api/article'
 
 export default async ({ page }: { page: number }) => {
   const { data } = await getArticlePagingAPI({ pagination: { page } })
+  data.result = data.result?.filter(item => item.config.status !== "no_home")
   
   return (
     <>
