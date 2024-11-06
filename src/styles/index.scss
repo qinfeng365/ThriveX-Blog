@@ -1,3 +1,5 @@
+@import "./fun.scss";
+
 body {
     // height: 3000px;
     background-color: #f9f9f9;
@@ -69,4 +71,8 @@ body {
         border-radius: 100% 60% 60% 100%/100% 100% 60% 60%;
         transform: translate3d(0, -3px, 0) rotateZ(.01deg);
     }
+}
+
+.hide_sliding {
+    @include scrollbar-style(rgba(0, 0, 0, 0.3));
 }
