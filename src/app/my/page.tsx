@@ -57,24 +57,44 @@ export default () => {
     ],
     goals: [
       {
-        status: 3,
-        value: "1、学习 React 达到找工作水平"
+        status: 2,
+        value: "1、拿到月薪过万的 Offer~"
       },
       {
         status: 3,
-        value: "2、学习 Nextjs 达到找工作水平"
+        value: "2、学习 uniapp 小兔鲜项目"
       },
       {
         status: 3,
-        value: "3、入手 MacBook 生产力神器"
+        value: "3、学习 Spring Boot 苍穹外卖项目"
+      },
+      {
+        status: 3,
+        value: "4、学习 React 达到找工作水平"
+      },
+      {
+        status: 3,
+        value: "5、学习 TailwindCSS 达到找工作水平"
+      },
+      {
+        status: 3,
+        value: "6、学习 Nextjs 达到找工作水平"
+      },
+      {
+        status: 3,
+        value: "7、入手 MacBook 生产力神器"
+      },
+      {
+        status: 3,
+        value: "8、完成 ThriveX 项目重构"
+      },
+      {
+        status: 3,
+        value: "9、ThriveX博客管理系统 Star 破百"
       },
       {
         status: 1,
-        value: "4、完成 ThriveX 项目重构"
-      },
-      {
-        status: 1,
-        value: "5、刷100道面试题"
+        value: "10、刷 100 道面试题"
       },
     ],
     project: [
@@ -119,7 +139,7 @@ export default () => {
         },
         backend: {
           technology: "Python、Flask、SQLAlchemy、MySQL、Flask-JWT、Socket.io、Swagger",
-          url: "https://github.com/LiuYuYang01/Thrive_Api_Py"
+          url: "https://github.com/LiuYuYang01/Thrive_Server"
         },
       },
       {
