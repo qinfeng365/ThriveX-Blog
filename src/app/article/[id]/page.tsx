@@ -7,8 +7,8 @@ import Tag from "../components/Tag";
 import Copyright from "../components/Copyright";
 import UpAndDown from "../components/UpAndDown";
 import Comment from "../components/Comment";
-import ContentMd from "../components/ContentMd";
-import ContentNav from "../components/ContentNav";
+import MD from "../components/MD";
+import Nav from "../components/Nav";
 
 import { IoMdPricetags } from "react-icons/io";
 import { FaHotjar } from "react-icons/fa";
@@ -69,7 +69,7 @@ export default async ({ params }: Props) => {
                 </Swiper>
 
                 <div className="w-[90%] xl:w-6/12 mx-auto mt-12 relative">
-                    <ContentMd data={data?.content} />
+                    <MD data={data?.content} />
 
                     <div className="w-full">
                         <Tag data={data?.tagList} />
@@ -80,7 +80,7 @@ export default async ({ params }: Props) => {
                     </div>
                 </div>
 
-                <ContentNav />
+                <Nav />
             </div>
         </>
     )

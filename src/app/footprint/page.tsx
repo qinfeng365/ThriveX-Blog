@@ -112,7 +112,7 @@ export default function MapContainer() {
                                         </div>
                                     </div>
 
-                                    <div className={`overflow-auto flex justify-center w-full ${data?.images.length !== 1 ? 'max-h-96' : ''} mb-5`}>
+                                    <div className={`overflow-auto flex justify-center w-full ${data?.images.length !== 1 ? 'max-h-96' : ''} mb-5 hide_sliding`}>
                                         <PhotoProvider
                                             speed={() => 800}
                                             easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}

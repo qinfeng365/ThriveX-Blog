@@ -17,7 +17,7 @@ interface Props {
     data: string;
 }
 
-const ContentMdComponent = ({ data }: Props) => {
+const ContentMD = ({ data }: Props) => {
     useEffect(() => {
         const images = document.querySelectorAll<HTMLImageElement>('img');
 
@@ -76,4 +76,4 @@ const ContentMdComponent = ({ data }: Props) => {
     );
 };
 
-export default ContentMdComponent;
+export default ContentMD;
