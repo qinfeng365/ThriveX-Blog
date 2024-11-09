@@ -11,6 +11,7 @@ import { getWebDataAPI } from '@/api/project'
 
 import Tools from '@/components/Tools';
 import NProgress from '@/components/NProgress';
+import Confetti from '@/components/Confetti';
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const { data } = await getWebDataAPI();
@@ -41,6 +42,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       </head>
 
       <body className={`dark:!bg-black-a transition-colors`}>
+        {/* 🎉 礼花效果 */}
+        <Confetti />
+
         {/* 进度条组件 */}
         <NProgress />
         {/* 顶部导航组件 */}
