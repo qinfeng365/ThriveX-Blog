@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import directory from '@/assets/svg/other/directory.svg'
@@ -81,14 +82,14 @@ const ContentNav = () => {
                 : (
                     !!navs?.length &&
                     <div className="fixed top-[80%] left-[2%] z-50 cursor-pointer w-12 h-12 rounded-xl bg-white p-3 border" onClick={() => setOpen(true)}>
-                        <img src={directory.src} alt="" className="w-full text-5xl text-primary" />
+                        <Image src={directory} alt="" width={23} height={23} className="text-5xl text-primary" />
                     </div >
                 )
             }
 
             <div className={`ContentNavComponent overflow-auto fixed top-0 z-40 max-w-0 h-screen bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(30,36,46,0.9)] backdrop-blur-sm shadow-[16px_0px_15px_-3px_rgba(101,155,246,0.1)] ${open ? 'min-w-[300px] p-[20px_10px]' : 'min-w-0'} transition-[min-width] hide_sliding`}>
                 <div className="flex justify-center items-center mt-5">
-                    <img src={directory.src} alt="" className="w-5 mr-2" /> 目录
+                    <Image src={directory} alt="" width={23} height={23} className="mr-2" /> 目录
                 </div>
 
                 <div className="text-[#4d4d4d] dark:text-[#8c9ab1] text-sm w-full mt-4">

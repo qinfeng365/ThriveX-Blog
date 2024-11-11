@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
@@ -84,8 +85,8 @@ const Header = () => {
                     <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
                         {
                             isDark
-                                ? <img src={logo.dark} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
-                                : <img src={isPathSty || isScrolled ? logo.light : logo.dark} alt="Logo" className='h-10 pr-5 hover:scale-90 transition-all' />
+                                ? <Image src={logo.dark} alt="Logo" width={130} height={40} className='pr-5 hover:scale-90 transition-all' />
+                                : <Image src={isPathSty || isScrolled ? logo.light : logo.dark} alt="Logo" width={130} height={40}  className='pr-5 hover:scale-90 transition-all' />
                         }
                     </Link>
 
