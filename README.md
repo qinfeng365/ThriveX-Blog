@@ -6,6 +6,7 @@
 
 🎉 `ThriveX` 是一个 `Next14` + `Spring Boot` 的产物，该项目专注于分享技术文章和知识，为技术爱好者和从业者提供一个分享、交流和学习的平台。用户可以在平台上发表自己的技术文章，或浏览其他用户分享的文章，并与他们进行讨论和互动。
 
+
 🗂️ **项目预览：** [https://liuyuyang.net/](https://liuyuyang.net/)
 
 
@@ -13,6 +14,7 @@
 🛠️ **技术架构：**
 
 前端：React、**Nextjs**、TypeScript、Zustand、**TailwindCSS**、Antd、Scss、Echarts
+
 
 后端：**Spring Boot**、Mybatis Plus、MySQL、Qiniu、Socket.io、Swagger
 
