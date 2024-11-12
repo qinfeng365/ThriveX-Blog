@@ -5,16 +5,19 @@ import Container from "@/components/Container";
 import ArticleLayout from "@/components/ArticleLayout";
 import Sidebar from "@/components/Sidebar";
 
+import { getThemeDataAPI } from '@/api/project'
+
 interface Props {
   searchParams: { page: number };
 };
 
 export default async ({ searchParams }: Props) => {
   const page = searchParams.page || 1;
+  const { data } = await getThemeDataAPI()
 
   return (
     <>
-      <Swiper src="https://bu.dusays.com/2024/04/24/6628990012b51.jpg">
+      <Swiper src={data?.swiperImage}>
         {/* 星空背景组件 */}
         <Starry />
         {/* 打字机组件 */}

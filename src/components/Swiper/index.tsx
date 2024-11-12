@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import Ripple from '@/components/Ripple'
 import { randomImage } from '@/utils'
+import { getThemeDataAPI } from '@/api/project'
 
 interface Props {
     src?: string, // 图片列表
@@ -8,7 +9,9 @@ interface Props {
     children?: ReactNode
 }
 
-export default ({ src, isRipple = true, children }: Props) => {
+export default async ({ src, isRipple = true, children }: Props) => {
+    const { data } = await getThemeDataAPI()
+
     const sty = {
         backgroundImage: `url(${src ? src : randomImage()})`,
     }

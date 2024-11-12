@@ -14,18 +14,23 @@ import { BsFillMoonStarsFill, BsTextIndentLeft } from "react-icons/bs";
 
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
-import { getWebDataAPI } from '@/api/project';
+import { getWebDataAPI, getThemeDataAPI } from '@/api/project';
 
 import { useConfigStore } from '@/stores';
 
 const Header = () => {
     // 是否暗黑模式
-    const { isDark, setIsDark, web, setWeb } = useConfigStore()
-    
-    // 获取网站配置
-    const getWebData = async () => {
-        const { data } = await getWebDataAPI();
-        setWeb(data)
+    const { isDark, setIsDark, web, setWeb, setTheme } = useConfigStore()
+
+    // 获取项目配置
+    const getConfigData = async () => {
+        const { data: web } = await getWebDataAPI();
+        setWeb(web)
+
+        const { data: theme } = await getThemeDataAPI();
+        console.log(theme);
+        
+        setTheme(theme)
     }
 
     const patchName = usePathname();
@@ -42,7 +47,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        getWebData()
+        getConfigData()
         getCateList()
 
         window.scrollTo(0, 0);
