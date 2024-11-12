@@ -90,32 +90,73 @@ const Header = () => {
                     </Link>
 
                     <ul className="hidden lg:flex items-center h-16">
-                        {cateList?.map(one => (
-                            <li key={one.id} className="group/one relative">
-                                <Link
-                                    href={`${one.type === 'cate' ? `/cate/${one.id}?name=${one.name}` : one.url}`}
-                                    target={one.url.startsWith("http") ? '_blank' : '_self'}
-                                    className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}
-                                >
-                                    {one.icon} {one.name}
-                                    <Show is={!!one.children.length} children={(
-                                        <IoIosArrowDown className="ml-2" />
-                                    )} />
-                                </Link>
+                        <li className="group/one relative" >
+                            <Link
+                                href="/"
+                                className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}
+                            >💎 首页</Link>
+                        </li>
 
-                                <Show is={!!one.children.length} children={(
-                                    <ul className="hidden group-hover/one:block overflow-hidden absolute top-[50px] w-full rounded-md bg-[#f9f9f9] dark:bg-black-b" style={{ boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08)' }}>
-                                        {one.children?.map(two => (
-                                            <li key={two.id} className='group/two'>
-                                                <Link href={`/cate/${two.id}?name=${two.name}`} className="relative inline-block w-full p-2.5 pl-2.5 text-[15px] box-border text-[#666] dark:text-white hover:!text-primary transition-all after:content-[''] after:absolute after:left-2.5 after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-[3px] after:bg-primary after:transition-width group-hover/two:bg-[#f2f2f2] dark:group-hover/two:bg-[#323e50] group-hover/two:pl-8 hover:after:w-2.5">
-                                                    {two.name}
+                        {/* 文章分类 */}
+                        {cateList?.map(one => (
+                            one.type === "cate" &&
+                            (
+                                <li key={one.id} className="group/one relative" >
+                                    <Link
+                                        href={`/cate/${one.id}?name=${one.name}`}
+                                        className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}
+                                    >
+                                        {one.icon} {one.name}
+                                        <Show is={!!one.children.length} children={(
+                                            <IoIosArrowDown className="ml-2" />
+                                        )} />
+                                    </Link>
+
+                                    <Show is={!!one.children.length} children={(
+                                        <ul className="hidden group-hover/one:block overflow-hidden absolute top-[50px] w-full rounded-md bg-[#f9f9f9] dark:bg-black-b" style={{ boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08)' }}>
+                                            {one.children?.map(two => (
+                                                <li key={two.id} className='group/two'>
+                                                    <Link href={`/cate/${two.id}?name=${two.name}`} className="relative inline-block w-full p-2.5 text-[15px] box-border text-[#666] dark:text-white hover:!text-primary transition-all after:content-[''] after:absolute after:left-2.5 after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-[3px] after:bg-primary after:transition-width group-hover/two:bg-[#f2f2f2] dark:group-hover/two:bg-[#323e50] group-hover/two:pl-8 hover:after:w-2.5">
+                                                        {two.name}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )} />
+                                </li>
+                            )
+                        ))}
+
+                        {/* 扩展页面 */}
+                        <li className="group/one relative">
+                            <Link
+                                href=""
+                                className={`flex items-center p-5 text-[15px] group-hover/one:!text-primary transition-colors ${isPathSty || isScrolled ? 'text-[#333] dark:text-white' : 'text-white'}`}
+                            >
+                                🧩 扩展页面
+                                <Show is={true} children={(
+                                    <IoIosArrowDown className="ml-2" />
+                                )} />
+                            </Link>
+
+                            <Show is={true} children={(
+                                <ul className="hidden group-hover/one:block overflow-hidden absolute top-[50px] w-full rounded-md bg-[#f9f9f9] dark:bg-black-b" style={{ boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08)' }}>
+                                    {cateList?.map(item => (
+                                        item.type === "nav" &&
+                                        (
+                                            <li key={item.id} className="group/two relative" >
+                                                <Link
+                                                    href={`${item.url}`}
+                                                    className={`relative inline-block w-full p-2.5 text-[15px] box-border text-[#666] dark:text-white hover:!text-primary transition-all after:content-[''] after:absolute after:left-2.5 after:top-1/2 after:-translate-y-1/2 after:w-0 after:h-[3px] after:bg-primary after:transition-width group-hover/two:bg-[#f2f2f2] dark:group-hover/two:bg-[#323e50] group-hover/two:pl-8 hover:after:w-2.5`}
+                                                >
+                                                    {item.icon} {item.name}
                                                 </Link>
                                             </li>
-                                        ))}
-                                    </ul>
-                                )} />
-                            </li>
-                        ))}
+                                        )
+                                    ))}
+                                </ul>
+                            )} />
+                        </li>
                     </ul>
 
                     {/* 主题切换开关 */}
@@ -127,10 +168,10 @@ const Header = () => {
                         className={`absolute top-0 right-7 h-full ${isDark ? '[&>.bg-default-200]:!bg-[#4e5969]' : '[&>.bg-default-200]:!bg-[#e1e1e1]'}`}
                     />
                 </div>
-            </div>
+            </div >
 
             {/* 侧边导航：移动端时候显示 */}
-            <SidebarNav list={cateList} open={isOpenSidebarNav} onClose={() => setIsOpenSidebarNav(false)} />
+            < SidebarNav list={cateList} open={isOpenSidebarNav} onClose={() => setIsOpenSidebarNav(false)} />
         </>
     );
 };
