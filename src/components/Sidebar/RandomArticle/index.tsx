@@ -1,24 +1,35 @@
 "use client"
 
+import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { randomImage } from '@/utils';
 import { getRandomArticleListAPI } from '@/api/article';
-import article from '@/assets/svg/other/article.svg'
+import RandomArticle from '@/assets/svg/other/article.svg'
+import { Article } from '@/types/app/article';
 import "./index.scss"
-import Link from 'next/link';
 
-const HotArticle = async () => {
-    const { data } = await getRandomArticleListAPI()
+const HotArticle = () => {
+    const [list, setList] = useState<Article[]>([])
+
+    const getRandomArticleList = async () => {
+        const { data } = await getRandomArticleListAPI()
+        setList(data)
+    }
+
+    useEffect(() => {
+        getRandomArticleList()
+    }, [])
 
     return (
         <div className='RandomArticleComponent'>
             <div className="flex flex-col p-4 mb-5 bg-white dark:bg-black-b tw_container tw_title">
                 <h3 className="w-full tw_title dark:text-white">
-                    <Image src={article} alt="随机推荐" /> 随机推荐
+                    <Image src={RandomArticle} alt="随机推荐" /> 随机推荐
                 </h3>
 
                 <div className="w-full pt-2.5 mt-2 min-h-[120px] space-y-4">
-                    {data?.map((item, index) => (
+                    {list?.map((item, index) => (
                         <div
                             key={index}
                             className="item relative h-32 bg-no-repeat bg-center rounded-md transition-all after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-12 after:transition-opacity after:rounded-md after:bg-[linear-gradient(transparent,#000)]"
