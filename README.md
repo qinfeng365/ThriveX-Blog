@@ -144,17 +144,17 @@ lyy:
 
 控制端：[LiuYuYang01/ThriveX-Admin (github.com)](https://github.com/LiuYuYang01/ThriveX-Admin)
 
-后端：[LiuYuYang01/ThriveX-Service (github.com)](https://github.com/LiuYuYang01/ThriveX-Service)
+后端：[LiuYuYang01/ThriveX-Server (github.com)](https://github.com/LiuYuYang01/ThriveX-Server)
 
 
 
 ### 旧版（Vue3 + Python Flask）
 
-前端：[LiuYuYang01/Thrive_Blog (github.com)](https://github.com/LiuYuYang01/Thrive_Blog)
+前端：[LiuYuYang01/Thrive-Blog (github.com)](https://github.com/LiuYuYang01/Thrive-Blog)
 
-控制端：[LiuYuYang01/Thrive_Admin (github.com)](https://github.com/LiuYuYang01/Thrive_Admin)
+控制端：[LiuYuYang01/Thrive-Admin (github.com)](https://github.com/LiuYuYang01/Thrive-Admin)
 
-后端：[LiuYuYang01/Thrive_Server (github.com)](https://github.com/LiuYuYang01/Thrive_Server)
+后端：[LiuYuYang01/Thrive-Server (github.com)](https://github.com/LiuYuYang01/Thrive-Server)
 
 ![后台](https://bu.dusays.com/2024/09/17/66e96ca781d49.png)
 
