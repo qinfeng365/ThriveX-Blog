@@ -57,7 +57,7 @@ export default () => {
                         },
                         emphasis: {
                             label: {
-                                show: false, // 设置为 false 取消强调标签
+                                show: false,
                             }
                         },
                         labelLine: {
@@ -70,17 +70,26 @@ export default () => {
 
             myChart.setOption(option);
 
+            const handleResize = () => {
+                myChart.resize();
+            };
+
+            window.addEventListener('resize', handleResize);
+
             return () => {
+                window.removeEventListener('resize', handleResize);
                 myChart.dispose();
             };
         }
     }, [list]);
 
     return (
-        <div className='flex flex-col items-center'>
-            <h3 className="flex items-center text-xl mb-5"><Image src={cate.src} alt="分类一览" width={25} height={25} className="mr-3" /> 分类一览</h3>
+        <div className='flex flex-col items-center mb-5 md:mb-0'>
+            <h3 className="flex items-center text-xl mb-5">
+                <Image src={cate.src} alt="分类一览" width={25} height={25} className="mr-3" /> 分类一览
+            </h3>
 
-            <div ref={chartRef} className='w-[500px] h-[300px]'></div>
+            <div ref={chartRef} className='min-w-[300px] h-[300px]'></div>
         </div>
     );
 }

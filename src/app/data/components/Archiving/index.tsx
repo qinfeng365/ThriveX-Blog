@@ -79,7 +79,7 @@ export default ({ list }: { list: Article[] }) => {
             {/* <div className="w-3/6 mx-auto"> */}
             <div className="">
                 <h3 className="flex justify-center items-center text-2xl mb-3"><Image src={archiving.src} alt="归档" width={36} height={36} className="mr-3" /> 文章归纳</h3>
-                
+
                 {
                     !!result.length
                         ? (
@@ -131,7 +131,7 @@ export default ({ list }: { list: Article[] }) => {
                                                         <div className="relative border-l border-gray-300">
                                                             <div className="mb-8 ml-4">
                                                                 <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-1.5 border border-white"></div>
-                                                                <div className="ml-6">
+                                                                <div className="ml-2 sm:ml-6">
                                                                     <div className="flex items-center space-x-4">
                                                                         <div className="text-2xl text-gray-600">{month}月 {((item.month[+month].wordCount / 1000) > 10) && '🔥'}</div>
                                                                         <div>{item.month[+month].total}篇文章</div>
@@ -142,7 +142,7 @@ export default ({ list }: { list: Article[] }) => {
                                                                         item.month[+month].list.map((article: Article, index) => (
                                                                             <div key={index} className="group flex justify-between py-2">
                                                                                 <Link href={`/article/${article.id}`} target="_blank" className="group-hover:text-primary transition-colors">{dayjs(+article.createTime!).format('MM-DD')} {article.title}</Link>
-                                                                                <span className="flex items-center min-w-24 text-sm text-white group-hover:text-gray-400 transition-colors"><AiOutlineEye className="mr-1" />{article.view}</span>
+                                                                                <span className="hidden sm:flex items-center min-w-24 text-sm text-white group-hover:text-gray-400 transition-colors"><AiOutlineEye className="mr-1" />{article.view}</span>
                                                                             </div>
                                                                         ))
                                                                     }

@@ -73,6 +73,8 @@ body {
     }
 }
 
-.hide_sliding {
-    @include scrollbar-style(rgba(0, 0, 0, 0.3));
+.hide_sliding::-webkit-scrollbar {
+    width: 0;
+    /* 隐藏滚动条 */
+    height: 0;
 }

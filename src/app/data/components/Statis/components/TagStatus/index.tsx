@@ -46,9 +46,9 @@ export default () => {
 
                 <div className='overflow-auto h-[270px] pr-1 grid grid-cols-6 gap-2 hide_sliding'>
                     {
-                        list.map(item => {
+                        list.map((item, index) => {
                             const { color, backgroundColor } = colors[getRandom(0, colors.length - 1)]
-                            return <span className='flex justify-center items-center px-4 h-8 text-xs rounded-md whitespace-nowrap line-clamp-1' style={{ color, backgroundColor }}>{item.name}</span>
+                            return <span key={index} className='flex justify-center items-center px-4 h-8 text-xs rounded-md whitespace-nowrap line-clamp-1' style={{ color, backgroundColor }}>{item.name}</span>
                         })
                     }
                 </div>
