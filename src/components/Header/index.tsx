@@ -19,13 +19,13 @@ import { getWebDataAPI } from '@/api/project';
 import { useConfigStore } from '@/stores';
 
 const Header = () => {
-    const [logo, setLogo] = useState({
-        light: "",
-        dark: ""
-    })
-    const getLogoData = async () => {
-        const { data: { lightLogo, darkLogo } } = await getWebDataAPI();
-        setLogo({ light: lightLogo, dark: darkLogo })
+    // 是否暗黑模式
+    const { isDark, setIsDark, web, setWeb } = useConfigStore()
+    
+    // 获取网站配置
+    const getWebData = async () => {
+        const { data } = await getWebDataAPI();
+        setWeb(data)
     }
 
     const patchName = usePathname();
@@ -42,7 +42,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        getLogoData()
+        getWebData()
         getCateList()
 
         window.scrollTo(0, 0);
@@ -56,8 +56,6 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // 是否暗黑模式
-    const { isDark, setIsDark } = useConfigStore()
     // 手动切换主题
     const toTheme = () => {
         const html = document.querySelector('html')
@@ -88,8 +86,8 @@ const Header = () => {
                     <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
                         {
                             isDark
-                                ? <img src={logo.dark} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
-                                : <img src={isPathSty || isScrolled ? logo.light : logo.dark} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                ? <img src={web.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                : <img src={isPathSty || isScrolled ? web.lightLogo : web.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
                         }
                     </Link>
 

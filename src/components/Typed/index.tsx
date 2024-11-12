@@ -1,9 +1,12 @@
 "use client"
 
 import { useEffect, useRef } from 'react';
+import { useConfigStore } from '@/stores'
 import Typed from 'typed.js';
 
 export default ({ className }: { className?: string }) => {
+    const store = useConfigStore()
+
     const el = useRef(null);
 
     useEffect(() => {
