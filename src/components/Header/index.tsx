@@ -3,7 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
+
+import { Switch } from '@nextui-org/react';
 import Show from '@/components/Show'
+import SidebarNav from './component/SidebarNav';
 
 import { IoIosArrowDown } from 'react-icons/io';
 import { FaRegSun } from "react-icons/fa";
@@ -11,12 +14,9 @@ import { BsFillMoonStarsFill, BsTextIndentLeft } from "react-icons/bs";
 
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
-import { Switch } from '@nextui-org/react';
+import { getWebDataAPI } from '@/api/project';
 
 import { useConfigStore } from '@/stores';
-
-import SidebarNav from './component/SidebarNav';
-import { getWebDataAPI } from '@/api/project';
 
 const Header = () => {
     const [logo, setLogo] = useState({
@@ -67,6 +67,10 @@ const Header = () => {
     useEffect(() => {
         const html = document.querySelector('html');
         html?.classList.toggle('dark', isDark);
+
+        // 判断当前系统是否开启深色主题
+        const { matches } = matchMedia('(prefers-color-scheme: dark)');
+        setIsDark(matches)
     }, [isDark])
 
     // 是否打开侧边栏导航
