@@ -81,7 +81,7 @@ export default async () => {
 
                                         <div className="flex flex-col space-y-2">
                                             <h4 className="text-sm text-gray-700 dark:text-white group-hover:text-primary">宇阳</h4>
-                                            <p className="text-xs text-[#8c9ab1] line-clamp-2">记录所学知识，缩短和大神的差距</p>
+                                            <p className="text-xs text-[#8c9ab1] line-clamp-2">再渺小的星光，也有属于它的光芒！</p>
                                         </div>
                                     </div>
                                 }

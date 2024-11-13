@@ -1,6 +1,7 @@
 import Request from "@/utils/request";
-import { Layout, Web } from "@/types/app/project";
+import { Theme, Web } from "@/types/app/project";
 
 export const getWebDataAPI = () => Request<Web>("GET", "/project/web") 
 
-export const getThemeDataAPI = () => Request<Layout>("GET", "/project/layout") 
+export const getThemeDataAPI = () => Request<Theme>("GET", "/project/theme") 
+// export const getThemeDataAPI = () => Request<Theme>("GET", "/project/layout") 

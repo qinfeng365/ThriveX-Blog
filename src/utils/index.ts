@@ -22,6 +22,5 @@ export function randomImage() {
         "https://bu.dusays.com/2023/11/05/65473848ed863.jpg"
     ];
 
-
     return covers[getRandom(0, covers.length - 1)];
 }

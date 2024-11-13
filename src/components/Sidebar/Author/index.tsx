@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import Request from '@/utils/request';
 import avatarBg from '@/assets/image/avatar_bg.jpg';
-import { Social, Web } from '@/types/app/project';
-import './index.scss';
+import { Social } from '@/types/app/project';
 
 import CSDN from '@/assets/svg/socializing/CSDN.svg'
 import Douyin from '@/assets/svg/socializing/Douyin.svg'
@@ -11,12 +9,19 @@ import Gitee from '@/assets/svg/socializing/Gitee.svg'
 import Juejin from '@/assets/svg/socializing/Juejin.svg'
 import QQ from '@/assets/svg/socializing/QQ.svg'
 import Weixin from '@/assets/svg/socializing/Weixin.svg'
+
 import { getUserDataAPI } from '@/api/user';
+import { getThemeDataAPI } from '@/api/project'
+
+import './index.scss';
 
 const Author = async () => {
     const { data } = await getUserDataAPI()
-    const { data: { social } } = await Request<Web>("GET", "/project/web")
-    const socialList = JSON.parse(social)
+    const { data: { social } } = await getThemeDataAPI()
+
+    console.log(social);
+
+    const socialList = JSON.parse(social)?.map((item: string) => JSON.parse(item))
 
     // 图标列表
     const images: { [string: string]: string } = {
@@ -29,9 +34,7 @@ const Author = async () => {
         "Weixin": Weixin,
     }
 
-    const getIcon = (name: string) => {
-        return images[name]
-    };
+    const getIcon = (name: string) => images[name];
 
     return (
         <div className='AuthorComponent'>
@@ -57,8 +60,8 @@ const Author = async () => {
                     </div>
 
                     <div className="list flex justify-evenly w-[70%] mx-auto pt-6">
-                        {socialList.map((item: Social) => (
-                            <a href={item.url} target="_blank" rel="noopener noreferrer" key={item.name}>
+                        {socialList?.map((item: Social, index: number) => (
+                            <a key={index} href={item.url} target="_blank" rel="noopener noreferrer">
                                 <Image src={getIcon(item.name)} alt={item.name} title={item.name} className="w-[23px] h-[23px]" />
                             </a>
                         ))}

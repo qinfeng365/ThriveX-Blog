@@ -20,7 +20,7 @@ import { useConfigStore } from '@/stores';
 
 const Header = () => {
     // 是否暗黑模式
-    const { isDark, setIsDark, web, setWeb, setTheme } = useConfigStore()
+    const { isDark, setIsDark, web, setWeb, theme, setTheme } = useConfigStore()
 
     // 获取项目配置
     const getConfigData = async () => {
@@ -28,8 +28,6 @@ const Header = () => {
         setWeb(web)
 
         const { data: theme } = await getThemeDataAPI();
-        console.log(theme);
-        
         setTheme(theme)
     }
 
@@ -91,8 +89,8 @@ const Header = () => {
                     <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
                         {
                             isDark
-                                ? <img src={web.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
-                                : <img src={isPathSty || isScrolled ? web.lightLogo : web.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                ? <img src={theme.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                : <img src={isPathSty || isScrolled ? theme.lightLogo : theme.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
                         }
                     </Link>
 

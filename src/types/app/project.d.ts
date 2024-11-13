@@ -1,3 +1,8 @@
+export interface Social {
+    name: string;
+    url: string;
+}
+
 // 系统信息
 export interface System {
     osName: string,
@@ -7,34 +12,28 @@ export interface System {
     memoryUsage: number
 }
 
-export interface Social {
-    name: string;
-    url: string;
-}
-
 // 网站信息
 export interface Web {
     url: string,
     title: string,
     subhead: string,
     favicon: string,
-    lightLogo: string,
-    darkLogo: string,
     description: string,
     keyword: string,
     footer: string,
-    // font: string,
-    social: string,
-    covers: string
 }
 
 export type ArticleLayout = "classics" | "card" | "waterfall" | ""
 export type RightSidebar = "author" | "hotArticle" | "randomArticle" | "newComments"
 
-// 布局配置
-export interface Layout {
+// 主题配置
+export interface Theme {
     isArticleLayout: string,
     rightSidebar: string,
+    lightLogo: string,
+    darkLogo: string,
     swiperImage: string,
-    swiperText: string
+    swiperText: string,
+    social: string,
+    covers: string
 }
