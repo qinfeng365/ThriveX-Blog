@@ -45,6 +45,10 @@ const Header = () => {
     }
 
     useEffect(() => {
+        // 判断当前系统是否开启深色主题
+        const { matches } = matchMedia('(prefers-color-scheme: dark)');
+        setIsDark(matches)
+
         getConfigData()
         getCateList()
 
@@ -68,10 +72,6 @@ const Header = () => {
     useEffect(() => {
         const html = document.querySelector('html');
         html?.classList.toggle('dark', isDark);
-
-        // 判断当前系统是否开启深色主题
-        const { matches } = matchMedia('(prefers-color-scheme: dark)');
-        setIsDark(matches)
     }, [isDark])
 
     // 是否打开侧边栏导航
