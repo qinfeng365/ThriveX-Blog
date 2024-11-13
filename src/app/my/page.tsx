@@ -90,7 +90,7 @@ export default () => {
       },
       {
         status: 3,
-        value: "9、ThriveX博客管理系统 Star 破百"
+        value: "9、ThriveX 博客管理系统 Star 破百"
       },
       {
         status: 1,
