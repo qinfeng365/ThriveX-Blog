@@ -12,7 +12,6 @@ interface Props {
 export default async ({ src, isRipple = true, children }: Props) => {
     const { data } = await getThemeDataAPI()
     const covers = JSON.parse(data.covers || '[]')
-    console.log(covers[getRandom(0, covers.length - 1)],888);
 
     const sty = {
         backgroundImage: `url(${src ? src : covers[getRandom(0, covers.length - 1)]})`,
