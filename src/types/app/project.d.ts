@@ -28,7 +28,7 @@ export type RightSidebar = "author" | "hotArticle" | "randomArticle" | "newComme
 
 // 主题配置
 export interface Theme {
-    isArticleLayout: string,
+    isArticleLayout: ArticleLayout,
     rightSidebar: string,
     lightLogo: string,
     darkLogo: string,
