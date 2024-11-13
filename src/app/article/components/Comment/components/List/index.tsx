@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link';
 import Show from '@/components/Show';
 import Empty from '@/components/Empty';
@@ -30,7 +29,7 @@ const CommentList = ({ list, reply }: Props) => {
                             <div className="comment_user_one">
                                 {
                                     one.avatar
-                                        ? <Image src={one.avatar} alt="" width={35} height={35} className="avatar" />
+                                        ? <img src={one.avatar} alt="" className="avatar" />
                                         : <RandomAvatar className="avatar" />
                                 }
 
@@ -56,7 +55,7 @@ const CommentList = ({ list, reply }: Props) => {
                                         <div className="comment_user_two_info">
                                             {
                                                 two.avatar
-                                                    ? <Image src={two.avatar} alt="" width={35} height={35} className="avatar" />
+                                                    ? <img src={two.avatar} alt="" className="avatar" />
                                                     : <RandomAvatar className="avatar" />
                                             }
 
@@ -85,7 +84,7 @@ const CommentList = ({ list, reply }: Props) => {
                                                     <div className="comment_user_three_info">
                                                         {
                                                             three.avatar
-                                                                ? <Image src={three.avatar} alt="" width={35} height={35} className="avatar" />
+                                                                ? <img src={three.avatar} alt="" className="avatar" />
                                                                 : <RandomAvatar className="avatar" />
                                                         }
 
@@ -116,7 +115,7 @@ const CommentList = ({ list, reply }: Props) => {
                                                             <div className="comment_user_three_info">
                                                                 {
                                                                     four.avatar
-                                                                        ? <Image src={four.avatar} alt="" width={35} height={35} className="avatar" />
+                                                                        ? <img src={four.avatar} alt="" className="avatar" />
                                                                         : <RandomAvatar className="avatar" />
                                                                 }
 
@@ -146,7 +145,7 @@ const CommentList = ({ list, reply }: Props) => {
                                                                 <div className="comment_user_three_info">
                                                                     {
                                                                         five.avatar
-                                                                            ? <Image src={five.avatar} alt="" width={35} height={35} className="avatar" />
+                                                                            ? <img src={five.avatar} alt="" className="avatar" />
                                                                             : <RandomAvatar className="avatar" />
                                                                     }
 

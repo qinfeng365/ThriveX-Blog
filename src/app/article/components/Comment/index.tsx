@@ -6,7 +6,7 @@ import { addCommentDataAPI, getArticleCommentListAPI } from '@/api/comment';
 import { sendCommentEmailAPI } from '@/api/email';
 import { Comment } from '@/types/app/comment';
 import { ToastContainer, toast } from 'react-toastify';
-import List from './Component/List';
+import List from './components/List';
 import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss"
 import dayjs from 'dayjs';
