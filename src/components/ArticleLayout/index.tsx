@@ -14,8 +14,8 @@ export default async ({ page }: { page: number }) => {
   return (
     <>
       <div className="w-full md:w-[90%] lg:w-[68%] xl:w-[73%] mx-auto transition-width">
-        {theme.isArticleLayout === "classics" && <Classics data={data}></Classics>}
-        {theme.isArticleLayout === "waterfall" && <Waterfall data={data}></Waterfall>}
+        {theme.isArticleLayout === "classics" && <Classics data={data} />}
+        {theme.isArticleLayout === "waterfall" && <Waterfall data={data} />}
 
         <Pagination total={data?.pages} page={page} className="flex justify-center mt-5" />
       </div>

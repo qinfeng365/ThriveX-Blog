@@ -35,7 +35,7 @@ const Classics = async ({ data }: ClassicsProps) => {
                 <div className="relative overflow-hidden flex h-[190px] md:h-60 lg:h-52 xl:h-60 bg-black-b tw_container" key={item.id}>
                     {index % 2 === 0 && (
                         <div
-                            className="relative min-w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
+                            className="hidden sm:block relative min-w-[45%] bg-cover bg-no-repeat bg-center scale-100 hover:scale-125 z-10 transition-all"
                             style={{
                                 clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0 100%)',
                                 backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})`,
@@ -45,7 +45,7 @@ const Classics = async ({ data }: ClassicsProps) => {
 
                     <div className="relative w-full sm:w-[65%] py-5 px-5 sm:px-10 lg:px-5 xl:px-10 z-20">
                         <Link href={`/article/${item.id}`} className='flex flex-col justify-between h-full text-center sm:text-start'>
-                            <h3 className='relative w-full my-2.5 text-white text-lg md:text-xl lg:text-[22px] xl:text-2xl overflow-hidden line-clamp-1'>{item.title}</h3>
+                            <h3 className='overflow-hidden relative w-full my-2.5 text-white hover:text-primary text-lg md:text-xl lg:text-[22px] xl:text-2xl transition-colors line-clamp-1'>{item.title}</h3>
                             {/* <p className='text-[#cecece] text-sm sm:text-[15px] leading-7 sm:indent-8 line-clamp-2 xl:line-clamp-3'>{item.description}</p> */}
                             <p className='text-[#cecece] text-sm sm:text-[15px] leading-7 sm:indent-8 line-clamp-2 xl:line-clamp-3'>{genArticleInfo(item)}</p>
 

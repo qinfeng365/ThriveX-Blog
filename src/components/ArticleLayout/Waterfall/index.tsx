@@ -33,7 +33,7 @@ export default ({ data }: WaterfallProps) => {
                         <div key={item.id} className='group overflow-hidden mt-2.5 rounded-xl bg-white dark:bg-black-b border dark:border-black-b hover:shadow-[0_10px_20px_1px_rgb(83,157,253,.1)] transition-colors cursor-pointer'>
                             <Link href={`/article/${item.id}`}>
                                 <div
-                                    className="relative h-32 max-h-52 bg-cover bg-no-repeat bg-center z-10 transition-all"
+                                    className="relative h-32 max-h-52 bg-cover bg-no-repeat bg-center scale-100 hover:scale-125 z-10 transition-all"
                                     style={{ backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})` }}
                                 />
 
