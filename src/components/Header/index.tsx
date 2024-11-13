@@ -89,8 +89,8 @@ const Header = () => {
                     <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
                         {
                             isDark
-                                ? <img src={theme.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
-                                : <img src={isPathSty || isScrolled ? theme.lightLogo : theme.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                ? <img src={theme?.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                : <img src={isPathSty || isScrolled ? theme?.lightLogo : theme?.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
                         }
                     </Link>
 

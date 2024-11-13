@@ -19,8 +19,6 @@ const Author = async () => {
     const { data } = await getUserDataAPI()
     const { data: { social } } = await getThemeDataAPI()
 
-    console.log(social);
-
     const socialList = JSON.parse(social)?.map((item: string) => JSON.parse(item))
 
     // 图标列表

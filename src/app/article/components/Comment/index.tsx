@@ -51,8 +51,6 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
     }, [setValue]);
 
     const onSubmit = async (data: CommentForm) => {
-        console.log(commentId, 999);
-
         // 判断是不是QQ邮箱，如果是就把QQ截取出来，然后用QQ当做头像
         const email_index = data.email.lastIndexOf("@qq.com")
         if (email_index !== -1) {

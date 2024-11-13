@@ -1,7 +1,7 @@
-import dayjs from 'dayjs';
 import Link from 'next/link';
-import { randomImage } from '@/utils';
+import { getRandom } from '@/utils';
 import { Article } from '@/types/app/article';
+import dayjs from 'dayjs';
 
 import { RiFireLine } from "react-icons/ri";
 import { IoTimeOutline } from "react-icons/io5";
@@ -9,14 +9,20 @@ import { GoTag } from "react-icons/go";
 import Empty from '@/components/Empty';
 import Show from '@/components/Show';
 
+import { getThemeDataAPI } from '@/api/project'
+
 import "./index.scss"
 
 interface ClassicsProps {
     data: Paginate<Article[]>;
 }
 
-const Classics = ({ data }: ClassicsProps) => {
-     // 生成文章摘要，取前100个字
+const Classics = async ({ data }: ClassicsProps) => {
+    const { data: theme } = await getThemeDataAPI()
+
+    const covers = JSON.parse(theme.covers || '[]')
+
+    // 生成文章摘要，取前100个字
     const genArticleInfo = (data: Article) => {
         if (data.description.trim().length) {
             return data.description
@@ -35,7 +41,7 @@ const Classics = ({ data }: ClassicsProps) => {
                                 className="relative min-w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
                                 style={{
                                     clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0 100%)',
-                                    backgroundImage: `url(${item.cover || randomImage()})`,
+                                    backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})`,
                                 }}
                             />
                         )}
@@ -69,7 +75,7 @@ const Classics = ({ data }: ClassicsProps) => {
                             className="absolute w-full h-60 bg-cover bg-center"
                             style={{
                                 filter: 'blur(2.5rem) brightness(0.6)',
-                                backgroundImage: `url(${item.cover || randomImage()})`
+                                backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})`
                             }}
                         />
 
@@ -78,7 +84,7 @@ const Classics = ({ data }: ClassicsProps) => {
                                 className="relative min-w-[45%] bg-cover bg-no-repeat bg-center scale-100 z-10 transition-all hover:scale-125 hidden sm:block"
                                 style={{
                                     clipPath: 'polygon(10% 0, 100% 0, 100% 100%, 0 100%)',
-                                    backgroundImage: `url(${item.cover || randomImage()})`,
+                                    backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})`,
                                 }}
                             />
                         )}

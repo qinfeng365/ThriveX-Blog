@@ -3,13 +3,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { randomImage } from '@/utils';
 import { getRandomArticleListAPI } from '@/api/article';
-import RandomArticle from '@/assets/svg/other/article.svg'
+import { useConfigStore } from '@/stores'
 import { Article } from '@/types/app/article';
+import { getRandom } from '@/utils';
+import RandomArticle from '@/assets/svg/other/article.svg'
 import "./index.scss"
 
 const HotArticle = () => {
+    const { theme } = useConfigStore()
+    const covers = JSON.parse(theme.covers || '[]')
+
     const [list, setList] = useState<Article[]>([])
 
     const getRandomArticleList = async () => {
@@ -33,7 +37,7 @@ const HotArticle = () => {
                         <div
                             key={index}
                             className="item relative h-32 bg-no-repeat bg-center rounded-md transition-all after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-12 after:transition-opacity after:rounded-md after:bg-[linear-gradient(transparent,#000)]"
-                            style={{ backgroundImage: `url(${item.cover || randomImage()})` }}
+                            style={{ backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})` }}
                         >
                             <Link href={`/article/${item.id}`} target='_blank' className='inline-block w-full h-full'>
                                 <h4 className=' absolute bottom-2.5 w-[95%] px-2.5 text-white text-[15px] font-normal line-clamp-1 z-10'>{item.title}</h4>
