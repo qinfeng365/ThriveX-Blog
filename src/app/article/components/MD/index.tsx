@@ -1,16 +1,13 @@
 "use client"
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useConfigStore } from "@/stores";
-
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import 'highlight.js/styles/vs2015.css';
-// import "github-markdown-css";
 import "./index.scss";
 
 interface Props {
@@ -18,20 +15,11 @@ interface Props {
 }
 
 const ContentMD = ({ data }: Props) => {
-    useEffect(() => {
-        const images = document.querySelectorAll<HTMLImageElement>('img');
+    const { isDark } = useConfigStore();
 
-        setTimeout(() => {
-            images?.forEach((img) => {
-                img.style.filter = 'blur(0)';
-            });
-        }, 1000);
-    }, []);
-
-    const { isDark } = useConfigStore()
     useEffect(() => {
         document.body.style.backgroundColor = '#fff';
-        let color = isDark ? "36, 41, 48" : "255, 255, 255"
+        let color = isDark ? "36, 41, 48" : "255, 255, 255";
 
         const waves = document.querySelectorAll<SVGUseElement>(".waves use");
         waves[0].style.fill = `rgba(${color}, 0.7)`;
@@ -50,13 +38,43 @@ const ContentMD = ({ data }: Props) => {
     }, [isDark]);
 
     const renderers = {
-        img: ({ alt, src }: { alt?: string; src?: string }) => (
-            <PhotoView src={src || ''}>
-                <span className="flex justify-center w-full my-4">
-                    <img alt={alt} src={src} />
-                </span>
-            </PhotoView>
-        ),
+        img: ({ alt, src }: { alt?: string; src?: string }) => {
+            const imgRef = useRef<HTMLImageElement>(null);
+
+            useEffect(() => {
+                const img = imgRef.current;
+                if (!img) return;
+
+                // 监听图片是否进入可视区
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                setTimeout(() => {
+                                    img.style.filter = 'blur(0px)';
+                                }, 1000)
+                                observer.unobserve(img); // 停止观察
+                            }
+                        });
+                    },
+                    { threshold: 0.1 }
+                );
+
+                observer.observe(img);
+
+                return () => {
+                    observer.unobserve(img);
+                };
+            }, []);
+
+            return (
+                <PhotoView src={src || ''}>
+                    <span className="flex justify-center w-full my-4">
+                        <img ref={imgRef} alt={alt} src={src} />
+                    </span>
+                </PhotoView>
+            );
+        },
     };
 
     return (
