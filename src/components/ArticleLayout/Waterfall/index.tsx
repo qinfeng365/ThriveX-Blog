@@ -32,10 +32,12 @@ export default ({ data }: WaterfallProps) => {
                     data.result.map(item => (
                         <div key={item.id} className='group overflow-hidden mt-2.5 rounded-xl bg-white dark:bg-black-b border dark:border-black-b hover:shadow-[0_10px_20px_1px_rgb(83,157,253,.1)] transition-colors cursor-pointer'>
                             <Link href={`/article/${item.id}`}>
-                                <div
-                                    className="relative h-32 max-h-52 bg-cover bg-no-repeat bg-center scale-100 hover:scale-125 z-10 transition-all"
-                                    style={{ backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})` }}
-                                />
+                                <div className='overflow-hidden h-32'>
+                                    <div
+                                        className="relative h-full bg-cover bg-no-repeat bg-center scale-100 hover:scale-125 z-10 transition-all"
+                                        style={{ backgroundImage: `url(${item.cover || covers[getRandom(0, covers.length - 1)]})` }}
+                                    />
+                                </div>
 
                                 <div className='py-2 px-4'>
                                     <h1 className='mb-2 text-black dark:text-white group-hover:text-primary line-clamp-2 transition-colors'>{item.title}</h1>
