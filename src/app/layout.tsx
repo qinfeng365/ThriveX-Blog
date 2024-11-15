@@ -2,6 +2,7 @@ import { NextUIProvider } from '@nextui-org/react';
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import RouteChangeHandler from '@/components/RouteChangeHandler'
 
 // 加载样式文件
 import "@/styles/index.scss";
@@ -40,6 +41,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           `
         }} />
       </head>
+
+      <RouteChangeHandler />
 
       <body className={`dark:!bg-black-a transition-colors`}>
         {/* 🎉 礼花效果 */}

@@ -52,8 +52,6 @@ const Header = () => {
         getConfigData()
         getCateList()
 
-        window.scrollTo(0, 0);
-
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 100);
         };
