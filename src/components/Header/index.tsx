@@ -45,9 +45,11 @@ const Header = () => {
     }
 
     useEffect(() => {
-        // 判断当前系统是否开启深色主题
-        const { matches } = matchMedia('(prefers-color-scheme: dark)');
-        setIsDark(matches)
+        // 监听系统主题变化
+        const mediaQuery = matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addEventListener("change", (e: MediaQueryListEvent) => {
+            setIsDark(e.matches)
+        })
 
         getConfigData()
         getCateList()
