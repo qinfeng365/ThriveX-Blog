@@ -6,7 +6,7 @@ import { getThemeDataAPI } from '@/api/project'
 
 export default async ({ page }: { page: number }) => {
   const { data: theme } = await getThemeDataAPI()
-  const sidebar: string[] = JSON.parse(theme.rightSidebar)
+  const sidebar: string[] = JSON.parse(theme?.rightSidebar)
 
   // 如果是瀑布流布局就显示28条数据，否则显示8条
   const { data } = await getArticlePagingAPI({ pagination: { page, size: theme.isArticleLayout === "waterfall" ? 28 : 8 } })

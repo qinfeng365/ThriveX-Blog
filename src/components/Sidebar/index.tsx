@@ -6,7 +6,7 @@ import { getThemeDataAPI } from '@/api/project'
 
 export default async () => {
   const { data: theme } = await getThemeDataAPI()
-  const sidebar: string[] = JSON.parse(theme.rightSidebar)
+  const sidebar: string[] = JSON.parse(theme?.rightSidebar)
 
   return (
     <>
