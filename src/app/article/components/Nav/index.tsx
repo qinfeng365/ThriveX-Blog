@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
-import directory from '@/assets/svg/other/directory.svg'
+import directory from '@/assets/svg/other/directory.svg';
 
 import "./index.scss";
 
@@ -27,17 +27,17 @@ const ContentNav = () => {
         const list = document.querySelectorAll(".content h1, .content h2, .content h3");
 
         list?.forEach((nav) => {
-            nav.setAttribute("id", nav.textContent!)
+            nav.setAttribute("id", nav.textContent!);
 
             switch (nav.tagName) {
                 case "H1":
-                    nav.setAttribute("class", "h1")
+                    nav.setAttribute("class", "h1");
                     break;
                 case "H2":
-                    nav.setAttribute("class", "h2")
+                    nav.setAttribute("class", "h2");
                     break;
                 case "H3":
-                    nav.setAttribute("class", "h3")
+                    nav.setAttribute("class", "h3");
                     break;
             }
         });
@@ -60,8 +60,14 @@ const ContentNav = () => {
 
         // 页面滚动到指定位置高亮导航项
         const handleScroll = () => {
-            const top = window.scrollY + OFFSET;
-            setActive(top);
+            const scrollPosition = window.scrollY + OFFSET;
+            const activeIndex = titlesList.findIndex(
+                (item) => scrollPosition >= item.start && scrollPosition < item.end!
+            );
+
+            if (activeIndex !== -1) {
+                setActive(activeIndex);
+            }
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -97,7 +103,7 @@ const ContentNav = () => {
                         <a
                             key={index}
                             href={`#${item.href}`}
-                            className={`nav_item overflow-hidden relative block p-1 pl-5 mb-[5px] hover:text-primary transition-all duration-700 ${active >= item.start && active < item.end! ? 'text-primary pl-[30px] rounded-[10px] text-[15px] dark:bg-[#313d4e99] before:!left-4' : ''} ${item.className}`}
+                            className={`nav_item overflow-hidden relative block p-1 pl-5 mb-[5px] hover:text-primary transition-all duration-700 ${active === index ? 'text-primary pl-[30px] rounded-[10px] text-[15px] dark:bg-[#313d4e99] before:!left-4' : ''} ${item.className}`}
                         >
                             {item.href}
                         </a>
