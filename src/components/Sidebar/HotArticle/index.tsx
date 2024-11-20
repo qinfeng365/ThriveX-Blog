@@ -10,7 +10,9 @@ const RandomArticle = async () => {
     const { data: theme } = await getThemeDataAPI()
     const { data: article } = await getArticleListAPI()
 
-    const ids = JSON.parse(theme.recoArticle)
+    console.log(theme.recoArticle,333);
+    
+    const ids = JSON.parse(theme.recoArticle ? theme.recoArticle : '[]')
     const list = article.filter(item => ids.includes(item.id + ''))
 
     return (
