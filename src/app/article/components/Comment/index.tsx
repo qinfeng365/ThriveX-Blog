@@ -3,13 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { addCommentDataAPI, getArticleCommentListAPI } from '@/api/comment';
-import { sendCommentEmailAPI } from '@/api/email';
 import { Comment } from '@/types/app/comment';
 import { ToastContainer, toast } from 'react-toastify';
 import List from './components/List';
 import 'react-toastify/dist/ReactToastify.css';
 import "./index.scss"
-import dayjs from 'dayjs';
+import { Spinner } from '@nextui-org/react';
 
 interface Props {
     articleId: number,
@@ -29,6 +28,7 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
     const [commentId, setCommentId] = useState(articleId);
     const [placeholder, setPlaceholder] = useState("来发一针见血的评论吧~");
 
+    const [loading, setLoading] = useState(false)
     const [list, setList] = useState<Comment[]>([])
     const getCommentList = async () => {
         const { data } = await getArticleCommentListAPI(+articleId!);
@@ -51,6 +51,8 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
     }, [setValue]);
 
     const onSubmit = async (data: CommentForm) => {
+        setLoading(true)
+
         // 判断是不是QQ邮箱，如果是就把QQ截取出来，然后用QQ当做头像
         const email_index = data.email.lastIndexOf("@qq.com")
         if (email_index !== -1) {
@@ -70,6 +72,7 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
         setValue('content', "");
         setPlaceholder("来发一针见血的评论吧~");
         getCommentList()
+        setLoading(false)
 
         // 提交成功后把评论的数据持久化到本地
         localStorage.setItem("comment_data", JSON.stringify(data))
@@ -121,7 +124,7 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
                         <span className='text-red-400 text-sm pl-3 mt-1'>{errors.url?.message}</span>
                     </div>
 
-                    <button className="w-full h-10 !mt-4 text-white rounded-md bg-primary text-center" type="submit">发表评论</button>
+                    {loading ? <div className='w-full h-10 flex justify-center !mt-4'><Spinner /></div> : <button className="w-full h-10 !mt-4 text-white rounded-md bg-primary text-center" type="submit">发表评论</button>}
                 </form>
 
                 <List id={articleId} list={list} reply={replyComment} />
