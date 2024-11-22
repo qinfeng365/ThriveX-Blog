@@ -24,6 +24,8 @@ export default async () => {
 
     let data: { [string: string]: { order: number, list: Web[] } } = {}
 
+    linkList.sort((a, b) => a.order - b.order)
+
     // 给每个数据进行分组处理
     linkList?.forEach(item => {
         if (data[item.type.name]) {

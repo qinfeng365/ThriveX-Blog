@@ -21,6 +21,7 @@ const toastConfig: ToastOptions = {
 }
 
 export default () => {
+  const [loading, setLoading] = useState(false)
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   // 获取网站类型列表
@@ -30,6 +31,7 @@ export default () => {
 
     setTypeList(data.filter(item => !item.isAdmin))
   }
+
   useEffect(() => {
     // 页面加载后检查是否有需要显示的消息
     const message = localStorage.getItem('toastMessage');
@@ -41,13 +43,14 @@ export default () => {
     getWebTypeList()
   }, [])
 
-  const [defaultValues, setDefaultValues] = useState<Web>({} as Web)
-  const { handleSubmit, control, formState: { errors }, trigger } = useForm<Web>({ defaultValues });
+  const { handleSubmit, control, formState: { errors }, trigger } = useForm<Web>({ defaultValues: {} as Web });
   const onSubmit: SubmitHandler<Web> = async (data, event) => {
     event?.preventDefault();
-    const { code, message } = await addWebDataAPI({ ...data, createTime: Date.now().toString() })
 
+    setLoading(true)
+    const { code, message } = await addWebDataAPI({ ...data, createTime: Date.now().toString() })
     if (code !== 200) return toast.error(message, toastConfig);
+    setLoading(false)
 
     localStorage.setItem('toastMessage', '🎉 提交成功, 请等待审核!');
     window.location.reload();
@@ -232,7 +235,7 @@ export default () => {
               </ModalBody>
 
               <ModalFooter>
-                <Button color="primary" onPress={() => handleSubmit(onSubmit)()} className="w-full">加入</Button>
+                <Button color="primary" isLoading={loading} onPress={() => handleSubmit(onSubmit)()} className="w-full">加入</Button>
               </ModalFooter>
             </>
           )}

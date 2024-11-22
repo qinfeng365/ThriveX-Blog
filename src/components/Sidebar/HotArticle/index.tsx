@@ -9,8 +9,6 @@ import "./index.scss";
 const RandomArticle = async () => {
     const { data: theme } = await getThemeDataAPI()
     const { data: article } = await getArticleListAPI()
-
-    console.log(theme.recoArticle,333);
     
     const ids = JSON.parse(theme.recoArticle ? theme.recoArticle : '[]')
     const list = article.filter(item => ids.includes(item.id + ''))
