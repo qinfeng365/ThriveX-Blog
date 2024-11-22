@@ -11,7 +11,8 @@ const nextConfig = {
     images: {
         domains: [
             'res.liuyuyang.net',
-            'q1.qlogo.cn'
+            'q1.qlogo.cn',
+            'bu.dusays.com'
         ],
     },
 };

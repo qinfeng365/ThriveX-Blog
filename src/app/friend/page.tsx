@@ -23,6 +23,8 @@ export default async () => {
     const { data: typeList } = await getWebTypeListAPI()
 
     let data: { [string: string]: { order: number, list: Web[] } } = {}
+    console.log(linkList);
+    
 
     linkList.sort((a, b) => a.order - b.order)
 
