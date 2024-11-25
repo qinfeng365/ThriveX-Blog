@@ -27,8 +27,8 @@ const Title = ({ data }: { data: YearData }) => {
     return (
         <div>
             <div className="text-xl font-sans inline-block textMarkSty">{data.year} 年 {(data.wordCount / 1000) > 50 && '🔥'}</div>
-            <div>总共发布了：{data.total} 篇文章</div>
-            <div>总字数约：{(data.wordCount / 1000).toFixed(2)}K</div>
+            <div className="dark:text-[#86909c]">总共发布了：<span className="text-primary">{data.total}</span> 篇文章</div>
+            <div className="dark:text-[#86909c]">总字数约：<span className="text-primary">{(data.wordCount / 1000).toFixed(2)}</span> K</div>
         </div>
     )
 }
@@ -84,7 +84,7 @@ export default ({ list }: { list: Article[] }) => {
                     !!result.length
                         ? (
                             <Accordion
-                                className="[&>hr]:bg-[#eee] !px-0"
+                                className="[&>hr]:bg-[#eee] !px-0 [&>hr]:dark:bg-[#4e5969] [&>hr]:transition-colors"
                                 motionProps={{
                                     variants: {
                                         enter: {
@@ -128,20 +128,20 @@ export default ({ list }: { list: Article[] }) => {
                                             {
                                                 Object.keys(item.month).map((month, index) => (
                                                     <div key={index} className="ml-3">
-                                                        <div className="relative border-l border-gray-300">
+                                                        <div className="relative border-l border-gray-300 dark:border-[#4e5969] transition-colors">
                                                             <div className="mb-8 ml-4">
                                                                 <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-1.5 border border-white"></div>
                                                                 <div className="ml-2 sm:ml-6">
                                                                     <div className="flex items-center space-x-4">
-                                                                        <div className="text-2xl text-gray-600">{month}月 {((item.month[+month].wordCount / 1000) > 10) && '🔥'}</div>
-                                                                        <div>{item.month[+month].total}篇文章</div>
-                                                                        <div>{(item.month[+month].wordCount / 1000).toFixed(2)}K字</div>
+                                                                        <div className="text-2xl text-gray-600 dark:text-primary">{month}月 {((item.month[+month].wordCount / 1000) > 10) && '🔥'}</div>
+                                                                        <div>{item.month[+month].total} 篇文章</div>
+                                                                        <div>{(item.month[+month].wordCount / 1000).toFixed(2)} K字</div>
                                                                     </div>
 
                                                                     {
                                                                         item.month[+month].list.map((article: Article, index) => (
                                                                             <div key={index} className="group flex justify-between py-2">
-                                                                                <Link href={`/article/${article.id}`} target="_blank" className="group-hover:text-primary transition-colors">{dayjs(+article.createTime!).format('MM-DD')} {article.title}</Link>
+                                                                                <Link href={`/article/${article.id}`} target="_blank" className="dark:text-[#bfbfbf] group-hover:text-primary transition-colors">{dayjs(+article.createTime!).format('MM-DD')} {article.title}</Link>
                                                                                 <span className="hidden sm:flex items-center min-w-24 text-sm text-white group-hover:text-gray-400 transition-colors"><AiOutlineEye className="mr-1" />{article.view}</span>
                                                                             </div>
                                                                         ))
