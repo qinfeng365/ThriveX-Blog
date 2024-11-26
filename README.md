@@ -22,10 +22,10 @@
 
 🛠️ **技术架构：**
 
-前端：React、**Nextjs**、TypeScript、Zustand、**TailwindCSS**、Antd、Scss、Echarts
+前端：React、**NextJS**、**TailwindCSS**、TypeScript、Zustand、React Form Hooks、Echarts、Antd、Scss、Vercel、Docker
 
 
-后端：**Spring Boot**、Mybatis Plus、MySQL、Qiniu、Socket.io、Swagger
+后端：**Spring Boot**、Mybatis Plus、MySQL、Qiniu、Swagger、Docker
 
 
 

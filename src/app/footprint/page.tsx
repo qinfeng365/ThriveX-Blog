@@ -33,11 +33,11 @@ export default function MapContainer() {
         import('@amap/amap-jsapi-loader').then(AMapLoader => {
             // @ts-ignore
             window._AMapSecurityConfig = {
-                securityJsCode: process.env.GAODE_SECURITYJS_CODE,
+                securityJsCode: process.env.NEXT_PUBLIC_GAODE_SECURITYJS_CODE,
             };
 
             AMapLoader.load({
-                key: process.env.GAODE_KEY_CODE!, // 申请好的Web端开发者Key，首次调用 load 时必填
+                key: process.env.NEXT_PUBLIC_GAODE_KEY_CODE!, // 申请好的Web端开发者Key，首次调用 load 时必填
                 version: "2.0",
                 plugins: ["AMap.Scale", "AMap.Marker"],
             })
