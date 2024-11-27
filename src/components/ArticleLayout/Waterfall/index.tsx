@@ -1,11 +1,10 @@
 "use client"
 
+import Link from 'next/link';
 import { useConfigStore } from '@/stores'
 import { Article } from "@/types/app/article";
 import { getRandom } from '@/utils';
 import Masonry from 'react-masonry-css'
-import "./index.scss"
-import Link from 'next/link';
 
 interface WaterfallProps {
     data: Paginate<Article[]>;
