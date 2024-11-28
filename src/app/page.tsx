@@ -5,7 +5,7 @@ import Container from "@/components/Container";
 import ArticleLayout from "@/components/ArticleLayout";
 import Sidebar from "@/components/Sidebar";
 
-import { getThemeDataAPI } from '@/api/project'
+import { getConfigDataAPI } from '@/api/project'
 import { Theme } from "@/types/app/project";
 
 interface Props {
@@ -14,11 +14,11 @@ interface Props {
 
 export default async ({ searchParams }: Props) => {
   const page = searchParams.page || 1;
-  const { data } = await getThemeDataAPI() || { data: {} as Theme }
+  const { data } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
 
   return (
     <>
-      <Swiper src={data?.swiperImage}>
+      <Swiper src={data?.swiper_image}>
         {/* 星空背景组件 */}
         <Starry />
         {/* 打字机组件 */}

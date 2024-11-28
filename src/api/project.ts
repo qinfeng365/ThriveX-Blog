@@ -1,6 +1,7 @@
 import Request from "@/utils/request";
-import { Theme, Web } from "@/types/app/project";
 
-export const getWebDataAPI = () => Request<Web>("GET", "/project/web") 
+// 获取项目配置
+export const getConfigDataAPI = <T>(type: string) => Request<T>("GET", `/config/list/${type}`)
 
-export const getThemeDataAPI = () => Request<Theme>("GET", "/project/theme") 
+// 修改项目配置
+export const editConfigDataAPI = (type: string, data: object) => Request<{ [string: string]: string }>("PATCH", `/config/${type}`, { data })

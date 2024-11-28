@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
-import { getWebDataAPI } from '@/api/project';
+import { getConfigDataAPI } from '@/api/project';
 import { getUserDataAPI } from '@/api/user';
 import { User } from '@/types/app/user';
 import { Web } from '@/types/app/project';
 
 export default async () => {
   const { data: { avatar } } = await getUserDataAPI() || { data: {} as User }
-  const { data: { footer } } = await getWebDataAPI() || { data: {} as Web }
+  const { data: { footer } } = await getConfigDataAPI<Web>("web") || { data: {} as Web }
 
   return (
     <>
@@ -25,7 +25,7 @@ export default async () => {
         <div className='py-4 border-t dark:border-black-a transition-colors'>
           <Tooltip showArrow={true} content="一款免费、开源、年轻、高颜值的现代化博客管理系统">
             <div className='flex justify-center items-center space-x-3'>
-              <Image src="https://bu.dusays.com/2024/11/17/6739adf188f64.png" width={30} height={30} alt='系统LOGO' />
+              <img src="https://bu.dusays.com/2024/11/17/6739adf188f64.png" width={30} height={30} alt='系统LOGO' />
               <Link href="https://github.com/LiuYuYang01/ThriveX-Blog" target='_blank' className='hover:text-primary transition-colors'> 基于开源项目 ThriveX 构建</Link>
             </div>
           </Tooltip>

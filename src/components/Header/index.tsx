@@ -14,7 +14,7 @@ import { BsFillMoonStarsFill, BsTextIndentLeft } from "react-icons/bs";
 
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
-import { getWebDataAPI, getThemeDataAPI } from '@/api/project';
+import { getConfigDataAPI } from '@/api/project';
 
 import { useConfigStore } from '@/stores';
 import { Theme, Web } from '@/types/app/project';
@@ -25,10 +25,10 @@ const Header = () => {
 
     // 获取项目配置
     const getConfigData = async () => {
-        const { data: web } = await getWebDataAPI() || { data: {} as Web };
+        const { data: web } = await getConfigDataAPI<Web>("web") || { data: {} as Web };
         setWeb(web)
 
-        const { data: theme } = await getThemeDataAPI() || { data: {} as Theme };
+        const { data: theme } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme };
         setTheme(theme)
     }
 
@@ -90,8 +90,8 @@ const Header = () => {
                     <Link href="/" className="flex items-center p-5 text-[15px] transition-colors">
                         {
                             isDark
-                                ? <img src={theme?.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
-                                : <img src={isPathSty || isScrolled ? theme?.lightLogo : theme?.darkLogo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                ? <img src={theme?.dark_logo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
+                                : <img src={isPathSty || isScrolled ? theme?.light_logo : theme?.dark_logo} alt="Logo" className='w-32 h-10 pr-5 hover:scale-90 transition-all' />
                         }
                     </Link>
 

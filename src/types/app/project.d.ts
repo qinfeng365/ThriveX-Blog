@@ -18,14 +18,9 @@ export interface Web {
     title: string,
     subhead: string,
     favicon: string,
-    // lightLogo: string,
-    // darkLogo: string,
     description: string,
     keyword: string,
     footer: string,
-    // font: string,
-    // social: string,
-    // covers: string
 }
 
 export type ArticleLayout = "classics" | "card" | "waterfall" | ""
@@ -33,13 +28,13 @@ export type RightSidebar = "author" | "hotArticle" | "randomArticle" | "newComme
 
 // 主题配置
 export interface Theme {
-    isArticleLayout: string,
-    rightSidebar: string,
-    lightLogo: string,
-    darkLogo: string,
-    swiperImage: string,
-    swiperText: string,
-    recoArticle: string,
+    is_article_layout: string,
+    right_sidebar: string,
+    light_logo: string,
+    dark_logo: string,
+    swiper_image: string,
+    swiper_text: string,
+    reco_article: string,
     social: string,
     covers: string
 }

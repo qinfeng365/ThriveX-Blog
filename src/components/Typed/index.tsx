@@ -10,8 +10,8 @@ export default ({ className }: { className?: string }) => {
     const el = useRef(null);
 
     useEffect(() => {
-        if (theme.swiperText) {
-            const strings = JSON.parse(theme.swiperText || '{}')
+        if (theme.swiper_text) {
+            const strings = JSON.parse(theme.swiper_text || '{}')
 
             const typed = new Typed(el.current, {
                 strings,
