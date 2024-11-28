@@ -1,6 +1,5 @@
 // 最新调整：在 .env 文件中配置项目后端 API 地址
 const url = process.env.NEXT_PUBLIC_PROJECT_API
-console.log(url,9999999);
 
 export default async <T>(method: string, api: string, data?: any, caching = true) => {
     try {
