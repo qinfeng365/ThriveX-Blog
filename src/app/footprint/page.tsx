@@ -15,7 +15,7 @@ export default function MapContainer() {
     const [list, setList] = useState<Footprint[]>([])
 
     const getFootprintList = async () => {
-        const { data } = await getFootprintListAPI()
+        const { data } = await getFootprintListAPI() || { data: [] as Footprint[] }
         setList(data)
     }
 

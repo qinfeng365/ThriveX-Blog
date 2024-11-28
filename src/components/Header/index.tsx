@@ -17,6 +17,7 @@ import { getCateListAPI } from '@/api/cate';
 import { getWebDataAPI, getThemeDataAPI } from '@/api/project';
 
 import { useConfigStore } from '@/stores';
+import { Theme, Web } from '@/types/app/project';
 
 const Header = () => {
     // 是否暗黑模式
@@ -24,10 +25,10 @@ const Header = () => {
 
     // 获取项目配置
     const getConfigData = async () => {
-        const { data: web } = await getWebDataAPI();
+        const { data: web } = await getWebDataAPI() || { data: {} as Web };
         setWeb(web)
 
-        const { data: theme } = await getThemeDataAPI();
+        const { data: theme } = await getThemeDataAPI() || { data: {} as Theme };
         setTheme(theme)
     }
 
@@ -40,7 +41,7 @@ const Header = () => {
     // 获取分类列表
     const [cateList, setCateList] = useState<Cate[]>([])
     const getCateList = async () => {
-        const { data } = await getCateListAPI()
+        const { data } = await getCateListAPI() || { data: [] as Cate[] }
         setCateList(data)
     }
 

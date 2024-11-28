@@ -31,7 +31,7 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
     const [loading, setLoading] = useState(false)
     const [list, setList] = useState<Comment[]>([])
     const getCommentList = async () => {
-        const { data } = await getArticleCommentListAPI(+articleId!);
+        const { data } = await getArticleCommentListAPI(+articleId!) || { data: {} as Paginate<Comment[]> }
         setList(data?.result)
     }
 
@@ -62,7 +62,7 @@ const CommentForm = ({ articleId, articleTitle }: Props) => {
             if (!isNaN(+qq)) data.avatar = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
         };
 
-        const { code, message } = await addCommentDataAPI({ ...data, articleId, commentId: commentId === articleId ? 0 : commentId, createTime: Date.now().toString() })
+        const { code, message } = await addCommentDataAPI({ ...data, articleId, commentId: commentId === articleId ? 0 : commentId, createTime: Date.now().toString() }) || { code: 0, message: "" }
         if (code !== 200) return alert("发布评论失败：" + message);
 
         toast("🎉 提交成功, 请等待审核!")

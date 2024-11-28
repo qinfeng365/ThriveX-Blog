@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import avatarBg from '@/assets/image/avatar_bg.jpg';
-import { Social } from '@/types/app/project';
+import { Social, Theme } from '@/types/app/project';
 
 import CSDN from '@/assets/svg/socializing/CSDN.svg'
 import Douyin from '@/assets/svg/socializing/Douyin.svg'
@@ -14,10 +14,11 @@ import { getUserDataAPI } from '@/api/user';
 import { getThemeDataAPI } from '@/api/project'
 
 import './index.scss';
+import { User } from '@/types/app/user';
 
 const Author = async () => {
-    const { data } = await getUserDataAPI()
-    const { data: { social } } = await getThemeDataAPI()
+    const { data: user } = await getUserDataAPI() || { data: {} as User }
+    const { data: { social } } = await getThemeDataAPI() || { data: {} as Theme }
 
     const socialList = JSON.parse(social)?.map((item: string) => JSON.parse(item))
 
@@ -42,13 +43,13 @@ const Author = async () => {
             }}>
                 {/* 作者头像 */}
                 <div className="avatar flex justify-center items-center w-[90px] h-[90px] rounded-full bg-white shadow-md overflow-hidden">
-                    <img src={data?.avatar} alt="" className="w-[90%] h-[90%] rounded-full transition-transform hover:scale-110" />
+                    <img src={user?.avatar} alt="" className="w-[90%] h-[90%] rounded-full transition-transform hover:scale-110" />
                 </div>
 
                 {/* 作者介绍 */}
                 <div className="info text-center mt-4">
-                    <h3 className="text-lg text-[#333] dark:text-white transition-colors">{data?.name}</h3>
-                    <p className="w-[90%] mx-auto mt-2 text-sm text-[#686868] dark:text-[#cecece] transition-colors">{data?.info}</p>
+                    <h3 className="text-lg text-[#333] dark:text-white transition-colors">{user?.name}</h3>
+                    <p className="w-[90%] mx-auto mt-2 text-sm text-[#686868] dark:text-[#cecece] transition-colors">{user?.info}</p>
                 </div>
 
                 {/* 社交账号 */}

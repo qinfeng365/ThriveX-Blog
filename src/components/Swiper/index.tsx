@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import Ripple from '@/components/Ripple'
 import { getRandom } from '@/utils'
 import { getThemeDataAPI } from '@/api/project'
+import { Theme } from '@/types/app/project'
 
 interface Props {
     src?: string, // 图片列表
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export default async ({ src, isRipple = true, children }: Props) => {
-    const { data } = await getThemeDataAPI()
+    const { data } = await getThemeDataAPI() || { data: {} as Theme }
     const covers = JSON.parse(data.covers || '[]')
 
     const sty = {

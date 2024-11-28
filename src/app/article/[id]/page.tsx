@@ -16,6 +16,7 @@ import { AiOutlineComment } from "react-icons/ai";
 import { LuTimer } from "react-icons/lu";
 
 import dayjs from 'dayjs';
+import { Article } from '@/types/app/article';
 
 interface Props {
     params: { id: number };
@@ -23,7 +24,7 @@ interface Props {
 
 export default async ({ params }: Props) => {
     const id = params.id
-    const { data } = await getArticleDataAPI(id)
+    const { data } = await getArticleDataAPI(id) || { data: {} as Article }
 
     // 记录文章访问量
     await recordViewAPI(id)

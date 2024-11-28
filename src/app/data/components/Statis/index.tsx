@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react"
 
-import { Spinner } from "@nextui-org/react";
-
 import statis from './svg/statis.svg'
 import article from './svg/article.svg'
 import cate from './svg/cate.svg'
@@ -34,9 +32,9 @@ export default ({ aTotal }: Props) => {
             getCommentListAPI(),
             getWebListAPI()
         ]).then(([cateList, commentList, linkList]) => {
-            setCateList(cateList.data)
-            setCommentList(commentList.data)
-            setLinkList(linkList.data)
+            setCateList((cateList as null | { data: Cate[] })?.data || [])
+            setCommentList((commentList as null | { data: Comment[] })?.data || [])
+            setLinkList((linkList as null | { data: Web[] })?.data || [])
         })
     }
 

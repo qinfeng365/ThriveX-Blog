@@ -3,6 +3,8 @@ import Pagination from '@/components/Pagination';
 import AddWallInfo from '../components/AddWallInfo';
 import { getCateListAPI, getCateWallListAPI } from "@/api/wall";
 import dayjs from 'dayjs';
+import { Cate } from '@/types/app/cate';
+import { Wall } from '@/types/app/wall';
 
 interface Props {
     params: { cate: string };
@@ -18,10 +20,10 @@ export default async ({ params, searchParams }: Props) => {
     // 提前把颜色写好，否则会导致样式丢失
     const colors = ["bg-[#fcafa24d]", "bg-[#a8ed8a4d]", "bg-[#caa7f74d]", "bg-[#ffe3944d]", "bg-[#92e6f54d]"]
 
-    const { data: cateList } = await getCateListAPI()
+    const { data: cateList } = await getCateListAPI() || { data: [] as Cate[] }
 
     const id = cateList.find(item => item.mark === cate)?.id!
-    const { data: tallList } = await getCateWallListAPI(id, page)
+    const { data: tallList } = await getCateWallListAPI(id, page) || { data: {} as Paginate<Wall[]> }
 
     return (
         <>

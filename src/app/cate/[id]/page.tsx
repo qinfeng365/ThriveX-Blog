@@ -3,6 +3,7 @@ import Starry from "@/components/Starry"
 import Swiper from "@/components/Swiper"
 import Classics from "@/components/ArticleLayout/Classics";
 import Pagination from "@/components/Pagination";
+import { Article } from "@/types/app/article";
 
 interface Props {
   params: { id: number };
@@ -14,7 +15,7 @@ export default async ({ params, searchParams }: Props) => {
   const page = searchParams.page || 1;
   const name = searchParams.name;
 
-  const { data } = await getCateArticleListAPI(id, page)
+  const { data } = await getCateArticleListAPI(id, page) || { data: {} as Paginate<Article[]> }
 
   return (
     <>

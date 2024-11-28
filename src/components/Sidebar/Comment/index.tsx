@@ -14,7 +14,7 @@ const NewComments = () => {
     const [list, setList] = useState<Comment[]>([])
 
     const getCommentPaging = async () => {
-        const { data } = await getCommentPagingAPI();
+        const { data } = await getCommentPagingAPI() || { data: {} as Paginate<Comment[]> }
         setList(data.result)
     }
 

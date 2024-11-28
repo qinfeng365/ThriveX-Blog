@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 import { getWebDataAPI } from "@/api/project";
 import { getWebListAPI, getWebTypeListAPI } from '@/api/web'
-import { Web } from "@/types/app/web";
+import { Web as WebLink, WebType } from "@/types/app/web";
 
 import Swiper from "@/components/Swiper";
 import Starry from "@/components/Starry";
@@ -11,23 +11,25 @@ import ApplyForAdd from "./components/ApplyForAdd";
 
 import { ToastContainer } from "react-toastify";
 import { getUserDataAPI } from "@/api/user";
+import { User } from "@/types/app/user";
+import { Web } from "@/types/app/project";
 
 export const metadata: Metadata = {
     title: "朋友圈"
 };
 
 export default async () => {
-    const { data: user } = await getUserDataAPI()
-    const { data: web } = await getWebDataAPI();
-    const { data: linkList } = await getWebListAPI()
-    const { data: typeList } = await getWebTypeListAPI()
+    const { data: user } = await getUserDataAPI() || { data: {} as User }
+    const { data: web } = await getWebDataAPI() || { data: {} as Web }
+    const { data: linkList } = await getWebListAPI() || { data: [] as WebLink[] }
+    const { data: typeList } = await getWebTypeListAPI() || { data: [] as WebType[] }
 
-    let data: { [string: string]: { order: number, list: Web[] } } = {}
+    let data: { [string: string]: { order: number, list: WebLink[] } } = {}
 
-    linkList.sort((a, b) => a.order - b.order)
+    linkList.sort((a: WebLink, b: WebLink) => a.order - b.order)
 
     // 给每个数据进行分组处理
-    linkList?.forEach(item => {
+    linkList?.forEach((item: WebLink) => {
         if (data[item.type.name]) {
             data[item.type.name].list.push(item)
         } else {
@@ -89,7 +91,7 @@ export default async () => {
                                 }
 
                                 {
-                                    data[type].list?.map((item: Web) => (
+                                    data[type].list?.map((item: WebLink) => (
                                         <Link key={item.id} href={item.url} target="_blank" className="group">
                                             <div key={item.id} className="flex items-center p-3 border group-hover:border-2 dark:border-[#3d4653] group-hover:!border-primary group-hover:shadow-[0_10px_20px_1px_rgb(83,157,253,.1)] rounded-md transition-colors">
                                                 <img src={item.image} alt={item.title} className="w-14 h-14 mr-4 rounded-full" />

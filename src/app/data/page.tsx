@@ -11,7 +11,7 @@ import { getArticleListAPI } from "@/api/article";
 export default () => {
     const [articleList, setArticleList] = useState<Article[]>([])
     const getArticleList = async () => {
-        const { data } = await getArticleListAPI()
+        const { data } = await getArticleListAPI() || { data: [] as Article[] }
         setArticleList(data)
     }
     useEffect(() => {
@@ -33,8 +33,8 @@ export default () => {
             </Swiper>
 
             <div className="w-[90%] xl:w-[1200px] my-10 mx-auto bg-white dark:bg-black-b p-6 sm:p-10 rounded-xl border dark:border-black-b transition-colors">
-                <Statis aTotal={articleList.length}/>
-                <Archiving list={articleList}/>
+                <Statis aTotal={articleList.length} />
+                <Archiving list={articleList} />
             </div>
         </>
     )

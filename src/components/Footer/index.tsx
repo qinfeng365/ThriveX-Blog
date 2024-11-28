@@ -1,12 +1,14 @@
 import Image from 'next/image'
-import { getWebDataAPI } from '@/api/project';
-import { getUserDataAPI } from '@/api/user';
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
+import { getWebDataAPI } from '@/api/project';
+import { getUserDataAPI } from '@/api/user';
+import { User } from '@/types/app/user';
+import { Web } from '@/types/app/project';
 
 export default async () => {
-  const { data: { avatar } } = await getUserDataAPI()
-  const { data: { footer } } = await getWebDataAPI()
+  const { data: { avatar } } = await getUserDataAPI() || { data: {} as User }
+  const { data: { footer } } = await getWebDataAPI() || { data: {} as Web }
 
   return (
     <>

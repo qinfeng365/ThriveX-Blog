@@ -5,13 +5,15 @@ import { getArticleListAPI } from '@/api/article';
 import { IoIosArrowForward } from "react-icons/io";
 import fire from '@/assets/svg/other/fire.svg';
 import "./index.scss";
+import { Theme } from '@/types/app/project';
+import { Article } from '@/types/app/article';
 
 const RandomArticle = async () => {
-    const { data: theme } = await getThemeDataAPI()
-    const { data: article } = await getArticleListAPI()
-    
+    const { data: theme } = await getThemeDataAPI() || { data: {} as Theme }
+    const { data: article } = await getArticleListAPI() || { data: [] as Article[] }
+
     const ids = JSON.parse(theme.recoArticle ? theme.recoArticle : '[]')
-    const list = article.filter(item => ids.includes(item.id + ''))
+    const list = article.filter((item: Article) => ids.includes(item.id + ''))
 
     return (
         <div className='hotArticleComponent'>
@@ -23,7 +25,7 @@ const RandomArticle = async () => {
 
                 {/* 文章列表 */}
                 <div className='w-full'>
-                    {list?.map((item) => (
+                    {list?.map((item: Article) => (
                         <div key={item.id}>
                             <Link href={`/article/${item.id}`} target='_blank' className='w-full flex items-center py-2 text-gray-600 dark:text-[#8c9ab1] text-sm transition-all hover:!text-primary hover:pl-2'>
                                 <IoIosArrowForward className="text-lg mr-1" />

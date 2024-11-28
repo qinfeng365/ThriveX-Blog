@@ -27,7 +27,7 @@ export default () => {
   // 获取网站类型列表
   const [typeList, setTypeList] = useState<WebType[]>([])
   const getWebTypeList = async () => {
-    const { data } = await getWebTypeListAPI()
+    const { data } = await getWebTypeListAPI() || { data: [] as WebType[] }
 
     setTypeList(data.filter(item => !item.isAdmin))
   }
@@ -48,7 +48,7 @@ export default () => {
     event?.preventDefault();
 
     setLoading(true)
-    const { code, message } = await addWebDataAPI({ ...data, createTime: Date.now().toString() })
+    const { code, message } = await addWebDataAPI({ ...data, createTime: Date.now().toString() }) || { code: 0, message: "" }
     if (code !== 200) return toast.error(message, toastConfig);
     setLoading(false)
 
