@@ -25,7 +25,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   console.log("🌟 觉得好用的话记得点个 Star 哦 🙏")
 
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <head>
         <title>{`${data?.title} - ${data?.subhead}`}</title>
         <meta name="description" content={data?.description} />

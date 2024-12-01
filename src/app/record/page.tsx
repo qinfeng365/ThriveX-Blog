@@ -1,5 +1,6 @@
 import Image from "next/image"
 import ImageList from "./components/ImageList"
+import Comment from "./components/Comment"
 
 export default () => {
   return (
@@ -36,6 +37,7 @@ export default () => {
                 </p>
 
                 <ImageList />
+                <Comment />
               </div>
             </div>
           </div>
