@@ -9,6 +9,7 @@ import Technology from './component/Technology'
 import Project from './component/Project'
 import CurriculumVitae from './component/CurriculumVitae'
 import Info from "./component/Info";
+import Calendar from "./component/Calendar"
 
 export default () => {
   const data: MyData = {
@@ -175,6 +176,10 @@ export default () => {
         style={{ backgroundImage: `url(${bg.src})` }}>
         <div className="w-[90%] lg:w-[950px] mx-auto">
           <Info data={data?.info} />
+        </div>
+
+        <div className='flex justify-center mt-16 px-10'>
+          <Calendar />
         </div>
 
         <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
