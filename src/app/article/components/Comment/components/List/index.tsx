@@ -28,11 +28,8 @@ const CommentList = ({ list, reply }: Props) => {
                         <li className="item" key={one.id}>
                             <div className="comment_user_one">
                                 {
-                                    one.avatar
-                                        ? <img src={one.avatar} alt="" className="avatar" />
-                                        : <RandomAvatar className="avatar" />
+                                    one.avatar ? <img src={one.avatar} alt="" className="avatar" /> : <RandomAvatar className="avatar" />
                                 }
-
                                 <div className="comment_user_one_info">
                                     {
                                         one.url

@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
 import { getConfigDataAPI } from '@/api/project';
