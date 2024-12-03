@@ -1,12 +1,13 @@
 import Image from "next/image"
 import ImageList from "./components/ImageList"
-import Comment from "./components/Comment"
 import { getRecordPagingAPI } from '@/api/record'
 import { getUserDataAPI } from '@/api/user';
 import { Record } from "@/types/app/record"
 import { User } from "@/types/app/user";
 import { dayFormat } from '@/utils'
 import Pagination from "@/components/Pagination";
+import Empty from "@/components/Empty";
+import Show from "@/components/Show";
 
 interface Props {
   searchParams: { page: number };
@@ -28,9 +29,10 @@ export default async ({ searchParams }: Props) => {
             <h4 className="text-xs text-gray-300">🎯 梦想做一名技术顶尖的架构师，奈何学历太低！</h4>
           </div>
 
+
           <div className="space-y-12">
             {
-              record?.result.map(item => (
+              !!record?.result?.length && record?.result.map(item => (
                 <div key={item.id} className="flex flex-col sm:flex-row">
                   <Image src={user.avatar} alt="作者头像" width={56} height={56} className="hidden sm:block rounded-lg border dark:border-black-b h-14 mr-2 transition-colors" />
 
@@ -59,6 +61,8 @@ export default async ({ searchParams }: Props) => {
                 </div>
               ))
             }
+
+            <Show is={!record?.result?.length} children={<Empty info='闪念列表为空~' />} />
           </div>
 
           <Pagination total={record?.pages} page={page} className="flex justify-center mt-5" />
