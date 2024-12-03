@@ -30,7 +30,7 @@ export default async ({ params, searchParams }: Props) => {
             <title>留言墙</title>
             <meta name="description" content="留言墙" />
 
-            <div className='bg-white dark:bg-black-a py-16 border-b dark:border-[#4e5969] transition-colors'>
+            <div className='py-16 border-b dark:border-[#4e5969] bg-[linear-gradient(to_right,#fff1eb_0%,#d0edfb_100%)] dark:bg-[linear-gradient(to_right,#232931_0%,#232931_100%)] transition-colors'>
                 <div className="flex flex-col items-center">
                     <h2 className="text-5xl pt-24">留言墙</h2>
                     <p className="text-sm text-gray-600 my-10">有什么想对我说的，来吧</p>

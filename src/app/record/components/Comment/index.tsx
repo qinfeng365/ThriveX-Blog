@@ -12,8 +12,8 @@ export default () => {
                             <img src="https://q1.qlogo.cn/g?b=qq&nk=3311118881&s=640" alt="Avatar" className="w-10 h-10 rounded-full mr-3" />
 
                             <div>
-                                <div className="font-bold mb-1">满心</div>
-                                <div className="text-gray-700">前段时间我也弄了，弄的脆皮肠，很好吃</div>
+                                <div className="font-bold mb-1">宇阳</div>
+                                <div className="text-gray-700">再渺小的星光也有属于它的光芒</div>
                             </div>
                         </div>
                     </div>
