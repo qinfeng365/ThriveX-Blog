@@ -17,7 +17,7 @@ export default async ({ searchParams }: Props) => {
   const page = searchParams.page || 1;
 
   const { data: user } = await getUserDataAPI() || { data: {} as User }
-  const { data: record } = await getRecordPagingAPI() || { data: {} as Paginate<Record[]> }
+  const { data: record } = await getRecordPagingAPI({ pagination: { page, size: 8 } }) || { data: {} as Paginate<Record[]> }
 
   return (
     <>
