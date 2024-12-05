@@ -18,7 +18,7 @@ export default async ({ searchParams }: Props) => {
 
   const { data: user } = await getUserDataAPI() || { data: {} as User }
   const { data: record } = await getRecordPagingAPI({ pagination: { page, size: 8 } }) || { data: {} as Paginate<Record[]> }
-
+  
   return (
     <>
       <div className="bg-[linear-gradient(to_right,#fff1eb_0%,#d0edfb_100%)] dark:bg-[linear-gradient(to_right,#232931_0%,#232931_100%)]">
