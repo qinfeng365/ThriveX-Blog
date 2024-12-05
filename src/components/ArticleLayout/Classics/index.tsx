@@ -23,7 +23,7 @@ const Classics = async ({ data }: ClassicsProps) => {
 
     // 生成文章摘要，取前100个字
     const genArticleInfo = (data: Article) => {
-        if (data.description.trim().length) {
+        if (data.description?.trim()?.length) {
             return data.description
         } else {
             return data.content.slice(0, 100)
