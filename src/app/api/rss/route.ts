@@ -1,18 +1,29 @@
 import { Feed } from 'feed';
 import { NextResponse } from 'next/server';
 
-import { getArticlePagingAPI } from '@/api/article'
-import { getConfigDataAPI } from '@/api/project'
-import { getUserDataAPI } from '@/api/user'
 import { Web } from '@/types/app/project';
 import { User } from '@/types/app/user';
 import { Article } from '@/types/app/article';
+import { Record } from '@/types/app/record'
+
+import { getArticlePagingAPI } from '@/api/article'
+import { getConfigDataAPI } from '@/api/project'
+import { getUserDataAPI } from '@/api/user'
+import { getRecordPagingAPI } from '@/api/record';
 
 export async function GET() {
     const { data: web } = await getConfigDataAPI<Web>("web") || { data: {} as Web }
     const { data: user } = await getUserDataAPI() || { data: {} as User }
     const { data: article } = await getArticlePagingAPI({ pagination: { page: 1, size: 8 } }) || { data: {} as Paginate<Article[]> }
-    const list = article?.result || []
+    const { data: record } = await getRecordPagingAPI({ pagination: { page: 1, size: 8 } }) || { data: {} as Paginate<Record[]> }
+
+    const articleList = article?.result || []
+    const recordList = record?.result || []
+
+    // 合并文章和说说，并根据时间排序
+    const list = [...articleList, ...recordList].sort((a, b) => {
+        return +b.createTime! - +a.createTime!
+    });
 
     const feed = new Feed({
         title: `${web.title} - ${web.subhead}`,
@@ -36,9 +47,9 @@ export async function GET() {
     list.forEach(item => {
         feed.addItem({
             id: item.id + '',
-            title: item.title,
-            link: web.url + '/article/' + item.id,
-            description: item.description,
+            title: 'title' in item ? item.title : truncateContent(item.content),
+            link: 'title' in item ? web.url + '/article/' + item.id : web.url + '/record',
+            description: 'title' in item ? item.description : item.content,
             content: item.content,
             copyright: 'ThriveX 现代化博客管理系统',
             date: new Date(+item.createTime!)
@@ -52,4 +63,15 @@ export async function GET() {
             'Content-Type': 'application/xml',
         },
     });
+}
+
+// 截取说说内容
+function truncateContent(content: string) {
+    const maxLength = 20;
+
+    if (content.length > maxLength) {
+        return content.substring(0, maxLength) + '...';
+    } else {
+        return content;
+    }
 }
