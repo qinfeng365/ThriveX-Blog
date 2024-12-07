@@ -10,7 +10,7 @@ interface Props {
 export default ({ list }: Props) => {
     return (
         <>
-            <div className={`flex justify-center ${list.length && 'mt-4'} w-2/6`}>
+            <div className={`flex justify-center ${list.length && 'mt-4'} w-full sm:w-3/6`}>
                 <PhotoProvider
                     speed={() => 800}
                     easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
