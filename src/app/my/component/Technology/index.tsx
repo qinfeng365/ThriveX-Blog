@@ -20,7 +20,7 @@ export default () => {
 
     return (
         <>
-            <div data-aos="zoom-in" className="w-full md:w-7/12 flex flex-col mt-28 md:mt-0">
+            <div data-aos="zoom-in" className="w-full md:w-7/12 flex flex-col mt-52 md:mt-0">
                 <div className="text-center text-xl mb-8">我的技术栈</div>
 
                 <div className="flex flex-col items-center space-y-2">

@@ -178,25 +178,27 @@ export default () => {
           <Info data={data?.info} />
         </div>
 
-        <div className='flex justify-center mt-16 px-10'>
+        <div className='flex justify-center mt-24 px-10'>
           <Calendar />
         </div>
 
-        <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
+        <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-52 mx-auto">
           <Character data={data?.character} />
           <Goals data={data?.goals} />
         </div>
 
-        <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-16 mx-auto">
+        <div className="flex flex-col md:flex-row w-[90%] sm:w-9/12 mt-52 mx-auto">
           <Map />
           <Technology />
         </div>
 
-        <Project data={data?.project} />
-
-        <div className="mt-16">
-          <CurriculumVitae />
+        <div className="mt-52">
+          <Project data={data?.project} />
         </div>
+
+        {/* <div className="mt-52">
+          <CurriculumVitae />
+        </div> */}
       </div>
     </>
   )
