@@ -75,6 +75,26 @@ const ContentMD = ({ data }: Props) => {
                 </PhotoView>
             );
         },
+        a: ({ href, title, children }: { href?: string; title?: string; children?: React.ReactNode }) => {
+            if (href && children && children === 'video' && href.endsWith('.mp4')) {
+                const [poster, width = '640'] = title ? title.split(',') : [];
+
+                return (
+                    <div className="flex justify-center w-full my-4">
+                        <video
+                            controls
+                            width={width}
+                            poster={poster || undefined}
+                            className="rounded-xl"
+                        >
+                            <source src={href} type="video/mp4" />
+                            您的浏览器不支持视频标签。
+                        </video>
+                    </div>
+                );
+            }
+            return <a href={href}>{children}</a>;
+        }
     };
 
     return (
