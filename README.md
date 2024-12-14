@@ -7,7 +7,7 @@
 <p align="center" style="font-size:20px; font-weight:700;">ThriveX</p>
 
 <p align="center">
-    官网：<a href="[https://liuyuyang.net](https://thrivex.liuyuyang.net/)" target="_blank">https://thrivex.liuyuyang.net/</a>
+    官网：<a href="https://thrivex.liuyuyang.net/" target="_blank">https://thrivex.liuyuyang.net/</a>
 </p>
 
 <p align="center" style="margin-bottom:10px">年轻、高颜值、全开源、永不收费的现代化博客管理系统</p>
