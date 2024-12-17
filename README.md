@@ -6,10 +6,6 @@
 
 <p align="center" style="font-size:20px; font-weight:700;">ThriveX</p>
 
-<p align="center">
-    官网：<a href="https://thrivex.liuyuyang.net/" target="_blank">https://thrivex.liuyuyang.net/</a>
-</p>
-
 <p align="center" style="margin-bottom:10px">年轻、高颜值、全开源、永不收费的现代化博客管理系统</p>
 
 ![](https://bu.dusays.com/2024/11/25/67445b7df3742.png)
@@ -272,7 +268,6 @@ lyy:
 **问：** 大家可能会觉得我不以盈利为目的最终会丧失热情导致不再维护，其实我想说这个顾虑可以打消
 
 **答：** 在这两年期间内我已经累计提交了近 `3000` 次代码，只要工作之余有时间我都会不断的更新维护
-
 
 
 

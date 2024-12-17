@@ -69,7 +69,7 @@ const ContentMD = ({ data }: Props) => {
 
             return (
                 <PhotoView src={src || ''}>
-                    <span className="flex justify-center w-full my-4">
+                    <span className="flex justify-center sm:justify-start w-full sm:w-3/6 my-4">
                         <img ref={imgRef} alt={alt} src={src} />
                     </span>
                 </PhotoView>
@@ -80,7 +80,7 @@ const ContentMD = ({ data }: Props) => {
                 const [poster, width = '640'] = title ? title.split(',') : [];
 
                 return (
-                    <div className="flex justify-center w-full my-4">
+                    <div className="flex justify-center sm:justify-start w-full sm:w-3/6 my-4">
                         <video
                             controls
                             width={width}

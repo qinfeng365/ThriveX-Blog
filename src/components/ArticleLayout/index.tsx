@@ -2,12 +2,12 @@ import { getArticlePagingAPI } from '@/api/article'
 import Pagination from "../Pagination"
 import Classics from "./Classics"
 import Waterfall from "./Waterfall"
-import { getConfigDataAPI } from '@/api/project'
+import { getThemeDataAPI } from '@/api/project'
 import { Theme } from '@/types/app/project'
 import { Article } from '@/types/app/article'
 
 export default async ({ page }: { page: number }) => {
-  const { data: theme } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
+  const { data: theme } = await getThemeDataAPI<Theme>("layout") || { data: {} as Theme }
   const sidebar: string[] = JSON.parse(theme?.right_sidebar)
 
   // 如果是瀑布流布局就显示28条数据，否则显示8条

@@ -5,7 +5,7 @@ import Container from "@/components/Container";
 import ArticleLayout from "@/components/ArticleLayout";
 import Sidebar from "@/components/Sidebar";
 
-import { getConfigDataAPI } from '@/api/project'
+import { getThemeDataAPI } from '@/api/project'
 import { Theme } from "@/types/app/project";
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 
 export default async ({ searchParams }: Props) => {
   const page = searchParams.page || 1;
-  const { data } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
+  const { data } = await getThemeDataAPI<Theme>("layout") || { data: {} as Theme }
 
   return (
     <>

@@ -8,6 +8,8 @@ import { dayFormat } from '@/utils'
 import Pagination from "@/components/Pagination";
 import Empty from "@/components/Empty";
 import Show from "@/components/Show";
+import { getThemeDataAPI } from "@/api/project";
+import { Theme } from "@/types/app/project";
 
 interface Props {
   searchParams: { page: number };
@@ -18,15 +20,16 @@ export default async ({ searchParams }: Props) => {
 
   const { data: user } = await getUserDataAPI() || { data: {} as User }
   const { data: record } = await getRecordPagingAPI({ pagination: { page, size: 8 } }) || { data: {} as Paginate<Record[]> }
-  
+  const { data: theme } = await getThemeDataAPI<Theme>("layout") || { data: {} as Theme }
+
   return (
     <>
       <div className="bg-[linear-gradient(to_right,#fff1eb_0%,#d0edfb_100%)] dark:bg-[linear-gradient(to_right,#232931_0%,#232931_100%)]">
         <div className="w-full lg:w-[800px] px-6 lg:px-0 mx-auto pt-24 pb-10">
           <div className="flex items-center flex-col p-4 mb-10 border dark:border-black-b rounded-lg bg-white dark:bg-black-b bg-[url('https://bu.dusays.com/2024/11/27/6746e3ec88c4f.jpg')] bg-no-repeat bg-center bg-cover transition-colors">
             <img src={user.avatar} alt="作者头像" width={80} height={80} className="rounded-full avatar-animation shadow-[5px_11px_30px_20px_rgba(255,255,255,0.3)]" />
-            <h2 className="my-2 text-white">👋 Liu 宇阳</h2>
-            <h4 className="text-xs text-gray-300">🎯 梦想做一名技术顶尖的架构师，奈何学历太低！</h4>
+            <h2 className="my-2 text-white">{theme.record_name}</h2>
+            <h4 className="text-xs text-gray-300">{theme.record_info}</h4>
           </div>
 
           <div className="space-y-12">

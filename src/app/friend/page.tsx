@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 
-import { getConfigDataAPI } from "@/api/project";
+import { getThemeDataAPI } from "@/api/project";
 import { getWebListAPI, getWebTypeListAPI } from '@/api/web'
 import { Web as WebLink, WebType } from "@/types/app/web";
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default async () => {
     const { data: user } = await getUserDataAPI() || { data: {} as User }
-    const { data: web } = await getConfigDataAPI<Web>("web") || { data: {} as Web }
+    const { data: web } = await getThemeDataAPI<Web>("web") || { data: {} as Web }
     const { data: linkList } = await getWebListAPI() || { data: [] as WebLink[] }
     const { data: typeList } = await getWebTypeListAPI() || { data: [] as WebType[] }
 

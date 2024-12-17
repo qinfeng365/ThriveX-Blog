@@ -2,11 +2,11 @@ import Author from "./Author"
 import HotArticle from "./HotArticle"
 import RandomArticle from "./RandomArticle"
 import Comment from "./Comment"
-import { getConfigDataAPI } from '@/api/project'
+import { getThemeDataAPI } from '@/api/project'
 import { Theme } from "@/types/app/project"
 
 export default async () => {
-  const { data: theme } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
+  const { data: theme } = await getThemeDataAPI<Theme>("layout") || { data: {} as Theme }
   const sidebar: string[] = JSON.parse(theme?.right_sidebar)
 
   return (

@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Tooltip } from '@nextui-org/react';
-import { getConfigDataAPI } from '@/api/project';
+import { getThemeDataAPI } from '@/api/project';
 import { getUserDataAPI } from '@/api/user';
 import { User } from '@/types/app/user';
 import { Web } from '@/types/app/project';
 
 export default async () => {
   const { data: { avatar } } = await getUserDataAPI() || { data: {} as User }
-  const { data: { footer } } = await getConfigDataAPI<Web>("web") || { data: {} as Web }
+  const { data: { footer } } = await getThemeDataAPI<Web>("web") || { data: {} as Web }
 
   return (
     <>
