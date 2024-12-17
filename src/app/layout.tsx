@@ -8,7 +8,7 @@ import RouteChangeHandler from '@/components/RouteChangeHandler'
 import "@/styles/index.scss";
 import "@/styles/tailwind.scss";
 
-import { getThemeDataAPI } from '@/api/project'
+import { getConfigDataAPI } from '@/api/project'
 
 import Tools from '@/components/Tools';
 import NProgress from '@/components/NProgress';
@@ -16,7 +16,7 @@ import Confetti from '@/components/Confetti';
 import { Web } from '@/types/app/project';
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { data } = await getThemeDataAPI<Web>("web") || { data: {} as Web };
+  const { data } = await getConfigDataAPI<Web>("web") || { data: {} as Web };
 
   // 尊重开源，禁止删除此版权信息！！！
   console.log("🚀 欢迎使用 ThriveX 现代化博客管理系统")

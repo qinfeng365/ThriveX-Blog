@@ -7,12 +7,12 @@ import { Article } from '@/types/app/article';
 import { Record } from '@/types/app/record'
 
 import { getArticlePagingAPI } from '@/api/article'
-import { getThemeDataAPI } from '@/api/project'
+import { getConfigDataAPI } from '@/api/project'
 import { getUserDataAPI } from '@/api/user'
 import { getRecordPagingAPI } from '@/api/record';
 
 export async function GET() {
-    const { data: web } = await getThemeDataAPI<Web>("web") || { data: {} as Web }
+    const { data: web } = await getConfigDataAPI<Web>("web") || { data: {} as Web }
     const { data: user } = await getUserDataAPI() || { data: {} as User }
     const { data: article } = await getArticlePagingAPI({ pagination: { page: 1, size: 8 } }) || { data: {} as Paginate<Article[]> }
     const { data: record } = await getRecordPagingAPI({ pagination: { page: 1, size: 8 } }) || { data: {} as Paginate<Record[]> }

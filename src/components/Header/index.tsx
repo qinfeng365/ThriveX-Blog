@@ -14,7 +14,7 @@ import { BsFillMoonStarsFill, BsTextIndentLeft } from "react-icons/bs";
 
 import { Cate } from '@/types/app/cate';
 import { getCateListAPI } from '@/api/cate';
-import { getThemeDataAPI } from '@/api/project';
+import { getConfigDataAPI } from '@/api/project';
 
 import { useConfigStore } from '@/stores';
 import { Theme, Web } from '@/types/app/project';
@@ -25,10 +25,10 @@ const Header = () => {
 
     // 获取项目配置
     const getConfigData = async () => {
-        const { data: web } = await getThemeDataAPI<Web>("web") || { data: {} as Web };
+        const { data: web } = await getConfigDataAPI<Web>("web") || { data: {} as Web };
         setWeb(web)
 
-        const { data: theme } = await getThemeDataAPI<Theme>("layout") || { data: {} as Theme };
+        const { data: theme } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme };
         setTheme(theme)
     }
 

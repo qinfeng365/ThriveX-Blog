@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getThemeDataAPI } from '@/api/project'
+import { getConfigDataAPI } from '@/api/project'
 import { getArticleListAPI } from '@/api/article';
 import { IoIosArrowForward } from "react-icons/io";
 import fire from '@/assets/svg/other/fire.svg';
@@ -9,7 +9,7 @@ import { Theme } from '@/types/app/project';
 import { Article } from '@/types/app/article';
 
 const RandomArticle = async () => {
-    const { data: theme } = await getThemeDataAPI<Theme>("layout") || { data: {} as Theme }
+    const { data: theme } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
     const { data: article } = await getArticleListAPI() || { data: [] as Article[] }
 
     const ids = JSON.parse(theme.reco_article ? theme.reco_article : '[]')

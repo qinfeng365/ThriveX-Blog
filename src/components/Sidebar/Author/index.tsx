@@ -11,14 +11,14 @@ import QQ from '@/assets/svg/socializing/QQ.svg'
 import Weixin from '@/assets/svg/socializing/Weixin.svg'
 
 import { getUserDataAPI } from '@/api/user';
-import { getThemeDataAPI } from '@/api/project'
+import { getConfigDataAPI } from '@/api/project'
 
 import './index.scss';
 import { User } from '@/types/app/user';
 
 const Author = async () => {
     const { data: user } = await getUserDataAPI() || { data: {} as User }
-    const { data: { social } } = await getThemeDataAPI<Theme>("layout") || { data: {} as Theme }
+    const { data: { social } } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
 
     const socialList = JSON.parse(social)?.map((item: string) => item)
 
