@@ -16,7 +16,6 @@ import { Social, Theme } from '@/types/app/project';
 
 const Author = async () => {
     const { data: user } = await getUserDataAPI() || { data: {} as User }
-    console.log(user,888);
     
     const { data: { social } } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
 
