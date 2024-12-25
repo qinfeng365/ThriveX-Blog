@@ -20,7 +20,7 @@ const Author = async () => {
     const { data: user } = await getUserDataAPI() || { data: {} as User }
     const { data: { social } } = await getConfigDataAPI<Theme>("layout") || { data: {} as Theme }
 
-    const socialList = JSON.parse(social)?.map((item: string) => item)
+    const socialList = JSON.parse(social)?.map((item: string) => JSON.parse(item))
 
     // 图标列表
     const images: { [string: string]: string } = {
