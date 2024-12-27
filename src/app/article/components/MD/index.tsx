@@ -59,7 +59,7 @@ const ContentMD = ({ data }: Props) => {
                             if (entry.isIntersecting) {
                                 setTimeout(() => {
                                     img.style.filter = 'blur(0px)';
-                                }, 1000)
+                                }, 400)
                                 observer.unobserve(img); // 停止观察
                             }
                         });
