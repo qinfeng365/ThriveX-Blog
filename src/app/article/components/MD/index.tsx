@@ -4,11 +4,18 @@ import React, { useEffect, useRef } from "react";
 import { useConfigStore } from "@/stores";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
-import rehypeHighlight from "rehype-highlight";
 import 'highlight.js/styles/vs2015.css';
 import "./index.scss";
+import "katex/dist/katex.min.css";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkFlexibleMarkers from "remark-flexible-markers";
+import rehypeHighlight from "rehype-highlight";
+import rehypeKatex from "rehype-katex";
+import rehypeSemanticBlockquotes from "rehype-semantic-blockquotes";
+import rehypeCallouts from "rehype-callouts";
+
 
 interface Props {
     data: string;
@@ -103,8 +110,8 @@ const ContentMD = ({ data }: Props) => {
                 <div className="content markdown-body">
                     <ReactMarkdown
                         components={renderers}
-                        rehypePlugins={[rehypeHighlight]}
-                        remarkPlugins={[remarkGfm]}
+                        remarkPlugins={[[remarkGfm, {singleTilde: false}], remarkMath, remarkFlexibleMarkers]}
+                        rehypePlugins={[rehypeHighlight, rehypeKatex, rehypeCallouts, rehypeSemanticBlockquotes]}
                     >
                         {data}
                     </ReactMarkdown>
