@@ -15,6 +15,8 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeKatex from "rehype-katex";
 import rehypeSemanticBlockquotes from "rehype-semantic-blockquotes";
 import rehypeCallouts from "rehype-callouts";
+import 'rehype-callouts/theme/obsidian';
+import rehypeRaw from 'rehype-raw';
 
 
 interface Props {
@@ -111,7 +113,7 @@ const ContentMD = ({ data }: Props) => {
                     <ReactMarkdown
                         components={renderers}
                         remarkPlugins={[[remarkGfm, {singleTilde: false}], remarkMath, remarkFlexibleMarkers]}
-                        rehypePlugins={[rehypeHighlight, rehypeKatex, rehypeCallouts, rehypeSemanticBlockquotes]}
+                        rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeKatex, rehypeCallouts, rehypeSemanticBlockquotes]}
                     >
                         {data}
                     </ReactMarkdown>
