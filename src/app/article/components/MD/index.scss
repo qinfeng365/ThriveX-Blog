@@ -20,7 +20,8 @@
         }
 
         img {
-            border-radius: 10px;
+            // 图片模糊
+            @apply blur-[20px] rounded-xl cursor-pointer transition-all;
         }
 
         h1,
@@ -172,11 +173,6 @@
 
         p {
             @apply leading-9 mb-2;
-
-            img {
-                // 图片模糊
-                @apply blur-[20px] rounded-xl cursor-pointer transition-all;
-            }
         }
 
         strong {
