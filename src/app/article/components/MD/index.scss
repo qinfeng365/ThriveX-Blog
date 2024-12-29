@@ -147,6 +147,11 @@
             }
         }
 
+        // 高亮标记
+        mark {
+            @apply bg-[#dbfdad] dark:bg-[#9db47e];
+        }
+
         // 提示块
         .callout-content {
             @apply pt-1;
@@ -154,6 +159,11 @@
             &>p {
                 @apply mb-0;
             }
+        }
+
+        // 数学公式
+        .katex {
+            @apply text-base;
         }
 
         a {
