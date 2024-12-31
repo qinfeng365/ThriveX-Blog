@@ -23,7 +23,7 @@ body {
 /* The scrollbar slider code is contributed by UopyTechSpeak. */
 /* https://github.com/UopyTechSpeak/ */
 ::-webkit-scrollbar-thumb{
-    background: linear-gradient(to bottom, #41d1ff, #bd34fe); 
+    background: linear-gradient(to bottom, #539dfd, #86b5f2); 
     height:50px;
     outline-offset:-2px;
     outline:2px solid #ffffff00;
@@ -33,9 +33,6 @@ body {
 ::-webkit-scrollbar{
     width:8px;
     height:8px;
-}
-::-webkit-scrollbar-track-piece{
-    background: linear-gradient(to bottom, #f0f0f000, #e0e0e000); 
 }
 
 // 文字阴影
