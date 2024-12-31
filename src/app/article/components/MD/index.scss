@@ -20,7 +20,8 @@
         }
 
         img {
-            border-radius: 10px;
+            // 图片模糊
+            @apply blur-[20px] rounded-xl cursor-pointer transition-all;
         }
 
         h1,
@@ -147,6 +148,11 @@
             }
         }
 
+        // 高亮标记
+        mark {
+            @apply bg-[#dbfdad] dark:bg-[#9db47e];
+        }
+
         // 提示块
         .callout-content {
             @apply pt-1;
@@ -156,17 +162,17 @@
             }
         }
 
+        // 数学公式
+        .katex {
+            @apply text-base;
+        }
+
         a {
             @apply text-primary
         }
 
         p {
             @apply leading-9 mb-2;
-
-            img {
-                // 图片模糊
-                @apply blur-[20px] rounded-xl cursor-pointer transition-all;
-            }
         }
 
         strong {
