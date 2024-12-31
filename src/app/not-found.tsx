@@ -6,7 +6,7 @@ import NotFoundSvg from '@/assets/svg/other/404.svg'
 export default function NotFound() {
   return (
     <>
-      <div className='absolute w-screen h-screen bg-white z-[999]'>
+      <div className='absolute w-screen h-screen bg-white dark:bg-black-b z-[999]'>
         <div className="w-full h-[73vh] mt-20">
           <div className="w-full h-full flex justify-center items-center flex-wrap">
             <Image src={NotFoundSvg} alt="404" className='w-[40rem] min-w-[20rem]' />
