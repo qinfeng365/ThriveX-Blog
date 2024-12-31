@@ -89,12 +89,12 @@ importers:
       rehype-semantic-blockquotes:
         specifier: ^3.0.7
         version: 3.0.7
-      remark-flexible-markers:
-        specifier: ^1.2.1
-        version: 1.2.1
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.0
+      remark-mark-highlight:
+        specifier: ^0.1.1
+        version: 0.1.1
       remark-math:
         specifier: ^6.0.0
         version: 6.0.0
@@ -2517,11 +2517,11 @@ packages:
   rehype-semantic-blockquotes@3.0.7:
     resolution: {integrity: sha512-HG5zqyLpzkq3kC5rEw+wqiMljEW/YiUObyfNQ4+t45bmL0Gg2fgjProGig2dxGwet4qgwnutI8e3kwjQ4pv61g==}
 
-  remark-flexible-markers@1.2.1:
-    resolution: {integrity: sha512-yAqJ2bRDWfBC7G0A6lHsifMQpzeID10RQc5Pgm29jyAzdJQ7pJozDROeMEk7GW1KznSxIjO5be+fn7Dh+Fbo4A==}
-
   remark-gfm@4.0.0:
     resolution: {integrity: sha512-U92vJgBPkbw4Zfu/IiW2oTZLSL3Zpv+uI7My2eq8JxKgqraFdU8YUGicEJCEgSbeaG+QDFqIcwwfMTOEelPxuA==}
+
+  remark-mark-highlight@0.1.1:
+    resolution: {integrity: sha512-ot2AE37OKO2YQTcqyZ8VatEGJV/7CXk/RPJHk2TEVm04pT+JLCnoQb4Yj1vdOv2y4ZK45cDylj19gYVHqHz7Tw==}
 
   remark-math@6.0.0:
     resolution: {integrity: sha512-MMqgnP74Igy+S3WwnhQ7kqGlEerTETXMvJhrUzDikVZ2/uogJCb+WHUg97hK9/jcfc0dkD73s3LN8zU49cTEtA==}
@@ -2704,20 +2704,8 @@ packages:
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
 
-  unist-builder@4.0.0:
-    resolution: {integrity: sha512-wmRFnH+BLpZnTKpc5L7O67Kac89s9HMrtELpnNaE6TAobq5DTZZs5YaTQfAZBA9bFPECx2uVAPO31c+GVug8mg==}
-
   unist-util-find-after@5.0.0:
     resolution: {integrity: sha512-amQa0Ep2m6hE2g72AugUItjbuM8X8cGQnFoHk0pGfrFeT9GZhzN5SW8nRsiGKK7Aif4CrACPENkA6P/Lw6fHGQ==}
-
-  unist-util-find-all-after@5.0.0:
-    resolution: {integrity: sha512-nGmOYvTSdGcI4RvrUNfe0mOsqqbbJOtqCQsppsY9KZjmv3nwM3YRgNBwFPdZ8Y+iv9Z/2PDjR9u6u+uK62XTTg==}
-
-  unist-util-find-all-before@5.0.0:
-    resolution: {integrity: sha512-zir6a7GsXfdn4YAWR4F3hLNKZjTjLBJurdyquysvmX38xbftS1+qwvEhutxxHLq0Pp1tW5V1TDiuj+qluuOnKw==}
-
-  unist-util-find-between-all@1.0.5:
-    resolution: {integrity: sha512-zqpIPPzhbG6fI5lqYZhS1UPsMvxV9IY6dwbizLHLPAGNb3pQT3mTvmzXpP1K2lmUh4bhUwAN4gkQcxhR/OLS4g==}
 
   unist-util-is@6.0.0:
     resolution: {integrity: sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw==}
@@ -6157,16 +6145,6 @@ snapshots:
       hast-util-whitespace: 3.0.0
       unist-util-visit: 5.0.0
 
-  remark-flexible-markers@1.2.1:
-    dependencies:
-      '@types/mdast': 4.0.4
-      unist-builder: 4.0.0
-      unist-util-find-after: 5.0.0
-      unist-util-find-all-after: 5.0.0
-      unist-util-find-all-before: 5.0.0
-      unist-util-find-between-all: 1.0.5
-      unist-util-visit: 5.0.0
-
   remark-gfm@4.0.0:
     dependencies:
       '@types/mdast': 4.0.4
@@ -6177,6 +6155,8 @@ snapshots:
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
+
+  remark-mark-highlight@0.1.1: {}
 
   remark-math@6.0.0:
     dependencies:
@@ -6410,26 +6390,7 @@ snapshots:
       trough: 2.2.0
       vfile: 6.0.3
 
-  unist-builder@4.0.0:
-    dependencies:
-      '@types/unist': 3.0.3
-
   unist-util-find-after@5.0.0:
-    dependencies:
-      '@types/unist': 3.0.3
-      unist-util-is: 6.0.0
-
-  unist-util-find-all-after@5.0.0:
-    dependencies:
-      '@types/unist': 3.0.3
-      unist-util-is: 6.0.0
-
-  unist-util-find-all-before@5.0.0:
-    dependencies:
-      '@types/unist': 3.0.3
-      unist-util-is: 6.0.0
-
-  unist-util-find-between-all@1.0.5:
     dependencies:
       '@types/unist': 3.0.3
       unist-util-is: 6.0.0
