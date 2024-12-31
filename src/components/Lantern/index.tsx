@@ -15,7 +15,7 @@ export default ({ data }: Props) => {
     ];
 
     return (
-        <div className='w-full'>
+        <div className='w-full hidden md:block'>
             {data.map((item, index) => (
                 <div
                     key={index}
